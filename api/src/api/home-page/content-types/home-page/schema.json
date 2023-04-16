@@ -16,25 +16,27 @@
     }
   },
   "attributes": {
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "content": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "text"
-    },
-    "cover": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      "type": "richtext",
+      "required": true
     }
   }
 }

@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "game_configs",
+  "info": {
+    "singularName": "game-config",
+    "pluralName": "game-configs",
+    "displayName": "GameConfig",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "config": {
+      "type": "json",
+      "required": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "mark": {
+      "type": "string"
+    }
+  }
+}
