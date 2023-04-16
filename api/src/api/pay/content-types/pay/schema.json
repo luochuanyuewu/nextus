@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pays",
+  "info": {
+    "singularName": "pay",
+    "pluralName": "pays",
+    "displayName": "Pay"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pay_name": {
+      "type": "string"
+    },
+    "pay_check": {
+      "type": "string"
+    },
+    "pay_method": {
+      "type": "integer"
+    },
+    "pay_client": {
+      "type": "integer"
+    },
+    "merchant_id": {
+      "type": "string"
+    },
+    "merchant_key": {
+      "type": "text"
+    },
+    "merchant_pem": {
+      "type": "text"
+    },
+    "pay_handlerroute": {
+      "type": "string",
+      "required": true
+    },
+    "is_open": {
+      "type": "boolean"
+    }
+  }
+}

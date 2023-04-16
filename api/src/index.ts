@@ -1,3 +1,4 @@
+import { Strapi } from '@strapi/strapi';
 export default {
   /**
    * An asynchronous register function that runs before
@@ -5,7 +6,8 @@ export default {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/*{ strapi }*/) {},
+  register({ strapi }:{strapi:Strapi}) {
+  },
 
   /**
    * An asynchronous bootstrap function that runs before
