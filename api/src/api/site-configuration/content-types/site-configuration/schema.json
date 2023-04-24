@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_configurations",
+  "info": {
+    "singularName": "site-configuration",
+    "pluralName": "site-configurations",
+    "displayName": "SiteConfiguration",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "baseUrl": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "string"
+    },
+    "subTitle": {
+      "type": "text"
+    },
+    "copyright": {
+      "type": "text"
+    }
+  }
+}

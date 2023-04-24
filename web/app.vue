@@ -1,11 +1,10 @@
 <template>
-  <div>
+  <NuxtLayout>
     <NuxtWelcome />
-    <p>{{ data}}</p>
-  </div>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
-const {data} = await useFetch(()=> `http://localhost:1337/api/home-page`)
+const { data } = await useFetch(() => `http://localhost:1337/api/home-page`)
 console.log(data)
 </script>
