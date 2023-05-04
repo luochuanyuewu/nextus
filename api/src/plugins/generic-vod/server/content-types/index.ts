@@ -1,6 +1,8 @@
 
+import videoSchema from "./video/schema.json";
 
-
-const video = import('./video');
-
-export default { video }
+export default {
+    video: {
+        schema: videoSchema
+    }
+}
