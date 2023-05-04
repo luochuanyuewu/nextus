@@ -1,5 +1,5 @@
 {
-  "/articles": {
+  "/posts": {
     "get": {
       "responses": {
         "200": {
@@ -7,7 +7,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ArticleListResponse"
+                "$ref": "#/components/schemas/PostListResponse"
               }
             }
           }
@@ -64,7 +64,7 @@
         }
       },
       "tags": [
-        "Article"
+        "Post"
       ],
       "parameters": [
         {
@@ -169,7 +169,7 @@
           }
         }
       ],
-      "operationId": "get/articles"
+      "operationId": "get/posts"
     },
     "post": {
       "responses": {
@@ -178,7 +178,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ArticleResponse"
+                "$ref": "#/components/schemas/PostResponse"
               }
             }
           }
@@ -235,23 +235,23 @@
         }
       },
       "tags": [
-        "Article"
+        "Post"
       ],
       "parameters": [],
-      "operationId": "post/articles",
+      "operationId": "post/posts",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ArticleRequest"
+              "$ref": "#/components/schemas/PostRequest"
             }
           }
         }
       }
     }
   },
-  "/articles/{id}": {
+  "/posts/{id}": {
     "get": {
       "responses": {
         "200": {
@@ -259,7 +259,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ArticleResponse"
+                "$ref": "#/components/schemas/PostResponse"
               }
             }
           }
@@ -316,7 +316,7 @@
         }
       },
       "tags": [
-        "Article"
+        "Post"
       ],
       "parameters": [
         {
@@ -330,7 +330,7 @@
           }
         }
       ],
-      "operationId": "get/articles/{id}"
+      "operationId": "get/posts/{id}"
     },
     "put": {
       "responses": {
@@ -339,7 +339,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ArticleResponse"
+                "$ref": "#/components/schemas/PostResponse"
               }
             }
           }
@@ -396,7 +396,7 @@
         }
       },
       "tags": [
-        "Article"
+        "Post"
       ],
       "parameters": [
         {
@@ -410,13 +410,13 @@
           }
         }
       ],
-      "operationId": "put/articles/{id}",
+      "operationId": "put/posts/{id}",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ArticleRequest"
+              "$ref": "#/components/schemas/PostRequest"
             }
           }
         }
@@ -487,7 +487,7 @@
         }
       },
       "tags": [
-        "Article"
+        "Post"
       ],
       "parameters": [
         {
@@ -501,10 +501,10 @@
           }
         }
       ],
-      "operationId": "delete/articles/{id}"
+      "operationId": "delete/posts/{id}"
     }
   },
-  "/articles/{id}/localizations": {
+  "/posts/{id}/localizations": {
     "post": {
       "responses": {
         "200": {
@@ -512,7 +512,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ArticleLocalizationResponse"
+                "$ref": "#/components/schemas/PostLocalizationResponse"
               }
             }
           }
@@ -569,7 +569,7 @@
         }
       },
       "tags": [
-        "Article"
+        "Post"
       ],
       "parameters": [
         {
@@ -583,13 +583,13 @@
           }
         }
       ],
-      "operationId": "post/articles/{id}/localizations",
+      "operationId": "post/posts/{id}/localizations",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ArticleLocalizationRequest"
+              "$ref": "#/components/schemas/PostLocalizationRequest"
             }
           }
         }

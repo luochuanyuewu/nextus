@@ -6,13 +6,13 @@ import { mdi, aliases } from 'vuetify/iconsets/mdi'
 import 'vuetify/styles'
 export default defineNuxtPlugin((nuxtApp) => {
     const vuetify = createVuetify({
-        icons: {
-            defaultSet: 'mdi',
-            aliases: aliases,
-            sets: {
-                mdi
-            }
-        },
+        // icons: {
+        //     defaultSet: 'mdi',
+        //     aliases: aliases,
+        //     sets: {
+        //         mdi
+        //     }
+        // },
         ssr: true,
         components,
         directives,

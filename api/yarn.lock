@@ -2001,7 +2001,7 @@
     reselect "^4.1.7"
     yup "^0.32.9"
 
-"@strapi/plugin-documentation@^4.9.0":
+"@strapi/plugin-documentation@^4.10.2":
   version "4.10.2"
   resolved "https://registry.npmmirror.com/@strapi/plugin-documentation/-/plugin-documentation-4.10.2.tgz#e782bd4fd0375d88bef7dad207b206e90d97cf21"
   integrity sha512-R/xU0mgUL+KCssTwyukN31MZYoxGwkTyE9G7UffV3+2HbAc4dyWLiXfJAmMz1aUtF8/MibFNDB40gvcyoVQOtg==
@@ -2044,7 +2044,7 @@
     react-intl "6.4.1"
     yup "^0.32.9"
 
-"@strapi/plugin-i18n@^4.9.0":
+"@strapi/plugin-i18n@^4.10.2":
   version "4.10.2"
   resolved "https://registry.npmmirror.com/@strapi/plugin-i18n/-/plugin-i18n-4.10.2.tgz#af7f2613c4eb443b9ddf30f4073c90572ae01e81"
   integrity sha512-TwUPUKRTfSzlgyApbUyA2Z4XDWvEiAsfRNK2Igh5Av9mKvlVrQ/DLjQih2BZcXybTvOBGmrNBkpv9s/PQC0TVw==
@@ -2097,7 +2097,7 @@
     sharp "0.32.0"
     yup "^0.32.9"
 
-"@strapi/plugin-users-permissions@^4.9.0":
+"@strapi/plugin-users-permissions@^4.10.2":
   version "4.10.2"
   resolved "https://registry.npmmirror.com/@strapi/plugin-users-permissions/-/plugin-users-permissions-4.10.2.tgz#821b82da9f6d2c1df39f24ca3d652b1f7804e052"
   integrity sha512-qpdkj6i/ArAVJOjziNjg+A5EP2Oe4iI5PDS15wwss4k3o7e0ovxYJTUoLpDHcNrv4Rk1ijBN2R2dnS2s9gXz8w==
@@ -2144,7 +2144,7 @@
     "@strapi/utils" "4.10.2"
     fs-extra "10.0.0"
 
-"@strapi/strapi@4.10.2", "@strapi/strapi@^4.9.0":
+"@strapi/strapi@4.10.2", "@strapi/strapi@^4.10.2":
   version "4.10.2"
   resolved "https://registry.npmmirror.com/@strapi/strapi/-/strapi-4.10.2.tgz#b7954a1001d2f7c7f688d33dac4717e5d1ea5828"
   integrity sha512-5ATm1dTxCwyYHURMGsZroIKRHy+6XqZkRLPIcsMntO3i+rLO/0A84QMI8PTf9H1Gd1tSJ2JRNDNZR2IxdgySfA==
@@ -2680,9 +2680,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@16 || 17 || 18":
-  version "18.2.2"
-  resolved "https://registry.npmmirror.com/@types/react/-/react-18.2.2.tgz#2b6b1831d9c805b3790b6613becb5c8d2f3be479"
-  integrity sha512-4GZH3GLuqdZbDvOW5Pqqe7jgsDrKwkJfZMZLwFcgoz3CVDSvnMeG/Ihe44IbZ5Mqhh1fyTh5e44z6pNjIzzV8g==
+  version "18.2.3"
+  resolved "https://registry.npmmirror.com/@types/react/-/react-18.2.3.tgz#509ad6c4c77378e686f9bb6e0f8756936392f0e8"
+  integrity sha512-myU58XyFvSCcF9stRlhYnPbHZu9md7VZNsLukY6D68JHzIHLvqxvutD5luAJLnrUKMswvAgGwdSlEUKKSD+9Fw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -3364,7 +3364,7 @@ bcryptjs@2.4.3:
   resolved "https://registry.npmmirror.com/bcryptjs/-/bcryptjs-2.4.3.tgz#9ab5627b93e60621ff7cdac5da9733027df1d0cb"
   integrity sha512-V/Hy/X9Vt7f3BbPJEi8BdVFMByHi+jNXrYkW3huaybV/kQ0KJg0Y6PkEMbn+zeT+i+SiKZ/HMqJGIIt4LZDqNQ==
 
-better-sqlite3@^8.2.0:
+better-sqlite3@^8.3.0:
   version "8.3.0"
   resolved "https://registry.npmmirror.com/better-sqlite3/-/better-sqlite3-8.3.0.tgz#3873ddfd9f2af90b628657e8ff221786c93d1984"
   integrity sha512-JTmvBZL/JLTc+3Msbvq6gK6elbU9/wVMqiudplHrVJpr7sVMR9KJrNhZAbW+RhXKlpMcuEhYkdcHa3TXKNXQ1w==

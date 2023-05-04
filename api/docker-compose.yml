@@ -6,6 +6,7 @@ services:
     image: strapi:latest
     restart: unless-stopped
     env_file: .env
+    command: strapi develop --watch-admin
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
       DATABASE_HOST: strapiDB
@@ -25,6 +26,7 @@ services:
       - ./public/uploads:/opt/app/public/uploads
     ports:
       - '1337:1337'
+      - '8000:8000'
     networks:
       - strapi
     depends_on:

@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "articles",
+  "collectionName": "posts",
   "info": {
-    "singularName": "article",
-    "pluralName": "articles",
-    "displayName": "Article",
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post",
     "description": ""
   },
   "options": {
@@ -24,7 +24,7 @@
       },
       "type": "string"
     },
-    "desc": {
+    "subTitle": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -38,12 +38,26 @@
           "localized": true
         }
       },
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "tags": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::tag.tag"
+    },
+    "cover": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "required": false
     }
   }
 }

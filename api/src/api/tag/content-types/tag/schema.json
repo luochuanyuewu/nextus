@@ -4,15 +4,24 @@
   "info": {
     "singularName": "tag",
     "pluralName": "tags",
-    "displayName": "tag"
+    "displayName": "Tag"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }
