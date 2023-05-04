@@ -1,8 +1,8 @@
 module.exports = ({ env }) => ({
-  'aliyun-video-upload': {
+  'generic-vod': {
     enabled: true,
-    resolve: './src/plugins/aliyun-video-upload'
-  }
+    resolve: './src/plugins/generic-vod'
+  },
   // upload: {
   //   config: {
   //     provider: 'strapi-provider-upload-oss', // full package name is required
