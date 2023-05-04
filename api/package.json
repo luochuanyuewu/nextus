@@ -12,10 +12,10 @@
   "devDependencies": {},
   "dependencies": {
     "@strapi/plugin-documentation": "^4.9.0",
-    "@strapi/plugin-i18n": "4.9.0",
-    "@strapi/plugin-users-permissions": "4.9.0",
-    "@strapi/strapi": "4.9.0",
-    "better-sqlite3": "8.2.0",
+    "@strapi/plugin-i18n": "^4.9.0",
+    "@strapi/plugin-users-permissions": "^4.9.0",
+    "@strapi/strapi": "^4.9.0",
+    "better-sqlite3": "^8.2.0",
     "mysql": "^2.18.1",
     "strapi-provider-upload-oss": "^0.1.7",
     "strapi-tiptap-editor": "^0.9.12"
