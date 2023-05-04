@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "video_files",
+  "collectionName": "videos",
   "info": {
-    "singularName": "video-file",
-    "pluralName": "video-files",
-    "displayName": "VideoFile"
+    "singularName": "video",
+    "pluralName": "videos",
+    "displayName": "Video"
   },
   "options": {
     "draftAndPublish": false,
@@ -12,8 +12,8 @@
   },
   "attributes": {
     "name": {
-      "type": "String",
-      "required": true
+      "type": "string",
+      "required": true,
     },
     "isDone": {
       "type": "boolean",

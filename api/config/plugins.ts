@@ -1,6 +1,6 @@
 module.exports = ({ env }) => ({
   'generic-vod': {
-    enabled: true,
+    enabled: false,
     resolve: './src/plugins/generic-vod'
   },
   // upload: {
