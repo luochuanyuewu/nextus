@@ -34,7 +34,6 @@
 import { AppConfig } from 'nuxt/schema'
 
 const appConfig: AppConfig = useAppConfig()
-console.log(appConfig.)
 
 const { data } = await useFetch('http://localhost:1337/api/site-configuration')
 const site = (data.value as any).data.attributes

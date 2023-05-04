@@ -29,7 +29,7 @@ services:
       - strapi
     depends_on:
       - strapiDB
-      
+
   strapiDB:
     container_name: strapiDB
     platform: linux/amd64 #for platform error on Apple M1 chips
@@ -49,7 +49,7 @@ services:
       - '3306:3306'
     networks:
       - strapi
-      
+
   strapiAdminer:
     container_name: strapiAdminer
     image: adminer
@@ -65,6 +65,7 @@ services:
 
 volumes:
   strapi-data:
+
 
 networks:
   strapi:
