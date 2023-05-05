@@ -14,12 +14,15 @@
     "@types/node": "^18.16.3"
   },
   "dependencies": {
+    "@api.video/strapi-uploader-plugin": "^1.0.4",
     "@strapi/plugin-documentation": "^4.10.2",
+    "@strapi/plugin-graphql": "^4.10.2",
     "@strapi/plugin-i18n": "^4.10.2",
     "@strapi/plugin-users-permissions": "^4.10.2",
     "@strapi/strapi": "^4.10.2",
     "better-sqlite3": "^8.3.0",
     "mysql": "^2.18.1",
+    "strapi-plugin-comments": "^2.2.10",
     "strapi-provider-upload-oss": "^0.1.7",
     "strapi-tiptap-editor": "^0.9.12"
   },

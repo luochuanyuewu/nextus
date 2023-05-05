@@ -47,17 +47,26 @@
       "target": "api::tag.tag"
     },
     "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "comment": {
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
       },
-      "required": false
+      "type": "customField",
+      "customField": "plugin::comments.comments"
     }
   }
 }
