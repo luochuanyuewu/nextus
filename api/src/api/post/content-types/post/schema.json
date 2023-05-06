@@ -58,15 +58,6 @@
           "localized": false
         }
       }
-    },
-    "comment": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "customField",
-      "customField": "plugin::comments.comments"
     }
   }
 }
