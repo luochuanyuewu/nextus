@@ -5,13 +5,7 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "target": "ESNext",
-    "strict": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+    "strict": true
   },
   "include": [
     "admin",
