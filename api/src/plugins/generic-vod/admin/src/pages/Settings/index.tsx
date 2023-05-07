@@ -50,6 +50,9 @@ const Settings = () => {
   const handleEndpointChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSettings({...settings, endpoint: event.target.value})
   }
+  const handleStorageRegionChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSettings({...settings, storageRegion: event.target.value})
+  }
 
 
   const handleOnSubmit = async () => {
@@ -81,7 +84,7 @@ const Settings = () => {
         })}
         primaryAction={
           <Button type="submit" onClick={handleOnSubmit} startIcon={<Check/>} size="L">
-            Save
+            保存
           </Button>
         }
       />
@@ -149,7 +152,7 @@ const Settings = () => {
                   value={settings.storageRegion}
                   placeholder="输入你的存储地域标识"
                   detailsLink="https://help.aliyun.com/document_detail/98194.html"
-                  onChange={handleEndpointChange}
+                  onChange={handleStorageRegionChange}
                 />
               </GridItem>
               <GridItem col={12} s={12}>
@@ -158,7 +161,6 @@ const Settings = () => {
                   label="Cate Id"
                   value={settings.cateId}
                   placeholder="输入你的分类ID"
-                  onChange={handleEndpointChange}
                 />
               </GridItem>
               <GridItem col={12} s={12}>
@@ -167,7 +169,6 @@ const Settings = () => {
                   label="Signing Key"
                   value={settings.signingKey}
                   placeholder="输入你的签名key"
-                  onChange={handleEndpointChange}
                 />
               </GridItem>
               <GridItem col={12} s={12}>
@@ -176,7 +177,6 @@ const Settings = () => {
                   label="Calback Url"
                   value={settings.callbackUrl}
                   placeholder="输入你的回调地址"
-                  onChange={handleEndpointChange}
                 />
               </GridItem>
             </Grid>

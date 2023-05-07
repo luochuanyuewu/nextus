@@ -1,16 +1,38 @@
 import {Strapi} from '@strapi/strapi';
 import {configClient} from "../utils/config";
 import {
+  CreateUploadVideoRequest,
   GetPlayInfoRequest,
   GetPlayInfoResponse,
   GetVideoPlayAuthRequest,
   GetVideoPlayAuthResponse
 } from "@alicloud/vod20170321";
 
+import Util, * as $Util from '@alicloud/tea-util';
+
 export default ({strapi}: { strapi: Strapi }) => ({
-  async getPlayerInfo(VideoId: string) {
+  async createUploadVideo(title: string, fileName: string) {
     const client = await configClient(strapi)
+
+    let createUploadVideoRequest = new CreateUploadVideoRequest({
+      title,
+      fileName
+    });
+    let runtime = new $Util.RuntimeOptions({});
     try {
+      // 复制代码运行请自行打印 API 的返回值
+      const res = await client.createUploadVideoWithOptions(createUploadVideoRequest, runtime);
+      return res.body
+    } catch (error) {
+      // 如有需要，请打印 error
+      Util.assertAsString(error.message);
+    }
+  },
+
+
+  async getPlayerInfo(VideoId: string) {
+    try {
+      const client = await configClient(strapi)
 
       const request = new GetPlayInfoRequest()
       request.videoId = VideoId;

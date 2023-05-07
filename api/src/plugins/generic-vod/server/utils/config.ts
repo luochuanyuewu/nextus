@@ -24,6 +24,10 @@ const getConfig = async (strapi): Promise<$OpenApi.Config> => {
     key: 'accessKeySecret',
   })
 
+  const regionId = await pluginStore.get({
+    key: 'regionId',
+  })
+
   const endpoint = await pluginStore.get({
     key: 'endpoint',
   })
@@ -31,6 +35,7 @@ const getConfig = async (strapi): Promise<$OpenApi.Config> => {
   const config = new $OpenApi.Config()
   config.accessKeyId = accessKeyId
   config.accessKeySecret = accessKeySecret
+  config.regionId = regionId
   config.endpoint = endpoint
   return config;
 }

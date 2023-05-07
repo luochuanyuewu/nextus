@@ -2,7 +2,7 @@
  * setting-service service
  */
 import {Strapi} from "@strapi/strapi";
-import * as $OpenApi from '@alicloud/openapi-client';
+import {AliVodSettings} from "../../types";
 
 export default ({strapi}: { strapi: Strapi }) => ({
   getWelcomeMessage() {
@@ -23,17 +23,44 @@ export default ({strapi}: { strapi: Strapi }) => ({
       key: 'accessKeySecret',
     })
 
+    const regionId = await pluginStore.get({
+      key: 'regionId',
+    })
+
     const endpoint = await pluginStore.get({
       key: 'endpoint',
     })
 
-    const config = new $OpenApi.Config()
-    config.accessKeyId = accessKeyId
-    config.accessKeySecret = accessKeySecret
-    config.endpoint = endpoint
+    const cateId = await pluginStore.get({
+      key: 'cateId',
+    })
+
+    const signingKey = await pluginStore.get({
+      key: 'signingKey',
+    })
+
+    const storageRegion = await pluginStore.get({
+      key: 'storageRegion',
+    })
+
+    const callbackUrl = await pluginStore.get({
+      key: 'callbackUrl',
+    })
+
+    const config: AliVodSettings = {
+      accessKeyId,
+      accessKeySecret,
+      regionId,
+      endpoint,
+      cateId,
+      signingKey,
+      storageRegion,
+      callbackUrl,
+    }
+
     return config;
   },
-  async saveSettings(settings: $OpenApi.Config) {
+  async saveSettings(settings: AliVodSettings) {
     const pluginStore = strapi.store({
       environment: strapi.config.environment,
       type: 'plugin',
@@ -56,6 +83,18 @@ export default ({strapi}: { strapi: Strapi }) => ({
         await pluginStore.set({
           key: 'endpoint',
           value: settings.endpoint,
+        })
+        await pluginStore.set({
+          key: 'regionId',
+          value: settings.regionId,
+        })
+        await pluginStore.set({
+          key: 'storageRegion',
+          value: settings.storageRegion,
+        })
+        await pluginStore.set({
+          key: 'storageRegion',
+          value: settings.storageRegion,
         })
         return true
       }
