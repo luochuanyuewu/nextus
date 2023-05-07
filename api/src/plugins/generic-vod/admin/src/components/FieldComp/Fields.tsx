@@ -1,24 +1,20 @@
-import React, { FC } from 'react'
+import React, {FC} from 'react'
 import styled from 'styled-components'
-import { Box } from '@strapi/design-system'
-import { Field, FieldError, FieldHint, FieldInput, FieldLabel } from '@strapi/design-system'
-import { Flex } from '@strapi/design-system'
-import { Link } from '@strapi/design-system'
-import { Stack } from '@strapi/design-system'
+import {Box, Field, FieldError, FieldHint, FieldInput, FieldLabel, Flex, Link, Stack} from '@strapi/design-system'
 
 interface IFieldProps {
-    name: string
-    label?: string
-    value: string
-    isPassword?: boolean
-    placeholder?: string
-    description?: string
-    tooltip?: string
-    detailsLink?: string
-    error?: string
-    required?: boolean
-    onChange?: (e: React.ChangeEvent<any>) => void
-    editable?: boolean
+  name: string
+  label?: string
+  value: string
+  isPassword?: boolean
+  placeholder?: string
+  description?: string
+  tooltip?: string
+  detailsLink?: string
+  error?: string
+  required?: boolean
+  onChange?: (e: React.ChangeEvent<any>) => void
+  editable?: boolean
 }
 
 const FieldLabelStyled = styled(FieldLabel)`
@@ -34,45 +30,46 @@ const TooltipButtonStyled = styled.button`
 `
 
 const FieldComp: FC<IFieldProps> = ({
-    name,
-    label,
-    value,
-    isPassword,
-    placeholder,
-    description,
-    tooltip,
-    detailsLink,
-    error,
-    required,
-    onChange = () => { },
-    editable,
-}): JSX.Element => {
-    return (
-        <Field name={name} hint={description} error={error}>
-            <Stack spacing={1}>
-                <Flex>
-                    <FieldLabelStyled required={required}>{label}</FieldLabelStyled>
-                    <Box paddingLeft={2}></Box>
-                    {detailsLink && (
-                        <Flex width="100%" justifyContent="flex-end">
-                            <Link isExternal href={detailsLink}>
-                                Details
-                            </Link>
-                        </Flex>
-                    )}
-                </Flex>
-                <FieldInput
-                    disabled={editable === undefined ? false : !editable}
-                    placeholder={placeholder}
-                    value={value}
-                    type={isPassword ? 'password' : 'text'}
-                    onChange={onChange}
-                />
-                <FieldHint />
-                <FieldError />
-            </Stack>
-        </Field>
-    )
+                                      name,
+                                      label,
+                                      value,
+                                      isPassword,
+                                      placeholder,
+                                      description,
+                                      tooltip,
+                                      detailsLink,
+                                      error,
+                                      required,
+                                      onChange = () => {
+                                      },
+                                      editable,
+                                    }): JSX.Element => {
+  return (
+    <Field name={name} hint={description} error={error}>
+      <Stack spacing={1}>
+        <Flex>
+          <FieldLabelStyled required={required}>{label}</FieldLabelStyled>
+          <Box paddingLeft={2}></Box>
+          {detailsLink && (
+            <Flex width="100%" justifyContent="flex-end">
+              <Link isExternal href={detailsLink}>
+                Details
+              </Link>
+            </Flex>
+          )}
+        </Flex>
+        <FieldInput
+          disabled={editable === undefined ? false : !editable}
+          placeholder={placeholder}
+          value={value}
+          type={isPassword ? 'password' : 'text'}
+          onChange={onChange}
+        />
+        <FieldHint/>
+        <FieldError/>
+      </Stack>
+    </Field>
+  )
 }
 
 export default FieldComp

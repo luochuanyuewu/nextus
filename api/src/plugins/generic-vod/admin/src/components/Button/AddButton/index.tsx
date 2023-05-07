@@ -1,24 +1,24 @@
-import React, { useState, FC } from 'react'
-import { Button } from '@strapi/design-system'
+import React, {FC, useState} from 'react'
+import {Button} from '@strapi/design-system'
 
-import { Plus } from '@strapi/icons'
+import {Plus} from '@strapi/icons'
 import AddVideoModal from '../../Modal/AddVideo'
 
 interface IAddButtonProps {
-    update: () => void
+  update: () => void
 }
 
-const AddButton: FC<IAddButtonProps> = ({ update }) => {
-    const [isVisible, setIsVisible] = useState(false)
+const AddButton: FC<IAddButtonProps> = ({update}) => {
+  const [isVisible, setIsVisible] = useState(false)
 
-    return (
-        <>
-            <Button endIcon={<Plus />} onClick={() => setIsVisible(true)}>
-                Add a video
-            </Button>
-            {isVisible && <AddVideoModal update={update} close={() => setIsVisible(false)} />}
-        </>
-    )
+  return (
+    <>
+      <Button endIcon={<Plus/>} onClick={() => setIsVisible(true)}>
+        Add a video
+      </Button>
+      {isVisible && <AddVideoModal update={update} close={() => setIsVisible(false)}/>}
+    </>
+  )
 }
 
 export default AddButton

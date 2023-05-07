@@ -1,13 +1,13 @@
-import { Strapi } from '@strapi/strapi';
-import { configClient } from "../utils/config";
+import {Strapi} from '@strapi/strapi';
+import {configClient} from "../utils/config";
 import {
   GetPlayInfoRequest,
   GetPlayInfoResponse,
   GetVideoPlayAuthRequest,
-  GetVideoPlayAuthResponse, GetVideoPlayAuthResponseBody
+  GetVideoPlayAuthResponse
 } from "@alicloud/vod20170321";
 
-export default ({ strapi }: { strapi: Strapi }) => ({
+export default ({strapi}: { strapi: Strapi }) => ({
   async getPlayerInfo(VideoId: string) {
     const client = await configClient(strapi)
     try {
@@ -41,7 +41,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
 
     try {
 
-      const response: GetVideoPlayAuthResponse = await client.getVideoPlayAuth(new GetVideoPlayAuthRequest({ videoId: VideoId }));
+      const response: GetVideoPlayAuthResponse = await client.getVideoPlayAuth(new GetVideoPlayAuthRequest({videoId: VideoId}));
 
       // Play Auth
       console.log('PlayAuth = ' + response.body.playAuth);

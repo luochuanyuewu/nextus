@@ -1,22 +1,14 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, {ChangeEvent, useEffect, useState} from 'react'
 
-import {
-  CheckPagePermissions, useNotification,
-  useOverlayBlocker
-} from '@strapi/helper-plugin'
+import {CheckPagePermissions, useNotification, useOverlayBlocker} from '@strapi/helper-plugin'
 
-import { Box } from '@strapi/design-system'
-import { Button } from '@strapi/design-system'
-import { Grid, GridItem } from '@strapi/design-system'
-import { ContentLayout, HeaderLayout } from '@strapi/design-system'
-import { Stack } from '@strapi/design-system'
-import { Typography } from '@strapi/design-system'
-import { Check } from '@strapi/icons'
+import {Box, Button, ContentLayout, Grid, GridItem, HeaderLayout, Stack, Typography} from '@strapi/design-system'
+import {Check} from '@strapi/icons'
 import settingsRequests from '../../api/settings'
 import FieldComp from '../../components/FieldComp/Fields'
 import pluginPermissions from '../../permissions'
 import getTrad from '../../utils/getTrad'
-import { AliVodSettings } from "../../../../types";
+import {AliVodSettings} from "../../../../types";
 
 const Settings = () => {
 
@@ -27,7 +19,7 @@ const Settings = () => {
     endpoint: '',
     regionId: ''
   })
-  const { lockApp, unlockApp } = useOverlayBlocker()
+  const {lockApp, unlockApp} = useOverlayBlocker()
   const notification = useNotification()
 
   const getSettings = async () => {
@@ -40,11 +32,11 @@ const Settings = () => {
   }, [])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSettings({ ...settings, accessKeyId: event.target.value })
+    setSettings({...settings, accessKeyId: event.target.value})
   }
 
   const handleSecretChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSettings({ ...settings, accessKeySecret: event.target.value })
+    setSettings({...settings, accessKeySecret: event.target.value})
   }
 
   const handleOnSubmit = async () => {
@@ -71,7 +63,7 @@ const Settings = () => {
       <HeaderLayout
         title={getTrad('plugin.name')}
         primaryAction={
-          <Button type="submit" onClick={handleOnSubmit} startIcon={<Check />} size="L">
+          <Button type="submit" onClick={handleOnSubmit} startIcon={<Check/>} size="L">
             Save
           </Button>
         }
@@ -134,6 +126,6 @@ const Settings = () => {
 
 export default () => (
   <CheckPagePermissions permissions={pluginPermissions.settingsRoles}>
-    <Settings />
+    <Settings/>
   </CheckPagePermissions>
 )

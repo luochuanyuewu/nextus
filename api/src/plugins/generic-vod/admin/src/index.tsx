@@ -1,4 +1,4 @@
-import { prefixPluginTranslations } from '@strapi/helper-plugin';
+import {prefixPluginTranslations} from '@strapi/helper-plugin';
 
 import pluginPkg from '../../package.json';
 import pluginId from './pluginId';
@@ -6,6 +6,7 @@ import Initializer from './components/Initializer';
 import PluginIcon from './components/PluginIcon';
 import pluginPermissions from './permissions';
 import getTrad from "./utils/getTrad";
+
 const name = pluginPkg.strapi.displayName;
 const displayName = pluginPkg.strapi.displayName
 
@@ -65,15 +66,16 @@ export default {
     app.registerPlugin(plugin);
   },
 
-  bootstrap(app: any) { },
+  bootstrap(app: any) {
+  },
 
   async registerTrads(app: any) {
-    const { locales } = app;
+    const {locales} = app;
 
     const importedTrads = await Promise.all(
       (locales as any[]).map((locale) => {
         return import(`./translations/${locale}.json`)
-          .then(({ default: data }) => {
+          .then(({default: data}) => {
             return {
               data: prefixPluginTranslations(data, pluginId),
               locale,

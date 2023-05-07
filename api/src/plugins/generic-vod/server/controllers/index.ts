@@ -1,4 +1,4 @@
-import { Strapi } from '@strapi/strapi';
+import {Strapi} from '@strapi/strapi';
 import settingController from './settings-controller';
 import pluginId from '../../admin/src/pluginId';
 
@@ -13,7 +13,6 @@ export const isAllowedTo = (strapi: Strapi, ctx: any, action: string) => {
   });
   return pm.isAllowed;
 }
-
 
 
 export default {

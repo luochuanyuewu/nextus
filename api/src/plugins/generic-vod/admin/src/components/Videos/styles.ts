@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { IconButton } from '@strapi/design-system'
+import {IconButton} from '@strapi/design-system'
 
 export const GridBroadcastWrapper = styled.div`
     padding: 10px;

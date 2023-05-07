@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { FormInput, SubTitle } from '../../styles/form'
-import { IconButton } from '@strapi/design-system'
+import {FormInput, SubTitle} from '../../styles/form'
+import {IconButton} from '@strapi/design-system'
 
 export const SubTitleMetadata = styled(SubTitle)`
     padding-bottom: 10px;

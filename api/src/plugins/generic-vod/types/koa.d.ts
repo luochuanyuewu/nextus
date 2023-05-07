@@ -1,9 +1,9 @@
-import { ParameterizedContext, Request } from 'koa'
+import {ParameterizedContext, Request} from 'koa'
 
 type StrapiExtendedRequest = Request & { body?: any }
 
 declare module 'koa' {
-    interface Context extends ParameterizedContext {
-        request: StrapiExtendedRequest
-    }
+  interface Context extends ParameterizedContext {
+    request: StrapiExtendedRequest
+  }
 }

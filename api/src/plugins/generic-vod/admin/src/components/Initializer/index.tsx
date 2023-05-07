@@ -4,14 +4,14 @@
  *
  */
 
-import { useEffect, useRef } from 'react';
+import {useEffect, useRef} from 'react';
 import pluginId from '../../pluginId';
 
 type InitializerProps = {
   setPlugin: (id: string) => void;
 };
 
-const Initializer = ({ setPlugin }: InitializerProps) => {
+const Initializer = ({setPlugin}: InitializerProps) => {
   const ref = useRef(setPlugin);
 
   useEffect(() => {

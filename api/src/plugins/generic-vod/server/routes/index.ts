@@ -1,5 +1,4 @@
 // import apiVideoContentApiRoutes from './content-api-routes'
-import vodAdminRoutes from './admin-routes'
 import vodSettingsRoutes from './settings-routes'
 
 const routes = {

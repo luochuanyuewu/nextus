@@ -1,8 +1,15 @@
-import { Strapi } from '@strapi/strapi'
-import { isAllowedTo } from '.';
-import { mainCreateAction, mainDeleteAction, mainReadAction, mainUpdateAction, settingsReadAction, settingsUpdateAction } from '../../admin/src/actions';
+import {Strapi} from '@strapi/strapi'
+import {isAllowedTo} from '.';
+import {
+  mainCreateAction,
+  mainDeleteAction,
+  mainReadAction,
+  mainUpdateAction,
+  settingsReadAction,
+  settingsUpdateAction
+} from '../../admin/src/actions';
 
-export default ({ strapi }: { strapi: Strapi }) => ({
+export default ({strapi}: { strapi: Strapi }) => ({
   async getSettings(ctx: any) {
     try {
       if (!isAllowedTo(strapi, ctx, settingsReadAction)

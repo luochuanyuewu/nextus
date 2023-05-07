@@ -1,7 +1,6 @@
-import { Strapi } from '@strapi/strapi';
 import pluginId from "../admin/src/pluginId";
 
-export default async ({ strapi }: { strapi: any }) => {
+export default async ({strapi}: { strapi: any }) => {
 
   // 添加权限配置到strapi
   const actions = [
