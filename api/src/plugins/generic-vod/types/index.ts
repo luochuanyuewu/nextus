@@ -44,7 +44,7 @@ export interface AliVodSettings {
 export interface InputData {
   title: string
   description?: string
-  _public: boolean
+  fileName?: string
   tags?: string[]
   metadata?: {
     key: string

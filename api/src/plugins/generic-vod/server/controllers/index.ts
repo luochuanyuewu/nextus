@@ -1,6 +1,7 @@
 import {Strapi} from '@strapi/strapi';
-import settingController from './settings-controller';
 import pluginId from '../../admin/src/pluginId';
+import adminController from "./admin-controller";
+import settingController from './settings-controller';
 
 const model = `plugin::${pluginId}.vod-asset`
 
@@ -16,5 +17,6 @@ export const isAllowedTo = (strapi: Strapi, ctx: any, action: string) => {
 
 
 export default {
+  admin: adminController,
   settings: settingController,
 };

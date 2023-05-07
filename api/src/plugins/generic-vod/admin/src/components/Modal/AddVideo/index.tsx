@@ -7,7 +7,6 @@ import Tags from '../../Tags'
 
 import MetadataTable from '../../Metadata'
 import {InputData} from '../../../../../types'
-import Toggle from "../../Toggle";
 
 
 interface IAddVideoModalProps {
@@ -19,7 +18,7 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
   const [inputData, setInputData] = useState<InputData>({
     title: '',
     description: '',
-    _public: true,
+    fileName: '',
     tags: [],
     metadata: [
       {
@@ -35,7 +34,7 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
   // CONSTANTS
   const videoRef = useRef<HTMLVideoElement>(null)
   const sourceRef = useRef<HTMLSourceElement>(null)
-  const {title, description, _public, tags, metadata} = inputData
+  const {title, description, fileName, tags, metadata} = inputData
 
   const displayVideoFrame = (video: HTMLVideoElement, source: HTMLSourceElement, file: File) => {
     // Object Url as the video source
@@ -54,9 +53,9 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
     setInputData((prevInputData) => ({...prevInputData, [name]: value}))
   }
 
-  const handleSetPublic = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputData({...inputData, _public: event.target.checked})
-  }
+  // const handleSetPublic = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setInputData({...inputData, _public: event.target.checked})
+  // }
 
   const handleSetTag = (tag: string) => {
     if (tag) {
@@ -132,15 +131,15 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
         />
         <br/>
 
-        <Toggle
-          label="Public"
-          required={true}
-          checked={_public}
-          onLabel="True"
-          offLabel="False"
-          onChange={handleSetPublic}
-        />
-        <br/>
+        {/*<Toggle*/}
+        {/*  label="Public"*/}
+        {/*  required={true}*/}
+        {/*  checked={_public}*/}
+        {/*  onLabel="True"*/}
+        {/*  offLabel="False"*/}
+        {/*  onChange={handleSetPublic}*/}
+        {/*/>*/}
+        {/*<br/>*/}
 
         <Tags handleSetTag={handleSetTag} handleRemoveTag={handleRemoveTag} tags={tags || []} editable={true}/>
 
@@ -163,7 +162,6 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
               currentFile={file}
               title={title}
               description={description || ''}
-              _public={_public}
               tags={tags || []}
               metadata={metadata || []}
               update={update}

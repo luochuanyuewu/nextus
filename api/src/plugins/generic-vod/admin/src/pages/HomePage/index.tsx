@@ -48,7 +48,7 @@ const HomePage = () => {
   } = useRBAC(permissions)
 
   const fetchData = async () => {
-    if (isLoadingData === false) setIsLoadingData(true)
+    if (!isLoadingData) setIsLoadingData(true)
     const data = await Promise.all((await assetsRequests.getAllvideos()).map(async (video: CustomVideo): Promise<EnhancedCustomVideo> => {
       video._public = video._public ?? true;
       if (video._public) {

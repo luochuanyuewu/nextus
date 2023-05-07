@@ -6,7 +6,6 @@ import FieldComp from '../../FieldComp/Fields'
 import LinksTable from '../../LinksTable'
 import MetadataTable from '../../Metadata'
 import Tags from '../../Tags'
-import Toggle from '../../Toggle'
 import PlayerView from './PlayerView'
 import {InputData} from '../../../../../types'
 
@@ -21,22 +20,21 @@ const UpdateVideoModal: FC<IUpdateVideoModalProps> = ({video, update, close, edi
   const [inputData, setInputData] = useState<InputData>({
     title: video.title,
     description: video.description,
-    _public: video._public,
     tags: video.tags,
     metadata: video.metadata,
   })
 
   // CONSTANTS
-  const {title, description, _public, tags, metadata} = inputData
+  const {title, description, tags, metadata} = inputData
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const {name, value} = event.target
     setInputData((prevInputData) => ({...prevInputData, [name]: value}))
   }
 
-  const handleSetPublic = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputData({...inputData, _public: event.target.checked})
-  }
+  // const handleSetPublic = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setInputData({...inputData, _public: event.target.checked})
+  // }
 
   const handleSetTag = (tag: string) => {
     if (tag) {
@@ -92,14 +90,14 @@ const UpdateVideoModal: FC<IUpdateVideoModalProps> = ({video, update, close, edi
         />
         <br/>
 
-        <Toggle
-          label="Public"
-          required={true}
-          checked={inputData._public}
-          onLabel="True"
-          offLabel="False"
-          onChange={handleSetPublic}
-        />
+        {/*<Toggle*/}
+        {/*  label="Public"*/}
+        {/*  required={true}*/}
+        {/*  checked={inputData._public}*/}
+        {/*  onLabel="True"*/}
+        {/*  offLabel="False"*/}
+        {/*  onChange={handleSetPublic}*/}
+        {/*/>*/}
         <br/>
 
         <Tags
@@ -130,7 +128,6 @@ const UpdateVideoModal: FC<IUpdateVideoModalProps> = ({video, update, close, edi
               <UpdateButton
                 title={title}
                 description={description || ''}
-                _public={_public}
                 tags={tags || []}
                 metadata={metadata || []}
                 id={video.id}
