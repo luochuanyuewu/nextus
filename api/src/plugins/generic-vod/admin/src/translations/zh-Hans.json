@@ -1,3 +1,4 @@
 {
-    "plugin.name": "视频点播"
+  "plugin.name": "阿里云视频点播",
+  "plugin.settings": "配置"
 }

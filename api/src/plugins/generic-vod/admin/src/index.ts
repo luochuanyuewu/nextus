@@ -45,10 +45,10 @@ export default {
       [
         {
           intlLabel: {
-            id: 'Settings Section api.video uploader',
+            id: getTrad('plugin.settings'),
             defaultMessage: 'Settings',
           },
-          id: 'api-video-uploader-settings',
+          id: 'generic-vod-settings',
           to: `/settings/${pluginId}`,
           permissions: pluginPermissions.settingsRoles,
           Component: async () => await import('./pages/Settings'),

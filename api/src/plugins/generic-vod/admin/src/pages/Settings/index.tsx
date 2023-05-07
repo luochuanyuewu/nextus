@@ -1,4 +1,5 @@
 import React, {ChangeEvent, useEffect, useState} from 'react'
+import {useIntl} from 'react-intl';
 
 import {CheckPagePermissions, useNotification, useOverlayBlocker} from '@strapi/helper-plugin'
 
@@ -11,13 +12,17 @@ import getTrad from '../../utils/getTrad'
 import {AliVodSettings} from "../../../../types";
 
 const Settings = () => {
-
+  const {formatMessage} = useIntl();
 
   const [settings, setSettings] = useState<AliVodSettings>({
     accessKeyId: '',
     accessKeySecret: '',
     endpoint: '',
-    regionId: ''
+    regionId: '',
+    cateId: "",
+    storageRegion: '',
+    signingKey: '',
+    callbackUrl: ''
   })
   const {lockApp, unlockApp} = useOverlayBlocker()
   const notification = useNotification()
@@ -39,6 +44,14 @@ const Settings = () => {
     setSettings({...settings, accessKeySecret: event.target.value})
   }
 
+  const handleRegionIdChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSettings({...settings, regionId: event.target.value})
+  }
+  const handleEndpointChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSettings({...settings, endpoint: event.target.value})
+  }
+
+
   const handleOnSubmit = async () => {
     lockApp()
     const response = await settingsRequests.update(settings)
@@ -46,12 +59,14 @@ const Settings = () => {
     if (response) {
       notification({
         type: 'success',
-        message: 'Changes saved',
+        message: '设置已保存。',
+        // message: 'Changes saved',
       })
     } else {
       notification({
         type: 'warning',
-        message: 'Please enter valid settings',
+        message: '请配置有效数据！',
+        // message: 'Please enter valid settings',
       })
     }
 
@@ -61,7 +76,9 @@ const Settings = () => {
   return (
     <>
       <HeaderLayout
-        title={getTrad('plugin.name')}
+        title={formatMessage({
+          id: getTrad('plugin.name')
+        })}
         primaryAction={
           <Button type="submit" onClick={handleOnSubmit} startIcon={<Check/>} size="L">
             Save
@@ -71,7 +88,6 @@ const Settings = () => {
 
       <ContentLayout>
         <Box
-          background="neutral0"
           hasRadius
           shadow="filterShadow"
           paddingTop={6}
@@ -106,16 +122,63 @@ const Settings = () => {
                   onChange={handleSecretChange}
                 />
               </GridItem>
-              {/* <GridItem col={12} s={12}>
-                                <Toggle
-                                    label="Default Video Privacy"
-                                    checked={settings.defaultPublic}
-                                    required={true}
-                                    onLabel="Public"
-                                    offLabel="Private"
-                                    onChange={handleSetPublic}
-                                />
-                            </GridItem> */}
+              <GridItem col={12} s={12}>
+                <FieldComp
+                  name="Region Id"
+                  label="Region Id"
+                  value={settings.regionId}
+                  placeholder="输入你的API接入地域标识"
+                  detailsLink="https://help.aliyun.com/document_detail/98194.html"
+                  onChange={handleRegionIdChange}
+                />
+              </GridItem>
+              <GridItem col={12} s={12}>
+                <FieldComp
+                  name="Endpoint"
+                  label="Endpoint"
+                  value={settings.endpoint}
+                  placeholder="输入你的接入地址（访问域名）"
+                  detailsLink="https://help.aliyun.com/document_detail/98194.html"
+                  onChange={handleEndpointChange}
+                />
+              </GridItem>
+              <GridItem col={12} s={12}>
+                <FieldComp
+                  name="Storage Region"
+                  label="Storage Region"
+                  value={settings.storageRegion}
+                  placeholder="输入你的存储地域标识"
+                  detailsLink="https://help.aliyun.com/document_detail/98194.html"
+                  onChange={handleEndpointChange}
+                />
+              </GridItem>
+              <GridItem col={12} s={12}>
+                <FieldComp
+                  name="Cate Id"
+                  label="Cate Id"
+                  value={settings.cateId}
+                  placeholder="输入你的分类ID"
+                  onChange={handleEndpointChange}
+                />
+              </GridItem>
+              <GridItem col={12} s={12}>
+                <FieldComp
+                  name="Signing Key"
+                  label="Signing Key"
+                  value={settings.signingKey}
+                  placeholder="输入你的签名key"
+                  onChange={handleEndpointChange}
+                />
+              </GridItem>
+              <GridItem col={12} s={12}>
+                <FieldComp
+                  name="Calback Url"
+                  label="Calback Url"
+                  value={settings.callbackUrl}
+                  placeholder="输入你的回调地址"
+                  onChange={handleEndpointChange}
+                />
+              </GridItem>
             </Grid>
           </Stack>
         </Box>

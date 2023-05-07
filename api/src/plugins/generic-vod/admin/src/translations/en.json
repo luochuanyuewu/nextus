@@ -1,3 +1,4 @@
 {
-    "plugin.name": "Generic VOD"
+  "plugin.name": "Generic VOD",
+  "plugin.settings": "Settings"
 }
