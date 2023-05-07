@@ -1,4 +1,4 @@
-import Trash from '@strapi/icons/Trash'
+import { Trash } from '@strapi/icons'
 import React, { FC, useEffect, useRef, useState } from 'react'
 import assetsRequests from '../../api/assets'
 import { VideoCover } from '../../assets/VideoCover'

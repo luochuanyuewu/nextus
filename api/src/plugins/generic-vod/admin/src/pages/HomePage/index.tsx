@@ -4,13 +4,12 @@
  *
  */
 
-import {BaseHeaderLayout, ContentLayout, Layout} from '@strapi/design-system/Layout'
-import {LoadingIndicatorPage} from '@strapi/helper-plugin'
-import React, {useEffect, useMemo, useState} from 'react'
+import { BaseHeaderLayout, ContentLayout, Layout } from '@strapi/design-system'
+import { LoadingIndicatorPage } from '@strapi/helper-plugin'
+import React, { useEffect, useMemo, useState } from 'react'
 
-import {PrivateVideoSession} from '@api.video/private-video-session'
-import {CheckPagePermissions, useRBAC} from '@strapi/helper-plugin'
-import {CustomVideo} from '@/types'
+import { PrivateVideoSession } from '@api.video/private-video-session'
+import { CheckPagePermissions, useRBAC } from '@strapi/helper-plugin'
 import assetsRequests from '../../api/assets'
 import settingsRequests from '../../api/settings'
 import AddButton from '../../components/Button/AddButton'
@@ -18,8 +17,9 @@ import EmptyState from '../../components/EmptyState'
 import SearchBar from '../../components/SearchBar'
 import SetupNeeded from '../../components/SetupNeeded'
 import VideoView from '../../components/Videos'
-import {GridBroadcast} from '../../components/Videos/styles'
+import { GridBroadcast } from '../../components/Videos/styles'
 import pluginPermissions from '../../permissions'
+import { CustomVideo } from '../../../../types'
 
 export type EnhancedCustomVideo = CustomVideo & {
   token?: string;
@@ -45,7 +45,7 @@ const HomePage = () => {
 
   const {
     isLoading: isLoadingPermissions,
-    allowedActions: {canRead, canCreate, canDelete, canUpdate, canUpdateSettings},
+    allowedActions: { canRead, canCreate, canDelete, canUpdate, canUpdateSettings },
   } = useRBAC(permissions)
 
   const fetchData = async () => {
@@ -90,7 +90,7 @@ const HomePage = () => {
   const handleSearch = (value: string) => {
     setSearch(value)
   }
-  if (isLoadingConfiguration || isLoadingPermissions) return <LoadingIndicatorPage/>
+  if (isLoadingConfiguration || isLoadingPermissions) return <LoadingIndicatorPage />
 
   return (
     <Layout>
@@ -98,7 +98,7 @@ const HomePage = () => {
         title="api.video uploader"
         subtitle="Upload to and manage your api.video library directly within Strapi"
         as="h2"
-        primaryAction={isConfigurated && canCreate && <AddButton update={fetchData}/>}
+        primaryAction={isConfigurated && canCreate && <AddButton update={fetchData} />}
       />
       <ContentLayout>
         {isConfigurated ? (
@@ -113,7 +113,7 @@ const HomePage = () => {
                 {assets
                   .filter((item) => item.title.includes(search))
                   .map((video) => {
-                    const {videoId} = video
+                    const { videoId } = video
                     return (
                       <VideoView
                         video={video}
@@ -127,10 +127,10 @@ const HomePage = () => {
               </GridBroadcast>
             </>
           ) : (
-            <EmptyState update={fetchData}/>
+            <EmptyState update={fetchData} />
           )
         ) : (
-          <SetupNeeded/>
+          <SetupNeeded />
         )}
       </ContentLayout>
     </Layout>
@@ -139,6 +139,6 @@ const HomePage = () => {
 
 export default () => (
   <CheckPagePermissions permissions={pluginPermissions.mainRead}>
-    <HomePage/>
+    <HomePage />
   </CheckPagePermissions>
 )

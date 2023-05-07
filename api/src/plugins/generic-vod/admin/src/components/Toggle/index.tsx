@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { ToggleInput } from '@strapi/design-system/ToggleInput'
-import { Flex } from '@strapi/design-system/Flex'
-import { FieldLabel } from '@strapi/design-system/Field'
+import { ToggleInput } from '@strapi/design-system'
+import { Flex } from '@strapi/design-system'
+import { FieldLabel } from '@strapi/design-system'
 
 interface IToggleProps {
     label?: string

@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
-import { Dialog, DialogBody, DialogFooter } from '@strapi/design-system/Dialog'
-import { Button } from '@strapi/design-system/Button'
-import { Stack } from '@strapi/design-system/Stack'
-import { Typography } from '@strapi/design-system/Typography'
-import { Flex } from '@strapi/design-system/Flex'
-import ExclamationMarkCircle from '@strapi/icons/ExclamationMarkCircle'
-import Trash from '@strapi/icons/Trash'
+import { Dialog, DialogBody, DialogFooter } from '@strapi/design-system'
+import { Button } from '@strapi/design-system'
+import { Stack } from '@strapi/design-system'
+import { Typography } from '@strapi/design-system'
+import { Flex } from '@strapi/design-system'
+import { ExclamationMarkCircle } from '@strapi/icons'
+import { Trash } from '@strapi/icons'
 import styled from 'styled-components'
 
 interface IDialogDelete {

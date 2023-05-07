@@ -7,6 +7,7 @@ export const replacePrivateVideoTokens = async (video: CustomVideo, token?: stri
         return video;
     }
 
+    // @ts-ignore
     token = token ?? (await strapi.plugin('generic-vod').service('vod-asset').token(video.videoId)).token;
 
     return {

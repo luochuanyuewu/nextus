@@ -1,14 +1,14 @@
-import React, {FC, useEffect, useState, useRef, ChangeEvent} from 'react'
-import {ModalLayout, ModalBody, ModalHeader, ModalFooter} from '@strapi/design-system/ModalLayout'
-import {Button} from '@strapi/design-system/Button'
-import {Typography} from '@strapi/design-system/Typography'
+import React, { FC, useEffect, useState, useRef, ChangeEvent } from 'react'
+import { ModalLayout, ModalBody, ModalHeader, ModalFooter } from '@strapi/design-system'
+import { Button } from '@strapi/design-system'
+import { Typography } from '@strapi/design-system'
 import FieldComp from '../../FieldComp/Fields'
 import UploadButton from '../../Button/UploadButton'
 import ImportZone from './importZone'
 import Tags from '../../Tags'
 
 import MetadataTable from '../../Metadata'
-import {InputData} from '../../../../../types'
+import { InputData } from '../../../../../types'
 import Toggle from "../../Toggle";
 
 
@@ -17,7 +17,7 @@ interface IAddVideoModalProps {
   update: () => void
 }
 
-const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element => {
+const AddVideoModal: FC<IAddVideoModalProps> = ({ update, close }): JSX.Element => {
   const [inputData, setInputData] = useState<InputData>({
     title: '',
     description: '',
@@ -37,7 +37,7 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
   // CONSTANTS
   const videoRef = useRef<HTMLVideoElement>(null)
   const sourceRef = useRef<HTMLSourceElement>(null)
-  const {title, description, _public, tags, metadata} = inputData
+  const { title, description, _public, tags, metadata } = inputData
 
   const displayVideoFrame = (video: HTMLVideoElement, source: HTMLSourceElement, file: File) => {
     // Object Url as the video source
@@ -52,23 +52,23 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
   // }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = event.target
-    setInputData((prevInputData) => ({...prevInputData, [name]: value}))
+    const { name, value } = event.target
+    setInputData((prevInputData) => ({ ...prevInputData, [name]: value }))
   }
 
   const handleSetPublic = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputData({...inputData, _public: event.target.checked})
+    setInputData({ ...inputData, _public: event.target.checked })
   }
 
   const handleSetTag = (tag: string) => {
     if (tag) {
-      setInputData({...inputData, tags: [...(inputData.tags || []), tag]})
+      setInputData({ ...inputData, tags: [...(inputData.tags || []), tag] })
     }
   }
 
   const handleRemoveTag = (tag: string) => {
     const newTags = inputData.tags && inputData.tags.filter((t) => t !== tag)
-    setInputData({...inputData, tags: newTags})
+    setInputData({ ...inputData, tags: newTags })
   }
 
   const handleSetMetadata = (metadata: any) => {
@@ -82,7 +82,7 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
 
   const handleRemoveMetadata = (metadata: Object) => {
     const newMetadata = inputData?.metadata && inputData?.metadata.filter((m) => m !== metadata)
-    setInputData({...inputData, metadata: newMetadata})
+    setInputData({ ...inputData, metadata: newMetadata })
   }
 
   const onFileSelected = (file: File) => {
@@ -124,7 +124,7 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
           onChange={handleChange}
           required
         />
-        <br/>
+        <br />
         <FieldComp
           name="description"
           label="Description"
@@ -132,7 +132,7 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
           placeholder="Enter a description"
           onChange={handleChange}
         />
-        <br/>
+        <br />
 
         <Toggle
           label="Public"
@@ -142,9 +142,9 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
           offLabel="False"
           onChange={handleSetPublic}
         />
-        <br/>
+        <br />
 
-        <Tags handleSetTag={handleSetTag} handleRemoveTag={handleRemoveTag} tags={tags || []} editable={true}/>
+        <Tags handleSetTag={handleSetTag} handleRemoveTag={handleRemoveTag} tags={tags || []} editable={true} />
 
         <MetadataTable
           metadata={metadata}

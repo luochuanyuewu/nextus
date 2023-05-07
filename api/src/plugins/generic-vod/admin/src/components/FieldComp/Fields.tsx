@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { Box } from '@strapi/design-system/Box'
-import { Field, FieldError, FieldHint, FieldInput, FieldLabel } from '@strapi/design-system/Field'
-import { Flex } from '@strapi/design-system/Flex'
-import { Link } from '@strapi/design-system/Link'
-import { Stack } from '@strapi/design-system/Stack'
+import { Box } from '@strapi/design-system'
+import { Field, FieldError, FieldHint, FieldInput, FieldLabel } from '@strapi/design-system'
+import { Flex } from '@strapi/design-system'
+import { Link } from '@strapi/design-system'
+import { Stack } from '@strapi/design-system'
 
 interface IFieldProps {
     name: string
@@ -44,7 +44,7 @@ const FieldComp: FC<IFieldProps> = ({
     detailsLink,
     error,
     required,
-    onChange = () => {},
+    onChange = () => { },
     editable,
 }): JSX.Element => {
     return (

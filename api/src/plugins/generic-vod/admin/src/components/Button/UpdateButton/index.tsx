@@ -1,5 +1,5 @@
 import React, { useState, FC } from 'react'
-import { Button } from '@strapi/design-system/Button'
+import { Button } from '@strapi/design-system'
 import { useNotification } from '@strapi/helper-plugin'
 import assetsRequests from '../../../api/assets'
 

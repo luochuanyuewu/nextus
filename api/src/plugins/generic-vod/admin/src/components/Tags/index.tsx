@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { Container } from './style'
-import { Tag } from '@strapi/design-system/Tag'
-import Cross from '@strapi/icons/Cross'
+import { Tag } from '@strapi/design-system'
+import { Cross } from '@strapi/icons'
 import { CustomBadge, FormInput, SubTitle, Title } from '../../styles/form'
 
 interface ITag {
