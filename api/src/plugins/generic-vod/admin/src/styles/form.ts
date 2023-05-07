@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Badge } from '@strapi/design-system/Badge'
+import { Badge } from '@strapi/design-system/dist/Badge'
 
 export const Title = styled.p`
     color: #32324d;
