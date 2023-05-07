@@ -1,8 +1,8 @@
 {
   "name": "strapi",
   "private": true,
-  "version": "0.1.0",
-  "description": "A Strapi application",
+  "version": "6.6.6",
+  "description": "月武的Strapi",
   "scripts": {
     "develop": "strapi develop",
     "develop-admin": "strapi develop --watch-admin",
@@ -18,16 +18,20 @@
     "@strapi/plugin-documentation": "^4.10.2",
     "@strapi/plugin-graphql": "^4.10.2",
     "@strapi/plugin-i18n": "^4.10.2",
+    "@strapi/plugin-seo": "^1.8.0",
     "@strapi/plugin-users-permissions": "^4.10.2",
     "@strapi/strapi": "^4.10.2",
     "better-sqlite3": "^8.3.0",
     "mysql": "^2.18.1",
+    "strapi-paypal": "^1.0.4",
     "strapi-plugin-comments": "^2.2.10",
+    "strapi-plugin-menus": "^1.4.1",
+    "strapi-plugin-transformer": "^3.1.0",
     "strapi-provider-upload-oss": "^0.1.7",
     "strapi-tiptap-editor": "^0.9.12"
   },
   "author": {
-    "name": "luochuanyuewu"
+    "name": "罗传月武"
   },
   "strapi": {
     "uuid": "05a8a998-ec5b-4476-8274-2d28527b21db"
