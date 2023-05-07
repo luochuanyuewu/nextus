@@ -6,6 +6,12 @@
     "resolveJsonModule": true,
     "target": "ESNext",
     "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
   },
   "include": [
     "admin",
