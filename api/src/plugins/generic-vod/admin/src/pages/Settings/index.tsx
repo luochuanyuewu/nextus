@@ -15,8 +15,8 @@ import Check from '@strapi/icons/Check'
 import settingsRequests from '../../api/settings'
 import FieldComp from '../../components/FieldComp/Fields'
 import pluginPermissions from '../../permissions'
-import {AliVodSettings} from '@/types'
 import getTrad from '../../utils/getTrad'
+import {AliVodSettings} from "../../../../types";
 
 const Settings = () => {
 
