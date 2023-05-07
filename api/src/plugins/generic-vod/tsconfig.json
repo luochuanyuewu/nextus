@@ -1,20 +1,20 @@
 {
   "extends": "@strapi/typescript-utils/tsconfigs/admin",
-
   "compilerOptions": {
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "target": "ESNext",
-    "strict": true
+    "strict": true,
   },
-
-  "include": ["admin", "custom.d.ts"],
-
+  "include": [
+    "admin",
+    "types/*",
+    "custom.d.ts"
+  ],
   "exclude": [
     "node_modules/",
     "dist/",
-
     // Do not include server files in the server compilation
     "server/",
     // Do not include test files

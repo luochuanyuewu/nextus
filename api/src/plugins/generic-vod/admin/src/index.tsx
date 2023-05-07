@@ -4,8 +4,10 @@ import pluginPkg from '../../package.json';
 import pluginId from './pluginId';
 import Initializer from './components/Initializer';
 import PluginIcon from './components/PluginIcon';
-
-const name = pluginPkg.strapi.name;
+import pluginPermissions from './permissions';
+import getTrad from "./utils/getTrad";
+const name = pluginPkg.strapi.displayName;
+const displayName = pluginPkg.strapi.displayName
 
 export default {
   register(app: any) {
@@ -13,22 +15,46 @@ export default {
       to: `/plugins/${pluginId}`,
       icon: PluginIcon,
       intlLabel: {
-        id: `${pluginId}.plugin.name`,
-        defaultMessage: name,
+        id: getTrad('plugin.name'),
+        defaultMessage: displayName,
       },
       Component: async () => {
         const component = await import(/* webpackChunkName: "[request]" */ './pages/App');
 
         return component;
       },
-      permissions: [
-        // Uncomment to set the permissions of the plugin here
-        // {
-        //   action: '', // the action name should be plugin::plugin-name.actionType
-        //   subject: null,
-        // },
-      ],
+      Permissions: pluginPermissions.mainRead
+      // permissions: [
+      //   // Uncomment to set the permissions of the plugin here
+      //   // {
+      //   //   action: '', // the action name should be plugin::plugin-name.actionType
+      //   //   subject: null,
+      //   // },
+      // ],
     });
+
+    app.createSettingSection(
+      {
+        id: pluginId,
+        intlLabel: {
+          id: getTrad('plugin.name'),
+          defaultMessage: displayName,
+        },
+      },
+      [
+        {
+          intlLabel: {
+            id: 'Settings Section api.video uploader',
+            defaultMessage: 'Settings',
+          },
+          id: 'api-video-uploader-settings',
+          to: `/settings/${pluginId}`,
+          permissions: pluginPermissions.settingsRoles,
+          Component: async () => await import('./pages/Settings'),
+        },
+      ]
+    )
+
     const plugin = {
       id: pluginId,
       initializer: Initializer,
@@ -39,7 +65,7 @@ export default {
     app.registerPlugin(plugin);
   },
 
-  bootstrap(app: any) {},
+  bootstrap(app: any) { },
 
   async registerTrads(app: any) {
     const { locales } = app;

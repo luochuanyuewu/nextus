@@ -856,7 +856,7 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@strapi/design-system@^1.6.3":
+"@strapi/design-system@^1.7.3":
   version "1.7.3"
   resolved "https://registry.npmmirror.com/@strapi/design-system/-/design-system-1.7.3.tgz#229bfce8cbab2bafc325b6741b662a9240abb092"
   integrity sha512-5H3fnnjVOfE7GS7J3usO9fe4OXyuIUmCZOLrrA/FrNF/S3OOuA9CXwbWYMjstJr2XaWpSYNjocJcvu70P/Hs3Q==

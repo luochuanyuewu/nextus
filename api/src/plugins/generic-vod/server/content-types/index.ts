@@ -2,7 +2,7 @@ export default {
   'vod-asset': {
     schema: {
       kind: 'collectionType',
-      collectionName: 'api_video_assets',
+      collectionName: 'vod-assets',
       info: {
         name: 'vod-asset',
         singularName: 'vod-asset',
@@ -30,7 +30,7 @@ export default {
           type: 'string',
           required: false,
         },
-        _public:{
+        _public: {
           type: 'boolean',
           default: true,
           required: true

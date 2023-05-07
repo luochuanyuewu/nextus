@@ -1,10 +1,13 @@
 /**
  * setting-service service
  */
-import {Strapi} from "@strapi/strapi";
+import { Strapi } from "@strapi/strapi";
 import * as $OpenApi from '@alicloud/openapi-client';
 
-export default ({strapi}: { strapi: Strapi }) => ({
+export default ({ strapi }: { strapi: Strapi }) => ({
+  getWelcomeMessage() {
+    return 'fuckyou.'
+  },
   async getSettings() {
     const pluginStore = strapi.store({
       environment: strapi.config.environment,

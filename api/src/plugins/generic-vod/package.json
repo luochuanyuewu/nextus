@@ -1,17 +1,18 @@
 {
   "name": "generic-vod",
-  "version": "0.0.0",
-  "description": "This is the description of the plugin.",
+  "version": "0.0.1",
+  "description": "阿里云视频点播集成",
   "strapi": {
     "name": "generic-vod",
-    "description": "Description of generic-vod plugin",
+    "displayName": "通用云点播",
+    "description": "阿里云视频点播集成",
     "kind": "plugin"
   },
   "dependencies": {
     "@alicloud/openapi-client": "^0.4.5",
-    "@alicloud/vod20170321": "^2.0.7",
     "@alicloud/pop-core": "^1.7.13",
-    "@strapi/design-system": "^1.6.3",
+    "@alicloud/vod20170321": "^2.0.7",
+    "@strapi/design-system": "^1.7.3",
     "@strapi/helper-plugin": "^4.6.0",
     "@strapi/icons": "^1.6.3",
     "prop-types": "^15.7.2"

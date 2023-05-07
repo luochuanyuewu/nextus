@@ -30,10 +30,10 @@ export interface CustomSettings {
 }
 
 export interface AliVodSettings {
-  accessKeyId: string
-  accessKeySecret: string
-  endpoint: boolean  // 'http://vod.' + regionId + '.aliyuncs.com',
-  apiVersion: '2017-03-21'
+    accessKeyId: string
+    accessKeySecret: string
+    endpoint: string  // 'http://vod.' + regionId + '.aliyuncs.com',
+    regionId: string
 }
 
 export interface InputData {
