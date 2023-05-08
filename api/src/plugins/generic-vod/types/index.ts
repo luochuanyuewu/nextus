@@ -1,7 +1,6 @@
 export interface CustomVideo {
   title: string
   description: string
-  _public: boolean
   videoId: string
   hls: string
   iframe: string

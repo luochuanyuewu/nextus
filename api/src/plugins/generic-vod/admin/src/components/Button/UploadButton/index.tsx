@@ -1,12 +1,10 @@
 import React, {FC, useState} from 'react'
 import {VideoUploader} from '@api.video/video-uploader'
 import assetsRequests from '../../../api/assets'
-// @ts-ignore
-import {Button} from '@strapi/design-system/Button'
+import {Button} from '@strapi/design-system'
 import {useNotification} from '@strapi/helper-plugin'
 
-// @ts-ignore
-import CloudUpload from '@strapi/icons/CloudUpload'
+import {CloudUpload} from '@strapi/icons'
 
 export interface IUploadButtonProps {
   currentFile: File | undefined

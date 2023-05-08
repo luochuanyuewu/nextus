@@ -27,6 +27,7 @@
     "@strapi/strapi": "^4.10.2",
     "better-sqlite3": "^8.3.0",
     "mysql": "^2.18.1",
+    "react-intl": "^6.4.2",
     "strapi-paypal": "^1.0.4",
     "strapi-plugin-comments": "^2.2.10",
     "strapi-plugin-menus": "^1.4.1",

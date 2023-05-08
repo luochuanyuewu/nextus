@@ -2,9 +2,9 @@ import {CustomVideo} from "../../types";
 
 
 export const replacePrivateVideoTokens = async (video: CustomVideo, token?: string) => {
-  if (video._public) {
-    return video;
-  }
+  // if (video._public) {
+  //   return video;
+  // }
 
   // @ts-ignore
   token = token ?? (await strapi.plugin('generic-vod').service('vod-asset').token(video.videoId)).token;

@@ -1,12 +1,12 @@
 import React, {ChangeEvent, FC, useRef, useState} from 'react'
 import {Button, ModalBody, ModalFooter, ModalHeader, ModalLayout, Typography} from '@strapi/design-system'
 import FieldComp from '../../FieldComp/Fields'
-import UploadButton from '../../Button/UploadButton'
 import ImportZone from './importZone'
 import Tags from '../../Tags'
 
 import MetadataTable from '../../Metadata'
 import {InputData} from '../../../../../types'
+import AliUploadButton from "../../Button/AliUploadButton";
 
 
 interface IAddVideoModalProps {
@@ -158,9 +158,11 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
         }
         endActions={
           <>
-            <UploadButton
+            <AliUploadButton
               currentFile={file}
               title={title}
+              region={"cn-shanghai"}
+              userId={"1597842716855716"}
               description={description || ''}
               tags={tags || []}
               metadata={metadata || []}

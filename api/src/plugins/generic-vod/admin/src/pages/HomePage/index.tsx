@@ -7,8 +7,8 @@
 import {BaseHeaderLayout, ContentLayout, Layout} from '@strapi/design-system'
 import {CheckPagePermissions, LoadingIndicatorPage, useRBAC} from '@strapi/helper-plugin'
 import React, {useEffect, useMemo, useState} from 'react'
+import {useIntl} from 'react-intl';
 
-import {PrivateVideoSession} from '@api.video/private-video-session'
 import assetsRequests from '../../api/assets'
 import settingsRequests from '../../api/settings'
 import AddButton from '../../components/Button/AddButton'
@@ -19,6 +19,7 @@ import VideoView from '../../components/Videos'
 import {GridBroadcast} from '../../components/Videos/styles'
 import pluginPermissions from '../../permissions'
 import {CustomVideo} from '../../../../types'
+import getTrad from "../../utils/getTrad";
 
 export type EnhancedCustomVideo = CustomVideo & {
   token?: string;
@@ -26,6 +27,9 @@ export type EnhancedCustomVideo = CustomVideo & {
 }
 
 const HomePage = () => {
+
+  const {formatMessage} = useIntl();
+
   const [isLoadingData, setIsLoadingData] = useState(true)
   const [isLoadingConfiguration, setIsLoadingConfiguration] = useState(false)
   const [isConfigurated, setIsConfigurated] = useState(false)
@@ -50,20 +54,12 @@ const HomePage = () => {
   const fetchData = async () => {
     if (!isLoadingData) setIsLoadingData(true)
     const data = await Promise.all((await assetsRequests.getAllvideos()).map(async (video: CustomVideo): Promise<EnhancedCustomVideo> => {
-      video._public = video._public ?? true;
-      if (video._public) {
-        return video;
-      }
-      const token = (await assetsRequests.getToken(video.videoId)).token;
-      const privateSession = new PrivateVideoSession({
-        token,
-        videoId: video.videoId,
-      });
+      const token = (await assetsRequests.getToken(video.videoId));
 
       return {
         ...video,
-        thumbnail: await privateSession.getThumbnailUrl(),
-        privateSession: await privateSession.getSessionToken(),
+        thumbnail: "缩略图",
+        privateSession: token,
         token
       }
     }));
@@ -94,8 +90,12 @@ const HomePage = () => {
   return (
     <Layout>
       <BaseHeaderLayout
-        title="api.video uploader"
-        subtitle="Upload to and manage your api.video library directly within Strapi"
+        title={formatMessage({
+          id: getTrad('homepage.title')
+        })}
+        subtitle={formatMessage({
+          id: getTrad('homepage.subTitle')
+        })}
         as="h2"
         primaryAction={isConfigurated && canCreate && <AddButton update={fetchData}/>}
       />

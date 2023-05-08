@@ -1,6 +1,6 @@
 import React, {FC} from 'react'
 // @ts-ignore
-import {Searchbar, SearchForm} from '@strapi/design-system/Searchbar'
+import {Searchbar, SearchForm} from '@strapi/design-system'
 
 interface SearchBarProps {
   clearSearch: () => void

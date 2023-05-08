@@ -93,9 +93,19 @@ export default ({strapi}: { strapi: Strapi }) => ({
           value: settings.storageRegion,
         })
         await pluginStore.set({
-          key: 'storageRegion',
-          value: settings.storageRegion,
+          key: 'signingKey',
+          value: settings.signingKey,
         })
+        await pluginStore.set({
+          key: 'cateId',
+          value: settings.cateId,
+        })
+
+        await pluginStore.set({
+          key: 'callbackUrl',
+          value: settings.callbackUrl,
+        })
+
         return true
       }
     } catch {

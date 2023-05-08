@@ -91,6 +91,7 @@ const Settings = () => {
 
       <ContentLayout>
         <Box
+          background="neutral100"
           hasRadius
           shadow="filterShadow"
           paddingTop={6}

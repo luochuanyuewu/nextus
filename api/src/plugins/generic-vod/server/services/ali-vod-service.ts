@@ -23,7 +23,7 @@ export default ({strapi}: { strapi: Strapi }) => ({
 
     let createUploadVideoRequest = new CreateUploadVideoRequest({
       title,
-      fileName
+      fileName,
     });
     let runtime = new $Util.RuntimeOptions({});
     try {
@@ -96,6 +96,9 @@ export default ({strapi}: { strapi: Strapi }) => ({
     request.title = data.title
     request.fileName = data.fileName
     request.description = data.description
+    request.userData = '{"Vod":{}}'
+    request.templateGroupId = ''
+    // request.cateId
 
     const res = await client.createUploadVideo(request)
 

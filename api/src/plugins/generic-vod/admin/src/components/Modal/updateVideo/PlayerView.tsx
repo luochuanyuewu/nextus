@@ -8,12 +8,11 @@ interface IPlayerViewProps {
 }
 
 const PlayerView: FC<IPlayerViewProps> = ({video}) => {
-  const {videoId, token, privateSession} = video
 
   return (
     <Wrapper>
       <ApiVideoReactPlayer
-        video={video._public ? {id: videoId} : {id: videoId, token, privateSession}}
+        video={{id: video.videoId}}
         videoStyleObjectFit={'cover'}
 
         style={{
@@ -30,6 +29,6 @@ const PlayerView: FC<IPlayerViewProps> = ({video}) => {
 export default PlayerView
 
 const Wrapper = styled.div`
-    border-radius: 4px;
-    padding-bottom: 10px;
+  border-radius: 4px;
+  padding-bottom: 10px;
 `
