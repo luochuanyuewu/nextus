@@ -99,7 +99,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
 
   },
 
-  async refershUploadVideo(videoId: string) {
+  async refreshUploadVideo(videoId: string) {
     const client = await configClient(strapi)
 
     const request = new RefreshUploadVideoRequest()

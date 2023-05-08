@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 
 import OSS from '../../../assets/AliVod/lib/aliyun-oss-sdk-6.17.1.min'
 
@@ -48,7 +48,7 @@ export interface IAliUploadButtonProps {
   userId?: string
 }
 
-const UploadButton: FC<IAliUploadButtonProps> = ({
+const UploadButton = function ({
   currentFile,
   title,
   description,
@@ -57,8 +57,7 @@ const UploadButton: FC<IAliUploadButtonProps> = ({
   update,
   close,
   region, timeout, userId
-
-}): JSX.Element => {
+}: IAliUploadButtonProps) {
   const [progress, setProgress] = useState(0)
   const [isUploading, setIsUploading] = useState(false)
 
@@ -107,6 +106,9 @@ const UploadButton: FC<IAliUploadButtonProps> = ({
               videoId
             )
           }
+
+          setIsUploading(true)
+
         } catch (e: any) {
           console.log("onUploadstarted Error:" + e)
           notification({
@@ -140,12 +142,11 @@ const UploadButton: FC<IAliUploadButtonProps> = ({
             type: 'success',
             message: '文件上传成功',
           })
+          close()
 
         } catch (error) {
           console.log(error)
         }
-
-
       },
       onUploadFailed: function (uploadInfo: any, code: any, message: string) {
         console.log("onUploadFailed: file:" + uploadInfo.file.name + ",code:" + code + ", message:" + message)
@@ -214,33 +215,38 @@ const UploadButton: FC<IAliUploadButtonProps> = ({
       metadata: metadata,
     }
     if (currentFile) {
-      setIsUploading(true)
-
-      var userData = '{"Vod":{}}'
-      uploader = createUploader()
-      console.log(userData)
-
-      uploader.addFile(currentFile, null, null, null, userData)
-
       try {
+        var userData = '{"Vod":{}}'
+        uploader = createUploader()
+        console.log(userData)
+
+        uploader.addFile(currentFile, null, null, null, userData)
 
         const res: any = await uploader.startUpload()
       } catch (e) {
         console.error(e)
       }
-      close()
     }
   }
 
   return (
-    <Button
-      endIcon={<CloudUpload />}
-      loading={isUploading}
-      onClick={fileInputChange}
-      disabled={currentFile === undefined}
-    >
-      {isUploading ? `Uploading ${progress}%` : `Upload`}
-    </Button>
+    <div>
+      <Button
+        endIcon={<CloudUpload />}
+        loading={isUploading}
+        onClick={fileInputChange}
+        disabled={currentFile === undefined}
+      >
+        {isUploading ? `Uploading ${progress}%` : `Upload`}
+      </Button>
+      <Button
+        endIcon={<CloudUpload />}
+        disabled={!isUploading}
+      >
+        {`Cancel`}
+      </Button>
+    </div>
+
   )
 }
 
