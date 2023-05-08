@@ -47,4 +47,12 @@ export default [
             policies: [],
         },
     },
+    {
+        method: 'POST',
+        path: '/vod-asset/refresh',
+        handler: 'admin.refreshVideoId',
+        config: {
+            policies: [],
+        },
+    },
 ]

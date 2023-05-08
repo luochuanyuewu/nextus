@@ -1,7 +1,7 @@
-import {request} from '@strapi/helper-plugin'
+import { request } from '@strapi/helper-plugin'
 
 import pluginId from '../pluginId'
-import {InputData} from '../../../types'
+import { InputData } from '../../../types'
 
 const assetsRequests = {
   getAllvideos: async () => {
@@ -16,6 +16,12 @@ const assetsRequests = {
   },
   createVideoId: async (body: Object) => {
     return await request(`/${pluginId}/vod-asset/create`, {
+      method: 'POST',
+      body,
+    })
+  },
+  refreshVideoId: async (body: Object) => {
+    return await request(`/${pluginId}/vod-asset/refresh`, {
       method: 'POST',
       body,
     })

@@ -1,16 +1,27 @@
-import {Strapi} from '@strapi/strapi';
-import {isAllowedTo} from '.';
-import {mainCreateAction, mainDeleteAction, mainReadAction, mainUpdateAction} from "../../admin/src/actions";
+import { Strapi } from '@strapi/strapi';
+import { isAllowedTo } from '.';
+import { mainCreateAction, mainDeleteAction, mainReadAction, mainUpdateAction } from "../../admin/src/actions";
 
 
-export default ({strapi}: { strapi: Strapi }) => ({
+export default ({ strapi }: { strapi: Strapi }) => ({
   async createVideoId(ctx: any) {
     try {
       if (!isAllowedTo(strapi, ctx, mainCreateAction)) {
         return ctx.forbidden();
       }
 
-      return await strapi.plugin('generic-vod').service('ali-vod-service').createVideoId(ctx.request.body)
+      return await strapi.plugin('generic-vod').service('ali-vod-service').createUploadVideo(ctx.request.body)
+    } catch (err) {
+      ctx.throw(500, err)
+    }
+  },
+  async refreshVideoId(ctx: any) {
+    try {
+      if (!isAllowedTo(strapi, ctx, mainCreateAction)) {
+        return ctx.forbidden();
+      }
+
+      return await strapi.plugin('generic-vod').service('ali-vod-service').refreshUploadVideo(ctx.request.body.videoId)
     } catch (err) {
       ctx.throw(500, err)
     }
