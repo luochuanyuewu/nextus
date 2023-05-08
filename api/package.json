@@ -16,9 +16,6 @@
   },
   "dependencies": {
     "@api.video/strapi-uploader-plugin": "^1.0.4",
-    "@strapi/design-system": "^1.7.3",
-    "@strapi/helper-plugin": "^4.10.2",
-    "@strapi/icons": "^1.7.3",
     "@strapi/plugin-documentation": "^4.10.2",
     "@strapi/plugin-graphql": "^4.10.2",
     "@strapi/plugin-i18n": "^4.10.2",
