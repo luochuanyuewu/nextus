@@ -1,6 +1,22 @@
 export default [
   'strapi::errors',
-  'strapi::security',
+  {
+    name: 'strapi::security',
+    config: {
+      contentSecurityPolicy: {
+        directives: {
+          'script-src': ["'self'", "'unsafe-inline'", 'cdn.jsdelivr.net'],
+          'img-src': ["'self'", 'data:', 'cdn.jsdelivr.net', 'strapi.io', `https://market-assets.strapi.io`],
+          'media-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            'https://market-assets.strapi.io'
+          ],
+        },
+      }
+    },
+  },
   'strapi::cors',
   'strapi::poweredBy',
   'strapi::logger',

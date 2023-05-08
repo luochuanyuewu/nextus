@@ -25,15 +25,11 @@ export default {
         title: {
           type: 'string',
           required: true,
+
         },
         description: {
           type: 'string',
           required: false,
-        },
-        _public: {
-          type: 'boolean',
-          default: true,
-          required: true
         },
         videoId: {
           type: 'string',
@@ -43,23 +39,23 @@ export default {
         },
         hls: {
           type: 'string',
-          required: true,
+          required: false,
         },
         iframe: {
           type: 'string',
-          required: true,
+          required: false,
         },
         mp4: {
           type: 'string',
-          required: true,
+          required: false,
         },
         player: {
           type: 'string',
-          required: true,
+          required: false,
         },
         thumbnail: {
           type: 'string',
-          required: true,
+          required: false,
         },
         tags: {
           type: 'json',

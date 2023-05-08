@@ -20,10 +20,13 @@ import {GridBroadcast} from '../../components/Videos/styles'
 import pluginPermissions from '../../permissions'
 import {CustomVideo} from '../../../../types'
 import getTrad from "../../utils/getTrad";
+import {GetVideoPlayAuthResponseBodyVideoMeta} from "@alicloud/vod20170321/src/client";
 
 export type EnhancedCustomVideo = CustomVideo & {
   token?: string;
   privateSession?: string;
+  playAuth: string,
+  videoMeta: GetVideoPlayAuthResponseBodyVideoMeta
 }
 
 const HomePage = () => {
@@ -54,13 +57,13 @@ const HomePage = () => {
   const fetchData = async () => {
     if (!isLoadingData) setIsLoadingData(true)
     const data = await Promise.all((await assetsRequests.getAllvideos()).map(async (video: CustomVideo): Promise<EnhancedCustomVideo> => {
-      const token = (await assetsRequests.getToken(video.videoId));
+      const {playAuth, videoMeta} = (await assetsRequests.getToken(video.videoId));
 
       return {
         ...video,
         thumbnail: "缩略图",
-        privateSession: token,
-        token
+        playAuth,
+        videoMeta
       }
     }));
 
@@ -115,7 +118,7 @@ const HomePage = () => {
                     const {videoId} = video
                     return (
                       <VideoView
-                        video={video}
+                        video={video as any}
                         key={videoId}
                         updateData={fetchData}
                         editable={canUpdate}

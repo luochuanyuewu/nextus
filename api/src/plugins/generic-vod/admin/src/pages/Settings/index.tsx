@@ -54,6 +54,14 @@ const Settings = () => {
     setSettings({...settings, storageRegion: event.target.value})
   }
 
+  const handleSigningKeyChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSettings({...settings, signingKey: event.target.value})
+  }
+
+  const handleCallbackUrlChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSettings({...settings, callbackUrl: event.target.value})
+  }
+
 
   const handleOnSubmit = async () => {
     lockApp()
@@ -170,6 +178,7 @@ const Settings = () => {
                   label="Signing Key"
                   value={settings.signingKey}
                   placeholder="输入你的签名key"
+                  onChange={handleSigningKeyChange}
                 />
               </GridItem>
               <GridItem col={12} s={12}>
@@ -177,6 +186,7 @@ const Settings = () => {
                   name="Calback Url"
                   label="Calback Url"
                   value={settings.callbackUrl}
+                  onChange={handleCallbackUrlChange}
                   placeholder="输入你的回调地址"
                 />
               </GridItem>

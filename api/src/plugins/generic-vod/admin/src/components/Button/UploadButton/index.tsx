@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react'
+import React, {useState} from 'react'
 import {VideoUploader} from '@api.video/video-uploader'
 import assetsRequests from '../../../api/assets'
 import {Button} from '@strapi/design-system'
@@ -16,15 +16,15 @@ export interface IUploadButtonProps {
   close: () => void
 }
 
-const UploadButton: FC<IUploadButtonProps> = ({
-                                                currentFile,
-                                                title,
-                                                description,
-                                                tags,
-                                                metadata,
-                                                update,
-                                                close,
-                                              }): JSX.Element => {
+const UploadButton = function ({
+                                 currentFile,
+                                 title,
+                                 description,
+                                 tags,
+                                 metadata,
+                                 update,
+                                 close,
+                               }: IUploadButtonProps) {
   const [progress, setProgress] = useState(0)
   const [isUploading, setIsUploading] = useState(false)
 

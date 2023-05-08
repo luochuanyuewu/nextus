@@ -18,15 +18,15 @@ interface IFieldProps {
 }
 
 const FieldLabelStyled = styled(FieldLabel)`
-    & > div {
-        width: max-content;
-    }
+  & > div {
+    width: max-content;
+  }
 `
 
 const TooltipButtonStyled = styled.button`
-    border: none;
-    padding: 0;
-    background: transparent;
+  border: none;
+  padding: 0;
+  background: transparent;
 `
 
 const FieldComp: FC<IFieldProps> = ({
@@ -45,10 +45,10 @@ const FieldComp: FC<IFieldProps> = ({
                                       editable,
                                     }): JSX.Element => {
   return (
-    <Field name={name} hint={description} error={error}>
+    <Field name={name} required={required} hint={description} error={error}>
       <Stack spacing={1}>
         <Flex>
-          <FieldLabelStyled required={required}>{label}</FieldLabelStyled>
+          <FieldLabelStyled>{label}</FieldLabelStyled>
           <Box paddingLeft={2}></Box>
           {detailsLink && (
             <Flex width="100%" justifyContent="flex-end">
