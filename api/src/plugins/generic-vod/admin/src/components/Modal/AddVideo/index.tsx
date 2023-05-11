@@ -1,5 +1,14 @@
 import React, {ChangeEvent, FC, useRef, useState} from 'react'
-import {Button, ModalBody, ModalFooter, ModalHeader, ModalLayout, Typography} from '@strapi/design-system'
+import {
+  Button,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  ModalLayout,
+  Typography,
+  ActionLayout,
+  Card, CardBody, CardContent, CardTitle, CardSubtitle, CardFooter,
+} from '@strapi/design-system'
 import FieldComp from '../../FieldComp/Fields'
 import ImportZone from './importZone'
 import Tags from '../../Tags'
@@ -7,6 +16,7 @@ import Tags from '../../Tags'
 import MetadataTable from '../../Metadata'
 import {InputData} from '../../../../../types'
 import AliUploadButton from "../../Button/AliUploadButton";
+import {CloudUpload} from "@strapi/icons";
 
 
 interface IAddVideoModalProps {
@@ -131,15 +141,6 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
         />
         <br/>
 
-        {/*<Toggle*/}
-        {/*  label="Public"*/}
-        {/*  required={true}*/}
-        {/*  checked={_public}*/}
-        {/*  onLabel="True"*/}
-        {/*  offLabel="False"*/}
-        {/*  onChange={handleSetPublic}*/}
-        {/*/>*/}
-        {/*<br/>*/}
 
         <Tags handleSetTag={handleSetTag} handleRemoveTag={handleRemoveTag} tags={tags || []} editable={true}/>
 
@@ -149,7 +150,27 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
           handleRemoveMetadata={handleRemoveMetadata}
           editable={true}
         />
+
+        <Card>
+          <CardBody>
+            <CardContent paddingLeft={2}>
+              <CardTitle>File name</CardTitle>
+              <CardSubtitle>PNG - 400✕400</CardSubtitle>
+            </CardContent>
+            <ActionLayout endActions={<>
+              <Button>
+                Cancel
+              </Button>
+              <Button>
+                Upload
+              </Button>
+            </>}/>
+          </CardBody>
+        </Card>
+
+
       </ModalBody>
+      <ActionLayout/>
       <ModalFooter
         startActions={
           <Button onClick={close} variant="tertiary">
@@ -158,14 +179,19 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
         }
         endActions={
           <>
+            <Button
+              endIcon={<CloudUpload/>}
+            >
+              {`Cancel`}
+            </Button>
             <AliUploadButton
               currentFile={file}
               title={title}
               description={description || ''}
               tags={tags || []}
               metadata={metadata || []}
-              update={update}
-              close={close}
+              onUploadSucceed={update}
+              onUploadEnd={close}
             />
           </>
         }

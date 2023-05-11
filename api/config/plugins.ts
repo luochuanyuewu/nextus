@@ -1,7 +1,16 @@
-module.exports = ({ env }) => ({
+module.exports = ({env}) => ({
   'generic-vod': {
     enabled: true,
     resolve: './src/plugins/generic-vod'
+  },
+  email: {
+    config: {
+      settings: {
+        defaultFrom: 'luochuanyuewu@qq.com',
+        defaultReplyTo: 'luochuanyuewu@qq.com',
+        testAddress: 'luochuanyuewu@qq.com',
+      },
+    },
   },
   // upload: {
   //   config: {

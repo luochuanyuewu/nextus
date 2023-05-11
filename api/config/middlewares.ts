@@ -6,11 +6,12 @@ export default [
       contentSecurityPolicy: {
         directives: {
           'script-src': ["'self'", "'unsafe-inline'", 'cdn.jsdelivr.net'],
-          'img-src': ["'self'", 'data:', 'cdn.jsdelivr.net', 'strapi.io', `https://market-assets.strapi.io`],
+          'img-src': ["'self'", 'data:', 'blob:', 'cdn.jsdelivr.net', 'strapi.io', 'gumola.com'],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
+            'gumola.com',
             'https://market-assets.strapi.io'
           ],
         },

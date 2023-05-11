@@ -19,8 +19,11 @@ export interface IAliUploadButtonProps {
   description: string
   tags: string[]
   metadata: { key: string; value: string }[]
-  update: () => void
-  close: () => void
+  onUploadStarted?: (uploadInfo: any) => void
+  onUploadSucceed?: (uploadInfo: any) => void
+  onUploadEnd?: (uploadInfo: any) => void
+  // 播放器回调事件
+
 
 }
 
@@ -30,8 +33,10 @@ const UploadButton = function ({
                                  description,
                                  tags,
                                  metadata,
-                                 update,
-                                 close
+                                 onUploadStarted,
+                                 onUploadSucceed,
+                                 onUploadEnd
+
                                }: IAliUploadButtonProps) {
 
   const [progress, setProgress] = useState(0)
@@ -97,6 +102,10 @@ const UploadButton = function ({
 
             setIsUploading(true)
 
+            if (onUploadStarted) {
+              onUploadStarted(uploadInfo)
+            }
+
           } catch (e: any) {
             console.log("onUploadstarted Error:" + e)
             notification({
@@ -120,7 +129,9 @@ const UploadButton = function ({
             const data = await assetsRequests.create(body)
             if (data) {
               setIsUploading(false)
-              update()
+              if (onUploadSucceed) {
+                onUploadSucceed(uploadInfo)
+              }
             } else {
               console.log("视频成功上传到阿里云，但在strapi中创建失败。")
               notification({
@@ -132,11 +143,10 @@ const UploadButton = function ({
               type: 'success',
               message: 'upload.uploadSucceed',
             })
-            // close()
-
           } catch (error) {
             console.log(error)
           }
+
         },
         onUploadFailed: function (uploadInfo: any, code: any, message: string) {
           console.log("onUploadFailed: file:" + uploadInfo.file.name + ",code:" + code + ", message:" + message)
@@ -178,6 +188,9 @@ const UploadButton = function ({
         },
         onUploadEnd: function (uploadInfo: any) {
           console.log("onUploadEnd: uploaded all the files")
+          if (onUploadEnd) {
+            onUploadEnd(uploadInfo)
+          }
         }
       }
     )
@@ -222,12 +235,6 @@ const UploadButton = function ({
         disabled={currentFile === undefined}
       >
         {isUploading ? `Uploading ${progress}%` : `Upload`}
-      </Button>
-      <Button
-        endIcon={<CloudUpload/>}
-        disabled={!isUploading}
-      >
-        {`Cancel`}
       </Button>
     </div>
 
