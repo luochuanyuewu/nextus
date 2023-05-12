@@ -10,7 +10,6 @@
   "include": [
     // Include the root directory
     "server",
-    "types",
     // Force the JSON files in the src folder to be included
     "server/**/*.json"
   ],

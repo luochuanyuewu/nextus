@@ -13,6 +13,76 @@ import {AliVodSettings} from "../../../../../types";
 
 (window as any).OSS = OSS
 
+
+export interface VodUploadInfo {
+  file: File
+  _endpoint?: string | null
+  _bucket?: string | null
+  _object?: string | null,
+  state: string,
+  isImage: boolean,
+  videoInfo: Object,
+  userData: any,
+  ri: string
+  retry: boolean,
+  fileHash: string,
+  fileMD5: string,
+  region: string,
+  videoId: string
+  endpoint: string,
+  bucket: string,
+  object: string,
+  loaded: number,
+  checkpoint: any
+}
+
+export interface VodFileListItem {
+  file: File
+}
+
+
+export interface VodUploader {
+  startUpload(): void
+
+  stopUpload(): void
+
+  getCheckpoint(file: File): any;
+
+  /***
+   * 设置上传地址和上传凭证
+   * @param uploadInfo 将onUploadstarted回调中的第一个参数进行透传
+   * @param uploadAuth CreateUploadVideo接口返回
+   * @param uploadAddress CreateUploadVideo接口返回
+   * @param videoId CreateUploadVideo接口返回
+   */
+  setUploadAuthAndAddress(uploadInfo: VodUploadInfo, uploadAuth: string, uploadAddress: string, videoId: string): void
+
+  /**
+   * 上传凭证失效后恢复上传
+   * @param uploadAuth 为RefreshUploadVideo接口中返回的上传凭证。
+   */
+  resumeUploadWithAuth(uploadAuth: string): void
+
+  listFiles(): VodFileListItem
+
+  cancelFile(index: number): void
+
+  resumeFile(index: number): void
+
+  deleteFile(index: number): void
+
+  cleanList(): void
+
+  addFile(
+    file: File,
+    endPoint?: string | null,
+    bucket?: string | null,
+    object?: string | null,
+    paramData?: string, //{"vod":{}}   这个参数的意义查看：https://www.alibabacloud.com/help/zh/apsaravideo-for-vod/latest/api-doc-vod-2017-03-21-api-doc-createuploadvideo#api-detail-35
+  ): void
+}
+
+
 export interface IAliUploadButtonProps {
   currentFile: File | undefined
   title: string
@@ -23,8 +93,6 @@ export interface IAliUploadButtonProps {
   onUploadSucceed?: (uploadInfo: any) => void
   onUploadEnd?: (uploadInfo: any) => void
   // 播放器回调事件
-
-
 }
 
 const UploadButton = function ({
@@ -57,10 +125,9 @@ const UploadButton = function ({
 
   const notification = useNotification()
 
-  let uploader: any;
 
-  const createUploader = function () {
-    uploader = new (window as any).AliyunUpload.Vod({
+  const createUploader = function (): VodUploader {
+    return new (window as any).AliyunUpload.Vod({
         timeout: 60000,
         partSize: Math.round(1048576),
         parallel: 5,
@@ -69,10 +136,13 @@ const UploadButton = function ({
         region: settings?.regionId,
         userId: "1597842716855716",
         localCheckpoint: true,
-        addFileSuccess: function (uploadInfo: any) {
-          console.log("addFileSuccess: " + uploadInfo.file.name)
+        addFileSuccess: function (uploadInfo: VodUploadInfo) {
+          console.log("addFileSuccess:" + JSON.stringify(uploadInfo))
         },
-        onUploadstarted: async function (uploadInfo: any) {
+        onUploadstarted: async function (uploadInfo: VodUploadInfo) {
+          console.log("onUploadstarted:" + JSON.stringify(uploadInfo))
+          console.log("file:" + JSON.stringify(uploadInfo.file))
+          console.log("info:" + JSON.stringify(uploadInfo.videoInfo))
           try {
             if (!uploadInfo.videoId) {
               const {videoId, uploadAddress, uploadAuth} = await assetsRequests.createVideoId({
@@ -103,7 +173,7 @@ const UploadButton = function ({
             setIsUploading(true)
 
             if (onUploadStarted) {
-              onUploadStarted(uploadInfo)
+              //onUploadStarted(uploadInfo)
             }
 
           } catch (e: any) {
@@ -114,10 +184,9 @@ const UploadButton = function ({
             })
           }
         },
-        onUploadSucceed: async function (uploadInfo: any) {
-          //TODO 确保上传成功，才创建。
-          console.log("onUploadSucceed: " + uploadInfo.file.name + ", endpoint:" + uploadInfo.endpoint + ", bucket:" + uploadInfo.bucket + ", object:" + uploadInfo.object)
-          console.log("uploadInfo:" + JSON.stringify(uploadInfo))
+        onUploadSucceed: async function (uploadInfo: VodUploadInfo) {
+          console.log("onUploadSucceed:" + uploadInfo.file.name + ", endpoint:" + uploadInfo.endpoint + ", bucket:" + uploadInfo.bucket + ", object:" + uploadInfo.object)
+          console.log("onUploadSucceed:" + JSON.stringify(uploadInfo))
           try {
             const body = {
               title: title,
@@ -155,19 +224,19 @@ const UploadButton = function ({
             message: 'upload.uploadFailed',
           })
         },
-        onUploadCanceled: function (uploadInfo: any, code: any, message: string) {
+        onUploadCanceled: function (uploadInfo: VodUploadInfo, code: number, message: string) {
           console.log("Canceled file: " + uploadInfo.file.name + ", code: " + code + ", message:" + message)
           notification({
             type: 'info',
             message: 'upload.uploadCanceled',
           })
         },
-        onUploadProgress: function (uploadInfo: any, totalSize: any, progress: any) {
+        onUploadProgress: function (uploadInfo: VodUploadInfo, totalSize: number, progress: number) {
           console.log("onUploadProgress:file:" + uploadInfo.file.name + ", fileSize:" + totalSize + ", percent:" + Math.ceil(progress * 100) + "%")
           let progressPercent = Math.ceil(progress * 100)
           setProgress(Math.round(progressPercent))
         },
-        onUploadTokenExpired: async function (uploadInfo: any) {
+        onUploadTokenExpired: async function (uploadInfo: VodUploadInfo) {
           console.log('上传凭证过期')
           // 实现时，根据uploadInfo.videoId调用刷新视频上传凭证接口重新获取UploadAuth
           // https://help.aliyun.com/document_detail/55408.html
@@ -194,14 +263,12 @@ const UploadButton = function ({
         }
       }
     )
-
-    uploader.addFileSuccess = function (uploadInfo: any) {
-      console.log("addFileSuccess: " + uploadInfo.file.name)
-    }
-
-    return uploader
   }
 
+  const uploader = createUploader()
+
+
+  // const uploader: any = createUploader()
 
   const fileInputChange = async () => {
     const body = {
@@ -214,12 +281,11 @@ const UploadButton = function ({
     if (currentFile) {
       try {
         var userData = '{"Vod":{}}'
-        uploader = createUploader()
-        console.log(userData)
+        // uploader = createUploader()
 
-        uploader.addFile(currentFile, null, null, null, userData)
+        await uploader.addFile(currentFile, null, null, null, userData)
 
-        const res: any = await uploader.startUpload()
+        await uploader.startUpload()
       } catch (e) {
         console.error(e)
       }
