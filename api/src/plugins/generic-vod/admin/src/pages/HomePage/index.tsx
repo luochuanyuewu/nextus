@@ -118,7 +118,7 @@ const HomePage = () => {
                     const {videoId} = video
                     return (
                       <VideoView
-                        video={video as any}
+                        video={video as EnhancedCustomVideo}
                         key={videoId}
                         updateData={fetchData}
                         editable={canUpdate}

@@ -1,7 +1,6 @@
 import {Trash} from '@strapi/icons'
 import React, {FC, useEffect, useRef, useState} from 'react'
 import assetsRequests from '../../api/assets'
-import {VideoCover} from '../../assets/VideoCover'
 import {EnhancedCustomVideo} from '../../pages/HomePage'
 import {getDayMonthYearHourDate} from '../../utils/date'
 import DialogDelete from '../Dialog'
@@ -62,8 +61,8 @@ const VideoView: FC<IVideosProps> = ({video, updateData, deletable, editable}): 
     <Container>
       <WrapperVideo onClick={() => setIsModalOpen(true)}>
         {thumbnail ? (
-          <Thumbnail src={thumbnail} alt={'thumbnail'}/>
-        ) : (<VideoCover/>)}
+          <Thumbnail src='https://letsgit.com/avatars/613adb8d9e74e5aa2ba95d42f8f615e3?size=84' alt={'thumbnail'}/>
+        ) : (<Thumbnail src='https://letsgit.com/avatars/613adb8d9e74e5aa2ba95d42f8f615e3?size=84' alt={'thumbnail'}/>)}
         {deletable && <DeleteIcon onClick={openDeleteDialog} aria-label="Delete" icon={<Trash/>}/>}
       </WrapperVideo>
 
