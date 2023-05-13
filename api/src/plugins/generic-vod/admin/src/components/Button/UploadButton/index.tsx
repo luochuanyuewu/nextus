@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
-import {VideoUploader} from '@api.video/video-uploader'
+import { VideoUploader } from '@api.video/video-uploader'
+import { Button } from '@strapi/design-system'
+import { useNotification } from '@strapi/helper-plugin'
+import React, { useState } from 'react'
 import assetsRequests from '../../../api/assets'
-import {Button} from '@strapi/design-system'
-import {useNotification} from '@strapi/helper-plugin'
 
-import {CloudUpload} from '@strapi/icons'
+import { CloudUpload } from '@strapi/icons'
 
 export interface IUploadButtonProps {
   currentFile: File | undefined
@@ -17,14 +17,14 @@ export interface IUploadButtonProps {
 }
 
 const UploadButton = function ({
-                                 currentFile,
-                                 title,
-                                 description,
-                                 tags,
-                                 metadata,
-                                 update,
-                                 close,
-                               }: IUploadButtonProps) {
+  currentFile,
+  title,
+  description,
+  tags,
+  metadata,
+  update,
+  close,
+}: IUploadButtonProps) {
   const [progress, setProgress] = useState(0)
   const [isUploading, setIsUploading] = useState(false)
 
@@ -38,7 +38,7 @@ const UploadButton = function ({
       tags: tags,
       metadata: metadata,
     }
-    const {newVideo, token} = await assetsRequests.createVideoId(body)
+    const { newVideo, token } = await assetsRequests.createVideoId(body)
     if (currentFile) {
       setIsUploading(true)
       const uploader = new VideoUploader({
@@ -84,7 +84,7 @@ const UploadButton = function ({
 
   return (
     <Button
-      endIcon={<CloudUpload/>}
+      endIcon={<CloudUpload />}
       loading={isUploading}
       onClick={fileInputChange}
       disabled={currentFile === undefined}

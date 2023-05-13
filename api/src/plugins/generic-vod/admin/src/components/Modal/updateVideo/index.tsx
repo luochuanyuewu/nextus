@@ -1,13 +1,13 @@
-import {Button, ModalBody, ModalFooter, ModalHeader, ModalLayout, Typography} from '@strapi/design-system'
-import React, {ChangeEvent, FC, useState} from 'react'
-import {EnhancedCustomVideo} from '../../../pages/HomePage'
+import { Button, ModalBody, ModalFooter, ModalHeader, ModalLayout, Typography } from '@strapi/design-system'
+import React, { ChangeEvent, FC, useState } from 'react'
+import { EnhancedCustomVideo } from '../../../pages/HomePage'
 import UpdateButton from '../../Button/UpdateButton'
 import FieldComp from '../../FieldComp/Fields'
 import LinksTable from '../../LinksTable'
 import MetadataTable from '../../Metadata'
 import Tags from '../../Tags'
 import PlayerView from './PlayerView'
-import {InputData} from '../../../../../types'
+import { CustomVideo, InputData } from '../../../../../types'
 
 interface IUpdateVideoModalProps {
   video: EnhancedCustomVideo
@@ -16,7 +16,7 @@ interface IUpdateVideoModalProps {
   editable: boolean
 }
 
-const UpdateVideoModal: FC<IUpdateVideoModalProps> = ({video, update, close, editable}): JSX.Element => {
+const UpdateVideoModal = ({ video, update, close, editable }: IUpdateVideoModalProps) => {
   const [inputData, setInputData] = useState<InputData>({
     title: video.title,
     description: video.description,
@@ -25,11 +25,11 @@ const UpdateVideoModal: FC<IUpdateVideoModalProps> = ({video, update, close, edi
   })
 
   // CONSTANTS
-  const {title, description, tags, metadata} = inputData
+  const { title, description, tags, metadata } = inputData
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = event.target
-    setInputData((prevInputData) => ({...prevInputData, [name]: value}))
+    const { name, value } = event.target
+    setInputData((prevInputData) => ({ ...prevInputData, [name]: value }))
   }
 
   // const handleSetPublic = (event: ChangeEvent<HTMLInputElement>) => {
@@ -38,13 +38,13 @@ const UpdateVideoModal: FC<IUpdateVideoModalProps> = ({video, update, close, edi
 
   const handleSetTag = (tag: string) => {
     if (tag) {
-      setInputData({...inputData, tags: [...(inputData.tags || []), tag]})
+      setInputData({ ...inputData, tags: [...(inputData.tags || []), tag] })
     }
   }
 
   const handleRemoveTag = (tag: string) => {
     const newTags = inputData.tags && inputData.tags.filter((t) => t !== tag)
-    setInputData({...inputData, tags: newTags})
+    setInputData({ ...inputData, tags: newTags })
   }
 
   const handleSetMetadata = (metadata: any) => {
@@ -58,7 +58,7 @@ const UpdateVideoModal: FC<IUpdateVideoModalProps> = ({video, update, close, edi
 
   const handleRemoveMetadata = (metadata: Object) => {
     const newMetadata = inputData?.metadata && inputData?.metadata.filter((m) => m !== metadata)
-    setInputData({...inputData, metadata: newMetadata})
+    setInputData({ ...inputData, metadata: newMetadata })
   }
 
   return (
@@ -69,7 +69,7 @@ const UpdateVideoModal: FC<IUpdateVideoModalProps> = ({video, update, close, edi
         </Typography>
       </ModalHeader>
       <ModalBody>
-        <PlayerView video={video}/>
+        <PlayerView video={video} />
         <FieldComp
           name="title"
           label="Title"
@@ -79,7 +79,7 @@ const UpdateVideoModal: FC<IUpdateVideoModalProps> = ({video, update, close, edi
           editable={editable}
           required
         />
-        <br/>
+        <br />
         <FieldComp
           name="description"
           label="Description"
@@ -88,7 +88,7 @@ const UpdateVideoModal: FC<IUpdateVideoModalProps> = ({video, update, close, edi
           onChange={handleChange}
           editable={editable}
         />
-        <br/>
+        <br />
 
         {/*<Toggle*/}
         {/*  label="Public"*/}
@@ -98,7 +98,7 @@ const UpdateVideoModal: FC<IUpdateVideoModalProps> = ({video, update, close, edi
         {/*  offLabel="False"*/}
         {/*  onChange={handleSetPublic}*/}
         {/*/>*/}
-        <br/>
+        <br />
 
         <Tags
           handleSetTag={handleSetTag}
@@ -114,7 +114,7 @@ const UpdateVideoModal: FC<IUpdateVideoModalProps> = ({video, update, close, edi
           editable={editable}
         />
 
-        <LinksTable video={video}/>
+        <LinksTable video={video} />
       </ModalBody>
       <ModalFooter
         startActions={

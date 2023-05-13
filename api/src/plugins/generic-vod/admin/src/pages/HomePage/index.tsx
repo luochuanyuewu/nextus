@@ -1,13 +1,15 @@
+
+
 /*
  *
  * HomePage
  *
  */
 
-import {BaseHeaderLayout, ContentLayout, Layout} from '@strapi/design-system'
-import {CheckPagePermissions, LoadingIndicatorPage, useRBAC} from '@strapi/helper-plugin'
-import React, {useEffect, useMemo, useState} from 'react'
-import {useIntl} from 'react-intl';
+import { BaseHeaderLayout, ContentLayout, Layout } from '@strapi/design-system'
+import { CheckPagePermissions, LoadingIndicatorPage, useRBAC } from '@strapi/helper-plugin'
+import React, { useEffect, useMemo, useState } from 'react'
+import { useIntl } from 'react-intl';
 
 import assetsRequests from '../../api/assets'
 import settingsRequests from '../../api/settings'
@@ -16,11 +18,11 @@ import EmptyState from '../../components/EmptyState'
 import SearchBar from '../../components/SearchBar'
 import SetupNeeded from '../../components/SetupNeeded'
 import VideoView from '../../components/Videos'
-import {GridBroadcast} from '../../components/Videos/styles'
+import { GridBroadcast } from '../../components/Videos/styles'
 import pluginPermissions from '../../permissions'
-import {CustomVideo} from '../../../../types'
+import { CustomVideo } from '../../../../types'
 import getTrad from "../../utils/getTrad";
-import {GetVideoPlayAuthResponseBodyVideoMeta} from "@alicloud/vod20170321/src/client";
+import { GetVideoPlayAuthResponseBodyVideoMeta } from "@alicloud/vod20170321/src/client";
 
 export type EnhancedCustomVideo = CustomVideo & {
   token?: string;
@@ -31,7 +33,7 @@ export type EnhancedCustomVideo = CustomVideo & {
 
 const HomePage = () => {
 
-  const {formatMessage} = useIntl();
+  const { formatMessage } = useIntl();
 
   const [isLoadingData, setIsLoadingData] = useState(true)
   const [isLoadingConfiguration, setIsLoadingConfiguration] = useState(false)
@@ -51,21 +53,26 @@ const HomePage = () => {
 
   const {
     isLoading: isLoadingPermissions,
-    allowedActions: {canRead, canCreate, canDelete, canUpdate, canUpdateSettings},
+    allowedActions: { canRead, canCreate, canDelete, canUpdate, canUpdateSettings },
   } = useRBAC(permissions)
 
   const fetchData = async () => {
     if (!isLoadingData) setIsLoadingData(true)
+
+    // 针对每一个视频，把凭证和meta数据写进去
     const data = await Promise.all((await assetsRequests.getAllvideos()).map(async (video: CustomVideo): Promise<EnhancedCustomVideo> => {
-      const {playAuth, videoMeta} = (await assetsRequests.getToken(video.videoId));
+      const { playAuth, videoMeta } = (await assetsRequests.getToken(video.videoId));
 
       return {
         ...video,
-        thumbnail: "缩略图",
+        thumbnail: videoMeta.coverURL,
         playAuth,
         videoMeta
       }
     }));
+
+    // const data = await await assetsRequests.getAllvideos();
+
 
     setIsLoadingData(false)
     setAssets(data)
@@ -88,7 +95,7 @@ const HomePage = () => {
   const handleSearch = (value: string) => {
     setSearch(value)
   }
-  if (isLoadingConfiguration || isLoadingPermissions) return <LoadingIndicatorPage/>
+  if (isLoadingConfiguration || isLoadingPermissions) return <LoadingIndicatorPage />
 
   return (
     <Layout>
@@ -100,7 +107,7 @@ const HomePage = () => {
           id: getTrad('homepage.subTitle')
         })}
         as="h2"
-        primaryAction={isConfigurated && canCreate && <AddButton update={fetchData}/>}
+        primaryAction={isConfigurated && canCreate && <AddButton update={fetchData} />}
       />
       <ContentLayout>
         {isConfigurated ? (
@@ -115,10 +122,10 @@ const HomePage = () => {
                 {assets
                   .filter((item) => item.title.includes(search))
                   .map((video) => {
-                    const {videoId} = video
+                    const { videoId } = video
                     return (
                       <VideoView
-                        video={video as EnhancedCustomVideo}
+                        video={video}
                         key={videoId}
                         updateData={fetchData}
                         editable={canUpdate}
@@ -129,10 +136,10 @@ const HomePage = () => {
               </GridBroadcast>
             </>
           ) : (
-            <EmptyState update={fetchData}/>
+            <EmptyState update={fetchData} />
           )
         ) : (
-          <SetupNeeded/>
+          <SetupNeeded />
         )}
       </ContentLayout>
     </Layout>
@@ -141,6 +148,6 @@ const HomePage = () => {
 
 export default () => (
   <CheckPagePermissions permissions={pluginPermissions.mainRead}>
-    <HomePage/>
+    <HomePage />
   </CheckPagePermissions>
 )

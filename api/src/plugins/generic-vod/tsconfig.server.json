@@ -5,7 +5,8 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "outDir": "dist",
-    "rootDir": "."
+    "rootDir": ".",
+    "sourceMap": true
   },
   "include": [
     // Include the root directory

@@ -5,7 +5,8 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "target": "ESNext",
-    "strict": true
+    "strict": true,
+    "sourceMap": true
   },
   "include": [
     "admin",

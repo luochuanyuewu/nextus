@@ -1,5 +1,5 @@
-import {Strapi} from '@strapi/strapi';
-import {configClient} from "../utils/config";
+import { Strapi } from '@strapi/strapi';
+import { configClient } from "../utils/config";
 import {
   CreateUploadVideoRequest,
   DeleteVideoRequest,
@@ -12,13 +12,13 @@ import {
 } from "@alicloud/vod20170321";
 
 import Util, * as $Util from '@alicloud/tea-util';
-import {CustomVideo, InputData} from "../../types";
+import { CustomVideo, InputData } from "../../types";
 import pluginId from "../../admin/src/pluginId";
 
 
 const model = `plugin::${pluginId}.vod-asset`
 
-export default ({strapi}: { strapi: Strapi }) => ({
+export default ({ strapi }: { strapi: Strapi }) => ({
   async getPlayerInfo(VideoId: string) {
     try {
       const client = await configClient(strapi)
@@ -53,7 +53,7 @@ export default ({strapi}: { strapi: Strapi }) => ({
     try {
       const client = await configClient(strapi)
 
-      const response: GetVideoPlayAuthResponse = await client.getVideoPlayAuth(new GetVideoPlayAuthRequest({videoId: VideoId}));
+      const response: GetVideoPlayAuthResponse = await client.getVideoPlayAuth(new GetVideoPlayAuthRequest({ videoId: VideoId }));
 
       // Base metadata
       if (response.VideoMeta) {
@@ -135,16 +135,13 @@ export default ({strapi}: { strapi: Strapi }) => ({
 
       const response: GetVideoPlayAuthResponse = await client.getVideoPlayAuth(req);
 
-      // Play Auth
-      console.log('PlayAuth = ' + response.body.playAuth);
-
       // Base metadata
       if (response.VideoMeta) {
         console.log('VideoMeta.Title = ' + response.body.videoMeta?.Title);
       }
       console.log('RequestId = ' + response.body.requestId);
 
-      return {playAuth: response.body.playAuth, videoMeta: response.body.videoMeta}
+      return { playAuth: response.body.playAuth, videoMeta: response.body.videoMeta }
     } catch (error) {
       console.log('ErrorCode = ' + error.data.Code);
       console.log('ErrorMessage = ' + error.data.Message);
@@ -155,7 +152,7 @@ export default ({strapi}: { strapi: Strapi }) => ({
 
   async create(data: CustomVideo) {
     try {
-      await strapi.entityService.create(model, {data})
+      await strapi.entityService.create(model, { data })
       return true
     } catch (error) {
       return false
@@ -203,7 +200,7 @@ export default ({strapi}: { strapi: Strapi }) => ({
         metadata: data.metadata,
       } as CustomVideo;
 
-      return await strapi.entityService.update(model, id, {data: customVideo});
+      return await strapi.entityService.update(model, id, { data: customVideo });
 
     } catch (error) {
       // 如有需要，请打印 error

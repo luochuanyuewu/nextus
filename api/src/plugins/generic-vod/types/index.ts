@@ -2,10 +2,10 @@ export interface CustomVideo {
   title: string
   description: string
   videoId: string
-  hls: string
-  iframe: string
-  mp4: string
-  player: string
+  hls?: string
+  iframe?: string
+  mp4?: string
+  player?: string
   thumbnail: string
   tags: string[]
   metadata: {

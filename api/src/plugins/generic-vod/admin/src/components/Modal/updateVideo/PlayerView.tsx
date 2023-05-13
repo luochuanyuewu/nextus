@@ -1,13 +1,13 @@
-import React, {FC} from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
-import {EnhancedCustomVideo} from '../../../pages/HomePage'
+import { EnhancedCustomVideo } from '../../../pages/HomePage'
 import AliPlayer from "./AliPlayer";
 
 interface IPlayerViewProps {
   video: EnhancedCustomVideo
 }
 
-const PlayerView: FC<IPlayerViewProps> = ({video}) => {
+const PlayerView = ({ video }: IPlayerViewProps) => {
 
 
   return (

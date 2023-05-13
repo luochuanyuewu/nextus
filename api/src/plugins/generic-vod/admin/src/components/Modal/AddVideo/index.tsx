@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, useRef, useState} from 'react'
+import React, { ChangeEvent, FC, useRef, useState } from 'react'
 import {
   Button,
   ModalBody,
@@ -7,16 +7,14 @@ import {
   ModalLayout,
   Typography,
   ActionLayout,
-  Card, CardBody, CardContent, CardTitle, CardSubtitle, CardFooter,
 } from '@strapi/design-system'
 import FieldComp from '../../FieldComp/Fields'
 import ImportZone from './importZone'
 import Tags from '../../Tags'
 
 import MetadataTable from '../../Metadata'
-import {InputData} from '../../../../../types'
+import { InputData } from '../../../../../types'
 import AliUploadButton from "../../Button/AliUploadButton";
-import {CloudUpload} from "@strapi/icons";
 
 
 interface IAddVideoModalProps {
@@ -24,7 +22,7 @@ interface IAddVideoModalProps {
   update: () => void
 }
 
-const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element => {
+const AddVideoModal = ({ update, close }: IAddVideoModalProps) => {
   const [inputData, setInputData] = useState<InputData>({
     title: '',
     description: '',
@@ -38,13 +36,19 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
     ],
   })
 
+  const uploadButton = useRef()
+
+  const cancelUpload = () => {
+
+  }
+
   const [file, setFile] = useState<File | undefined>()
   const [initialState, setInitialState] = useState<number>(0)
 
   // CONSTANTS
   const videoRef = useRef<HTMLVideoElement>(null)
   const sourceRef = useRef<HTMLSourceElement>(null)
-  const {title, description, fileName, tags, metadata} = inputData
+  const { title, description, fileName, tags, metadata } = inputData
 
   const displayVideoFrame = (video: HTMLVideoElement, source: HTMLSourceElement, file: File) => {
     // Object Url as the video source
@@ -53,29 +57,20 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
     video.load()
   }
 
-  // const getSettings = async () => {
-  //     const settings = await settingsRequests.get()
-  //     setInputData({ ...inputData, _public: settings.defaultPublic })
-  // }
-
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = event.target
-    setInputData((prevInputData) => ({...prevInputData, [name]: value}))
+    const { name, value } = event.target
+    setInputData((prevInputData) => ({ ...prevInputData, [name]: value }))
   }
-
-  // const handleSetPublic = (event: ChangeEvent<HTMLInputElement>) => {
-  //   setInputData({...inputData, _public: event.target.checked})
-  // }
 
   const handleSetTag = (tag: string) => {
     if (tag) {
-      setInputData({...inputData, tags: [...(inputData.tags || []), tag]})
+      setInputData({ ...inputData, tags: [...(inputData.tags || []), tag] })
     }
   }
 
   const handleRemoveTag = (tag: string) => {
     const newTags = inputData.tags && inputData.tags.filter((t) => t !== tag)
-    setInputData({...inputData, tags: newTags})
+    setInputData({ ...inputData, tags: newTags })
   }
 
   const handleSetMetadata = (metadata: any) => {
@@ -89,7 +84,7 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
 
   const handleRemoveMetadata = (metadata: Object) => {
     const newMetadata = inputData?.metadata && inputData?.metadata.filter((m) => m !== metadata)
-    setInputData({...inputData, metadata: newMetadata})
+    setInputData({ ...inputData, metadata: newMetadata })
   }
 
   const onFileSelected = (file: File) => {
@@ -131,7 +126,7 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
           onChange={handleChange}
           required
         />
-        <br/>
+        <br />
         <FieldComp
           name="description"
           label="Description"
@@ -139,10 +134,10 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
           placeholder="Enter a description"
           onChange={handleChange}
         />
-        <br/>
+        <br />
 
 
-        <Tags handleSetTag={handleSetTag} handleRemoveTag={handleRemoveTag} tags={tags || []} editable={true}/>
+        <Tags handleSetTag={handleSetTag} handleRemoveTag={handleRemoveTag} tags={tags || []} editable={true} />
 
         <MetadataTable
           metadata={metadata}
@@ -151,26 +146,8 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
           editable={true}
         />
 
-        <Card>
-          <CardBody>
-            <CardContent paddingLeft={2}>
-              <CardTitle>File name</CardTitle>
-              <CardSubtitle>PNG - 400✕400</CardSubtitle>
-            </CardContent>
-            <ActionLayout endActions={<>
-              <Button>
-                Cancel
-              </Button>
-              <Button>
-                Upload
-              </Button>
-            </>}/>
-          </CardBody>
-        </Card>
-
-
       </ModalBody>
-      <ActionLayout/>
+      <ActionLayout />
       <ModalFooter
         startActions={
           <Button onClick={close} variant="tertiary">
@@ -179,11 +156,6 @@ const AddVideoModal: FC<IAddVideoModalProps> = ({update, close}): JSX.Element =>
         }
         endActions={
           <>
-            <Button
-              endIcon={<CloudUpload/>}
-            >
-              {`Cancel`}
-            </Button>
             <AliUploadButton
               currentFile={file}
               title={title}

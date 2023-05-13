@@ -1,22 +1,28 @@
-import React, {FC, useState} from 'react'
-import {Button} from '@strapi/design-system'
+import React, { FC, useState } from 'react'
+import { Button } from '@strapi/design-system'
 
-import {Plus} from '@strapi/icons'
+import { Plus } from '@strapi/icons'
 import AddVideoModal from '../../Modal/AddVideo'
+import getTrad from '../../../utils/getTrad'
+import { useIntl } from 'react-intl'
 
 interface IAddButtonProps {
   update: () => void
 }
 
-const AddButton: FC<IAddButtonProps> = ({update}) => {
+const AddButton = ({ update }: IAddButtonProps) => {
+  const { formatMessage } = useIntl()
+
   const [isVisible, setIsVisible] = useState(false)
 
   return (
     <>
-      <Button endIcon={<Plus/>} onClick={() => setIsVisible(true)}>
-        Add a video
+      <Button endIcon={<Plus />} onClick={() => setIsVisible(true)}>
+        {
+          formatMessage({ id: getTrad('addVideo') })
+        }
       </Button>
-      {isVisible && <AddVideoModal update={update} close={() => setIsVisible(false)}/>}
+      {isVisible && <AddVideoModal update={update} close={() => setIsVisible(false)} />}
     </>
   )
 }

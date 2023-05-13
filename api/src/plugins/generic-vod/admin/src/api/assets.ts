@@ -1,7 +1,8 @@
-import {request} from '@strapi/helper-plugin'
+import { request } from '@strapi/helper-plugin'
 
 import pluginId from '../pluginId'
-import {InputData} from '../../../types'
+import { InputData } from '../../../types'
+import { GetVideoPlayAuthResponse } from '@alicloud/vod20170321'
 
 const assetsRequests = {
   getAllvideos: async () => {

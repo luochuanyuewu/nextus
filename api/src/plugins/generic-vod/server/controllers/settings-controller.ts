@@ -1,5 +1,5 @@
-import {Strapi} from '@strapi/strapi'
-import {isAllowedTo} from '.';
+import { Strapi } from '@strapi/strapi'
+import { isAllowedTo } from '.';
 import {
   mainCreateAction,
   mainDeleteAction,
@@ -9,7 +9,7 @@ import {
   settingsUpdateAction
 } from '../../admin/src/actions';
 
-export default ({strapi}: { strapi: Strapi }) => ({
+export default ({ strapi }: { strapi: Strapi }) => ({
   async getSettings(ctx: any) {
     try {
       if (!isAllowedTo(strapi, ctx, settingsReadAction)
@@ -20,8 +20,6 @@ export default ({strapi}: { strapi: Strapi }) => ({
 
         return ctx.forbidden();
       }
-
-      console.log('controller.getSettings')
 
       return await strapi.plugin('generic-vod').service('settings').getSettings(ctx)
     } catch (err) {

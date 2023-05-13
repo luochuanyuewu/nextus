@@ -1,8 +1,9 @@
-import React, {FC, useState} from 'react'
-import {Button} from '@strapi/design-system'
-import {useNotification} from '@strapi/helper-plugin'
+import React, { FC, useState } from 'react'
+import { Button } from '@strapi/design-system'
+import { useNotification } from '@strapi/helper-plugin'
 import assetsRequests from '../../../api/assets'
-import {InputData} from "../../../../../types";
+import { InputData } from "../../../../../types";
+import getTrad from '../../../utils/getTrad';
 
 export interface IUpdateButtonProps {
   title: string
@@ -15,16 +16,16 @@ export interface IUpdateButtonProps {
   close: () => void
 }
 
-const UpdateButton: FC<IUpdateButtonProps> = ({
-                                                title,
-                                                description,
-                                                tags,
-                                                metadata,
-                                                id,
-                                                videoId,
-                                                update,
-                                                close,
-                                              }): JSX.Element => {
+const UpdateButton = ({
+  title,
+  description,
+  tags,
+  metadata,
+  id,
+  videoId,
+  update,
+  close,
+}: IUpdateButtonProps) => {
   const [isUploading, setIsUploading] = useState(false)
 
   const notification = useNotification()
@@ -47,7 +48,7 @@ const UpdateButton: FC<IUpdateButtonProps> = ({
       } else {
         notification({
           type: 'warning',
-          message: 'Error while creating video',
+          message: getTrad("video.updateFailed"),
         })
       }
     } catch (e) {
