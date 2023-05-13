@@ -8,14 +8,6 @@ const getConfig = async (strapi): Promise<$OpenApi.Config> => {
     name: 'generic-vod',
   })
 
-  // const defaultPublic = await pluginStore.get({
-  //   key: 'accessKeyId',
-  // })
-  //
-  // const configKey = await pluginStore.get({
-  //   key: 'apiKey',
-  // })
-
   const accessKeyId = await pluginStore.get({
     key: 'accessKeyId',
   })

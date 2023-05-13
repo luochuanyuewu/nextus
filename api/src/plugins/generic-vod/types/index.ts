@@ -24,11 +24,6 @@ export interface CustomAssets {
   player: string
 }
 
-export interface CustomSettings {
-  apiKey: string
-  defaultPublic: boolean
-}
-
 export interface AliVodSettings {
   accessKeyId: string
   accessKeySecret: string

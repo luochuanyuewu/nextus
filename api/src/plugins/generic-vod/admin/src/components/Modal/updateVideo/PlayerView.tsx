@@ -1,7 +1,7 @@
-import ApiVideoReactPlayer from '@api.video/react-player'
 import React, {FC} from 'react'
 import styled from 'styled-components'
 import {EnhancedCustomVideo} from '../../../pages/HomePage'
+import AliPlayer from "./AliPlayer";
 
 interface IPlayerViewProps {
   video: EnhancedCustomVideo
@@ -9,19 +9,10 @@ interface IPlayerViewProps {
 
 const PlayerView: FC<IPlayerViewProps> = ({video}) => {
 
+
   return (
     <Wrapper>
-      <ApiVideoReactPlayer
-        video={{id: video.videoId}}
-        videoStyleObjectFit={'cover'}
-
-        style={{
-          width: 'auto',
-          height: 300,
-          borderRadius: 4,
-          overflow: 'hidden',
-        }}
-      ></ApiVideoReactPlayer>
+      <AliPlayer vid={video.videoId} playauth={video.playAuth}></AliPlayer>
     </Wrapper>
   )
 }

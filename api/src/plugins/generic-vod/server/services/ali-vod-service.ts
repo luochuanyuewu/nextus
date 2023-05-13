@@ -27,6 +27,7 @@ export default ({strapi}: { strapi: Strapi }) => ({
       request.videoId = VideoId;
 
       const response: GetPlayInfoResponse = await client.getPlayInfo(request)
+
       // Play URL
       if (response.PlayInfoList && response.PlayInfoList.PlayInfo && response.PlayInfoList.PlayInfo.length > 0) {
         for (let i = 0; i < response.PlayInfoList.PlayInfo.length; i++) {
@@ -48,18 +49,16 @@ export default ({strapi}: { strapi: Strapi }) => ({
   },
 
   async getVideoPlayAuth(VideoId: string) {
-    const client = await configClient(strapi)
 
     try {
+      const client = await configClient(strapi)
 
       const response: GetVideoPlayAuthResponse = await client.getVideoPlayAuth(new GetVideoPlayAuthRequest({videoId: VideoId}));
-
-      // Play Auth
-      console.log('PlayAuth = ' + response.body.playAuth);
 
       // Base metadata
       if (response.VideoMeta) {
         console.log('VideoMeta.Title = ' + response.body.videoMeta?.Title);
+        // response.body.videoMeta.coverURL
       }
       console.log('RequestId = ' + response.body.requestId);
       return response.body.playAuth

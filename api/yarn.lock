@@ -2619,7 +2619,7 @@
     compute-scroll-into-view "^1.0.17"
     prop-types "^15.7.2"
 
-"@strapi/design-system@^1.3.1", "@strapi/design-system@^1.7.3":
+"@strapi/design-system@^1.3.1":
   version "1.7.3"
   resolved "https://registry.npmmirror.com/@strapi/design-system/-/design-system-1.7.3.tgz#229bfce8cbab2bafc325b6741b662a9240abb092"
   integrity sha512-5H3fnnjVOfE7GS7J3usO9fe4OXyuIUmCZOLrrA/FrNF/S3OOuA9CXwbWYMjstJr2XaWpSYNjocJcvu70P/Hs3Q==
@@ -2667,7 +2667,7 @@
     plop "2.7.6"
     pluralize "8.0.0"
 
-"@strapi/helper-plugin@4.10.2", "@strapi/helper-plugin@^4.10.2", "@strapi/helper-plugin@^4.5.2":
+"@strapi/helper-plugin@4.10.2", "@strapi/helper-plugin@^4.5.2":
   version "4.10.2"
   resolved "https://registry.npmmirror.com/@strapi/helper-plugin/-/helper-plugin-4.10.2.tgz#3e5553b1c6f48b7cb1af6e4ebdfa446e3fc7c824"
   integrity sha512-8FMfYIFdHIlUPbOhoKL+N7gI5UZxy2kRVIZVRXYjoYMZ2Zkxn7J0qmjJD59IAblO8DI5zAr7p4D/BQfWLi8KqA==
@@ -2688,7 +2688,7 @@
   resolved "https://registry.npmmirror.com/@strapi/icons/-/icons-1.6.6.tgz#e5259cdb6fc2425e926dfb0afc6e7c72748f1bab"
   integrity sha512-DxPX2WycDzoDmfi4KU7jQ7aDGTC//Sb67LxTjX2WsNeRgZrl0KxA9h2p8ZeGDD/UEw1GjPAq/x1jYAPn7/j3mQ==
 
-"@strapi/icons@^1.3.1", "@strapi/icons@^1.7.3":
+"@strapi/icons@^1.3.1":
   version "1.7.3"
   resolved "https://registry.npmmirror.com/@strapi/icons/-/icons-1.7.3.tgz#07777f026bb30b749f5179fa51a9fb3e75ede611"
   integrity sha512-iaVKEs6u8baYBOrjkXGJwvNV5vLQME5lf5y6iPpk2WyI+8JkPvCYiQ0DTGtNbrvxxV/VKcF3UDu/khs+vfyIDg==
@@ -4011,6 +4011,13 @@ ali-oss@^6.0.1:
     urllib "^2.33.1"
     utility "^1.8.0"
     xml2js "^0.4.16"
+
+aliyun-aliplayer@^2.15.6:
+  version "2.15.6"
+  resolved "https://registry.npmmirror.com/aliyun-aliplayer/-/aliyun-aliplayer-2.15.6.tgz#e3fc4cbd770c5656cd0459b6292fa8be6d4875d2"
+  integrity sha512-88Uv9bVDnbaMVPH6dOkJPWk4QZVK68QDWKfvbsDI/ZLwNzPKJfhsiukl/MhMMRvVvtweo5A2HnaEoK6+oaEgKw==
+  dependencies:
+    crypto-js "^4.1.1"
 
 ansi-align@^3.0.0:
   version "3.0.1"
@@ -5405,6 +5412,11 @@ crypt@0.0.2:
   version "0.0.2"
   resolved "https://registry.npmmirror.com/crypt/-/crypt-0.0.2.tgz#88d7ff7ec0dfb86f713dc87bbb42d044d3e6c41b"
   integrity sha512-mCxBlsHFYh9C+HVpiEacem8FEBnMXgU9gy4zmNC+SXAZNB/1idgp/aulFJ4FgCi7GPEVbfyng092GqL2k2rmow==
+
+crypto-js@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npmmirror.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
+  integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
 
 crypto-random-string@^2.0.0:
   version "2.0.0"

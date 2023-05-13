@@ -1055,6 +1055,13 @@
     "@uiw/codemirror-extensions-basic-setup" "4.19.16"
     codemirror "^6.0.0"
 
+aliyun-aliplayer@^2.15.6:
+  version "2.15.6"
+  resolved "https://registry.npmmirror.com/aliyun-aliplayer/-/aliyun-aliplayer-2.15.6.tgz#e3fc4cbd770c5656cd0459b6292fa8be6d4875d2"
+  integrity sha512-88Uv9bVDnbaMVPH6dOkJPWk4QZVK68QDWKfvbsDI/ZLwNzPKJfhsiukl/MhMMRvVvtweo5A2HnaEoK6+oaEgKw==
+  dependencies:
+    crypto-js "^4.1.1"
+
 ansi-regex@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npmmirror.com/ansi-regex/-/ansi-regex-5.0.1.tgz#082cb2c89c9fe8659a311a53bd6a4dc5301db304"
@@ -1233,6 +1240,11 @@ crelt@^1.0.5:
   version "1.0.5"
   resolved "https://registry.npmmirror.com/crelt/-/crelt-1.0.5.tgz#57c0d52af8c859e354bace1883eb2e1eb182bb94"
   integrity sha512-+BO9wPPi+DWTDcNYhr/W90myha8ptzftZT+LwcmUbbok0rcP/fequmFYCw8NMoH7pkAZQzU78b3kYrlua5a9eA==
+
+crypto-js@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npmmirror.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
+  integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
 
 css-color-keywords@^1.0.0:
   version "1.0.0"
