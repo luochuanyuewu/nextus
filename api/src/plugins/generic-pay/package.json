@@ -1,10 +1,11 @@
 {
   "name": "generic-pay",
   "version": "0.0.0",
-  "description": "This is the description of the plugin.",
+  "description": "支付宝支付集成",
   "strapi": {
     "name": "generic-pay",
-    "description": "Description of generic-pay plugin",
+    "displayName": "通用云点播",
+    "description": "支付宝支付集成",
     "kind": "plugin"
   },
   "dependencies": {
@@ -32,11 +33,11 @@
     "styled-components": "^5.3.6"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "luochuanyuewu"
   },
   "maintainers": [
     {
-      "name": "A Strapi developer"
+      "name": "luochuanyuewu"
     }
   ],
   "engines": {

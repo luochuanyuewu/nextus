@@ -1,7 +1,7 @@
 export default [
     {
         method: 'GET',
-        path: '/vod-asset',
+        path: '/vod-video',
         handler: 'admin.findAll',
         config: {
             policies: [],
@@ -9,7 +9,7 @@ export default [
     },
     {
         method: 'GET',
-        path: '/vod-asset/token/:videoId',
+        path: '/vod-video/token/:videoId',
         handler: 'admin.token',
         config: {
             policies: [],
@@ -17,7 +17,7 @@ export default [
     },
     {
         method: 'POST',
-        path: '/vod-asset',
+        path: '/vod-video',
         handler: 'admin.create',
         config: {
             policies: [],
@@ -25,7 +25,7 @@ export default [
     },
     {
         method: 'PUT',
-        path: '/vod-asset/:id/:videoId',
+        path: '/vod-video/:id/:videoId',
         handler: 'admin.update',
         config: {
             policies: [],
@@ -33,7 +33,7 @@ export default [
     },
     {
         method: 'DELETE',
-        path: '/vod-asset/:id/:videoId',
+        path: '/vod-video/:id/:videoId',
         handler: 'admin.delete',
         config: {
             policies: [],
@@ -41,7 +41,7 @@ export default [
     },
     {
         method: 'POST',
-        path: '/vod-asset/create',
+        path: '/vod-video/create',
         handler: 'admin.createVideoId',
         config: {
             policies: [],
@@ -49,7 +49,7 @@ export default [
     },
     {
         method: 'POST',
-        path: '/vod-asset/refresh',
+        path: '/vod-video/refresh',
         handler: 'admin.refreshVideoId',
         config: {
             policies: [],

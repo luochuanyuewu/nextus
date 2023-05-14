@@ -39,7 +39,7 @@ export default {
     app.registerPlugin(plugin);
   },
 
-  bootstrap(app: any) {},
+  bootstrap(app: any) { },
 
   async registerTrads(app: any) {
     const { locales } = app;

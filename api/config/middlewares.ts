@@ -5,14 +5,29 @@ export default [
     config: {
       contentSecurityPolicy: {
         directives: {
-          'script-src': ["'self'", "'unsafe-inline'", 'cdn.jsdelivr.net'],
-          'img-src': ["'self'", 'data:', 'blob:', 'cdn.jsdelivr.net', 'strapi.io', 'gumola.com'],
+          'script-src': [
+            "'self'",
+            "'unsafe-eval'",
+            "'unsafe-inline'",
+            'cdn.jsdelivr.net',
+            "g.alicdn.com"],
+          'img-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            'market-assets.strapi.io',
+            'cdn.jsdelivr.net',
+            'strapi.io',
+            'gumola.com',
+            'g.alicdn.com',
+            '*.oss-cn-shanghai.aliyuncs.com'],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
             'gumola.com',
-            'https://market-assets.strapi.io'
+            'market-assets.strapi.io',
+            '*.oss-cn-shanghai.aliyuncs.com'
           ],
         },
       }

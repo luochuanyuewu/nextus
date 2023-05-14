@@ -1,10 +1,10 @@
 import { factories } from '@strapi/strapi'
 import pluginId from '../../admin/src/pluginId'
 
-const model = `plugin::${pluginId}.vod-asset`
+const model = `plugin::${pluginId}.vod-video`
 
 
-export default factories.createCoreController('plugin::generic-vod.vod-asset', ({ strapi }) => ({
+export default factories.createCoreController('plugin::generic-vod.vod-video', ({ strapi }) => ({
     async count(ctx) {
         return await strapi.entityService.count(model, ctx.query)
     },

@@ -5,7 +5,7 @@ import voidContentApiRoutes from './content-api-routes'
 
 
 const routes = {
-  // routes for the admin panel (/api-video-uploader/vod-asset/...)
+  // routes for the admin panel (/api-video-uploader/vod-video/...)
   admin: {
     type: 'admin',
     routes: vodAdminRoutes,

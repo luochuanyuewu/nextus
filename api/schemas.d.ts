@@ -45,14 +45,14 @@ export interface AdminPermission extends CollectionTypeSchema {
   };
   attributes: {
     action: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        minLength: 1;
-      }>;
+    RequiredAttribute &
+    SetMinMaxLength<{
+      minLength: 1;
+    }>;
     subject: StringAttribute &
-      SetMinMaxLength<{
-        minLength: 1;
-      }>;
+    SetMinMaxLength<{
+      minLength: 1;
+    }>;
     properties: JSONAttribute & DefaultTo<{}>;
     conditions: JSONAttribute & DefaultTo<[]>;
     role: RelationAttribute<'admin::permission', 'manyToOne', 'admin::role'>;
@@ -63,13 +63,13 @@ export interface AdminPermission extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'admin::permission',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -91,39 +91,39 @@ export interface AdminUser extends CollectionTypeSchema {
   };
   attributes: {
     firstname: StringAttribute &
-      SetMinMaxLength<{
-        minLength: 1;
-      }>;
+    SetMinMaxLength<{
+      minLength: 1;
+    }>;
     lastname: StringAttribute &
-      SetMinMaxLength<{
-        minLength: 1;
-      }>;
+    SetMinMaxLength<{
+      minLength: 1;
+    }>;
     username: StringAttribute;
     email: EmailAttribute &
-      RequiredAttribute &
-      PrivateAttribute &
-      UniqueAttribute &
-      SetMinMaxLength<{
-        minLength: 6;
-      }>;
+    RequiredAttribute &
+    PrivateAttribute &
+    UniqueAttribute &
+    SetMinMaxLength<{
+      minLength: 6;
+    }>;
     password: PasswordAttribute &
-      PrivateAttribute &
-      SetMinMaxLength<{
-        minLength: 6;
-      }>;
+    PrivateAttribute &
+    SetMinMaxLength<{
+      minLength: 6;
+    }>;
     resetPasswordToken: StringAttribute & PrivateAttribute;
     registrationToken: StringAttribute & PrivateAttribute;
     isActive: BooleanAttribute & PrivateAttribute & DefaultTo<false>;
     roles: RelationAttribute<'admin::user', 'manyToMany', 'admin::role'> &
-      PrivateAttribute;
+    PrivateAttribute;
     blocked: BooleanAttribute & PrivateAttribute & DefaultTo<false>;
     preferedLanguage: StringAttribute;
     createdAt: DateTimeAttribute;
     updatedAt: DateTimeAttribute;
     createdBy: RelationAttribute<'admin::user', 'oneToOne', 'admin::user'> &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<'admin::user', 'oneToOne', 'admin::user'> &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -145,17 +145,17 @@ export interface AdminRole extends CollectionTypeSchema {
   };
   attributes: {
     name: StringAttribute &
-      RequiredAttribute &
-      UniqueAttribute &
-      SetMinMaxLength<{
-        minLength: 1;
-      }>;
+    RequiredAttribute &
+    UniqueAttribute &
+    SetMinMaxLength<{
+      minLength: 1;
+    }>;
     code: StringAttribute &
-      RequiredAttribute &
-      UniqueAttribute &
-      SetMinMaxLength<{
-        minLength: 1;
-      }>;
+    RequiredAttribute &
+    UniqueAttribute &
+    SetMinMaxLength<{
+      minLength: 1;
+    }>;
     description: StringAttribute;
     users: RelationAttribute<'admin::role', 'manyToMany', 'admin::user'>;
     permissions: RelationAttribute<
@@ -166,9 +166,9 @@ export interface AdminRole extends CollectionTypeSchema {
     createdAt: DateTimeAttribute;
     updatedAt: DateTimeAttribute;
     createdBy: RelationAttribute<'admin::role', 'oneToOne', 'admin::user'> &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<'admin::role', 'oneToOne', 'admin::user'> &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -190,24 +190,24 @@ export interface AdminApiToken extends CollectionTypeSchema {
   };
   attributes: {
     name: StringAttribute &
-      RequiredAttribute &
-      UniqueAttribute &
-      SetMinMaxLength<{
-        minLength: 1;
-      }>;
+    RequiredAttribute &
+    UniqueAttribute &
+    SetMinMaxLength<{
+      minLength: 1;
+    }>;
     description: StringAttribute &
-      SetMinMaxLength<{
-        minLength: 1;
-      }> &
-      DefaultTo<''>;
+    SetMinMaxLength<{
+      minLength: 1;
+    }> &
+    DefaultTo<''>;
     type: EnumerationAttribute<['read-only', 'full-access', 'custom']> &
-      RequiredAttribute &
-      DefaultTo<'read-only'>;
+    RequiredAttribute &
+    DefaultTo<'read-only'>;
     accessKey: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        minLength: 1;
-      }>;
+    RequiredAttribute &
+    SetMinMaxLength<{
+      minLength: 1;
+    }>;
     lastUsedAt: DateTimeAttribute;
     permissions: RelationAttribute<
       'admin::api-token',
@@ -223,13 +223,13 @@ export interface AdminApiToken extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'admin::api-token',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -251,10 +251,10 @@ export interface AdminApiTokenPermission extends CollectionTypeSchema {
   };
   attributes: {
     action: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        minLength: 1;
-      }>;
+    RequiredAttribute &
+    SetMinMaxLength<{
+      minLength: 1;
+    }>;
     token: RelationAttribute<
       'admin::api-token-permission',
       'manyToOne',
@@ -267,13 +267,13 @@ export interface AdminApiTokenPermission extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'admin::api-token-permission',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -295,21 +295,21 @@ export interface AdminTransferToken extends CollectionTypeSchema {
   };
   attributes: {
     name: StringAttribute &
-      RequiredAttribute &
-      UniqueAttribute &
-      SetMinMaxLength<{
-        minLength: 1;
-      }>;
+    RequiredAttribute &
+    UniqueAttribute &
+    SetMinMaxLength<{
+      minLength: 1;
+    }>;
     description: StringAttribute &
-      SetMinMaxLength<{
-        minLength: 1;
-      }> &
-      DefaultTo<''>;
+    SetMinMaxLength<{
+      minLength: 1;
+    }> &
+    DefaultTo<''>;
     accessKey: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        minLength: 1;
-      }>;
+    RequiredAttribute &
+    SetMinMaxLength<{
+      minLength: 1;
+    }>;
     lastUsedAt: DateTimeAttribute;
     permissions: RelationAttribute<
       'admin::transfer-token',
@@ -325,13 +325,13 @@ export interface AdminTransferToken extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'admin::transfer-token',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -353,10 +353,10 @@ export interface AdminTransferTokenPermission extends CollectionTypeSchema {
   };
   attributes: {
     action: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        minLength: 1;
-      }>;
+    RequiredAttribute &
+    SetMinMaxLength<{
+      minLength: 1;
+    }>;
     token: RelationAttribute<
       'admin::transfer-token-permission',
       'manyToOne',
@@ -369,13 +369,13 @@ export interface AdminTransferTokenPermission extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'admin::transfer-token-permission',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -415,13 +415,13 @@ export interface PluginUploadFile extends CollectionTypeSchema {
       'manyToOne',
       'plugin::upload.folder'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     folderPath: StringAttribute &
-      RequiredAttribute &
-      PrivateAttribute &
-      SetMinMax<{
-        min: 1;
-      }>;
+    RequiredAttribute &
+    PrivateAttribute &
+    SetMinMax<{
+      min: 1;
+    }>;
     createdAt: DateTimeAttribute;
     updatedAt: DateTimeAttribute;
     createdBy: RelationAttribute<
@@ -429,13 +429,13 @@ export interface PluginUploadFile extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'plugin::upload.file',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -455,10 +455,10 @@ export interface PluginUploadFolder extends CollectionTypeSchema {
   };
   attributes: {
     name: StringAttribute &
-      RequiredAttribute &
-      SetMinMax<{
-        min: 1;
-      }>;
+    RequiredAttribute &
+    SetMinMax<{
+      min: 1;
+    }>;
     pathId: IntegerAttribute & RequiredAttribute & UniqueAttribute;
     parent: RelationAttribute<
       'plugin::upload.folder',
@@ -476,10 +476,10 @@ export interface PluginUploadFolder extends CollectionTypeSchema {
       'plugin::upload.file'
     >;
     path: StringAttribute &
-      RequiredAttribute &
-      SetMinMax<{
-        min: 1;
-      }>;
+    RequiredAttribute &
+    SetMinMax<{
+      min: 1;
+    }>;
     createdAt: DateTimeAttribute;
     updatedAt: DateTimeAttribute;
     createdBy: RelationAttribute<
@@ -487,21 +487,21 @@ export interface PluginUploadFolder extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'plugin::upload.folder',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
 export interface PluginGenericVodVodAsset extends CollectionTypeSchema {
   info: {
-    name: 'vod-asset';
-    singularName: 'vod-asset';
-    pluralName: 'vod-assets';
+    name: 'vod-video';
+    singularName: 'vod-video';
+    pluralName: 'vod-videos';
     displayName: 'Video Asset';
   };
   options: {
@@ -520,10 +520,10 @@ export interface PluginGenericVodVodAsset extends CollectionTypeSchema {
     title: StringAttribute & RequiredAttribute;
     description: StringAttribute;
     videoId: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        maxLength: 255;
-      }>;
+    RequiredAttribute &
+    SetMinMaxLength<{
+      maxLength: 255;
+    }>;
     hls: StringAttribute;
     iframe: StringAttribute;
     mp4: StringAttribute;
@@ -534,17 +534,17 @@ export interface PluginGenericVodVodAsset extends CollectionTypeSchema {
     createdAt: DateTimeAttribute;
     updatedAt: DateTimeAttribute;
     createdBy: RelationAttribute<
-      'plugin::generic-vod.vod-asset',
+      'plugin::generic-vod.vod-video',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
-      'plugin::generic-vod.vod-asset',
+      'plugin::generic-vod.vod-video',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -569,10 +569,10 @@ export interface PluginI18NLocale extends CollectionTypeSchema {
   };
   attributes: {
     name: StringAttribute &
-      SetMinMax<{
-        min: 1;
-        max: 50;
-      }>;
+    SetMinMax<{
+      min: 1;
+      max: 50;
+    }>;
     code: StringAttribute & UniqueAttribute;
     createdAt: DateTimeAttribute;
     updatedAt: DateTimeAttribute;
@@ -581,13 +581,13 @@ export interface PluginI18NLocale extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'plugin::i18n.locale',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -621,13 +621,13 @@ export interface PluginUsersPermissionsPermission extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'plugin::users-permissions.permission',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -649,10 +649,10 @@ export interface PluginUsersPermissionsRole extends CollectionTypeSchema {
   };
   attributes: {
     name: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        minLength: 3;
-      }>;
+    RequiredAttribute &
+    SetMinMaxLength<{
+      minLength: 3;
+    }>;
     description: StringAttribute;
     type: StringAttribute & UniqueAttribute;
     permissions: RelationAttribute<
@@ -672,13 +672,13 @@ export interface PluginUsersPermissionsRole extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'plugin::users-permissions.role',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -696,22 +696,22 @@ export interface PluginUsersPermissionsUser extends CollectionTypeSchema {
   };
   attributes: {
     username: StringAttribute &
-      RequiredAttribute &
-      UniqueAttribute &
-      SetMinMaxLength<{
-        minLength: 3;
-      }>;
+    RequiredAttribute &
+    UniqueAttribute &
+    SetMinMaxLength<{
+      minLength: 3;
+    }>;
     email: EmailAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        minLength: 6;
-      }>;
+    RequiredAttribute &
+    SetMinMaxLength<{
+      minLength: 6;
+    }>;
     provider: StringAttribute;
     password: PasswordAttribute &
-      PrivateAttribute &
-      SetMinMaxLength<{
-        minLength: 6;
-      }>;
+    PrivateAttribute &
+    SetMinMaxLength<{
+      minLength: 6;
+    }>;
     resetPasswordToken: StringAttribute & PrivateAttribute;
     confirmationToken: StringAttribute & PrivateAttribute;
     confirmed: BooleanAttribute & DefaultTo<false>;
@@ -730,13 +730,13 @@ export interface PluginUsersPermissionsUser extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'plugin::users-permissions.user',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -795,13 +795,13 @@ export interface PluginCommentsComment extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'plugin::comments.comment',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -828,8 +828,8 @@ export interface PluginCommentsCommentReport extends CollectionTypeSchema {
   attributes: {
     content: TextAttribute;
     reason: EnumerationAttribute<['BAD_LANGUAGE', 'DISCRIMINATION', 'OTHER']> &
-      RequiredAttribute &
-      DefaultTo<'OTHER'>;
+    RequiredAttribute &
+    DefaultTo<'OTHER'>;
     resolved: BooleanAttribute & DefaultTo<false>;
     related: RelationAttribute<
       'plugin::comments.comment-report',
@@ -843,13 +843,13 @@ export interface PluginCommentsCommentReport extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'plugin::comments.comment-report',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -886,13 +886,13 @@ export interface PluginMenusMenu extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'plugin::menus.menu',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -924,7 +924,7 @@ export interface PluginMenusMenuItem extends CollectionTypeSchema {
       'manyToOne',
       'plugin::menus.menu'
     > &
-      RequiredAttribute;
+    RequiredAttribute;
     parent: RelationAttribute<
       'plugin::menus.menu-item',
       'oneToOne',
@@ -937,13 +937,13 @@ export interface PluginMenusMenuItem extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'plugin::menus.menu-item',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -969,41 +969,41 @@ export interface PluginStrapiStripeSsProduct extends CollectionTypeSchema {
   };
   attributes: {
     title: StringAttribute &
-      RequiredAttribute &
-      SetMinMax<{
-        min: 1;
-      }>;
+    RequiredAttribute &
+    SetMinMax<{
+      min: 1;
+    }>;
     slug: UIDAttribute<'plugin::strapi-stripe.ss-product', 'title'> &
-      RequiredAttribute &
-      UniqueAttribute;
+    RequiredAttribute &
+    UniqueAttribute;
     description: TextAttribute &
-      RequiredAttribute &
-      SetMinMax<{
-        min: 1;
-      }>;
+    RequiredAttribute &
+    SetMinMax<{
+      min: 1;
+    }>;
     price: DecimalAttribute & RequiredAttribute;
     currency: StringAttribute &
-      RequiredAttribute &
-      SetMinMax<{
-        min: 1;
-      }>;
+    RequiredAttribute &
+    SetMinMax<{
+      min: 1;
+    }>;
     productImage: MediaAttribute & RequiredAttribute;
     isSubscription: BooleanAttribute & DefaultTo<false>;
     interval: StringAttribute;
     trialPeriodDays: IntegerAttribute;
     stripeProductId: StringAttribute &
-      RequiredAttribute &
-      SetMinMax<{
-        min: 3;
-      }>;
+    RequiredAttribute &
+    SetMinMax<{
+      min: 3;
+    }>;
     stripePriceId: StringAttribute &
-      SetMinMax<{
-        min: 3;
-      }>;
+    SetMinMax<{
+      min: 3;
+    }>;
     stripePlanId: StringAttribute &
-      SetMinMax<{
-        min: 3;
-      }>;
+    SetMinMax<{
+      min: 3;
+    }>;
     stripePayment: RelationAttribute<
       'plugin::strapi-stripe.ss-product',
       'oneToMany',
@@ -1016,13 +1016,13 @@ export interface PluginStrapiStripeSsProduct extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'plugin::strapi-stripe.ss-product',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -1049,19 +1049,19 @@ export interface PluginStrapiStripeSsPayment extends CollectionTypeSchema {
   attributes: {
     txnDate: DateTimeAttribute & RequiredAttribute;
     transactionId: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        maxLength: 250;
-      }>;
+    RequiredAttribute &
+    SetMinMaxLength<{
+      maxLength: 250;
+    }>;
     isTxnSuccessful: BooleanAttribute & DefaultTo<false>;
     txnMessage: TextAttribute &
-      SetMinMaxLength<{
-        maxLength: 5000;
-      }>;
+    SetMinMaxLength<{
+      maxLength: 5000;
+    }>;
     txnErrorMessage: StringAttribute &
-      SetMinMaxLength<{
-        maxLength: 250;
-      }>;
+    SetMinMaxLength<{
+      maxLength: 250;
+    }>;
     txnAmount: DecimalAttribute & RequiredAttribute;
     customerName: StringAttribute & RequiredAttribute;
     customerEmail: StringAttribute & RequiredAttribute;
@@ -1077,13 +1077,13 @@ export interface PluginStrapiStripeSsPayment extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'plugin::strapi-stripe.ss-payment',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -1104,56 +1104,56 @@ export interface ApiGoodGood extends CollectionTypeSchema {
   };
   attributes: {
     name: StringAttribute &
-      RequiredAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    RequiredAttribute &
+    SetPluginOptions<{
+      i18n: {
+        localized: true;
+      };
+    }>;
     picture: MediaAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    SetPluginOptions<{
+      i18n: {
+        localized: true;
+      };
+    }>;
     retail_price: DecimalAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    SetPluginOptions<{
+      i18n: {
+        localized: true;
+      };
+    }>;
     actual_price: DecimalAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    SetPluginOptions<{
+      i18n: {
+        localized: true;
+      };
+    }>;
     in_stock: IntegerAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    SetPluginOptions<{
+      i18n: {
+        localized: true;
+      };
+    }>;
     sales_volume: IntegerAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      DefaultTo<0>;
+    SetPluginOptions<{
+      i18n: {
+        localized: true;
+      };
+    }> &
+    DefaultTo<0>;
     is_open: BooleanAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }> &
-      DefaultTo<true>;
+    SetPluginOptions<{
+      i18n: {
+        localized: false;
+      };
+    }> &
+    DefaultTo<true>;
     description: RichTextAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    SetPluginOptions<{
+      i18n: {
+        localized: true;
+      };
+    }>;
     group_id: RelationAttribute<
       'api::good.good',
       'oneToOne',
@@ -1163,9 +1163,9 @@ export interface ApiGoodGood extends CollectionTypeSchema {
     updatedAt: DateTimeAttribute;
     publishedAt: DateTimeAttribute;
     createdBy: RelationAttribute<'api::good.good', 'oneToOne', 'admin::user'> &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<'api::good.good', 'oneToOne', 'admin::user'> &
-      PrivateAttribute;
+    PrivateAttribute;
     localizations: RelationAttribute<
       'api::good.good',
       'oneToMany',
@@ -1201,13 +1201,13 @@ export interface ApiGoodGroupGoodGroup extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'api::good-group.good-group',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -1228,18 +1228,18 @@ export interface ApiHomePageHomePage extends SingleTypeSchema {
   };
   attributes: {
     cover: MediaAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    SetPluginOptions<{
+      i18n: {
+        localized: true;
+      };
+    }>;
     content: RichTextAttribute &
-      RequiredAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    RequiredAttribute &
+    SetPluginOptions<{
+      i18n: {
+        localized: true;
+      };
+    }>;
     createdAt: DateTimeAttribute;
     updatedAt: DateTimeAttribute;
     publishedAt: DateTimeAttribute;
@@ -1248,13 +1248,13 @@ export interface ApiHomePageHomePage extends SingleTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'api::home-page.home-page',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     localizations: RelationAttribute<
       'api::home-page.home-page',
       'oneToMany',
@@ -1291,13 +1291,13 @@ export interface ApiOrderOrder extends CollectionTypeSchema {
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'api::order.order',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -1323,9 +1323,9 @@ export interface ApiPayPay extends CollectionTypeSchema {
     createdAt: DateTimeAttribute;
     updatedAt: DateTimeAttribute;
     createdBy: RelationAttribute<'api::pay.pay', 'oneToOne', 'admin::user'> &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<'api::pay.pay', 'oneToOne', 'admin::user'> &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -1346,38 +1346,38 @@ export interface ApiPostPost extends CollectionTypeSchema {
   };
   attributes: {
     title: StringAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    SetPluginOptions<{
+      i18n: {
+        localized: true;
+      };
+    }>;
     subTitle: TextAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    SetPluginOptions<{
+      i18n: {
+        localized: true;
+      };
+    }>;
     content: RichTextAttribute &
-      RequiredAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    RequiredAttribute &
+    SetPluginOptions<{
+      i18n: {
+        localized: true;
+      };
+    }>;
     tags: RelationAttribute<'api::post.post', 'oneToMany', 'api::tag.tag'>;
     cover: MediaAttribute &
-      SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
+    SetPluginOptions<{
+      i18n: {
+        localized: false;
+      };
+    }>;
     createdAt: DateTimeAttribute;
     updatedAt: DateTimeAttribute;
     publishedAt: DateTimeAttribute;
     createdBy: RelationAttribute<'api::post.post', 'oneToOne', 'admin::user'> &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<'api::post.post', 'oneToOne', 'admin::user'> &
-      PrivateAttribute;
+    PrivateAttribute;
     localizations: RelationAttribute<
       'api::post.post',
       'oneToMany',
@@ -1410,13 +1410,13 @@ export interface ApiSiteConfigurationSiteConfiguration
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<
       'api::site-configuration.site-configuration',
       'oneToOne',
       'admin::user'
     > &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -1436,9 +1436,9 @@ export interface ApiTagTag extends CollectionTypeSchema {
     createdAt: DateTimeAttribute;
     updatedAt: DateTimeAttribute;
     createdBy: RelationAttribute<'api::tag.tag', 'oneToOne', 'admin::user'> &
-      PrivateAttribute;
+    PrivateAttribute;
     updatedBy: RelationAttribute<'api::tag.tag', 'oneToOne', 'admin::user'> &
-      PrivateAttribute;
+    PrivateAttribute;
   };
 }
 
@@ -1448,17 +1448,17 @@ export interface SharedMetaSocial extends ComponentSchema {
   };
   attributes: {
     socialNetwork: EnumerationAttribute<['Facebook', 'Twitter']> &
-      RequiredAttribute;
+    RequiredAttribute;
     title: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        maxLength: 60;
-      }>;
+    RequiredAttribute &
+    SetMinMaxLength<{
+      maxLength: 60;
+    }>;
     description: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        maxLength: 65;
-      }>;
+    RequiredAttribute &
+    SetMinMaxLength<{
+      maxLength: 65;
+    }>;
     image: MediaAttribute;
   };
 }
@@ -1469,16 +1469,16 @@ export interface SharedSeo extends ComponentSchema {
   };
   attributes: {
     metaTitle: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        maxLength: 60;
-      }>;
+    RequiredAttribute &
+    SetMinMaxLength<{
+      maxLength: 60;
+    }>;
     metaDescription: StringAttribute &
-      RequiredAttribute &
-      SetMinMaxLength<{
-        minLength: 50;
-        maxLength: 160;
-      }>;
+    RequiredAttribute &
+    SetMinMaxLength<{
+      minLength: 50;
+      maxLength: 160;
+    }>;
     metaImage: MediaAttribute & RequiredAttribute;
     metaSocial: ComponentAttribute<'shared.meta-social', true>;
     keywords: TextAttribute;
@@ -1501,7 +1501,7 @@ declare global {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
-      'plugin::generic-vod.vod-asset': PluginGenericVodVodAsset;
+      'plugin::generic-vod.vod-video': PluginGenericVodVodAsset;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;

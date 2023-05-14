@@ -16,7 +16,7 @@ import { CustomVideo, InputData } from "../../types";
 import pluginId from "../../admin/src/pluginId";
 
 
-const model = `plugin::${pluginId}.vod-asset`
+const model = `plugin::${pluginId}.vod-video`
 
 export default ({ strapi }: { strapi: Strapi }) => ({
   async getPlayerInfo(VideoId: string) {

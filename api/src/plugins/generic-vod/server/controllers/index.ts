@@ -4,7 +4,7 @@ import adminController from "./admin-controller";
 import settingController from './settings-controller';
 import contentApiController from './content-api-controller'
 
-const model = `plugin::${pluginId}.vod-asset`
+const model = `plugin::${pluginId}.vod-video`
 
 //判断用户是否拥有“action”里指定的权限。
 export const isAllowedTo = (strapi: Strapi, ctx: any, action: string) => {
