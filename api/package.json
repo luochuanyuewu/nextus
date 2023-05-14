@@ -24,11 +24,11 @@
     "better-sqlite3": "^8.3.0",
     "mysql": "^2.18.1",
     "react-intl": "^6.4.2",
-    "strapi-paypal": "^1.0.4",
     "strapi-plugin-comments": "^2.2.10",
     "strapi-plugin-menus": "^1.4.1",
     "strapi-plugin-transformer": "^3.1.0",
     "strapi-provider-upload-oss": "^0.1.7",
+    "strapi-stripe": "^3.3.0",
     "strapi-tiptap-editor": "^0.9.12"
   },
   "author": {
