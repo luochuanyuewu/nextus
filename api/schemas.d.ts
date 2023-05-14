@@ -19,9 +19,12 @@ import {
   SetMinMax,
   MediaAttribute,
   TextAttribute,
+  UIDAttribute,
   SetPluginOptions,
   RichTextAttribute,
   SingleTypeSchema,
+  ComponentSchema,
+  ComponentAttribute,
 } from '@strapi/strapi';
 
 export interface AdminPermission extends CollectionTypeSchema {
@@ -494,43 +497,12 @@ export interface PluginUploadFolder extends CollectionTypeSchema {
   };
 }
 
-export interface PluginGenericVodVideo extends CollectionTypeSchema {
+export interface PluginGenericVodVodAsset extends CollectionTypeSchema {
   info: {
-    singularName: 'video';
-    pluralName: 'videos';
-    displayName: 'Video';
-  };
-  options: {
-    draftAndPublish: false;
-    comment: '';
-  };
-  attributes: {
-    name: StringAttribute & RequiredAttribute;
-    isDone: BooleanAttribute & DefaultTo<false>;
-    createdAt: DateTimeAttribute;
-    updatedAt: DateTimeAttribute;
-    createdBy: RelationAttribute<
-      'plugin::generic-vod.video',
-      'oneToOne',
-      'admin::user'
-    > &
-      PrivateAttribute;
-    updatedBy: RelationAttribute<
-      'plugin::generic-vod.video',
-      'oneToOne',
-      'admin::user'
-    > &
-      PrivateAttribute;
-  };
-}
-
-export interface PluginApiVideoUploaderApiVideoAsset
-  extends CollectionTypeSchema {
-  info: {
-    name: 'api-video-asset';
-    singularName: 'api-video-asset';
-    pluralName: 'api-video-assets';
-    displayName: 'api.video Asset';
+    name: 'vod-asset';
+    singularName: 'vod-asset';
+    pluralName: 'vod-assets';
+    displayName: 'Video Asset';
   };
   options: {
     draftAndPublish: false;
@@ -538,7 +510,7 @@ export interface PluginApiVideoUploaderApiVideoAsset
   };
   pluginOptions: {
     'content-manager': {
-      visible: false;
+      visible: true;
     };
     'content-type-builder': {
       visible: true;
@@ -547,29 +519,28 @@ export interface PluginApiVideoUploaderApiVideoAsset
   attributes: {
     title: StringAttribute & RequiredAttribute;
     description: StringAttribute;
-    _public: BooleanAttribute & RequiredAttribute & DefaultTo<true>;
     videoId: StringAttribute &
       RequiredAttribute &
       SetMinMaxLength<{
         maxLength: 255;
       }>;
-    hls: StringAttribute & RequiredAttribute;
-    iframe: StringAttribute & RequiredAttribute;
-    mp4: StringAttribute & RequiredAttribute;
-    player: StringAttribute & RequiredAttribute;
-    thumbnail: StringAttribute & RequiredAttribute;
+    hls: StringAttribute;
+    iframe: StringAttribute;
+    mp4: StringAttribute;
+    player: StringAttribute;
+    thumbnail: StringAttribute;
     tags: JSONAttribute;
     metadata: JSONAttribute;
     createdAt: DateTimeAttribute;
     updatedAt: DateTimeAttribute;
     createdBy: RelationAttribute<
-      'plugin::api-video-uploader.api-video-asset',
+      'plugin::generic-vod.vod-asset',
       'oneToOne',
       'admin::user'
     > &
       PrivateAttribute;
     updatedBy: RelationAttribute<
-      'plugin::api-video-uploader.api-video-asset',
+      'plugin::generic-vod.vod-asset',
       'oneToOne',
       'admin::user'
     > &
@@ -875,6 +846,240 @@ export interface PluginCommentsCommentReport extends CollectionTypeSchema {
       PrivateAttribute;
     updatedBy: RelationAttribute<
       'plugin::comments.comment-report',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute;
+  };
+}
+
+export interface PluginMenusMenu extends CollectionTypeSchema {
+  info: {
+    displayName: 'Menu';
+    singularName: 'menu';
+    pluralName: 'menus';
+    tableName: 'menus';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    title: StringAttribute & RequiredAttribute;
+    slug: UIDAttribute<'plugin::menus.menu', 'title'> & RequiredAttribute;
+    items: RelationAttribute<
+      'plugin::menus.menu',
+      'oneToMany',
+      'plugin::menus.menu-item'
+    >;
+    createdAt: DateTimeAttribute;
+    updatedAt: DateTimeAttribute;
+    createdBy: RelationAttribute<
+      'plugin::menus.menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute;
+    updatedBy: RelationAttribute<
+      'plugin::menus.menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute;
+  };
+}
+
+export interface PluginMenusMenuItem extends CollectionTypeSchema {
+  info: {
+    displayName: 'Menu Item';
+    singularName: 'menu-item';
+    pluralName: 'menu-items';
+    tableName: 'menu_items';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    order: IntegerAttribute;
+    title: StringAttribute & RequiredAttribute;
+    url: StringAttribute;
+    target: EnumerationAttribute<['_blank', '_parent', '_self', '_top']>;
+    root_menu: RelationAttribute<
+      'plugin::menus.menu-item',
+      'manyToOne',
+      'plugin::menus.menu'
+    > &
+      RequiredAttribute;
+    parent: RelationAttribute<
+      'plugin::menus.menu-item',
+      'oneToOne',
+      'plugin::menus.menu-item'
+    >;
+    createdAt: DateTimeAttribute;
+    updatedAt: DateTimeAttribute;
+    createdBy: RelationAttribute<
+      'plugin::menus.menu-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute;
+    updatedBy: RelationAttribute<
+      'plugin::menus.menu-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute;
+  };
+}
+
+export interface PluginStrapiStripeSsProduct extends CollectionTypeSchema {
+  info: {
+    tableName: 'StripeProduct';
+    singularName: 'ss-product';
+    pluralName: 'ss-products';
+    displayName: 'Product';
+    description: 'Stripe Products';
+    kind: 'collectionType';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    title: StringAttribute &
+      RequiredAttribute &
+      SetMinMax<{
+        min: 1;
+      }>;
+    slug: UIDAttribute<'plugin::strapi-stripe.ss-product', 'title'> &
+      RequiredAttribute &
+      UniqueAttribute;
+    description: TextAttribute &
+      RequiredAttribute &
+      SetMinMax<{
+        min: 1;
+      }>;
+    price: DecimalAttribute & RequiredAttribute;
+    currency: StringAttribute &
+      RequiredAttribute &
+      SetMinMax<{
+        min: 1;
+      }>;
+    productImage: MediaAttribute & RequiredAttribute;
+    isSubscription: BooleanAttribute & DefaultTo<false>;
+    interval: StringAttribute;
+    trialPeriodDays: IntegerAttribute;
+    stripeProductId: StringAttribute &
+      RequiredAttribute &
+      SetMinMax<{
+        min: 3;
+      }>;
+    stripePriceId: StringAttribute &
+      SetMinMax<{
+        min: 3;
+      }>;
+    stripePlanId: StringAttribute &
+      SetMinMax<{
+        min: 3;
+      }>;
+    stripePayment: RelationAttribute<
+      'plugin::strapi-stripe.ss-product',
+      'oneToMany',
+      'plugin::strapi-stripe.ss-payment'
+    >;
+    createdAt: DateTimeAttribute;
+    updatedAt: DateTimeAttribute;
+    createdBy: RelationAttribute<
+      'plugin::strapi-stripe.ss-product',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute;
+    updatedBy: RelationAttribute<
+      'plugin::strapi-stripe.ss-product',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute;
+  };
+}
+
+export interface PluginStrapiStripeSsPayment extends CollectionTypeSchema {
+  info: {
+    tableName: 'StripePayment';
+    singularName: 'ss-payment';
+    pluralName: 'ss-payments';
+    displayName: 'Payment';
+    description: 'Stripe Payment';
+    kind: 'collectionType';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    txnDate: DateTimeAttribute & RequiredAttribute;
+    transactionId: StringAttribute &
+      RequiredAttribute &
+      SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    isTxnSuccessful: BooleanAttribute & DefaultTo<false>;
+    txnMessage: TextAttribute &
+      SetMinMaxLength<{
+        maxLength: 5000;
+      }>;
+    txnErrorMessage: StringAttribute &
+      SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    txnAmount: DecimalAttribute & RequiredAttribute;
+    customerName: StringAttribute & RequiredAttribute;
+    customerEmail: StringAttribute & RequiredAttribute;
+    stripeProduct: RelationAttribute<
+      'plugin::strapi-stripe.ss-payment',
+      'manyToOne',
+      'plugin::strapi-stripe.ss-product'
+    >;
+    createdAt: DateTimeAttribute;
+    updatedAt: DateTimeAttribute;
+    createdBy: RelationAttribute<
+      'plugin::strapi-stripe.ss-payment',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute;
+    updatedBy: RelationAttribute<
+      'plugin::strapi-stripe.ss-payment',
       'oneToOne',
       'admin::user'
     > &
@@ -1237,6 +1442,53 @@ export interface ApiTagTag extends CollectionTypeSchema {
   };
 }
 
+export interface SharedMetaSocial extends ComponentSchema {
+  info: {
+    displayName: 'metaSocial';
+  };
+  attributes: {
+    socialNetwork: EnumerationAttribute<['Facebook', 'Twitter']> &
+      RequiredAttribute;
+    title: StringAttribute &
+      RequiredAttribute &
+      SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+    description: StringAttribute &
+      RequiredAttribute &
+      SetMinMaxLength<{
+        maxLength: 65;
+      }>;
+    image: MediaAttribute;
+  };
+}
+
+export interface SharedSeo extends ComponentSchema {
+  info: {
+    displayName: 'seo';
+  };
+  attributes: {
+    metaTitle: StringAttribute &
+      RequiredAttribute &
+      SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+    metaDescription: StringAttribute &
+      RequiredAttribute &
+      SetMinMaxLength<{
+        minLength: 50;
+        maxLength: 160;
+      }>;
+    metaImage: MediaAttribute & RequiredAttribute;
+    metaSocial: ComponentAttribute<'shared.meta-social', true>;
+    keywords: TextAttribute;
+    metaRobots: StringAttribute;
+    structuredData: JSONAttribute;
+    metaViewport: StringAttribute;
+    canonicalURL: StringAttribute;
+  };
+}
+
 declare global {
   namespace Strapi {
     interface Schemas {
@@ -1249,14 +1501,17 @@ declare global {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
-      'plugin::generic-vod.video': PluginGenericVodVideo;
-      'plugin::api-video-uploader.api-video-asset': PluginApiVideoUploaderApiVideoAsset;
+      'plugin::generic-vod.vod-asset': PluginGenericVodVodAsset;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::comments.comment': PluginCommentsComment;
       'plugin::comments.comment-report': PluginCommentsCommentReport;
+      'plugin::menus.menu': PluginMenusMenu;
+      'plugin::menus.menu-item': PluginMenusMenuItem;
+      'plugin::strapi-stripe.ss-product': PluginStrapiStripeSsProduct;
+      'plugin::strapi-stripe.ss-payment': PluginStrapiStripeSsPayment;
       'api::good.good': ApiGoodGood;
       'api::good-group.good-group': ApiGoodGroupGoodGroup;
       'api::home-page.home-page': ApiHomePageHomePage;
@@ -1265,6 +1520,8 @@ declare global {
       'api::post.post': ApiPostPost;
       'api::site-configuration.site-configuration': ApiSiteConfigurationSiteConfiguration;
       'api::tag.tag': ApiTagTag;
+      'shared.meta-social': SharedMetaSocial;
+      'shared.seo': SharedSeo;
     }
   }
 }
