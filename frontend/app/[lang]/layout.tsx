@@ -76,12 +76,12 @@ export default async function RootLayout({
   );
 
   const footerLogoUrl = getStrapiMedia(
-    footer.footerLogo.logoImg.data.attributes.url
+    footer ? footer.footerLogo.logoImg.data.attributes.url : ''
   );
 
   return (
     <html lang={params.lang}>
-      <body>
+      <body >
         <Navbar
           links={navbar.links}
           logoUrl={navbarLogoUrl}
@@ -94,14 +94,14 @@ export default async function RootLayout({
 
         <Banner data={notificationBanner} />
 
-        <Footer
+        {footer && <Footer
           logoUrl={footerLogoUrl}
           logoText={footer.footerLogo.logoText}
           menuLinks={footer.menuLinks}
           categoryLinks={footer.categories.data}
           legalLinks={footer.legalLinks}
           socialLinks={footer.socialLinks}
-        />
+        />}
       </body>
     </html>
   );
