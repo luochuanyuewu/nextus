@@ -65,6 +65,9 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { lang: string };
 }) {
+
+
+
   const global = await getGlobal();
   // TODO: CREATE A CUSTOM ERROR PAGE
   if (!global.data) return null;

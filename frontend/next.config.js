@@ -3,13 +3,13 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
         hostname: 'localhost',
       },
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '1337',
+        hostname: '127.0.0.1',
+      },
+      {
+        hostname: '*.yuewu.dev',
       },
     ],
   },
