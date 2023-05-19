@@ -14,9 +14,12 @@ export default function RichText({ data }: RichTextProps) {
   //     <Markdown children={data.body} remarkPlugins={[remarkGfm]} />
   //   </section>
   // );
+  // return (
+  //   <section className="rich-text py-6 dark:bg-black dark:text-gray-50 " dangerouslySetInnerHTML={{ __html: data.body }}>
+  //   </section>
+  // );
   return (
-    <section className="rich-text py-6 dark:bg-black dark:text-gray-50 ">
-      <div dangerouslySetInnerHTML={{ __html: data.body }}></div>
+    <section className="prose" dangerouslySetInnerHTML={{ __html: data.body }}>
     </section>
   );
 }

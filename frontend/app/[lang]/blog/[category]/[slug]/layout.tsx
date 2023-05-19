@@ -18,12 +18,12 @@ async function fetchSideMenuData(filter: string) {
       "/articles",
       filter
         ? {
-            filters: {
-              category: {
-                name: filter,
-              },
+          filters: {
+            category: {
+              name: filter,
             },
-          }
+          },
+        }
         : {},
       options
     );

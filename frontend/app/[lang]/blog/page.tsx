@@ -78,7 +78,7 @@ export default function Profile() {
                 className="px-6 py-3 text-sm rounded-lg hover:underline dark:bg-gray-900 dark:text-gray-400"
                 onClick={loadMorePosts}
               >
-                Load more posts...
+                加载更多文章...
               </button>
             </div>
           )}

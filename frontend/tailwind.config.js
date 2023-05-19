@@ -15,5 +15,16 @@ module.exports = {
       // },
     },
   },
-  plugins: [require("daisyui")],
+  // daisyUI config (optional) //https://daisyui.com/docs/config/
+  daisyui: {
+    styled: true,
+    themes: true,
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+    prefix: "",
+    darkTheme: "dark",
+  },
+  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography"), require("daisyui")],
 }
