@@ -20,14 +20,15 @@ export default [
             'strapi.io',
             'gumola.com',
             'g.alicdn.com',
-            '*.oss-cn-shanghai.aliyuncs.com'],
+            "*.oss-cn-shanghai.aliyuncs.com", "*.oss-cn-beijing.aliyuncs.com"
+          ],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
             'gumola.com',
             'market-assets.strapi.io',
-            '*.oss-cn-shanghai.aliyuncs.com'
+            "*.oss-cn-shanghai.aliyuncs.com", "*.oss-cn-beijing.aliyuncs.com"
           ],
         },
       }

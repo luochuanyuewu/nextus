@@ -1,4 +1,4 @@
-module.exports = ({env}) => ({
+module.exports = ({ env }) => ({
   'generic-vod': {
     enabled: true,
     resolve: './src/plugins/generic-vod'
@@ -12,19 +12,19 @@ module.exports = ({env}) => ({
       },
     },
   },
-  // upload: {
-  //   config: {
-  //     provider: 'strapi-provider-upload-oss', // full package name is required
-  //     providerOptions: {
-  //       accessKeyId: env('ACCESS_KEY_ID'),
-  //       accessKeySecret: env('ACCESS_KEY_SECRET'),
-  //       region: env('REGION'),
-  //       bucket: env('BUCKET'),
-  //       uploadPath: env('UPLOAD_PATH'),
-  //       baseUrl: env('BASE_URL'),
-  //       timeout: env('TIMEOUT'),
-  //       secure: env('OSS_SECURE')
-  //     }
-  //   }
-  // }
+  upload: {
+    config: {
+      provider: 'strapi-provider-upload-oss', // full package name is required
+      providerOptions: {
+        accessKeyId: env('OSS_ACCESS_KEY_ID'),
+        accessKeySecret: env('OSS_ACCESS_KEY_SECRET'),
+        region: env('OSS_REGION'),
+        bucket: env('OSS_BUCKET'),
+        uploadPath: env('OSS_UPLOAD_PATH'),
+        baseUrl: env('OSS_BASE_URL'),
+        timeout: env('OSS_TIMEOUT'),
+        secure: env('OSS_SECURE')
+      }
+    }
+  }
 });

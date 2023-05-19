@@ -11,6 +11,9 @@ const nextConfig = {
       {
         hostname: '*.yuewu.dev',
       },
+      {
+        hostname: '*.aliyuncs.com',
+      },
     ],
   },
   experimental: {

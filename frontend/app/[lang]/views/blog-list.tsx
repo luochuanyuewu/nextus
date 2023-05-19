@@ -62,7 +62,7 @@ export default function PostList({
           const authorsBio = article.attributes.authorsBio.data?.attributes;
 
           const avatarUrl = getStrapiMedia(
-            authorsBio?.avatar.data.attributes.url
+            authorsBio?.avatar?.data?.attributes?.url
           );
 
           return (
