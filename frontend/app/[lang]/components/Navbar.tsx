@@ -3,6 +3,8 @@ import Logo from "./Logo";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import classNames from "classnames";
+import { title } from "process";
+import { AiOutlineLogin } from "react-icons/ai";
 
 
 interface NavLink {
@@ -31,19 +33,21 @@ interface NavLink {
 function NavLink({ url, text }: NavLink) {
   const path = usePathname();
   let className = classNames(
-    'inline-block rounded font-medium text-gray-900 dark:text-gray-100 py-1 px-2 sm:py-2 sm:px-3',
-    path === url
-      ? 'bg-gray-200 dark:bg-gray-700'
-      : 'hover:bg-gray-200 dark:hover:bg-gray-700'
+    '', path === url
+    ? 'btn-activate'
+    : ''
   )
   return (
-    <Link
-      key={text}
-      href={url}
-    // data-umami-event={`nav-${link.href.replace('/', '')}`}
-    >
-      <span className={className}>{text}</span>
-    </Link>
+    <li>
+      <Link
+        key={text}
+        href={url}
+      // data-umami-event={`nav-${link.href.replace('/', '')}`}
+      >
+        <span className={className}>{text}</span>
+      </Link>
+    </li>
+
   );
 }
 
@@ -62,45 +66,44 @@ export default function Navbar({
 
 
   return (
-    <header className="supports-backdrop-blur:bg-white/95 sticky top-0 z-40 overflow-x-hidden bg-white/75 py-3 backdrop-blur dark:bg-dark/75">
-      <div className="mx-auto flex max-w-3xl items-center justify-between px-3 xl:max-w-5xl xl:px-0">
-        <Logo src={logoUrl}>
-          {/* {logoText && <h2 className="text-2xl font-bold">{logoText}</h2>} */}
-        </Logo>
-
-        {/* <div className="items-center flex-shrink-0 hidden lg:flex">
-          <ul className="items-stretch hidden space-x-3 lg:flex">
-            {links.map((item: NavLink) => (
-              <NavLink key={item.id} {...item} />
-            ))}
-          </ul>
-        </div> */}
-
-        <div className="flex items-center text-base leading-5">
-          <div className="hidden space-x-2 sm:block">
-            {links.map((item: NavLink) => (
-              <NavLink key={item.id} {...item} />
-            ))}
+    <header className="supports-backdrop-blur:bg-white/95  top-0 z-40 bg-white/75 py-3 backdrop-blur dark:bg-dark/75">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-3 xl:px-0">
+        <div className="navbar bg-base-100">
+          <div className="navbar-start">
+            <div className="dropdown">
+              <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+              </label>
+              <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                <li><a>Item 1</a></li>
+                <li tabIndex={0}>
+                  <a className="justify-between">
+                    Parent
+                    <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+                  </a>
+                  <ul className="p-2">
+                    <li><a>Submenu 1</a></li>
+                    <li><a>Submenu 2</a></li>
+                  </ul>
+                </li>
+                <li><a>Item 3</a></li>
+              </ul>
+            </div>
+            <Link href='/' className="btn btn-ghost normal-case text-xl">{logoText}</Link>
+          </div>
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1">
+              {links.map((item: NavLink) => (
+                <NavLink key={item.id} {...item} />
+              ))}
+            </ul>
+          </div>
+          <div className="navbar-end">
+            <button className="btn btn-ghost btn-circle">
+              <AiOutlineLogin className="scale-150" />
+            </button>
           </div>
         </div>
-
-
-        <button className="p-4 lg:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="w-6 h-6 dark:text-gray-100"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </button>
       </div>
     </header >
 

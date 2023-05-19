@@ -21,6 +21,8 @@
     "social": {
       "type": "enumeration",
       "enum": [
+        "GITHUB",
+        "ZHIHU",
         "YOUTUBE",
         "TWITTER",
         "DISCORD",

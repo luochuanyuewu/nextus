@@ -4,7 +4,7 @@ import Link from "next/link";
 import Logo from "./Logo";
 import { CgWebsite } from "react-icons/cg";
 import { FaDiscord } from "react-icons/fa";
-import { AiFillTwitterCircle, AiFillYoutube } from "react-icons/ai";
+import { AiFillGithub, AiFillTwitterCircle, AiFillYoutube, AiFillZhihuCircle } from "react-icons/ai";
 
 interface FooterLink {
   id: number;
@@ -28,9 +28,8 @@ function FooterLink({ url, text }: FooterLink) {
     <li className="flex">
       <Link
         href={url}
-        className={`hover:dark:text-violet-400 ${
-          path === url && "dark:text-violet-400 dark:border-violet-400"
-        }}`}
+        className={`hover:dark:text-violet-400 ${path === url && "dark:text-violet-400 dark:border-violet-400"
+          }}`}
       >
         {text}
       </Link>
@@ -53,6 +52,10 @@ function CategoryLink({ attributes }: CategoryLink) {
 
 function RenderSocialIcon({ social }: { social: string | undefined }) {
   switch (social) {
+    case "GITHUB":
+      return <AiFillGithub />;
+    case "ZHIHU":
+      return <AiFillZhihuCircle />;
     case "WEBSITE":
       return <CgWebsite />;
     case "TWITTER":

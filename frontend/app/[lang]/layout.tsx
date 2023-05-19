@@ -83,21 +83,18 @@ export default async function RootLayout({
   );
 
   return (
-    <html lang={params.lang}>
-      <body className="bg-white text-black antialiased dark:bg-dark dark:text-white" >
+    <html lang={params.lang} data-theme="cupcake">
+      <body  >
         <Navbar
           links={navbar.links}
           logoUrl={navbarLogoUrl}
           logoText={navbar.navbarLogo.logoText}
         />
 
-        {/* <main className="dark:bg-black dark:text-gray-100 min-h-screen"> */}
-        <div className="mx-auto max-w-3xl px-3 sm:px-6 xl:max-w-5xl xl:px-0">
-          <div className="flex flex-col justify-between">
-            <main>
-              {children}
-            </main>
-          </div>
+        <div className="mx-auto max-w-7xl px-3 sm:px-6  xl:px-0">
+          <main>
+            {children}
+          </main>
         </div>
 
         <Banner data={notificationBanner} />

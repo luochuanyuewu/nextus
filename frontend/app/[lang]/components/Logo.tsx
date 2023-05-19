@@ -28,6 +28,8 @@ export default function Logo({
             height={45}
             className="rounded-full"
           />}
+          <div className="ml-2">{children}</div>
+
         </div>
       </div>
     </Link>
