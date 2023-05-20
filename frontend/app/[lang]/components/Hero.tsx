@@ -36,6 +36,31 @@ interface HeroProps {
 export default function Hero({ data }: HeroProps) {
   const imgUrl = getStrapiMedia(data.picture.data.attributes.url);
 
+
+  return (
+    <div className="hero min-h-screen bg-base-200">
+      <div className="hero-content flex-col lg:flex-row-reverse">
+        <img src="https://strapi-gumola.oss-cn-beijing.aliyuncs.com/yuewu.dev/uploads/avatar_5a8056b01e.png" className="max-w-sm rounded-lg shadow-2xl" />
+        <div>
+          <h1 className="text-5xl font-bold">{data.title}</h1>
+          <p className="py-6">{data.description}</p>
+
+          {data.buttons.map((button: Button, index: number) => (
+
+            <Link
+              key={index}
+              href={button.url}
+              target={button.newTab ? "_blank" : "_self"}
+            >
+              <button className={renderButtonStyle(button.type)}>{button.text}</button>
+            </Link>
+          ))}
+
+        </div>
+      </div>
+    </div>
+  )
+
   return (
     <section className="dark:bg-black dark:text-gray-100">
       <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">

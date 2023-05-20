@@ -72,7 +72,7 @@ export default async function RootLayout({
   // TODO: CREATE A CUSTOM ERROR PAGE
   if (!global.data) return null;
 
-  const { notificationBanner, navbar, footer } = global.data.attributes;
+  const { notificationBanner, navbar, footer, theme } = global.data.attributes;
 
   const navbarLogoUrl = getStrapiMedia(
     navbar.navbarLogo.logoImg.data.attributes.url
@@ -83,15 +83,15 @@ export default async function RootLayout({
   );
 
   return (
-    <html lang={params.lang} data-theme="cupcake">
-      <body  >
+    <html lang={params.lang} data-theme={theme ? theme : "light"}>
+      <body >
         <Navbar
           links={navbar.links}
           logoUrl={navbarLogoUrl}
           logoText={navbar.navbarLogo.logoText}
         />
 
-        <div className="mx-auto max-w-7xl px-3 sm:px-6  xl:px-0">
+        <div >
           <main>
             {children}
           </main>
@@ -100,6 +100,7 @@ export default async function RootLayout({
         <Banner data={notificationBanner} />
 
         {footer && <Footer
+
           logoUrl={footerLogoUrl}
           logoText={footer.footerLogo.logoText}
           menuLinks={footer.menuLinks}
