@@ -20,7 +20,7 @@ export default [
             'strapi.io',
             'gumola.com',
             'g.alicdn.com',
-            "*.oss-cn-shanghai.aliyuncs.com", "*.oss-cn-beijing.aliyuncs.com"
+            "*.oss-cn-shanghai.aliyuncs.com", "*.oss-cn-beijing.aliyuncs.com", "*.aliyuncs.com"
           ],
           'media-src': [
             "'self'",

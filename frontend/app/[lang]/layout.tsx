@@ -91,11 +91,9 @@ export default async function RootLayout({
           logoText={navbar.navbarLogo.logoText}
         />
 
-        <div >
-          <main>
-            {children}
-          </main>
-        </div>
+        <main className="mx-auto max-w-7xl mb-5">
+          {children}
+        </main>
 
         <Banner data={notificationBanner} />
 

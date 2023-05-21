@@ -67,7 +67,7 @@ export default function Navbar({
 
   return (
     <header >
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 mx-auto max-w-7xl">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -89,10 +89,11 @@ export default function Navbar({
           </ul>
         </div>
         <div className="navbar-end">
-          <button className="btn btn-ghost btn-circle">
-            <AiOutlineLogin className="scale-150" />
-          </button>
+          <Link href="/login" className="btn btn-ghost">登录</Link>
+          <div className="divider lg:divider-horizontal"></div>
+          <Link href="/signup" className="btn btn-ghost">注册</Link>
         </div>
+
       </div>
     </header >
 
