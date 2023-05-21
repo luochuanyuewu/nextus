@@ -10,6 +10,6 @@ ENV PATH /opt/node_modules/.bin:$PATH
 RUN yarn config set network-timeout 600000 -g && yarn config set registry http://registry.npm.taobao.org/ && yarn install
 WORKDIR /opt/app
 COPY ./ .
-RUN yarn build
+RUN yarn install-plugin && yarn build-plugin && yarn build
 EXPOSE 1337
 CMD ["yarn", "develop"]
