@@ -13,7 +13,7 @@ const LoginRedirect = (props: any) => {
     useEffect(() => {
 
         if (!searchParams.has("access_token")) {
-            setText(searchParams.get("error") + searchParams.get("error_description") + searchParams.get("error_url"))
+            setText("无效的请求")
             return
         }
 
@@ -32,8 +32,8 @@ const LoginRedirect = (props: any) => {
                 // Now saving the jwt to use it for future authenticated requests to Strapi
                 localStorage.setItem('jwt', res.jwt);
                 localStorage.setItem('username', res.user.username);
-                setText('You have been successfully logged in. You will be redirected in a few seconds...');
-                setTimeout(() => router.push('/'), 8000); // Redirect to homepage after 3 sec
+                setText('您已经成功登录， 你会在几秒内重定向到主页...');
+                setTimeout(() => router.push('/'), 3000); // Redirect to homepage after 3 sec
             })
             .catch(err => {
                 console.log(err);
