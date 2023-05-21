@@ -19,7 +19,7 @@ export default function RichText({ data }: RichTextProps) {
   //   </section>
   // );
   return (
-    <section className="prose" dangerouslySetInnerHTML={{ __html: data.body }}>
-    </section>
+    <article className="prose max-w-none" dangerouslySetInnerHTML={{ __html: data.body }}>
+    </article>
   );
 }
