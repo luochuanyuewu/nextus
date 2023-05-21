@@ -44,7 +44,7 @@ export default (config, { strapi }) => {
   return async (ctx, next) => {
     ctx.query = {
       populate,
-      filters: { slug: ctx.query.filters.slug },
+      filters: { slug: ctx.query.filters?.slug },
       locale: ctx.query.locale,
     };
 

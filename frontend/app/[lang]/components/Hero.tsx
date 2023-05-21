@@ -46,7 +46,6 @@ export default function Hero({ data }: HeroProps) {
           <p className="py-6">{data.description}</p>
 
           {data.buttons.map((button: Button, index: number) => (
-
             <Link
               key={index}
               href={button.url}

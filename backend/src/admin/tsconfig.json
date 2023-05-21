@@ -1,4 +1,7 @@
 {
+  "compilerOptions": {
+    "sourceMap": true
+  },
   "extends": "@strapi/typescript-utils/tsconfigs/admin",
   "include": [
     "../plugins/**/admin/src/**/*",
