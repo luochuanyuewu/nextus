@@ -29,7 +29,14 @@ export async function generateStaticParams() {
         },
         options
     );
-    console.log("PageResponse:" + JSON.stringify(pageResponse))
+
+
+    pageResponse.data.map(
+        (page: any
+        ) => {
+            console.log("generating page route:" + JSON.stringify(page.attributes.slug))
+        }
+    );
 
     return pageResponse.data.map(
         (page: {

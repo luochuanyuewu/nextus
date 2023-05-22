@@ -60,14 +60,35 @@ export async function generateStaticParams() {
         options
     );
 
+    // articleResponse.data.map(
+    //     (article: {
+    //         attributes: {
+    //             slug: string;
+    //             category: {
+    //                 data: {
+    //                     attributes: {
+    //                         slug: string;
+    //                     }
+    //                 }
+    //             };
+    //         };
+    //     }) => {
+    //         console.log(article.attributes.category.data.attributes.slug)
+    //     }
+    // )
+
     return articleResponse.data.map(
         (article: {
             attributes: {
                 slug: string;
                 category: {
-                    slug: string;
+                    data: {
+                        attributes: {
+                            slug: string;
+                        }
+                    }
                 };
             };
-        }) => ({ slug: article.attributes.slug, category: article.attributes.slug })
+        }) => ({ slug: article.attributes.slug, category: article.attributes.category.data.attributes.slug })
     );
 }
