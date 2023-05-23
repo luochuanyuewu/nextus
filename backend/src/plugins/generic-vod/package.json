@@ -9,12 +9,12 @@
     "kind": "plugin"
   },
   "dependencies": {
-    "@alicloud/openapi-client": "^0.4.5",
+    "@alicloud/openapi-client": "^0.4.6",
     "@alicloud/vod20170321": "^2.0.7",
     "aliyun-aliplayer": "^2.15.6",
-    "@strapi/design-system": "^1.7.3",
-    "@strapi/helper-plugin": "^4.10.2",
-    "@strapi/icons": "^1.7.3",
+    "@strapi/design-system": "^1.7.7",
+    "@strapi/helper-plugin": "^4.10.5",
+    "@strapi/icons": "^1.7.7",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {

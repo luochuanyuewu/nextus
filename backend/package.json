@@ -14,24 +14,22 @@
     "strapi": "strapi"
   },
   "devDependencies": {
-    "@types/node": "^18.16.3"
+    "@types/node": "18.16.0"
   },
   "dependencies": {
-    "@strapi/plugin-documentation": "^4.10.2",
-    "@strapi/plugin-graphql": "^4.10.2",
-    "@strapi/plugin-i18n": "^4.10.2",
+    "@strapi/plugin-documentation": "4.10.5",
+    "@strapi/plugin-graphql": "4.10.5",
+    "@strapi/plugin-i18n": "4.10.5",
     "@strapi/plugin-seo": "^1.8.0",
-    "@strapi/plugin-users-permissions": "^4.10.2",
-    "@strapi/strapi": "^4.10.2",
-    "better-sqlite3": "^8.3.0",
+    "@strapi/plugin-users-permissions": "4.10.5",
+    "@strapi/strapi": "4.10.5",
+    "better-sqlite3": "^8.4.0",
     "mysql": "^2.18.1",
     "react-intl": "^6.4.2",
     "strapi-plugin-comments": "^2.2.10",
     "strapi-plugin-menus": "^1.4.1",
     "strapi-plugin-transformer": "^3.1.0",
-    "strapi-provider-upload-oss": "^0.1.7",
-    "strapi-stripe": "^3.3.0",
-    "strapi-tiptap-editor": "^0.9.12"
+    "strapi-provider-upload-oss": "^0.1.7"
   },
   "author": {
     "name": "罗传月武"

@@ -11,16 +11,15 @@
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.2.32",
     "@types/negotiator": "^0.6.1",
-    "@types/node": "18.16.3",
     "@types/qs": "^6.9.7",
     "@types/react": "18.2.5",
     "@types/react-dom": "18.2.3",
     "classnames": "^2.3.2",
     "daisyui": "^2.51.6",
     "eslint": "8.39.0",
-    "eslint-config-next": "13.4.2",
+    "eslint-config-next": "13.4.3",
     "negotiator": "^0.6.3",
-    "next": "13.4.2",
+    "next": "13.4.3",
     "qs": "^6.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -33,6 +32,7 @@
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
+    "@types/node": "18.16.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7"

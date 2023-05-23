@@ -1,7 +1,11 @@
-module.exports = ({ env }) => ({
+module.exports = ({env}) => ({
   'generic-vod': {
     enabled: true,
     resolve: './src/plugins/generic-vod'
+  },
+  'strapi-tiptap-editor': {
+    enabled: true,
+    resolve: './src/plugins/strapi-tiptap-editor'
   },
   email: {
     config: {

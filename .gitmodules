@@ -1,0 +1,4 @@
+[submodule "backend/src/plugins/strapi-tiptap-editor"]
+	path = backend/src/plugins/strapi-tiptap-editor
+	url = https://github.com/luochuanyuewu/strapi-tiptap-editor.git
+	branch = yuewu
