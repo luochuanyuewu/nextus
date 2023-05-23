@@ -1,5 +1,3 @@
-import { Strapi } from '@strapi/strapi';
-import { configClient } from "../utils/config";
 import {
   CreateUploadVideoRequest,
   DeleteVideoRequest,
@@ -10,10 +8,12 @@ import {
   RefreshUploadVideoRequest,
   UpdateVideoInfoRequest
 } from "@alicloud/vod20170321";
+import { Strapi } from '@strapi/strapi';
+import { configClient } from "../utils/config";
 
 import Util, * as $Util from '@alicloud/tea-util';
-import { CustomVideo, InputData } from "../../types";
 import pluginId from "../../admin/src/pluginId";
+import { CustomVideo, InputData } from "../../types";
 
 
 const model = `plugin::${pluginId}.vod-video`
