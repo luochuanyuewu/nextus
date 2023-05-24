@@ -1,19 +1,19 @@
-import {request} from '@strapi/helper-plugin'
+import { getFetchClient } from '@strapi/helper-plugin'
 
 import pluginId from '../pluginId'
-import {AliVodSettings} from '../../../types'
+import { AliVodSettings } from '../../../types'
+
+
+const { get, post, put, del } = getFetchClient();
 
 const settingsRequests = {
   get: async (): Promise<AliVodSettings> => {
-    return await request(`/${pluginId}/settings`, {
-      method: 'GET',
-    })
+    const res = await get(`/${pluginId}/settings`)
+    return res.data
   },
   update: async (body: Object) => {
-    return await request(`/${pluginId}/settings`, {
-      method: 'POST',
-      body,
-    })
+    const res = await post(`/${pluginId}/settings`, body)
+    return res.data
   },
 }
 

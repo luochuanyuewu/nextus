@@ -51,3 +51,13 @@ export interface InputDataMetadata {
   value: string
 }
 
+export interface AliVodeService extends Record<string, any> {
+  getVideoPlayAuth: (videoId: string) => Promise<any> | null
+  createUploadVideo: (data: InputData) => Promise<any> | null
+  refreshUploadVideo: (videoId: string) => Promise<any>
+  findAll: (query: any) => Promise<any>
+  token: (videoId: any) => Promise<any>
+  create: (data: CustomVideo) => Promise<any>
+  delete: (id: string, videoId: string) => Promise<boolean>
+  update: (id: string, videoId: string, data: InputData) => Promise<any>
+}

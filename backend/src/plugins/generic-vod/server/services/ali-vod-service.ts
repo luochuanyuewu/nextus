@@ -10,15 +10,14 @@ import {
 } from "@alicloud/vod20170321";
 import { Strapi } from '@strapi/strapi';
 import { configClient } from "../utils/config";
-
 import Util, * as $Util from '@alicloud/tea-util';
 import pluginId from "../../admin/src/pluginId";
-import { CustomVideo, InputData } from "../../types";
+import { AliVodeService, CustomVideo, InputData } from "../../types";
 
 
 const model = `plugin::${pluginId}.vod-video`
 
-export default ({ strapi }: { strapi: Strapi }) => ({
+const aliVodeService = ({ strapi }: { strapi: Strapi }): AliVodeService => ({
   async getPlayerInfo(VideoId: string) {
     try {
       const client = await configClient(strapi)
@@ -228,3 +227,5 @@ export default ({ strapi }: { strapi: Strapi }) => ({
   },
 
 });
+
+export default aliVodeService

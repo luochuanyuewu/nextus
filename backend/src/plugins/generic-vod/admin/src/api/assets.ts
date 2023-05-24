@@ -1,47 +1,39 @@
-import {request} from '@strapi/helper-plugin'
+import { getFetchClient } from '@strapi/helper-plugin'
 
 import pluginId from '../pluginId'
-import {InputData} from '../../../types'
+import { InputData } from '../../../types'
+
+const { get, post, put, del } = getFetchClient();
+
 
 const assetsRequests = {
   getAllvideos: async () => {
-    return await request(`/${pluginId}/vod-video`, {
-      method: 'GET',
-    })
+    const res = await get(`/${pluginId}/vod-video`)
+    return res.data
   },
   getToken: async (videoId: string) => {
-    return await request(`/${pluginId}/vod-video/token/${videoId}`, {
-      method: 'GET',
-    })
+    const res = await get(`/${pluginId}/vod-video/token/${videoId}`)
+    return res.data
   },
   createVideoId: async (body: Object) => {
-    return await request(`/${pluginId}/vod-video/create`, {
-      method: 'POST',
-      body,
-    })
+    const res = await post(`/${pluginId}/vod-video/create`, body)
+    return res.data
   },
   refreshVideoId: async (body: Object) => {
-    return await request(`/${pluginId}/vod-video/refresh`, {
-      method: 'POST',
-      body,
-    })
+    const res = await post(`/${pluginId}/vod-video/refresh`, body)
+    return res.data
+
   },
   create: async (body: Object) => {
-    return await request(`/${pluginId}/vod-video`, {
-      method: 'POST',
-      body,
-    })
+    const res = await post(`/${pluginId}/vod-video`, body)
+    return res.data
   },
   update: async (id: number, videoId: string, body: InputData) => {
-    return await request(`/${pluginId}/vod-video/${id}/${videoId}`, {
-      method: 'PUT',
-      body,
-    })
+    const res = await put(`/${pluginId}/vod-video/${id}/${videoId}`, body)
+    return res.data
   },
   delete: async (id: number, videoId: string) => {
-    return await request(`/${pluginId}/vod-video/${id}/${videoId}`, {
-      method: 'DELETE',
-    })
+    const res = await del(`/${pluginId}/vod-video/${id}/${videoId}`)
   },
 }
 

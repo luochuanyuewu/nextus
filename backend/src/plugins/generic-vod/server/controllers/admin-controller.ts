@@ -1,4 +1,5 @@
 import { Strapi } from '@strapi/strapi';
+import { getAliVodService } from '../utils/index'
 import { isAllowedTo } from '.';
 import { mainCreateAction, mainDeleteAction, mainReadAction, mainUpdateAction } from "../../admin/src/actions";
 
@@ -18,7 +19,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
         return ctx.forbidden();
       }
 
-      return await strapi.plugin('generic-vod').service('ali-vod-service').createUploadVideo(ctx.request.body)
+      return await getAliVodService(strapi).createUploadVideo(ctx.request.body)
     } catch (err) {
       ctx.throw(500, err)
     }
@@ -29,7 +30,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
         return ctx.forbidden();
       }
 
-      return await strapi.plugin('generic-vod').service('ali-vod-service').refreshUploadVideo(ctx.request.body.videoId)
+      return await getAliVodService(strapi).refreshUploadVideo(ctx.request.body.videoId)
     } catch (err) {
       ctx.throw(500, err)
     }
@@ -40,7 +41,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
         return ctx.forbidden();
       }
 
-      ctx.body = await strapi.plugin('generic-vod').service('ali-vod-service').create(ctx.request.body)
+      ctx.body = await getAliVodService(strapi).create(ctx.request.body)
     } catch (err) {
       ctx.throw(500, err)
     }
@@ -61,7 +62,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
       }
 
 
-      ctx.body = await strapi.plugin('generic-vod').service('ali-vod-service').findAll(queryParams)
+      ctx.body = await getAliVodService(strapi).findAll(queryParams)
     } catch (err) {
       ctx.throw(500, err)
     }
@@ -72,7 +73,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
         return ctx.forbidden();
       }
 
-      ctx.body = await strapi.plugin('generic-vod').service('ali-vod-service').token(ctx.params.videoId)
+      ctx.body = await getAliVodService(strapi).token(ctx.params.videoId)
     } catch (err) {
       ctx.throw(500, err)
     }
@@ -83,9 +84,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
         return ctx.forbidden();
       }
 
-      ctx.body = await strapi
-        .plugin('generic-vod')
-        .service('ali-vod-service')
+      ctx.body = await getAliVodService(strapi)
         .update(ctx.params.id, ctx.params.videoId, ctx.request.body)
     } catch (err) {
       ctx.throw(500, err)
@@ -97,10 +96,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
         return ctx.forbidden();
       }
 
-      return await strapi
-        .plugin('generic-vod')
-        .service('ali-vod-service')
-        .delete(ctx.params.id, ctx.params.videoId)
+      return await getAliVodService(strapi).delete(ctx.params.id, ctx.params.videoId)
     } catch (err) {
       ctx.throw(500, err)
     }
