@@ -4,8 +4,8 @@ export function UmamiScript() {
     return (
         <Script
             async
-            data-website-id="4e8c5eab-9e3b-4b42-a0a4-63ea6ddf3508"
-            src="https://analytics.umami.is/script.js"
+            data-website-id="4efb160b-1389-4420-9a5b-f92f0d8db65d"
+            src="https://analytics.yuewu.dev/script.js"
         />
     )
 }

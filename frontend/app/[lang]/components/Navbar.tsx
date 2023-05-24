@@ -101,7 +101,7 @@ export default function Navbar({
           <div className="divider lg:divider-horizontal"></div>
           <Link href="/signup" className="btn btn-ghost">注册</Link>
           <div className="divider lg:divider-horizontal"></div>
-          <Link href="https://analytics.umami.is/share/s8RFFn7y1jU0SSHO/yuewu.dev" className="btn btn-ghost">分析</Link>
+          <Link href="https://analytics.yuewu.dev/share/Znw4OfFzzei2i2Kd/yuewu.dev" className="btn btn-ghost">分析</Link>
         </div>
 
       </div>
