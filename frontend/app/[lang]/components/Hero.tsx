@@ -38,9 +38,9 @@ export default function Hero({ data }: HeroProps) {
 
 
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-fit bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <img src="https://strapi-gumola.oss-cn-beijing.aliyuncs.com/yuewu.dev/uploads/avatar_5a8056b01e.png" className="max-w-sm rounded-lg shadow-2xl" />
+        <Image src={imgUrl as any} className="max-w-sm rounded-lg shadow-2xl" height={400} width={400} alt="HeroImage" />
         <div>
           <h1 className="text-5xl font-bold">{data.title}</h1>
           <p className="py-6">{data.description}</p>
