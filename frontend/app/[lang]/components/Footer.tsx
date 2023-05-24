@@ -68,16 +68,24 @@ function RenderSocialIcon({ social }: { social: string | undefined }) {
 export default function Footer({
   logoUrl,
   logoText,
+  menuTitle,
   menuLinks,
+  categoryTitle,
   categoryLinks,
+  legalTitle,
   legalLinks,
+  socialTitle,
   socialLinks,
 }: {
   logoUrl: string | null;
   logoText: string | null;
+  menuTitle: string | null
   menuLinks: Array<FooterLink>;
+  categoryTitle: string | null
   categoryLinks: Array<CategoryLink>;
+  legalTitle: string | null
   legalLinks: Array<FooterLink>;
+  socialTitle: string | null
   socialLinks: Array<FooterLink>;
 }) {
 
@@ -91,19 +99,19 @@ export default function Footer({
           <p>罗传月武<br />Coding since 2011</p>
         </div>
         <div>
-          <span className="footer-title">分类</span>
+          <span className="footer-title">{categoryTitle}</span>
           {categoryLinks.map((link: CategoryLink) => (
             <CategoryLink key={link.id} {...link} />
           ))}
         </div>
         <div>
-          <span className="footer-title">菜单</span>
+          <span className="footer-title">{menuTitle}</span>
           {menuLinks.map((link: FooterLink) => (
             <FooterLink key={link.id} {...link} />
           ))}
         </div>
         <div>
-          <span className="footer-title">法定权利</span>
+          <span className="footer-title">{legalTitle}</span>
           {legalLinks.map((link: FooterLink) => (
             <Link
               href={link.url}

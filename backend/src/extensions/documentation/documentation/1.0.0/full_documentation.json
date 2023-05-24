@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-05-24T07:48:31.932Z"
+    "x-generation-date": "2023-05-24T08:17:24.136Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6696,6 +6696,9 @@
             ],
             "example": "string or id"
           },
+          "theme": {
+            "type": "string"
+          },
           "notificationBanner": {
             "$ref": "#/components/schemas/ElementsNotificationBannerComponent"
           },
@@ -6704,9 +6707,6 @@
           },
           "footer": {
             "$ref": "#/components/schemas/LayoutFooterComponent"
-          },
-          "theme": {
-            "type": "string"
           },
           "locale": {
             "type": "string"
@@ -6739,6 +6739,9 @@
                 ],
                 "example": "string or id"
               },
+              "theme": {
+                "type": "string"
+              },
               "notificationBanner": {
                 "$ref": "#/components/schemas/ElementsNotificationBannerComponent"
               },
@@ -6747,9 +6750,6 @@
               },
               "footer": {
                 "$ref": "#/components/schemas/LayoutFooterComponent"
-              },
-              "theme": {
-                "type": "string"
               },
               "locale": {
                 "type": "string"
@@ -7502,6 +7502,9 @@
               }
             }
           },
+          "theme": {
+            "type": "string"
+          },
           "notificationBanner": {
             "$ref": "#/components/schemas/ElementsNotificationBannerComponent"
           },
@@ -7510,9 +7513,6 @@
           },
           "footer": {
             "$ref": "#/components/schemas/LayoutFooterComponent"
-          },
-          "theme": {
-            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -8011,6 +8011,9 @@
               }
             }
           },
+          "menuTitle": {
+            "type": "string"
+          },
           "menuLinks": {
             "type": "array",
             "items": {
@@ -8031,6 +8034,9 @@
               }
             }
           },
+          "legalTitle": {
+            "type": "string"
+          },
           "legalLinks": {
             "type": "array",
             "items": {
@@ -8050,6 +8056,9 @@
                 }
               }
             }
+          },
+          "socialTitle": {
+            "type": "string"
           },
           "socialLinks": {
             "type": "array",
@@ -8081,6 +8090,9 @@
                 }
               }
             }
+          },
+          "categoryTitle": {
+            "type": "string"
           },
           "categories": {
             "type": "object",

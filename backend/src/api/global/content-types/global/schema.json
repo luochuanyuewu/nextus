@@ -40,6 +40,15 @@
         }
       }
     },
+    "theme": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "default": "light"
+    },
     "notificationBanner": {
       "type": "component",
       "repeatable": false,
@@ -69,15 +78,6 @@
         }
       },
       "component": "layout.footer"
-    },
-    "theme": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string",
-      "default": "light"
     }
   }
 }

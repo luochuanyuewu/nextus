@@ -105,9 +105,13 @@ export default async function RootLayout({
 
           logoUrl={footerLogoUrl}
           logoText={footer.footerLogo.logoText}
+          menuTitle={footer.menuTitle}
           menuLinks={footer.menuLinks}
+          categoryTitle={footer.categoryTitle}
           categoryLinks={footer.categories.data}
+          legalTitle={footer.legalTitle}
           legalLinks={footer.legalLinks}
+          socialTitle={footer.socialTitle}
           socialLinks={footer.socialLinks}
         />}
 
