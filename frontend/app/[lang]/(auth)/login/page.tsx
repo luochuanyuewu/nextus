@@ -32,7 +32,7 @@ export default async function PageRoute({ params }: { params: { slug: string, la
                     <button className="btn btn-primary" >邮箱登录</button>
                 </div>
                 <div className="form-control mt-6">
-                    <Link href={`${backendUrl}/api/connect/github`}>
+                    <Link data-umami-event="auth-login-github" href={`${backendUrl}/api/connect/github`}>
                         <button className="btn btn-secondary" >Github登录</button>
                     </Link>
                 </div>

@@ -100,6 +100,8 @@ export default function Navbar({
           <Link href="/login" className="btn btn-ghost">登录</Link>
           <div className="divider lg:divider-horizontal"></div>
           <Link href="/signup" className="btn btn-ghost">注册</Link>
+          <div className="divider lg:divider-horizontal"></div>
+          <Link href="https://analytics.umami.is/share/s8RFFn7y1jU0SSHO/yuewu.dev" className="btn btn-ghost">分析</Link>
         </div>
 
       </div>

@@ -7,6 +7,7 @@ import Banner from "./components/Banner";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { i18n } from "@/i18n-config";
+import { Analytics } from "@/components/analytics";
 
 const FALLBACK_SEO = {
   title: "Strapi Starter Next Blog",
@@ -106,6 +107,9 @@ export default async function RootLayout({
           legalLinks={footer.legalLinks}
           socialLinks={footer.socialLinks}
         />}
+
+        <Analytics />
+
       </body>
     </html >
   );
