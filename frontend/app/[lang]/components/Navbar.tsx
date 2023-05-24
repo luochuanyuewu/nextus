@@ -53,10 +53,12 @@ function NavLink({ url, text }: NavLink) {
 
 export default function Navbar({
   links,
+  buttons,
   logoUrl,
   logoText,
 }: {
   links: Array<NavLink>;
+  buttons?: Array<NavLink>
   logoUrl: string | null;
   logoText: string | null;
 }) {
@@ -97,11 +99,14 @@ export default function Navbar({
           </ul>
         </div>
         <div className="navbar-end">
-          <Link href="/login" className="btn btn-ghost">登录</Link>
-          <div className="divider lg:divider-horizontal"></div>
-          <Link href="/signup" className="btn btn-ghost">注册</Link>
-          <div className="divider lg:divider-horizontal"></div>
-          <Link href="https://analytics.yuewu.dev/share/Znw4OfFzzei2i2Kd/yuewu.dev" className="btn btn-ghost">分析</Link>
+          <div className="btn-group btn-group-horizontal">
+            {buttons && buttons.map((item: NavLink) => (
+              <Link key={item.id} href={item.url} className="btn  btn-ghost">{item.text}</Link>
+            ))}
+            {/* <Link href="/login" className="btn btn-ghost">登录</Link>
+            <Link href="/signup" className="btn btn-ghost">注册</Link>
+            <Link href="https://analytics.yuewu.dev/share/Znw4OfFzzei2i2Kd/yuewu.dev" className="btn btn-ghost">分析</Link> */}
+          </div>
         </div>
 
       </div>

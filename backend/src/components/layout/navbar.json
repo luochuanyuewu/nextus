@@ -13,9 +13,9 @@
       "repeatable": true,
       "component": "links.link"
     },
-    "button": {
+    "buttons": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "links.button-link"
     },
     "navbarLogo": {
