@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 export interface IAliPlayerProps {
     source?: string | undefined
@@ -79,7 +79,6 @@ const AliPlayer = function ({
             console.log("创建播放器:" + player)
         })
     }
-
 
     let player: any
 

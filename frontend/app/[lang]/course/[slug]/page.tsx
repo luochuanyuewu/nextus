@@ -1,5 +1,3 @@
-// import CourseViewer from '@/components/courses/CourseViewer'
-import CourseViewer from '@/components/course/CourseViewer';
 import { fetchAPI } from '../../utils/fetch-api';
 
 
@@ -34,7 +32,8 @@ export default async function ViewCourse({ params }: { params: { lang: string, s
 
     return (
         <>
-            <CourseViewer course={course} ></CourseViewer>
+            <p>{JSON.stringify(course)}</p>
+            {/* <CourseViewer course={course} /> */}
         </>
     )
 }
