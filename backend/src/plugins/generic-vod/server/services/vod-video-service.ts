@@ -147,6 +147,12 @@ export default factories.createCoreService<any>(model, ({ strapi }: { strapi: St
     }
   },
 
+  async find(...args) {
+    const { results, pagination } = await super.find(...args);
+
+    return { results, pagination };
+  },
+
   async findAll(query: any) {
     return await strapi.entityService.findMany(model, query)
   },

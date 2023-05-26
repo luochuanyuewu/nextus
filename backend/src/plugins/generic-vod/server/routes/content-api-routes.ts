@@ -2,7 +2,7 @@ export default [
     {
         method: 'GET',
         path: '/vod-video',
-        handler: 'content-api.find',
+        handler: 'vod-video.find',
         config: {
             description: 'Find all vod assets',
             policies: [],
@@ -11,7 +11,7 @@ export default [
     {
         method: 'GET',
         path: '/vod-video/count',
-        handler: 'content-api.count',
+        handler: 'vod-video.count',
         config: {
             description: 'Counts the number of vod items',
             policies: [],
@@ -20,7 +20,7 @@ export default [
     {
         method: 'GET',
         path: '/vod-video/:id',
-        handler: 'content-api.findOne',
+        handler: 'vod-video.findOne',
         config: {
             description: 'Find one vod asset by id',
             policies: [],

@@ -2,7 +2,7 @@ import { Strapi } from '@strapi/strapi';
 import pluginId from '../../admin/src/pluginId';
 import adminController from "./admin-controller";
 import settingController from './settings-controller';
-import contentApiController from './content-api-controller'
+import vodVideoController from './vod-video-controller'
 
 const model = `plugin::${pluginId}.vod-video`
 
@@ -20,5 +20,5 @@ export const isAllowedTo = (strapi: Strapi, ctx: any, action: string) => {
 export default {
   admin: adminController,
   settings: settingController,
-  'content-api': contentApiController
+  'vod-video': vodVideoController
 };
