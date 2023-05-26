@@ -18,57 +18,6 @@ import { VodVideoService, CustomVideo, InputData } from "../../types";
 const model = `plugin::${pluginId}.vod-video`
 
 export default factories.createCoreService<any>(model, ({ strapi }: { strapi: Strapi }): VodVideoService => ({
-  async getPlayerInfo(VideoId: string) {
-    try {
-      const client = await configClient(strapi)
-
-      const request = new GetPlayInfoRequest()
-      request.videoId = VideoId;
-
-      const response: GetPlayInfoResponse = await client.getPlayInfo(request)
-
-      // Play URL
-      if (response.PlayInfoList && response.PlayInfoList.PlayInfo && response.PlayInfoList.PlayInfo.length > 0) {
-        for (let i = 0; i < response.PlayInfoList.PlayInfo.length; i++) {
-          console.log("PlayInfo.PlayURL = " + response.PlayInfoList.PlayInfo[i].PlayURL);
-        }
-      }
-
-      // Base metadata
-      if (response.VideoBase) {
-        console.log('VideoBase.Title = ' + response.VideoBase.Title);
-      }
-
-      console.log('RequestId = ' + response.RequestId);
-    } catch (error) {
-      console.log('ErrorCode = ' + error.data.Code);
-      console.log('ErrorMessage = ' + error.data.Message);
-      console.log('RequestId = ' + error.data.RequestId);
-    }
-  },
-
-  async getVideoPlayAuth(VideoId: string) {
-
-    try {
-      const client = await configClient(strapi)
-
-      const response: GetVideoPlayAuthResponse = await client.getVideoPlayAuth(new GetVideoPlayAuthRequest({ videoId: VideoId }));
-
-      // Base metadata
-      if (response.VideoMeta) {
-        console.log('VideoMeta.Title = ' + response.body.videoMeta?.Title);
-        // response.body.videoMeta.coverURL
-      }
-      console.log('RequestId = ' + response.body.requestId);
-      return response.body.playAuth
-    } catch (error) {
-      console.log('ErrorCode = ' + error.data.Code);
-      console.log('ErrorMessage = ' + error.data.Message);
-      console.log('RequestId = ' + error.data.RequestId);
-      return ''
-    }
-  },
-
   async createUploadVideo(data: InputData) {
     const client = await configClient(strapi)
 
@@ -232,5 +181,56 @@ export default factories.createCoreService<any>(model, ({ strapi }: { strapi: St
     //
     // const res = await strapi.entityService.update(model, id, {data: customVideo})
     // return res;
-  }
+  },
+
+  async getPlayerInfo(VideoId: string) {
+    try {
+      const client = await configClient(strapi)
+
+      const request = new GetPlayInfoRequest()
+      request.videoId = VideoId;
+
+      const response: GetPlayInfoResponse = await client.getPlayInfo(request)
+
+      // Play URL
+      if (response.PlayInfoList && response.PlayInfoList.PlayInfo && response.PlayInfoList.PlayInfo.length > 0) {
+        for (let i = 0; i < response.PlayInfoList.PlayInfo.length; i++) {
+          console.log("PlayInfo.PlayURL = " + response.PlayInfoList.PlayInfo[i].PlayURL);
+        }
+      }
+
+      // Base metadata
+      if (response.VideoBase) {
+        console.log('VideoBase.Title = ' + response.VideoBase.Title);
+      }
+
+      console.log('RequestId = ' + response.RequestId);
+    } catch (error) {
+      console.log('ErrorCode = ' + error.data.Code);
+      console.log('ErrorMessage = ' + error.data.Message);
+      console.log('RequestId = ' + error.data.RequestId);
+    }
+  },
+
+  async getVideoPlayAuth(VideoId: string) {
+
+    try {
+      const client = await configClient(strapi)
+
+      const response: GetVideoPlayAuthResponse = await client.getVideoPlayAuth(new GetVideoPlayAuthRequest({ videoId: VideoId }));
+
+      // Base metadata
+      if (response.VideoMeta) {
+        console.log('VideoMeta.Title = ' + response.body.videoMeta?.Title);
+        // response.body.videoMeta.coverURL
+      }
+      console.log('RequestId = ' + response.body.requestId);
+      return response.body.playAuth
+    } catch (error) {
+      console.log('ErrorCode = ' + error.data.Code);
+      console.log('ErrorMessage = ' + error.data.Message);
+      console.log('RequestId = ' + error.data.RequestId);
+      return ''
+    }
+  },
 }))
