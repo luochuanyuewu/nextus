@@ -82,7 +82,7 @@ export default function Navbar({
             'dropdown-open': open,
           })}>
             <label tabIndex={0} className="btn btn-ghost lg:hidden" onClick={() => setOpen((prev) => !prev)}>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </label>
             <ul tabIndex={0} onClick={handleClick} className={classNames({ 'menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52': true, hidden: !open })}>
               {links.map((item: NavLink) => (
@@ -99,14 +99,25 @@ export default function Navbar({
             ))}
           </ul>
         </div>
+
+
+
         <div className="navbar-end">
-          <div className="btn-group btn-group-horizontal">
-            {buttons && buttons.map((item: NavLink) => (
-              <Link key={item.id} href={item.url} className="btn  btn-ghost">{item.text}</Link>
-            ))}
-          </div>
           <ThemeSwitcher />
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" /><circle cx="12" cy="10" r="3" /><circle cx="12" cy="12" r="10" /></svg>
+            </label>
+            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+              {buttons && buttons.map((item: NavLink) => (
+                <NavLink key={item.id} {...item} />
+              ))}
+            </ul>
+          </div>
+
         </div>
+
+
       </div>
     </header >
 
