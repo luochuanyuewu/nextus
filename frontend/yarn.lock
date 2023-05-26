@@ -383,6 +383,13 @@ ajv@^6.10.0, ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+aliyun-aliplayer@^2.15.6:
+  version "2.15.6"
+  resolved "https://registry.npmmirror.com/aliyun-aliplayer/-/aliyun-aliplayer-2.15.6.tgz#e3fc4cbd770c5656cd0459b6292fa8be6d4875d2"
+  integrity sha512-88Uv9bVDnbaMVPH6dOkJPWk4QZVK68QDWKfvbsDI/ZLwNzPKJfhsiukl/MhMMRvVvtweo5A2HnaEoK6+oaEgKw==
+  dependencies:
+    crypto-js "^4.1.1"
+
 ansi-regex@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npmmirror.com/ansi-regex/-/ansi-regex-5.0.1.tgz#082cb2c89c9fe8659a311a53bd6a4dc5301db304"
@@ -697,6 +704,11 @@ cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     path-key "^3.1.0"
     shebang-command "^2.0.0"
     which "^2.0.1"
+
+crypto-js@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npmmirror.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
+  integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
 
 css-selector-tokenizer@^0.8.0:
   version "0.8.0"

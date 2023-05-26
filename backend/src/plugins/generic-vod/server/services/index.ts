@@ -1,7 +1,7 @@
-import aliVodService from './ali-vod-service';
+import vodVideoService from './vod-video-service';
 import settingService from './setting-service'
 
 export default {
   'settings': settingService,
-  'ali-vod-service': aliVodService,
+  'vod-video': vodVideoService,
 };

@@ -51,7 +51,7 @@ export interface InputDataMetadata {
   value: string
 }
 
-export interface AliVodeService extends Record<string, any> {
+export interface VodVideoService extends Record<string, any> {
   getVideoPlayAuth: (videoId: string) => Promise<any> | null
   createUploadVideo: (data: InputData) => Promise<any> | null
   refreshUploadVideo: (videoId: string) => Promise<any>

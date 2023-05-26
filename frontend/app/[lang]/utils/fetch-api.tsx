@@ -22,6 +22,7 @@ export async function fetchAPI(
       `/api${path}${queryString ? `?${queryString}` : ""}`
     )}`;
 
+    console.log("请求:" + `${getStrapiURL(`/api${path}${queryString ? `?${qs.stringify(urlParamsObject, { encode: false })}` : ""}`)}`)
     // Trigger API call
     const response = await fetch(requestUrl, mergedOptions);
     const data = await response.json();

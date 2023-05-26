@@ -1,4 +1,9 @@
 
+//导出aliplayer
+import 'aliyun-aliplayer'
+// 导出样式
+import 'aliyun-aliplayer/dist/skins/default/aliplayer-min.css'
+
 import React, { useEffect, useState } from "react";
 
 export interface IAliPlayerProps {

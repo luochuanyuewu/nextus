@@ -8,16 +8,16 @@ import {
   RefreshUploadVideoRequest,
   UpdateVideoInfoRequest
 } from "@alicloud/vod20170321";
-import { Strapi } from '@strapi/strapi';
+import { Strapi, factories } from '@strapi/strapi';
 import { configClient } from "../utils/config";
 import Util, * as $Util from '@alicloud/tea-util';
 import pluginId from "../../admin/src/pluginId";
-import { AliVodeService, CustomVideo, InputData } from "../../types";
+import { VodVideoService, CustomVideo, InputData } from "../../types";
 
 
 const model = `plugin::${pluginId}.vod-video`
 
-const aliVodeService = ({ strapi }: { strapi: Strapi }): AliVodeService => ({
+export default factories.createCoreService<any>(model, ({ strapi }: { strapi: Strapi }): VodVideoService => ({
   async getPlayerInfo(VideoId: string) {
     try {
       const client = await configClient(strapi)
@@ -120,9 +120,7 @@ const aliVodeService = ({ strapi }: { strapi: Strapi }): AliVodeService => ({
   },
 
 
-  async findAll(query: any) {
-    return await strapi.entityService.findMany(model, query)
-  },
+
 
   // 拿到视频播放凭证
   async token(videoId: string) {
@@ -147,6 +145,10 @@ const aliVodeService = ({ strapi }: { strapi: Strapi }): AliVodeService => ({
       console.log('RequestId = ' + error.data.RequestId);
       return ''
     }
+  },
+
+  async findAll(query: any) {
+    return await strapi.entityService.findMany(model, query)
   },
 
   async create(data: CustomVideo) {
@@ -224,8 +226,5 @@ const aliVodeService = ({ strapi }: { strapi: Strapi }): AliVodeService => ({
     //
     // const res = await strapi.entityService.update(model, id, {data: customVideo})
     // return res;
-  },
-
-});
-
-export default aliVodeService
+  }
+}))
