@@ -28,6 +28,7 @@
     "react-markdown": "^8.0.5",
     "react-slideshow-image": "^4.2.1",
     "remark-gfm": "^3.0.1",
+    "theme-change": "^2.5.0",
     "typescript": "5.0.4"
   },
   "devDependencies": {

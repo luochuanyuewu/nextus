@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 // import classnames and useOnClickOutside
 import classNames from "classnames";
 import { useState } from "react";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 
 interface NavLink {
@@ -103,12 +104,9 @@ export default function Navbar({
             {buttons && buttons.map((item: NavLink) => (
               <Link key={item.id} href={item.url} className="btn  btn-ghost">{item.text}</Link>
             ))}
-            {/* <Link href="/login" className="btn btn-ghost">登录</Link>
-            <Link href="/signup" className="btn btn-ghost">注册</Link>
-            <Link href="https://analytics.yuewu.dev/share/Znw4OfFzzei2i2Kd/yuewu.dev" className="btn btn-ghost">分析</Link> */}
           </div>
+          <ThemeSwitcher />
         </div>
-
       </div>
     </header >
 

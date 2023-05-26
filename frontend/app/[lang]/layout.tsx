@@ -85,8 +85,10 @@ export default async function RootLayout({
     footer ? footer.footerLogo.logoImg.data.attributes.url : ''
   );
 
+  // <html lang={params.lang} data-theme={theme ? theme : "light"}>
+
   return (
-    <html lang={params.lang} data-theme={theme ? theme : "light"}>
+    <html lang={params.lang} >
       <body >
         <Navbar
           links={navbar.links}
