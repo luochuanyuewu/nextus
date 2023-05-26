@@ -141,7 +141,7 @@ export function ThemeSwitcher() {
           <div className="grid grid-cols-1 gap-3 p-3" tabIndex={0}>
             {themes.map((theme) =>
             (
-              <button key={theme.id} className="outline-base-content overflow-hidden rounded-lg text-left" data-set-theme={theme.id} data-act-className="[&_svg]:visible">
+              <button key={theme.id} className="outline-base-content overflow-hidden rounded-lg text-left" data-set-theme={theme.id}>
                 <div data-theme={theme.id} className="bg-base-100 text-base-content w-full cursor-pointer font-sans">
                   <div className="grid grid-cols-5 grid-rows-3">
                     <div className="col-span-5 row-span-3 row-start-1 flex gap-2 py-3 px-4 items-center">
