@@ -45,7 +45,6 @@ const InternalPlayer: React.ForwardRefRenderFunction<PlayerRef, PlayerProps> = (
     const playerId = useRef(`aliplayer`);
     const [isLoading, setIsLoading] = useState(true);
 
-    console.log("player compoennt" + typeof window === 'undefined')
     useEffect(
         () => {
             insertLinkTag();

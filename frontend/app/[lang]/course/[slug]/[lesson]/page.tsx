@@ -1,9 +1,6 @@
-'use client';
 // import CourseViewer from '@/components/course/CourseViewer';
 import { fetchAPI } from '../../../utils/fetch-api';
-import { useEffect, useState } from 'react';
 import clsx from 'classnames';
-import { useRouter } from 'next/navigation';
 import { Player } from '@/components/aliplayer/Player';
 
 
@@ -118,8 +115,6 @@ async function getVideoPlayingToken(videoId: string): Promise<any> {
 export default async function ViewCourse({ params }: { params: { lang: string, slug: string, lesson: string } }) {
     // const [lessonProgress, setLessonProgress] = useState(completedLessons)
 
-    const router = useRouter()
-
     const data = await fetchData(params.slug, params.lang);
 
     if (data == null) {
@@ -140,8 +135,6 @@ export default async function ViewCourse({ params }: { params: { lang: string, s
 
     // const [mounted, setMounted] = useState<boolean>(true)
 
-    console.log("rerednering")
-
     const res = await getVideoPlayingToken(videoId as any)
     const playAuth = res.playAuth
 
@@ -152,10 +145,6 @@ export default async function ViewCourse({ params }: { params: { lang: string, s
     //     })
 
     // }, [])
-
-    const goToLesson = (lessonId: number) => {
-        router.push(`/course/${course.attributes.slug}/${lessonId}`)
-    }
 
 
     if (!lessons.length) {

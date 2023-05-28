@@ -22,6 +22,14 @@ export async function fetchAPI(
       `/api${path}${queryString ? `?${queryString}` : ""}`
     )}`;
 
+    const isServer = typeof window === 'undefined';
+
+    const requestUrlRaw = `${getStrapiURL(
+      `/api${path}${queryString ? `?${qs.stringify(urlParamsObject, { encode: false })}` : ""}`
+    )}`;
+
+    console.log(`${isServer ? "ServerSide请求:" : "ClientSide请求:"}` + requestUrlRaw)
+
     // Trigger API call
     const response = await fetch(requestUrl, mergedOptions);
     const data = await response.json();
