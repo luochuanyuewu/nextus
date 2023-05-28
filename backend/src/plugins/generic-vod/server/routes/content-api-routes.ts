@@ -10,6 +10,14 @@ export default [
     },
     {
         method: 'GET',
+        path: '/vod-video/token/:videoId',
+        handler: 'vod-video.token',
+        config: {
+            policies: [],
+        },
+    },
+    {
+        method: 'GET',
         path: '/vod-video/count',
         handler: 'vod-video.count',
         config: {

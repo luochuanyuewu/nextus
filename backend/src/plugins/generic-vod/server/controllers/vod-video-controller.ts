@@ -1,12 +1,21 @@
 import { factories } from '@strapi/strapi'
 import pluginId from '../../admin/src/pluginId'
+import { getVodVideoService } from '../utils'
 
 const model = `plugin::${pluginId}.vod-video`
 
 export default factories.createCoreController(model, ({ strapi }) => ({
-    async count(ctx) {
-        return await strapi.entityService.count(model, ctx.query)
+  async count(ctx) {
+    return await strapi.entityService.count(model, ctx.query)
+  },
+  async token(ctx: any) {
+    try {
+
+      ctx.body = await getVodVideoService(strapi).token(ctx.params.videoId)
+    } catch (err) {
+      ctx.throw(500, err)
     }
+  },
 }))
 
 

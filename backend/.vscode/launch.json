@@ -8,11 +8,23 @@
             "webRoot": "${workspaceFolder}"
         },
         {
-            "name": "Launch Admin",
+            "name": "Launch Develop",
             "request": "launch",
             "type": "msedge",
             "url": "http://localhost:1337",
             "webRoot": "${workspaceFolder}"
-        }
+        },
+        {
+            "name": "Strapi: Develop",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "yarn develop"
+        },
+        {
+            "name": "Strapi: Develop Admin",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "yarn develop-admin"
+        },
     ]
 }

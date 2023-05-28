@@ -1,11 +1,28 @@
 {
+    "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Edge",
+            "name": "Next.js: debug server-side",
+            "type": "node-terminal",
             "request": "launch",
+            "command": "yarn dev"
+        },
+        {
+            "name": "Next.js: debug client-side",
             "type": "msedge",
-            "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}"
+            "request": "launch",
+            "url": "http://localhost:3000"
+        },
+        {
+            "name": "Next.js: debug full stack",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "yarn dev",
+            "serverReadyAction": {
+                "pattern": "started server on .+, url: (https?://.+)",
+                "uriFormat": "%s",
+                "action": "debugWithEdge"
+            }
         }
     ]
 }

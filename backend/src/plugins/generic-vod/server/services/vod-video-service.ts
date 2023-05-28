@@ -69,8 +69,6 @@ export default factories.createCoreService<any>(model, ({ strapi }: { strapi: St
   },
 
 
-
-
   // 拿到视频播放凭证
   async token(videoId: string) {
     try {

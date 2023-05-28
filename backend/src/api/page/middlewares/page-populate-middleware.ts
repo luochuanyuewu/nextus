@@ -39,16 +39,16 @@ const populate = {
 };
 
 
-export default (config, { strapi }) => {
+export default (config, {strapi}) => {
   // Add your own logic here.
   return async (ctx, next) => {
     ctx.query = {
       populate,
-      filters: { slug: ctx.query.filters?.slug },
+      filters: {slug: ctx.query.filters?.slug},
       locale: ctx.query.locale,
     };
 
-    console.log("page-populate-middleware.ts: ctx.query = ", ctx.query);
+    console.log("page-populate-middleware.ts: ctx.query = ", JSON.stringify(ctx.query));
 
     await next();
   };

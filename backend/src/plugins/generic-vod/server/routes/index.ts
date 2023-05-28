@@ -1,7 +1,6 @@
-
 import vodAdminRoutes from './admin-routes'
 import vodSettingsRoutes from './settings-routes'
-import contenApiRoutes from './content-api-routes'
+import contentApiRoutes from './content-api-routes'
 
 
 const routes = {
@@ -17,7 +16,7 @@ const routes = {
   // routes for the content api (/api/generic-vod/vod-video/...)
   'content-api': {
     type: 'content-api',
-    routes: contenApiRoutes,
+    routes: contentApiRoutes,
   },
 }
 
