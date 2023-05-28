@@ -147,7 +147,7 @@ export interface PlayerProps {
     /** 自定义样式 */
     style?: React.CSSProperties;
     // 播放源
-    source: string;
+    source?: string;
     // 是否是直播
     isLive?: boolean;
     // 用于在播放器加载成功前渲染
