@@ -1,4 +1,5 @@
 'use strict';
+// const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 /* eslint-disable no-unused-vars */
 module.exports = (config, webpack) => {
@@ -10,6 +11,9 @@ module.exports = (config, webpack) => {
     /^tippy\.js$/,
     'tippy.js/dist/tippy-bundle.umd.min.js'
   ))
+
+  //https://github.com/Baboo7/strapi-plugin-import-export-entries#installation
+  // config.plugins.push(new MonacoWebpackPlugin());
 
   return config;
 };

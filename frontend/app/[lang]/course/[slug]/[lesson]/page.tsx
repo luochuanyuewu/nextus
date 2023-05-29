@@ -158,7 +158,7 @@ export default async function ViewCourse({ params }: { params: { lang: string, s
 
 
     return (
-        <div className='px-5 grid lg:grid-cols-[70%_30%]'>
+        <div className='px-5 grid lg:grid-cols-[70%_30%] '>
             <div>
                 {videoId ? (
                     <Player source='' options={{

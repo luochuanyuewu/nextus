@@ -1,7 +1,9 @@
-import React, {FC, useRef, useState} from 'react'
+import React, { FC, useRef, useState } from 'react'
 import styled from 'styled-components'
-import {VideoCover} from '../../../assets/VideoCover'
-import {useNotification} from '@strapi/helper-plugin'
+import { VideoCover } from '../../../assets/VideoCover'
+import { useNotification } from '@strapi/helper-plugin'
+import { useIntl } from 'react-intl'
+import getTrad from '../../../utils/getTrad'
 
 interface IImportZoneProps {
   initialState: number
@@ -10,10 +12,11 @@ interface IImportZoneProps {
   sourceRef: React.RefObject<HTMLSourceElement>
 }
 
-const ImportZone: FC<IImportZoneProps> = ({initialState, onFileSelected, videoRef, sourceRef}) => {
+const ImportZone: FC<IImportZoneProps> = ({ initialState, onFileSelected, videoRef, sourceRef }) => {
   const inputFile = useRef<HTMLInputElement | null>(null)
   const notification = useNotification()
   const [file, setFile] = useState<File | undefined>()
+  const { formatMessage } = useIntl()
 
   const openFilePicker = () => {
     if (file) {
@@ -23,7 +26,7 @@ const ImportZone: FC<IImportZoneProps> = ({initialState, onFileSelected, videoRe
   }
 
   const fileInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const {files} = e.target
+    const { files } = e.target
     if (files && files.length > 0) {
       onFileSelected(files[0])
     }
@@ -74,17 +77,21 @@ const ImportZone: FC<IImportZoneProps> = ({initialState, onFileSelected, videoRe
 
   return (
     <Wrapper onDrop={onFileDrop} onDragOver={(e) => e.preventDefault()} onClick={openFilePicker}>
-      {initialState === 0 && <VideoCover/>}
+      {initialState === 0 && <VideoCover />}
 
       <ThumbnailImg isShowed={initialState === 1}>
         <video ref={videoRef}>
-          <source ref={sourceRef}/>
+          <source ref={sourceRef} />
         </video>
       </ThumbnailImg>
       <Title>
-        Select a video<Asterisk>*</Asterisk> file to upload
+        {
+          formatMessage({
+            id: getTrad('importZone.title')
+          })
+        }
       </Title>
-      <Subtitle>or drag and drop it here</Subtitle>
+      <Subtitle>{formatMessage({ id: getTrad('importZone.subTitle') })}</Subtitle>
       <input
         type="file"
         id="upload"
@@ -92,7 +99,7 @@ const ImportZone: FC<IImportZoneProps> = ({initialState, onFileSelected, videoRe
         ref={inputFile}
         name="upload"
         onChange={(e) => fileInputChange(e)}
-        style={{display: 'none'}}
+        style={{ display: 'none' }}
       />
     </Wrapper>
   )

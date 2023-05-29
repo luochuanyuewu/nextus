@@ -86,24 +86,24 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    let c = document.querySelector("#AliPlayerStyle")
-    c && c.parentNode?.removeChild(c)
+    // let c = document.querySelector("#AliPlayerStyle")
+    // c && c.parentNode?.removeChild(c)
 
 
-    let s = document.querySelector("#AliPlayer");
-    s && s.parentNode?.removeChild(s);
+    // let s = document.querySelector("#AliPlayer");
+    // s && s.parentNode?.removeChild(s);
 
-    let style = document.createElement("link")
-    style.id = "AliPlayerStyle"
-    style.rel = "stylesheet"
-    style.href = "https://g.alicdn.com/de/prismplayer/2.15.2/skins/default/aliplayer-min.css"
-    document.head.appendChild(style)
+    // let style = document.createElement("link")
+    // style.id = "AliPlayerStyle"
+    // style.rel = "stylesheet"
+    // style.href = "https://g.alicdn.com/de/prismplayer/2.15.2/skins/default/aliplayer-min.css"
+    // document.head.appendChild(style)
 
-    let script = document.createElement("script");
-    script.id = "AliPlayer";
-    script.type = "text/javascript"
-    script.src = 'https://g.alicdn.com/de/prismplayer/2.15.2/aliplayer-min.js';
-    document.head.appendChild(script)
+    // let script = document.createElement("script");
+    // script.id = "AliPlayer";
+    // script.type = "text/javascript"
+    // script.src = 'https://g.alicdn.com/de/prismplayer/2.15.2/aliplayer-min.js';
+    // document.head.appendChild(script)
     fetchData()
   }, [])
   useEffect(() => {

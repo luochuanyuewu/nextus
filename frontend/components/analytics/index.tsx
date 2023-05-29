@@ -4,9 +4,6 @@ let isProduction = process.env.NODE_ENV === 'production'
 
 export function Analytics() {
 
-    return <UmamiScript />
-
-
     if (isProduction) {
         // let { analytics } = siteMetadata
         // let { simpleAnalytics, umamiWebsiteId, googleAnalyticsId } = analytics

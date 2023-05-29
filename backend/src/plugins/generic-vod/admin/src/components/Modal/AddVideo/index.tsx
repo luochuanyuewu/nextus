@@ -9,7 +9,7 @@ import {
   ActionLayout,
 } from '@strapi/design-system'
 import FieldComp from '../../FieldComp/Fields'
-import ImportZone from './importZone'
+import ImportZone from './ImportZone'
 import Tags from '../../Tags'
 
 import MetadataTable from '../../Metadata'
@@ -35,12 +35,6 @@ const AddVideoModal = ({ update, close }: IAddVideoModalProps) => {
       },
     ],
   })
-
-  const uploadButton = useRef()
-
-  const cancelUpload = () => {
-
-  }
 
   const [file, setFile] = useState<File | undefined>()
   const [initialState, setInitialState] = useState<number>(0)
@@ -135,17 +129,13 @@ const AddVideoModal = ({ update, close }: IAddVideoModalProps) => {
           onChange={handleChange}
         />
         <br />
-
-
         <Tags handleSetTag={handleSetTag} handleRemoveTag={handleRemoveTag} tags={tags || []} editable={true} />
-
         <MetadataTable
           metadata={metadata}
           handleSetMetadata={handleSetMetadata}
           handleRemoveMetadata={handleRemoveMetadata}
           editable={true}
         />
-
       </ModalBody>
       <ActionLayout />
       <ModalFooter

@@ -30,6 +30,7 @@ export default [
             'market-assets.strapi.io',
             "*.oss-cn-shanghai.aliyuncs.com", "*.oss-cn-beijing.aliyuncs.com"
           ],
+          'style-src-elem': ["'self'", "'unsafe-inline'", "g.alicdn.com"]
         },
       }
     },

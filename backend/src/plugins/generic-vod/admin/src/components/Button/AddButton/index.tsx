@@ -19,7 +19,7 @@ const AddButton = ({ update }: IAddButtonProps) => {
     <>
       <Button endIcon={<Plus />} onClick={() => setIsVisible(true)}>
         {
-          formatMessage({ id: getTrad('addVideo') })
+          formatMessage({ id: getTrad('addButton.addVideo') })
         }
       </Button>
       {isVisible && <AddVideoModal update={update} close={() => setIsVisible(false)} />}

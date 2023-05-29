@@ -24,7 +24,7 @@ const EmptyState: FC<IEmptyStateProps> = ({ update }) => {
         action={
           <Button variant="secondary" startIcon={<Plus />} onClick={() => setIsVisible(true)}>
             {
-              formatMessage({ id: getTrad('addFirstVideo') })
+              formatMessage({ id: getTrad('emptyState.addFirstVideo') })
             }
           </Button>
         }

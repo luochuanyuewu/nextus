@@ -1,10 +1,7 @@
 "use client";
-import Logo from "./Logo";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-// import classnames and useOnClickOutside
+import { usePathname } from "next/navigation";
 import classNames from "classnames";
-import { useState } from "react";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 
@@ -15,21 +12,6 @@ interface NavLink {
   text: string;
 }
 
-// function NavLink({ url, text }: NavLink) {
-//   const path = usePathname();
-
-//   return (
-//     <li className="flex">
-//       <Link
-//         href={url}
-//         className={`flex items-center mx-4 -mb-1 border-b-2 dark:border-transparent ${path === url && "dark:text-violet-400 dark:border-violet-400"
-//           }}`}
-//       >
-//         {text}
-//       </Link>
-//     </li>
-//   );
-// }
 
 function NavLink({ url, text }: NavLink) {
   const path = usePathname();
@@ -64,27 +46,24 @@ export default function Navbar({
   logoText: string | null;
 }) {
 
-
-  // add a state to toggle the dropdown
-  const [open, setOpen] = useState<boolean>();
-  //onclick handler when clicking a menu item
-
+  // https://reacthustle.com/blog/how-to-close-daisyui-dropdown-with-one-click
   const handleClick = () => {
-    setOpen(false);
+    const elem = document.activeElement;
+    if (elem) {
+      // @ts-ignore
+      elem?.blur();
+    }
   };
 
   return (
     <header >
       <div className="navbar bg-base-100 mx-auto max-w-7xl">
         <div className="navbar-start">
-          <div className={classNames({
-            dropdown: true,
-            'dropdown-open': open,
-          })}>
-            <label tabIndex={0} className="btn btn-ghost lg:hidden" onClick={() => setOpen((prev) => !prev)}>
+          <div className='dropdown'>
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </label>
-            <ul tabIndex={0} onClick={handleClick} className={classNames({ 'menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52': true, hidden: !open })}>
+            <ul tabIndex={0} onClick={handleClick} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
               {links.map((item: NavLink) => (
                 <NavLink key={item.id} {...item} />
               ))}
@@ -100,21 +79,18 @@ export default function Navbar({
           </ul>
         </div>
 
-
-
         <div className="navbar-end">
           <ThemeSwitcher />
-          <div className="dropdown dropdown-end">
+          <div className="dropdown  dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" /><circle cx="12" cy="10" r="3" /><circle cx="12" cy="12" r="10" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
             </label>
-            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            <ul tabIndex={0} onClick={handleClick} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
               {buttons && buttons.map((item: NavLink) => (
                 <NavLink key={item.id} {...item} />
               ))}
             </ul>
           </div>
-
         </div>
 
 
