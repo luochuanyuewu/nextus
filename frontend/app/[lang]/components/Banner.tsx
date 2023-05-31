@@ -15,6 +15,7 @@ function colors(type: string) {
 
 interface BannerProps {
   data: {
+    show: boolean,
     heading: string;
     text: string;
     type: string;
@@ -29,7 +30,10 @@ interface BannerProps {
 
 export default function Banner({ data }: BannerProps) {
   if (!data) return null;
-  const { heading, text, type, link } = data;
+  const { show, heading, text, type, link } = data;
+
+  if (!show)
+    return null
 
   return (
     <div className="toast toast-start ">
@@ -44,19 +48,4 @@ export default function Banner({ data }: BannerProps) {
     </div>
   )
 
-  return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8">
-      <div
-        className={classNames(
-          "pointer-events-auto flex items-center justify-between gap-x-6 py-2.5 px-6 sm:rounded-xl sm:py-3 sm:pr-3.5 sm:pl-4",
-          colors(type)
-        )}
-      >
-        <p className="text-sm leading-6 text-white">
-
-
-        </p>
-      </div>
-    </div>
-  );
 }

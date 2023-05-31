@@ -98,19 +98,19 @@ export default function Footer({
           {logoText && <p className="text-2xl font-bold">{logoText}</p>}
           <p>罗传月武<br />Coding since 2011</p>
         </div>
-        <div>
+        {categoryLinks && categoryLinks.length > 0 && <div>
           <span className="footer-title">{categoryTitle}</span>
           {categoryLinks.map((link: CategoryLink) => (
             <CategoryLink key={link.id} {...link} />
           ))}
-        </div>
-        <div>
+        </div>}
+        {menuLinks && menuLinks.length > 0 && < div >
           <span className="footer-title">{menuTitle}</span>
           {menuLinks.map((link: FooterLink) => (
             <FooterLink key={link.id} {...link} />
           ))}
-        </div>
-        <div>
+        </div>}
+        {legalLinks && legalLinks.length > 0 && <div>
           <span className="footer-title">{legalTitle}</span>
           {legalLinks.map((link: FooterLink) => (
             <Link
@@ -121,8 +121,8 @@ export default function Footer({
               {link.text}
             </Link>
           ))}
-        </div>
-      </footer>
+        </div>}
+      </footer >
       <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
         <div className="items-center grid-flow-col">
           <p>Copyright ©{new Date().getFullYear()} All rights reserved by luochuanyuewu </p>
