@@ -11,9 +11,9 @@
   "dependencies": {
     "@alicloud/openapi-client": "^0.4.6",
     "@alicloud/vod20170321": "^2.0.7",
-    "@strapi/design-system": "^1.7.7",
-    "@strapi/helper-plugin": "^4.10.5",
-    "@strapi/icons": "^1.7.7",
+    "@strapi/design-system": "^1.6.3",
+    "@strapi/helper-plugin": "^4.6.0",
+    "@strapi/icons": "^1.6.3",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
