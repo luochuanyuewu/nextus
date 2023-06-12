@@ -8,8 +8,6 @@ type Props = {
     searchParams: { [key: string]: string | string[] | undefined }
 }
 
-
-
 async function getPageBySlug(slug: string, lang: string) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 
@@ -20,7 +18,7 @@ async function getPageBySlug(slug: string, lang: string) {
     return response;
 }
 
-export async function generateMetadata({ params }: Props, parent?: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const page = await getPageBySlug(params.slug, params.lang);
 
     const { metadata } = page.data[0].attributes;
@@ -41,13 +39,14 @@ export default async function PageRoute({ params }: Props) {
     return contentSections.map((section: any, index: number) => sectionRenderer(section, index));
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams({ params }: { params: { lang: string } }) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
     const path = `/pages`;
     const options = { headers: { Authorization: `Bearer ${token}` } };
     const pageResponse = await fetchAPI(
         path,
         {
+            locale: params.lang
         },
         options
     );
@@ -56,7 +55,7 @@ export async function generateStaticParams() {
     pageResponse.data.map(
         (page: any
         ) => {
-            console.log("generating page route:" + JSON.stringify(page.attributes.slug))
+            console.log("generating page route:" + JSON.stringify(page.attributes.slug) + `for locale:${params.lang}`)
         }
     );
 

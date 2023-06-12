@@ -48,14 +48,14 @@ export default async function PostRoute({ params }: { params: { slug: string } }
     return <Post data={data.data[0]} />;
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams({ params }: { params: { lang: string } }) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
     const path = `/articles`;
     const options = { headers: { Authorization: `Bearer ${token}` } };
     const articleResponse = await fetchAPI(
         path,
         {
-            populate: ['category'],
+            populate: ['category']
         },
         options
     );
