@@ -1,5 +1,14 @@
+import { title } from 'process';
 import { fetchAPI } from '../utils/fetch-api';
 import { sectionRenderer } from '../utils/section-renderer';
+import { Metadata, ResolvingMetadata } from 'next'
+
+type Props = {
+    params: { slug: string, lang: string }
+    searchParams: { [key: string]: string | string[] | undefined }
+}
+
+
 
 async function getPageBySlug(slug: string, lang: string) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
@@ -11,7 +20,20 @@ async function getPageBySlug(slug: string, lang: string) {
     return response;
 }
 
-export default async function PageRoute({ params }: { params: { slug: string, lang: string } }) {
+export async function generateMetadata({ params }: Props, parent?: ResolvingMetadata): Promise<Metadata> {
+    const page = await getPageBySlug(params.slug, params.lang);
+
+    const { metadata } = page.data[0].attributes;
+
+    return {
+        title: metadata.metaTitle,
+        description: metadata.metaDescription,
+    };
+}
+
+
+
+export default async function PageRoute({ params }: Props) {
 
     const page = await getPageBySlug(params.slug, params.lang);
     if (page.data.length === 0) return null;

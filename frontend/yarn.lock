@@ -46,10 +46,10 @@
   resolved "https://registry.npmmirror.com/@eslint/js/-/js-8.39.0.tgz#58b536bcc843f4cd1e02a7e6171da5c040f4d44b"
   integrity sha512-kf9RB0Fg7NZfap83B3QOqOGg9QmD9yBudqQXzzOtn3i4y7ZUXe5ONeW34Gwi+TxhH4mvj72R1Zc300KUMa9Bng==
 
-"@formatjs/intl-localematcher@^0.2.32":
-  version "0.2.32"
-  resolved "https://registry.npmmirror.com/@formatjs/intl-localematcher/-/intl-localematcher-0.2.32.tgz#00d4d307cd7d514b298e15a11a369b86c8933ec1"
-  integrity sha512-k/MEBstff4sttohyEpXxCmC3MqbUn9VvHGlZ8fauLzkbwXmVrEeyzS+4uhrvAk9DWU9/7otYWxyDox4nT/KVLQ==
+"@formatjs/intl-localematcher@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.npmmirror.com/@formatjs/intl-localematcher/-/intl-localematcher-0.4.0.tgz#63bbc37a7c3545a1bf1686072e51d9a3aed98d6b"
+  integrity sha512-bRTd+rKomvfdS4QDlVJ6TA/Jx1F2h/TBVO5LjvhQ7QPPHp19oPNMIum7W2CMEReq/zPxpmCeB31F9+5gl/qtvw==
   dependencies:
     tslib "^2.4.0"
 
@@ -710,10 +710,10 @@ csstype@^3.0.2:
   resolved "https://registry.npmmirror.com/csstype/-/csstype-3.1.2.tgz#1d4bf9d572f11c14031f0436e1c10bc1f571f50b"
   integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
 
-daisyui@^3.0.2:
-  version "3.0.25"
-  resolved "https://registry.npmmirror.com/daisyui/-/daisyui-3.0.25.tgz#c7a375f71ec2aa31adcfebf064d163414ba5ebae"
-  integrity sha512-VaX84OpujV8tEpl2IoUzDElbw/xwMZ+jXXGRY7V0SMyC+CYcXjAsLMi4M4VU4ulAPtlGHsZRgzrIrOPQvBtxRg==
+daisyui@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npmmirror.com/daisyui/-/daisyui-3.1.0.tgz#e32651e06cfb00bc4b9fada3399b91ca8f6f779b"
+  integrity sha512-G4dz/bRZVvlhQ/FtezXSg0rXOXzDJ0PcnMqeLSwCYNWXxf46fNJ8LWeV5qwsYOdJbXiXoZLnwyy+BsNoWZ+Bjg==
   dependencies:
     colord "^2.9"
     css-selector-tokenizer "^0.8"

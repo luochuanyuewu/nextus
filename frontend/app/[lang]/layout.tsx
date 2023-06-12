@@ -53,7 +53,10 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   const { url } = favicon.data.attributes;
 
   return {
-    title: metadata.metaTitle,
+    title: {
+      template: `%s | ${metadata.metaTitle}`,
+      default: metadata.metaTitle,
+    },
     description: metadata.metaDescription,
     icons: {
       icon: [new URL(url, getStrapiURL())],
