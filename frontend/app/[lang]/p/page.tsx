@@ -106,7 +106,7 @@ export default function BlogHomePage() {
             <div className="card card-compact bg-base-100 shadow-xl mb-4">
               <div className="card-body">
                 <h2 className="card-title">网站公告</h2>
-                <p>本网站还在积极开发中，如果发现有什么奇怪的，那就是真的很奇怪。</p>
+                <p>本网站还在积极开发中，如果发现有什么奇怪的，请别见怪哦</p>
               </div>
             </div>
           </aside>
