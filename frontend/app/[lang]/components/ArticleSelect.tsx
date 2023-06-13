@@ -50,7 +50,7 @@ export default function ArticleSelect({
               return (
                 <Link
                   key={category.id}
-                  href={`/blog/${category.attributes.slug}`}
+                  href={`/p/${category.attributes.slug}`}
                   className={selectedFilter(
                     category.attributes.slug,
                     params.category
@@ -60,7 +60,7 @@ export default function ArticleSelect({
                 </Link>
               );
             })}
-            <Link href={"/blog"} className={selectedFilter("", "filter")}>
+            <Link href={"/p"} className={selectedFilter("", "filter")}>
               #所有
             </Link>
           </div>
@@ -78,7 +78,7 @@ export default function ArticleSelect({
                 <li key={article.id}>
                   <Link
                     rel="noopener noreferrer"
-                    href={`/blog/${params.category}/${article.attributes.slug}`}
+                    href={`/p/${params.category}/${article.attributes.slug}`}
                     className={`${params.slug === article.attributes.slug &&
                       "text-violet-400"
                       }  hover:underline hover:text-violet-400 transition-colors duration-200`}
@@ -105,7 +105,7 @@ export default function ArticleSelect({
             return (
               <Link
                 key={category.id}
-                href={`/blog/${category.attributes.slug}`}
+                href={`/p/${category.attributes.slug}`}
                 className={selectedFilter(
                   category.attributes.slug,
                   params.category
@@ -115,7 +115,7 @@ export default function ArticleSelect({
               </Link>
             );
           })}
-          <Link href={"/blog"} className={selectedFilter("", "filter")}>
+          <Link href={"/p"} className={selectedFilter("", "filter")}>
             #所有
           </Link>
         </div>
@@ -128,7 +128,7 @@ export default function ArticleSelect({
                 <li key={article.id}>
                   <Link
                     rel="noopener noreferrer"
-                    href={`/blog/${params.category}/${article.attributes.slug}`}
+                    href={`/p/${params.category}/${article.attributes.slug}`}
                     className={`${params.slug === article.attributes.slug &&
                       "text-violet-400"
                       }  hover:underline hover:text-violet-400 transition-colors duration-200`}

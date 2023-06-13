@@ -68,7 +68,7 @@ export default function BlogHomePage() {
 
   return (
     <div>
-      <PageHeader heading="我的博客" text="来看看有趣的东西吧" />
+      <PageHeader heading="我的文章" text="来看看有趣的东西吧" />
       <Blog data={data}>
         {meta!.pagination.start + meta!.pagination.limit <
           meta!.pagination.total && (

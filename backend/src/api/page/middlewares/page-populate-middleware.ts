@@ -5,6 +5,9 @@
  */
 
 const populate = {
+  metadata: {
+    populate: '*',
+  },
   contentSections: {
     populate: {
       picture: {
@@ -39,12 +42,12 @@ const populate = {
 };
 
 
-export default (config, {strapi}) => {
+export default (config, { strapi }) => {
   // Add your own logic here.
   return async (ctx, next) => {
     ctx.query = {
-      populate,
-      filters: {slug: ctx.query.filters?.slug},
+      populate: { ...populate },
+      filters: { slug: ctx.query.filters?.slug },
       locale: ctx.query.locale,
     };
 

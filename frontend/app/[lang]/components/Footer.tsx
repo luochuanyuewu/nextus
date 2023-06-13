@@ -37,7 +37,7 @@ function FooterLink({ url, text }: FooterLink) {
 function CategoryLink({ attributes }: CategoryLink) {
   return (
     <Link
-      href={`/blog/${attributes.slug}`}
+      href={`/p/${attributes.slug}`}
       className="link link-hover"
     >
       {attributes.name}
