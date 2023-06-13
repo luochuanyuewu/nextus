@@ -92,15 +92,13 @@ export default async function RootLayout({
 
   return (
     <html lang={params.lang} >
-      <body >
-
+      <body>
         {navbar && <Navbar
           links={navbar.links}
           buttons={navbar.buttons}
           logoUrl={navbarLogoUrl}
           logoText={navbar.navbarLogo.logoText}
         />}
-
 
         <main className="mx-auto max-w-7xl mb-5">
           {children}

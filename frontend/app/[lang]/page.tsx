@@ -1,7 +1,14 @@
+import { Metadata } from 'next';
 import LangRedirect from './components/LangRedirect';
 import { fetchAPI } from './utils/fetch-api';
 import { sectionRenderer } from './utils/section-renderer';
 import { i18n } from "i18n-config";
+
+export const metadata: Metadata = {
+    title: '主页',
+}
+
+
 async function getPageBySlug(slug: string, lang: string) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 

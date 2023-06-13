@@ -1,9 +1,11 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import { fetchAPI } from "../utils/fetch-api";
+import { Metadata } from 'next'
+
 
 import Loader from "../components/Loader";
-import Blog from "../views/blog-list";
+import BlogList from "../views/blog-list";
 import PageHeader from "../components/PageHeader";
 
 interface Meta {
@@ -12,6 +14,10 @@ interface Meta {
     limit: number;
     total: number;
   };
+}
+
+export const metadata: Metadata = {
+  title: '所有文章',
 }
 
 export default function BlogHomePage() {
@@ -69,20 +75,49 @@ export default function BlogHomePage() {
   return (
     <div>
       <PageHeader heading="我的文章" text="来看看有趣的东西吧" />
-      <Blog data={data}>
-        {meta!.pagination.start + meta!.pagination.limit <
-          meta!.pagination.total && (
-            <div className="flex justify-center">
-              <button
-                type="button"
-                className="px-6 py-3 text-sm rounded-lg hover:underline dark:bg-gray-900 dark:text-gray-400"
-                onClick={loadMorePosts}
-              >
-                加载更多文章...
-              </button>
+
+      <section className="container p-4 mx-auto space-y-6 sm:space-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-4">
+          <div className="col-span-2">
+            <BlogList data={data}>
+              {meta!.pagination.start + meta!.pagination.limit <
+                meta!.pagination.total && (
+                  <div className="flex justify-center">
+                    <button
+                      type="button"
+                      className="px-6 py-3 text-sm rounded-lg hover:underline dark:bg-gray-900 dark:text-gray-400"
+                      onClick={loadMorePosts}
+                    >
+                      加载更多文章...
+                    </button>
+                  </div>
+                )}
+            </BlogList>
+          </div>
+
+          <aside className="h-screen sticky top-0">
+            <div className="card card-compact bg-base-100 shadow-xl mb-4">
+              <div className="card-body">
+                <h2 className="card-title">用户中心</h2>
+                <p>需要登录才能进入用户中心</p>
+                <div className="card-actions justify-end">
+                  <button className="btn btn-primary">登录</button>
+                  <button className="btn btn-secondary">注册</button>
+                </div>
+              </div>
             </div>
-          )}
-      </Blog>
+            <div className="card card-compact bg-base-100 shadow-xl mb-4">
+              <div className="card-body">
+                <h2 className="card-title">网站公告</h2>
+                <p>本网站还在积极开发中，如果发现有什么奇怪的，那就是真的很奇怪。</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+
+
     </div>
   );
 }

@@ -43,6 +43,15 @@ interface Article {
   };
 }
 
+const createExcerpt = (content: string, maxNumberOfWords: number, trailingIndicator = '...') => {
+  const listOfWords = content.trim().split(' ');
+  const truncatedContent = listOfWords.slice(0, maxNumberOfWords).join(' ');
+  const excerpt = truncatedContent + trailingIndicator;
+  const output = listOfWords.length > maxNumberOfWords ? excerpt : content;
+
+  return output;
+};
+
 export default function PostList({
   data: articles,
   children,
@@ -51,67 +60,85 @@ export default function PostList({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="">
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-        {articles.map((article) => {
-          const imageUrl = getStrapiMedia(
-            article.attributes.cover.data?.attributes.url
-          );
+    <div>
+      <section>
+        <ul >
+          {articles.map((article) => {
+            const imageUrl = getStrapiMedia(
+              article.attributes.cover.data?.attributes.url
+            );
 
-          const category = article.attributes.category.data?.attributes;
-          const authorsBio = article.attributes.authorsBio.data?.attributes;
+            const category = article.attributes.category.data?.attributes;
+            const authorsBio = article.attributes.authorsBio.data?.attributes;
 
-          const avatarUrl = getStrapiMedia(
-            authorsBio?.avatar?.data?.attributes?.url
-          );
+            const avatarUrl = getStrapiMedia(
+              authorsBio?.avatar?.data?.attributes?.url
+            );
 
-          return (
-            <Link
-              href={`p/${category?.slug}/${article.attributes.slug}`}
-              key={article.id}
-              className="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900 lg:w-[300px] xl:min-w-[375px] rounded-2xl overflow-hidden shadow-lg"
-            >
-              {imageUrl && (
-                <Image
-                  alt="presentation"
-                  width="240"
-                  height="240"
-                  className="object-cover w-full h-44 "
-                  src={imageUrl}
-                />
-              )}
-              <div className="p-6 space-y-2 relative">
-                {avatarUrl && (
-                  <Image
-                    alt="avatar"
-                    width="80"
-                    height="80"
-                    src={avatarUrl}
-                    className="rounded-full h-16 w-16 object-cover absolute -top-8 right-4"
-                  />
-                )}
+            return (
+              <li key={article.id} className="">
+                <article className="card card-compact mb-2 shadow-md">
+                  <div className="card-body">
+                    <div className="flex flex-row">
+                      <Link
+                        href={`p/${category?.slug}/${article.attributes.slug}`}
+                      >
+                        {imageUrl && (
+                          <Image
+                            alt="presentation"
+                            width="208"
+                            height="128"
+                            className="w-52 h-32 mr-2 rounded-md"
+                            src={imageUrl}
+                          />
+                        )}
+                      </Link>
+                      <div className="flex flex-col flex-grow">
+                        <div className="mt-3 flex flex-col">
+                          <h1 className="text-2xl font-bold">
+                            <Link href={`p/${category?.slug}/${article.attributes.slug}`}>
+                              <span className="badge badge-secondary mr-2">分类</span>
+                              {article.attributes.title}
+                            </Link>
+                          </h1>
+                          <p className="prose mt-2 mx-2">{article.attributes.description}</p>
+                        </div>
+                        <div className="flex items-center justify-end mt-4 gap-2">
+                          <div className="flex gap-1 items-center" >
+                            {avatarUrl && (
+                              <Image
+                                alt="avatar"
+                                width="50"
+                                height="50"
+                                src={avatarUrl}
+                                className="object-cover w-10 h-10  rounded-full"
+                              />
+                            )}
+                            {authorsBio && (
+                              <span >
+                                {authorsBio.name}
+                              </span>
+                            )}
+                          </div>
+                          <span className="text-sm dark:text-gray-400">
+                            {formatDate(article.attributes.publishedAt)}
+                          </span>
 
-                <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
-                  {article.attributes.title}
-                </h3>
+                        </div>
+                      </div>
 
-                <div className="flex justify-between items-center">
-                  <span className="text-xs dark:text-gray-400">
-                    {formatDate(article.attributes.publishedAt)}
-                  </span>
-                  {authorsBio && (
-                    <span className="text-xs dark:text-gray-400">
-                      {authorsBio.name}
-                    </span>
-                  )}
-                </div>
-                <p className="py-4">{article.attributes.description}</p>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-      {children && children}
-    </section>
+                    </div>
+                  </div>
+
+
+                </article>
+              </li>
+            );
+          })}
+        </ul>
+      </section >
+      {children && children
+      }
+    </div >
   );
 }
