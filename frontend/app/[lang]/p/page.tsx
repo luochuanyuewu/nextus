@@ -16,9 +16,6 @@ interface Meta {
   };
 }
 
-export const metadata: Metadata = {
-  title: '所有文章',
-}
 
 export default function BlogHomePage() {
   const [meta, setMeta] = useState<Meta | undefined>();
