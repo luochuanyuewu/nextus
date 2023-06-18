@@ -1,7 +1,7 @@
 version: '3'
 services:
   strapi:
-    container_name: strapi
+    container_name: ${DOCKER_STRAPI_CONTAINER_NAME}
     build:
       context: .
       dockerfile: Dockerfile.prod
@@ -34,28 +34,28 @@ services:
       - strapiDB
 
   strapiDB:
-    container_name: strapiDB
+    container_name: ${DOCKER_STRAPI_DB_CONTAINER_NAME}
     platform: linux/amd64 #for platform error on Apple M1 chips
     restart: unless-stopped
     env_file: .env
     image: mysql:8
     command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - strapi
     environment:
       MYSQL_USER: ${DATABASE_USERNAME}
       MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
       MYSQL_PASSWORD: ${DATABASE_PASSWORD}
       MYSQL_DATABASE: ${DATABASE_NAME}
     volumes:
-      - strapi-data:/var/lib/mysql
+      - yuewu-data:/var/lib/mysql
     ports:
       - '3306:3306'
-    networks:
-      - strapi
 volumes:
-  strapi-data:
+  yuewu-data:
 
 
 networks:
   strapi:
-    name: Strapi
-    driver: bridge
+    name: ${DOCKER_STRAPI_NETWORKNAME}
+    external: true

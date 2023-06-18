@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "description": "yuewu.dev",
   "scripts": {
-    "install-plugin": "cd src/plugins/generic-vod && yarn install && cd ../../.. && cd src/plugins/generic-pay && yarn install && cd ../../..",
-    "install-plugin-prod": "cd src/plugins/generic-vod && yarn install --production && cd ../../.. && cd src/plugins/generic-pay && yarn install --production && cd ../../..",
+    "install-plugin": "cd src/plugins/generic-vod && yarn install && cd ../../.. && cd src/plugins/generic-pay && yarn install && cd ../../.. && cd src/plugins/strapi-tiptap-editor && yarn install && cd ../../../",
+    "install-plugin-prod": "cd src/plugins/generic-vod && yarn install --production && cd ../../.. && cd src/plugins/generic-pay && yarn install --production && cd ../../.. && cd src/plugins/strapi-tiptap-editor && yarn install --production && cd ../../../",
     "build-plugin": "cd src/plugins/generic-vod && yarn build && cd ../../.. && cd src/plugins/generic-pay && yarn build && cd ../../..",
     "develop": "strapi develop",
     "develop-admin": "strapi develop --watch-admin",
