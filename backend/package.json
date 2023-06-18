@@ -17,12 +17,12 @@
     "@types/node": "18.16.0"
   },
   "dependencies": {
-    "@strapi/plugin-documentation": "4.11.0",
-    "@strapi/plugin-graphql": "4.11.0",
-    "@strapi/plugin-i18n": "4.11.0",
+    "@strapi/plugin-documentation": "4.11.1",
+    "@strapi/plugin-graphql": "4.11.1",
+    "@strapi/plugin-i18n": "4.11.1",
     "@strapi/plugin-seo": "^1.8.0",
-    "@strapi/plugin-users-permissions": "4.11.0",
-    "@strapi/strapi": "4.11.0",
+    "@strapi/plugin-users-permissions": "4.11.1",
+    "@strapi/strapi": "4.11.1",
     "better-sqlite3": "^8.4.0",
     "mysql": "^2.18.1",
     "react-intl": "^6.4.2",
