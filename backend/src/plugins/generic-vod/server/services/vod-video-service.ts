@@ -16,8 +16,8 @@ import { VodVideoService, CustomVideo, InputData } from "../../types";
 
 
 const model = `plugin::${pluginId}.vod-video`
-
-export default factories.createCoreService<any>(model, ({ strapi }: { strapi: Strapi }): VodVideoService => ({
+// @ts-ignore
+export default factories.createCoreService(model, ({ strapi }: { strapi: Strapi }): VodVideoService => ({
   async createUploadVideo(data: InputData) {
     const client = await configClient(strapi)
 

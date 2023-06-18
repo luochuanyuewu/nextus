@@ -4,6 +4,7 @@ import { getVodVideoService } from '../utils'
 
 const model = `plugin::${pluginId}.vod-video`
 
+// @ts-ignore
 export default factories.createCoreController(model, ({ strapi }) => ({
   async count(ctx) {
     return await strapi.entityService.count(model, ctx.query)
