@@ -2,6 +2,90 @@
 # yarn lockfile v1
 
 
+"@alicloud/credentials@^2":
+  version "2.2.6"
+  resolved "https://registry.npmmirror.com/@alicloud/credentials/-/credentials-2.2.6.tgz#24b0c188e8ad4b3c5a51a1bc4d75e9c127771975"
+  integrity sha512-jG+msY77dHmAF3x+8VTy7fEgORyXLHmDci8t92HeipBdCHsPptDegA++GEwKgR7f6G4wvafYt+aqMZ1iligdrQ==
+  dependencies:
+    "@alicloud/tea-typescript" "^1.5.3"
+    httpx "^2.2.0"
+    ini "^1.3.5"
+    kitx "^2.0.0"
+
+"@alicloud/endpoint-util@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.npmmirror.com/@alicloud/endpoint-util/-/endpoint-util-0.0.1.tgz#b237f5e04e373abb54c42119377b30bd6afb1a7c"
+  integrity sha512-+pH7/KEXup84cHzIL6UJAaPqETvln4yXlD9JzlrqioyCSaWxbug5FUobsiI6fuUOpw5WwoB3fWAtGbFnJ1K3Yg==
+  dependencies:
+    "@alicloud/tea-typescript" "^1.5.1"
+    kitx "^2.0.0"
+
+"@alicloud/gateway-spi@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.npmmirror.com/@alicloud/gateway-spi/-/gateway-spi-0.0.8.tgz#1d251986ed40d8b98690dcac8128fec0c56f0f53"
+  integrity sha512-KM7fu5asjxZPmrz9sJGHJeSU+cNQNOxW+SFmgmAIrITui5hXL2LB+KNRuzWmlwPjnuA2X3/keq9h6++S9jcV5g==
+  dependencies:
+    "@alicloud/credentials" "^2"
+    "@alicloud/tea-typescript" "^1.7.1"
+
+"@alicloud/openapi-client@^0.4.4", "@alicloud/openapi-client@^0.4.6":
+  version "0.4.6"
+  resolved "https://registry.npmmirror.com/@alicloud/openapi-client/-/openapi-client-0.4.6.tgz#6e354cf94cddb56322f97569714a31fbbb12cb34"
+  integrity sha512-cyhUQOJehLRslHy2l+lsginiyXdzfV7yF7b9EJcxzGG7zHAEX0XF3OJvfo13n7WgiqCzt9suQBatJz7b5F+14A==
+  dependencies:
+    "@alicloud/credentials" "^2"
+    "@alicloud/gateway-spi" "^0.0.8"
+    "@alicloud/openapi-util" "^0.3.1"
+    "@alicloud/tea-typescript" "^1.7.1"
+    "@alicloud/tea-util" "^1.4.5"
+    "@alicloud/tea-xml" "0.0.2"
+
+"@alicloud/openapi-util@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.npmmirror.com/@alicloud/openapi-util/-/openapi-util-0.3.1.tgz#104f79d91e13a347115c8a416cc2c8f56580af5d"
+  integrity sha512-6mGT+hs+SXismZi/CEkjPhhbn2U3qTT/Qv/RXAYFA1DC3Jk4/YaX3N7RtpgdzOhdD7uI8XtNkaULKHZY3BrtxQ==
+  dependencies:
+    "@alicloud/tea-typescript" "^1.7.1"
+    "@alicloud/tea-util" "^1.3.0"
+    kitx "^2.1.0"
+    sm3 "^1.0.3"
+
+"@alicloud/tea-typescript@^1", "@alicloud/tea-typescript@^1.5.1", "@alicloud/tea-typescript@^1.5.3", "@alicloud/tea-typescript@^1.7.1":
+  version "1.8.0"
+  resolved "https://registry.npmmirror.com/@alicloud/tea-typescript/-/tea-typescript-1.8.0.tgz#aa9b04b6ee53e1b22aa51e224a950ea5bcd966e9"
+  integrity sha512-CWXWaquauJf0sW30mgJRVu9aaXyBth5uMBCUc+5vKTK1zlgf3hIqRUjJZbjlwHwQ5y9anwcu18r48nOZb7l2QQ==
+  dependencies:
+    "@types/node" "^12.0.2"
+    httpx "^2.2.6"
+
+"@alicloud/tea-util@^1.3.0", "@alicloud/tea-util@^1.4.5":
+  version "1.4.5"
+  resolved "https://registry.npmmirror.com/@alicloud/tea-util/-/tea-util-1.4.5.tgz#ba434dc725883c2f36a9eb9a75a7f82698c317fa"
+  integrity sha512-7NuThYUi90/ivT/ORKusm0NVKlc1khPTtlzTR77xEqSBt7d24Ee/Lo70hx9PWP28nHpIZ1gM0NKYBtpq7HUDlg==
+  dependencies:
+    "@alicloud/tea-typescript" "^1.5.1"
+    kitx "^2.0.0"
+
+"@alicloud/tea-xml@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.npmmirror.com/@alicloud/tea-xml/-/tea-xml-0.0.2.tgz#7c97a38255d5e4f009c437facd3a2afc0ef17f45"
+  integrity sha512-Xs7v5y7YSNSDDYmiDWAC0/013VWPjS3dQU4KezSLva9VGiTVPaL3S7Nk4NrTmAYCG6MKcrRj/nGEDIWL5KRoPg==
+  dependencies:
+    "@alicloud/tea-typescript" "^1"
+    "@types/xml2js" "^0.4.5"
+    xml2js "^0.4.22"
+
+"@alicloud/vod20170321@^2.0.7":
+  version "2.0.7"
+  resolved "https://registry.npmmirror.com/@alicloud/vod20170321/-/vod20170321-2.0.7.tgz#1c08b5d74d50515bad67159282d651200d79918c"
+  integrity sha512-gyfLo85wxrY5/I+aqXkPVAQfe7cpVKSKZkdRUpz+bjQYL2Yjtzrf3NRK/xGrwCmkmwUcl6cSoS87sZg2ufzaKQ==
+  dependencies:
+    "@alicloud/endpoint-util" "^0.0.1"
+    "@alicloud/openapi-client" "^0.4.4"
+    "@alicloud/openapi-util" "^0.3.1"
+    "@alicloud/tea-typescript" "^1.7.1"
+    "@alicloud/tea-util" "^1.4.5"
+
 "@ampproject/remapping@^2.2.0":
   version "2.2.1"
   resolved "https://registry.npmmirror.com/@ampproject/remapping/-/remapping-2.2.1.tgz#99e8e11851128b8702cd57c33684f1d0f260b630"
@@ -1508,14 +1592,6 @@
   dependencies:
     "@floating-ui/dom" "^1.3.0"
 
-"@formatjs/ecma402-abstract@1.11.4":
-  version "1.11.4"
-  resolved "https://registry.npmmirror.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.11.4.tgz#b962dfc4ae84361f9f08fbce411b4e4340930eda"
-  integrity sha512-EBikYFp2JCdIfGEb5G9dyCkTGDmC57KSHhRQOC3aYxoPWVZvfWCDjZwkGYHN7Lis/fmuWl906bnNTJifDQ3sXw==
-  dependencies:
-    "@formatjs/intl-localematcher" "0.2.25"
-    tslib "^2.1.0"
-
 "@formatjs/ecma402-abstract@1.14.3":
   version "1.14.3"
   resolved "https://registry.npmmirror.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.14.3.tgz#6428f243538a11126180d121ce8d4b2f17465738"
@@ -1532,13 +1608,6 @@
     "@formatjs/intl-localematcher" "0.4.0"
     tslib "^2.4.0"
 
-"@formatjs/fast-memoize@1.2.1":
-  version "1.2.1"
-  resolved "https://registry.npmmirror.com/@formatjs/fast-memoize/-/fast-memoize-1.2.1.tgz#e6f5aee2e4fd0ca5edba6eba7668e2d855e0fc21"
-  integrity sha512-Rg0e76nomkz3vF9IPlKeV+Qynok0r7YZjL6syLz4/urSg0IbjPZCB/iYUMNsYA643gh4mgrX3T7KEIFIxJBQeg==
-  dependencies:
-    tslib "^2.1.0"
-
 "@formatjs/fast-memoize@2.0.1":
   version "2.0.1"
   resolved "https://registry.npmmirror.com/@formatjs/fast-memoize/-/fast-memoize-2.0.1.tgz#f15aaa73caad5562899c69bdcad8db82adcd3b0b"
@@ -1552,15 +1621,6 @@
   integrity sha512-hnk/nY8FyrL5YxwP9e4r9dqeM6cAbo8PeU9UjyXojZMNvVad2Z06FAVHyR3Ecw6fza+0GH7vdJgiKIVXTMbSBA==
   dependencies:
     tslib "^2.4.0"
-
-"@formatjs/icu-messageformat-parser@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.npmmirror.com/@formatjs/icu-messageformat-parser/-/icu-messageformat-parser-2.1.0.tgz#a54293dd7f098d6a6f6a084ab08b6d54a3e8c12d"
-  integrity sha512-Qxv/lmCN6hKpBSss2uQ8IROVnta2r9jd3ymUEIjm2UyIkUCHVcbUVRGL/KS/wv7876edvsPe+hjHVJ4z8YuVaw==
-  dependencies:
-    "@formatjs/ecma402-abstract" "1.11.4"
-    "@formatjs/icu-skeleton-parser" "1.3.6"
-    tslib "^2.1.0"
 
 "@formatjs/icu-messageformat-parser@2.3.1":
   version "2.3.1"
@@ -1588,14 +1648,6 @@
     "@formatjs/ecma402-abstract" "1.14.3"
     tslib "^2.4.0"
 
-"@formatjs/icu-skeleton-parser@1.3.6":
-  version "1.3.6"
-  resolved "https://registry.npmmirror.com/@formatjs/icu-skeleton-parser/-/icu-skeleton-parser-1.3.6.tgz#4ce8c0737d6f07b735288177049e97acbf2e8964"
-  integrity sha512-I96mOxvml/YLrwU2Txnd4klA7V8fRhb6JG/4hm3VMNmeJo1F03IpV2L3wWt7EweqNLES59SZ4d6hVOPCSf80Bg==
-  dependencies:
-    "@formatjs/ecma402-abstract" "1.11.4"
-    tslib "^2.1.0"
-
 "@formatjs/icu-skeleton-parser@1.6.0":
   version "1.6.0"
   resolved "https://registry.npmmirror.com/@formatjs/icu-skeleton-parser/-/icu-skeleton-parser-1.6.0.tgz#0728be8b6b3656f1a4b8e6e5b0e02dffffc23c6c"
@@ -1603,15 +1655,6 @@
   dependencies:
     "@formatjs/ecma402-abstract" "1.17.0"
     tslib "^2.4.0"
-
-"@formatjs/intl-displaynames@5.4.3":
-  version "5.4.3"
-  resolved "https://registry.npmmirror.com/@formatjs/intl-displaynames/-/intl-displaynames-5.4.3.tgz#e468586694350c722c7efab1a31fcde68aeaed8b"
-  integrity sha512-4r12A3mS5dp5hnSaQCWBuBNfi9Amgx2dzhU4lTFfhSxgb5DOAiAbMpg6+7gpWZgl4ahsj3l2r/iHIjdmdXOE2Q==
-  dependencies:
-    "@formatjs/ecma402-abstract" "1.11.4"
-    "@formatjs/intl-localematcher" "0.2.25"
-    tslib "^2.1.0"
 
 "@formatjs/intl-displaynames@6.3.1":
   version "6.3.1"
@@ -1631,15 +1674,6 @@
     "@formatjs/intl-localematcher" "0.4.0"
     tslib "^2.4.0"
 
-"@formatjs/intl-listformat@6.5.3":
-  version "6.5.3"
-  resolved "https://registry.npmmirror.com/@formatjs/intl-listformat/-/intl-listformat-6.5.3.tgz#f29da613a8062dc3e4e3d847ba890c3ea745f051"
-  integrity sha512-ozpz515F/+3CU+HnLi5DYPsLa6JoCfBggBSSg/8nOB5LYSFW9+ZgNQJxJ8tdhKYeODT+4qVHX27EeJLoxLGLNg==
-  dependencies:
-    "@formatjs/ecma402-abstract" "1.11.4"
-    "@formatjs/intl-localematcher" "0.2.25"
-    tslib "^2.1.0"
-
 "@formatjs/intl-listformat@7.2.1":
   version "7.2.1"
   resolved "https://registry.npmmirror.com/@formatjs/intl-listformat/-/intl-listformat-7.2.1.tgz#874eddc7d53ba2e3fd911bf30efc459fc99f08db"
@@ -1658,13 +1692,6 @@
     "@formatjs/intl-localematcher" "0.4.0"
     tslib "^2.4.0"
 
-"@formatjs/intl-localematcher@0.2.25":
-  version "0.2.25"
-  resolved "https://registry.npmmirror.com/@formatjs/intl-localematcher/-/intl-localematcher-0.2.25.tgz#60892fe1b271ec35ba07a2eb018a2dd7bca6ea3a"
-  integrity sha512-YmLcX70BxoSopLFdLr1Ds99NdlTI2oWoLbaUW2M406lxOIPzE1KQhRz2fPUkq34xVZQaihCoU29h0KK7An3bhA==
-  dependencies:
-    tslib "^2.1.0"
-
 "@formatjs/intl-localematcher@0.2.32":
   version "0.2.32"
   resolved "https://registry.npmmirror.com/@formatjs/intl-localematcher/-/intl-localematcher-0.2.32.tgz#00d4d307cd7d514b298e15a11a369b86c8933ec1"
@@ -1678,19 +1705,6 @@
   integrity sha512-bRTd+rKomvfdS4QDlVJ6TA/Jx1F2h/TBVO5LjvhQ7QPPHp19oPNMIum7W2CMEReq/zPxpmCeB31F9+5gl/qtvw==
   dependencies:
     tslib "^2.4.0"
-
-"@formatjs/intl@2.2.1":
-  version "2.2.1"
-  resolved "https://registry.npmmirror.com/@formatjs/intl/-/intl-2.2.1.tgz#6daf4dabed055b17f467f0aa1bc073a626bc9189"
-  integrity sha512-vgvyUOOrzqVaOFYzTf2d3+ToSkH2JpR7x/4U1RyoHQLmvEaTQvXJ7A2qm1Iy3brGNXC/+/7bUlc3lpH+h/LOJA==
-  dependencies:
-    "@formatjs/ecma402-abstract" "1.11.4"
-    "@formatjs/fast-memoize" "1.2.1"
-    "@formatjs/icu-messageformat-parser" "2.1.0"
-    "@formatjs/intl-displaynames" "5.4.3"
-    "@formatjs/intl-listformat" "6.5.3"
-    intl-messageformat "9.13.0"
-    tslib "^2.1.0"
 
 "@formatjs/intl@2.7.1":
   version "2.7.1"
@@ -1956,6 +1970,18 @@
     "@babel/types" "^7.20.2"
     "@linaria/logger" "^4.0.0"
     babel-merge "^3.0.0"
+
+"@luochuanyuewu/strapi-plugin-generic-vod@^1.0.1":
+  version "1.0.1"
+  resolved "https://npm.pkg.github.com/download/@luochuanyuewu/strapi-plugin-generic-vod/1.0.1/58980facc0c622148acb95ff5df592f792d8af3e#58980facc0c622148acb95ff5df592f792d8af3e"
+  integrity sha512-k4EYZyrRYpp2xDjyHaJ4NlnLm9jzx4+k7xdccDfDkvw04uxFYJjpBqqkvCYCB42ZzOUF8kmFE9wkbLhx1vgbwg==
+  dependencies:
+    "@alicloud/openapi-client" "^0.4.6"
+    "@alicloud/vod20170321" "^2.0.7"
+    "@strapi/design-system" "^1.6.3"
+    "@strapi/helper-plugin" "^4.6.0"
+    "@strapi/icons" "^1.6.3"
+    prop-types "^15.7.2"
 
 "@luochuanyuewu/strapi-tiptap-editor@0.9.13":
   version "0.9.13"
@@ -2462,30 +2488,15 @@
   resolved "https://registry.npmmirror.com/@react-dnd/asap/-/asap-4.0.1.tgz#5291850a6b58ce6f2da25352a64f1b0674871aab"
   integrity sha512-kLy0PJDDwvwwTXxqTFNAAllPHD73AycE9ypWeln/IguoGBEbvFcPDbCV03G52bEcC5E+YgupBE0VzHGdC8SIXg==
 
-"@react-dnd/asap@^5.0.1":
-  version "5.0.2"
-  resolved "https://registry.npmmirror.com/@react-dnd/asap/-/asap-5.0.2.tgz#1f81f124c1cd6f39511c11a881cfb0f715343488"
-  integrity sha512-WLyfoHvxhs0V9U+GTsGilGgf2QsPl6ZZ44fnv0/b8T3nQyvzxidxsg/ZltbWssbsRDlYW8UKSQMTGotuTotZ6A==
-
 "@react-dnd/invariant@3.0.1":
   version "3.0.1"
   resolved "https://registry.npmmirror.com/@react-dnd/invariant/-/invariant-3.0.1.tgz#7e70be19ea21b539e8bf1da28466f4f05df2a4cc"
   integrity sha512-blqduwV86oiKw2Gr44wbe3pj3Z/OsXirc7ybCv9F/pLAR+Aih8F3rjeJzK0ANgtYKv5lCpkGVoZAeKitKDaD/g==
 
-"@react-dnd/invariant@^4.0.1":
-  version "4.0.2"
-  resolved "https://registry.npmmirror.com/@react-dnd/invariant/-/invariant-4.0.2.tgz#b92edffca10a26466643349fac7cdfb8799769df"
-  integrity sha512-xKCTqAK/FFauOM9Ta2pswIyT3D8AQlfrYdOi/toTPEhqCuAs1v5tcJ3Y08Izh1cJ5Jchwy9SeAXmMg6zrKs2iw==
-
 "@react-dnd/shallowequal@3.0.1":
   version "3.0.1"
   resolved "https://registry.npmmirror.com/@react-dnd/shallowequal/-/shallowequal-3.0.1.tgz#8056fe046a8d10a275e321ec0557ae652d7a4d06"
   integrity sha512-XjDVbs3ZU16CO1h5Q3Ew2RPJqmZBDE/EVf1LYp6ePEffs3V/MX9ZbL5bJr8qiK5SbGmUMuDoaFgyKacYz8prRA==
-
-"@react-dnd/shallowequal@^4.0.1":
-  version "4.0.2"
-  resolved "https://registry.npmmirror.com/@react-dnd/shallowequal/-/shallowequal-4.0.2.tgz#d1b4befa423f692fa4abf1c79209702e7d8ae4b4"
-  integrity sha512-/RVXdLvJxLg4QKvMoM5WlwNR9ViO9z8B/qPcc+C0Sa/teJY7QG7kJ441DwzOjMYEY7GmU4dj5EcGHIkKZiQZCA==
 
 "@remirror/core-constants@^2.0.1":
   version "2.0.1"
@@ -2521,11 +2532,6 @@
   integrity sha512-VlZQxwGnt1jtQ18D6JqdIF+uFZo525WEqrfp9BOc3COPpK4+AWCgdnAWL+ho6imWcoINlGjR/+3b6y5C1vBVEA==
   dependencies:
     type-fest "^2.19.0"
-
-"@remix-run/router@1.6.3":
-  version "1.6.3"
-  resolved "https://registry.npmmirror.com/@remix-run/router/-/router-1.6.3.tgz#8205baf6e17ef93be35bf62c37d2d594e9be0dad"
-  integrity sha512-EXJysQ7J3veRECd0kZFQwYYd5sJMcq2O/m60zu1W2l3oVQ9xtub8jTOtYRE0+M2iomyG/W3Ps7+vp2kna0C27Q==
 
 "@rushstack/ts-command-line@^4.12.2":
   version "4.15.0"
@@ -2778,7 +2784,7 @@
     semver "7.5.1"
     umzug "3.2.1"
 
-"@strapi/design-system@1.8.0":
+"@strapi/design-system@1.8.0", "@strapi/design-system@^1.6.3":
   version "1.8.0"
   resolved "https://registry.npmmirror.com/@strapi/design-system/-/design-system-1.8.0.tgz#9cf3462454a1c5cd81bb0b50874dfd83d9cb18dd"
   integrity sha512-RkqGcZOvxbkA4O3pOl7NBzDUG8T03N51D7QVTWp9ZsEhn6wu6SMYqtIN4JvtYwbSD+Erg/pj7CWbgu8VjyM42A==
@@ -2829,7 +2835,7 @@
     plop "2.7.6"
     pluralize "8.0.0"
 
-"@strapi/helper-plugin@4.11.1":
+"@strapi/helper-plugin@4.11.1", "@strapi/helper-plugin@^4.6.0":
   version "4.11.1"
   resolved "https://registry.npmmirror.com/@strapi/helper-plugin/-/helper-plugin-4.11.1.tgz#696ad5e9fe286a6d4184b45b44058565cd119518"
   integrity sha512-tg9KdGScz3nlt93EHL95qjQaXB/wvqIz/fJy/6uYi6RI19k2J6XluxT5W1ooYqcK3O6QQ8J2Jr1i3NfOp7Xd1g==
@@ -2845,7 +2851,7 @@
     react-intl "6.4.1"
     react-select "5.7.0"
 
-"@strapi/icons@1.8.0":
+"@strapi/icons@1.8.0", "@strapi/icons@^1.6.3":
   version "1.8.0"
   resolved "https://registry.npmmirror.com/@strapi/icons/-/icons-1.8.0.tgz#ef5585e33ac4ccc9df260fcae790f48e9f2b9f61"
   integrity sha512-8EkvPUcueIyXOu5vzf01GZibpTeG0xh+jBA0kKO5KJOXPrO8/yMisJgRlOS9e9pGD+kInIzif78A1P7RCQI4wA==
@@ -2987,10 +2993,10 @@
     redux "^4.2.1"
     yup "^0.32.9"
 
-"@strapi/plugin-seo@^1.8.0":
-  version "1.9.1"
-  resolved "https://registry.npmmirror.com/@strapi/plugin-seo/-/plugin-seo-1.9.1.tgz#0d6d7ad8ad2ae20a36c29ff028bcb7f8562262da"
-  integrity sha512-lOkyhrtuMIT9kn/g90aVa1iNE/BPIuNfvM5YZEIaLdUVuXogJp5xXT89YxMj9WFL2TaMQuM4zJgls2P1y79AOw==
+"@strapi/plugin-seo@^1.9.2":
+  version "1.9.2"
+  resolved "https://registry.npmmirror.com/@strapi/plugin-seo/-/plugin-seo-1.9.2.tgz#025915c919b1f880e4bd9ab835d1a884af8ef0e0"
+  integrity sha512-skqckP1ut5nshgLyLJh/aXdwxCawfNzhdA0GfHK4OLffoYIVrtBhLaGyyschJH6NfVt/0AFl2uhU16ievdz9QQ==
   dependencies:
     date-fns "^2.29.3"
     eslint-plugin-react-hooks "^4.3.0"
@@ -3549,7 +3555,7 @@
   resolved "https://registry.npmmirror.com/@types/history/-/history-4.7.11.tgz#56588b17ae8f50c53983a524fc3cc47437969d64"
   integrity sha512-qjDJRrmvBMiTx+jyLxvLfJU7UznFuokDv4f3WRuriHKERccVpFU+8XMQUAbDzoiJCsmexxRExQeMwwCdamSKDA==
 
-"@types/hoist-non-react-statics@*", "@types/hoist-non-react-statics@^3.3.0", "@types/hoist-non-react-statics@^3.3.1":
+"@types/hoist-non-react-statics@*", "@types/hoist-non-react-statics@^3.3.1":
   version "3.3.1"
   resolved "https://registry.npmmirror.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
   integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
@@ -3700,6 +3706,16 @@
   resolved "https://registry.npmmirror.com/@types/node/-/node-10.17.60.tgz#35f3d6213daed95da7f0f73e75bcc6980e90597b"
   integrity sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==
 
+"@types/node@^12.0.2":
+  version "12.20.55"
+  resolved "https://registry.npmmirror.com/@types/node/-/node-12.20.55.tgz#c329cbd434c42164f846b909bd6f85b5537f6240"
+  integrity sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==
+
+"@types/node@^14":
+  version "14.18.51"
+  resolved "https://registry.npmmirror.com/@types/node/-/node-14.18.51.tgz#cb90935b89c641201c3d07a595c3e22d1cfaa417"
+  integrity sha512-P9bsdGFPpVtofEKlhWMVS2qqx1A/rt9QBfihWlklfHHpUpjtYse5AzFz6j4DWrARLYh6gRnw9+5+DJcrq3KvBA==
+
 "@types/object.omit@^3.0.0":
   version "3.0.0"
   resolved "https://registry.npmmirror.com/@types/object.omit/-/object.omit-3.0.0.tgz#0d31e1208eac8fe2ad5c9499a1016a8273bbfafc"
@@ -3750,16 +3766,6 @@
   integrity sha512-xfVcv5zjC6fGf6axPyKxdXNm9RKK9OFzSIyZeCR3r9h4zDuqSpHc8ilTBtfQ1zU/uCx+tAsB+W6vzdCBMu1jtg==
   dependencies:
     react-query "*"
-
-"@types/react-redux@^7.1.20":
-  version "7.1.25"
-  resolved "https://registry.npmmirror.com/@types/react-redux/-/react-redux-7.1.25.tgz#de841631205b24f9dfb4967dd4a7901e048f9a88"
-  integrity sha512-bAGh4e+w5D8dajd6InASVIyCo4pZLJ66oLb80F9OBLO1gKESbZcRCJpTT6uLXX+HAB57zw1WTdwJdAsewuTweg==
-  dependencies:
-    "@types/hoist-non-react-statics" "^3.3.0"
-    "@types/react" "*"
-    hoist-non-react-statics "^3.3.0"
-    redux "^4.0.0"
 
 "@types/react-router-dom@^5.3.3":
   version "5.3.3"
@@ -3885,6 +3891,13 @@
   version "8.5.5"
   resolved "https://registry.npmmirror.com/@types/ws/-/ws-8.5.5.tgz#af587964aa06682702ee6dcbc7be41a80e4b28eb"
   integrity sha512-lwhs8hktwxSjf9UaZ9tG5M03PGogvFaH8gUgLNbN9HKIg0dvv6q+gkSuJ8HN4/VbyxkuLzCjlN7GquQ0gUJfIg==
+  dependencies:
+    "@types/node" "*"
+
+"@types/xml2js@^0.4.5":
+  version "0.4.11"
+  resolved "https://registry.npmmirror.com/@types/xml2js/-/xml2js-0.4.11.tgz#bf46a84ecc12c41159a7bd9cf51ae84129af0e79"
+  integrity sha512-JdigeAKmCyoJUiQljjr7tQG3if9NkqGUgwEUqBvV0N7LM4HyQk7UXCnusRa1lnvXAEYJ8mw8GtZWioagNztOwA==
   dependencies:
     "@types/node" "*"
 
@@ -4488,14 +4501,6 @@ axios@*, axios@1.4.0:
     follow-redirects "^1.15.0"
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
-
-axios@^0.27.2:
-  version "0.27.2"
-  resolved "https://registry.npmmirror.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
-  integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
-  dependencies:
-    follow-redirects "^1.14.9"
-    form-data "^4.0.0"
 
 babel-loader@^9.1.2:
   version "9.1.2"
@@ -5887,15 +5892,6 @@ dnd-core@15.1.2:
     "@react-dnd/invariant" "3.0.1"
     redux "^4.1.2"
 
-dnd-core@^16.0.1:
-  version "16.0.1"
-  resolved "https://registry.npmmirror.com/dnd-core/-/dnd-core-16.0.1.tgz#a1c213ed08961f6bd1959a28bb76f1a868360d19"
-  integrity sha512-HK294sl7tbw6F6IeuK16YSBUoorvHpY8RHO+9yFfaJyCDVb6n7PRcezrOEOa2SBCqiYpemh5Jx20ZcjKdFAVng==
-  dependencies:
-    "@react-dnd/asap" "^5.0.1"
-    "@react-dnd/invariant" "^4.0.1"
-    redux "^4.2.0"
-
 dns-equal@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmmirror.com/dns-equal/-/dns-equal-1.0.0.tgz#b39e7f1da6eb0a75ba9c17324b34753c47e0654d"
@@ -6569,7 +6565,7 @@ fn.name@1.x.x:
   resolved "https://registry.npmmirror.com/fn.name/-/fn.name-1.1.0.tgz#26cad8017967aea8731bc42961d04a3d5988accc"
   integrity sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
 
-follow-redirects@^1.0.0, follow-redirects@^1.14.9, follow-redirects@^1.15.0:
+follow-redirects@^1.0.0, follow-redirects@^1.15.0:
   version "1.15.2"
   resolved "https://registry.npmmirror.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
   integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
@@ -7366,6 +7362,14 @@ https-proxy-agent@5, https-proxy-agent@5.0.1, https-proxy-agent@^5.0.0:
     agent-base "6"
     debug "4"
 
+httpx@^2.2.0, httpx@^2.2.6:
+  version "2.2.7"
+  resolved "https://registry.npmmirror.com/httpx/-/httpx-2.2.7.tgz#1e34198146e32ca3305a66c11209559e1cbeba09"
+  integrity sha512-Wjh2JOAah0pdczfqL8NC5378G7jMt0Zcpn8U+yyxAiejjlagzSTQgJHuVvka2VNPQlKfoGehYRc79WKq9E4gDw==
+  dependencies:
+    "@types/node" "^14"
+    debug "^4.1.1"
+
 human-signals@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmmirror.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
@@ -7464,7 +7468,7 @@ inherits@2.0.3:
   resolved "https://registry.npmmirror.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
   integrity sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==
 
-ini@^1.3.4, ini@~1.3.0:
+ini@^1.3.4, ini@^1.3.5, ini@~1.3.0:
   version "1.3.8"
   resolved "https://registry.npmmirror.com/ini/-/ini-1.3.8.tgz#a29da425b48806f34767a4efce397269af28432c"
   integrity sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==
@@ -7543,16 +7547,6 @@ intl-messageformat@10.5.0:
     "@formatjs/fast-memoize" "2.2.0"
     "@formatjs/icu-messageformat-parser" "2.6.0"
     tslib "^2.4.0"
-
-intl-messageformat@9.13.0:
-  version "9.13.0"
-  resolved "https://registry.npmmirror.com/intl-messageformat/-/intl-messageformat-9.13.0.tgz#97360b73bd82212e4f6005c712a4a16053165468"
-  integrity sha512-7sGC7QnSQGa5LZP7bXLDhVDtQOeKGeBFGHF2Y8LVBwYZoQZCgWeKoPGTa5GMG8g/TzDgeXuYJQis7Ggiw2xTOw==
-  dependencies:
-    "@formatjs/ecma402-abstract" "1.11.4"
-    "@formatjs/fast-memoize" "1.2.1"
-    "@formatjs/icu-messageformat-parser" "2.1.0"
-    tslib "^2.1.0"
 
 invariant@^2.2.4:
   version "2.2.4"
@@ -8086,6 +8080,13 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.3"
   resolved "https://registry.npmmirror.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
+
+kitx@^2.0.0, kitx@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmmirror.com/kitx/-/kitx-2.1.0.tgz#fc7fbf78eb6ed7a5a3fd2d7afb3011e29d0e44c8"
+  integrity sha512-C/5v9MtIX7aHGOjwn5BmrrbNkJSf7i0R5mRzmh13GSAdRqQ7bYQo/Su2pTYNylFicqKNTVX3HML9k1u8k51+pQ==
+  dependencies:
+    "@types/node" "^12.0.2"
 
 knex@2.4.0:
   version "2.4.0"
@@ -10118,13 +10119,6 @@ react-dnd-html5-backend@15.1.3:
   dependencies:
     dnd-core "15.1.2"
 
-react-dnd-html5-backend@^16.0.1:
-  version "16.0.1"
-  resolved "https://registry.npmmirror.com/react-dnd-html5-backend/-/react-dnd-html5-backend-16.0.1.tgz#87faef15845d512a23b3c08d29ecfd34871688b6"
-  integrity sha512-Wu3dw5aDJmOGw8WjH1I1/yTH+vlXEL4vmjk5p+MHxP8HuHJS1lAGeIdG/hze1AvNeXWo/JgULV87LyQOr+r5jw==
-  dependencies:
-    dnd-core "^16.0.1"
-
 react-dnd@15.1.2:
   version "15.1.2"
   resolved "https://registry.npmmirror.com/react-dnd/-/react-dnd-15.1.2.tgz#211b30fd842326209c63f26f1bdf1bc52eef4f64"
@@ -10133,17 +10127,6 @@ react-dnd@15.1.2:
     "@react-dnd/invariant" "3.0.1"
     "@react-dnd/shallowequal" "3.0.1"
     dnd-core "15.1.2"
-    fast-deep-equal "^3.1.3"
-    hoist-non-react-statics "^3.3.2"
-
-react-dnd@^16.0.1:
-  version "16.0.1"
-  resolved "https://registry.npmmirror.com/react-dnd/-/react-dnd-16.0.1.tgz#2442a3ec67892c60d40a1559eef45498ba26fa37"
-  integrity sha512-QeoM/i73HHu2XF9aKksIUuamHPDvRglEwdHL4jsp784BgUuWcg6mzfxT0QDdQz8Wj0qyRKx2eMg8iZtWvU4E2Q==
-  dependencies:
-    "@react-dnd/invariant" "^4.0.1"
-    "@react-dnd/shallowequal" "^4.0.1"
-    dnd-core "^16.0.1"
     fast-deep-equal "^3.1.3"
     hoist-non-react-statics "^3.3.2"
 
@@ -10181,11 +10164,6 @@ react-fast-compare@^3.1.1:
   resolved "https://registry.npmmirror.com/react-fast-compare/-/react-fast-compare-3.2.2.tgz#929a97a532304ce9fee4bcae44234f1ce2c21d49"
   integrity sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==
 
-react-flip-move@^3.0.4:
-  version "3.0.5"
-  resolved "https://registry.npmmirror.com/react-flip-move/-/react-flip-move-3.0.5.tgz#8b87510ad32ebef01ebca94902b445f456bbc0f7"
-  integrity sha512-Mf4XpbkUNZy9eu80iXXFIjToDvw+bnHxmKHVoositbMpV87O/EQswnXUqVovRHoTx/F+4dE+p//PyJnAT7OtPA==
-
 react-helmet@^6.1.0:
   version "6.1.0"
   resolved "https://registry.npmmirror.com/react-helmet/-/react-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
@@ -10201,7 +10179,7 @@ react-icons@4.8.0:
   resolved "https://registry.npmmirror.com/react-icons/-/react-icons-4.8.0.tgz#621e900caa23b912f737e41be57f27f6b2bff445"
   integrity sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==
 
-react-intl@*, react-intl@^6.4.2:
+react-intl@*, react-intl@^6.4.4:
   version "6.4.4"
   resolved "https://registry.npmmirror.com/react-intl/-/react-intl-6.4.4.tgz#14b45ce046bfbb60c0e6d392d8ddc30e9ead5a4f"
   integrity sha512-/C9Sl/5//ohfkNG6AWlJuf4BhTXsbzyk93K62A4zRhSPANyOGpKZ+fWhN+TLfFd5YjDUHy+exU/09y0w1bO4Xw==
@@ -10233,38 +10211,17 @@ react-intl@6.4.1:
     intl-messageformat "10.3.4"
     tslib "^2.4.0"
 
-react-intl@^5.24.6:
-  version "5.25.1"
-  resolved "https://registry.npmmirror.com/react-intl/-/react-intl-5.25.1.tgz#68a73aefc485c9bf70062381ae7f6f4791680879"
-  integrity sha512-pkjdQDvpJROoXLMltkP/5mZb0/XqrqLoPGKUCfbdkP8m6U9xbK40K51Wu+a4aQqTEvEK5lHBk0fWzUV72SJ3Hg==
-  dependencies:
-    "@formatjs/ecma402-abstract" "1.11.4"
-    "@formatjs/icu-messageformat-parser" "2.1.0"
-    "@formatjs/intl" "2.2.1"
-    "@formatjs/intl-displaynames" "5.4.3"
-    "@formatjs/intl-listformat" "6.5.3"
-    "@types/hoist-non-react-statics" "^3.3.1"
-    "@types/react" "16 || 17 || 18"
-    hoist-non-react-statics "^3.3.2"
-    intl-messageformat "9.13.0"
-    tslib "^2.1.0"
-
 react-is@^16.13.1, react-is@^16.6.0, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.npmmirror.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
-
-react-is@^17.0.2:
-  version "17.0.2"
-  resolved "https://registry.npmmirror.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
-  integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
 react-is@^18.0.0, react-is@^18.2.0:
   version "18.2.0"
   resolved "https://registry.npmmirror.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
-react-query@*, react-query@3.39.3, react-query@^3.34.15:
+react-query@*, react-query@3.39.3:
   version "3.39.3"
   resolved "https://registry.npmmirror.com/react-query/-/react-query-3.39.3.tgz#4cea7127c6c26bdea2de5fb63e51044330b03f35"
   integrity sha512-nLfLz7GiohKTJDuT4us4X3h/8unOh+00MLb2yJoGTPjxKs2bc1iDhkNx2bd5MKklXnOD3NrVZ+J2UXujA5In4g==
@@ -10284,18 +10241,6 @@ react-redux@8.0.5:
     hoist-non-react-statics "^3.3.2"
     react-is "^18.0.0"
     use-sync-external-store "^1.0.0"
-
-react-redux@^7.2.6:
-  version "7.2.9"
-  resolved "https://registry.npmmirror.com/react-redux/-/react-redux-7.2.9.tgz#09488fbb9416a4efe3735b7235055442b042481d"
-  integrity sha512-Gx4L3uM182jEEayZfRbI/G11ZpYdNAnBs70lFVMNdHJI76XYtR+7m0MN+eAs7UHBPhWXcnFPaS+9owSCJQHNpQ==
-  dependencies:
-    "@babel/runtime" "^7.15.4"
-    "@types/react-redux" "^7.1.20"
-    hoist-non-react-statics "^3.3.2"
-    loose-envify "^1.4.0"
-    prop-types "^15.7.2"
-    react-is "^17.0.2"
 
 react-refresh@0.14.0:
   version "0.14.0"
@@ -10345,14 +10290,6 @@ react-router-dom@5.3.4, react-router-dom@^5.3.4:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-router-dom@^6.2.1:
-  version "6.12.1"
-  resolved "https://registry.npmmirror.com/react-router-dom/-/react-router-dom-6.12.1.tgz#601fe7eb493071a33dc7573a20b920324a834606"
-  integrity sha512-POIZN9UDKWwEDga054LvYr2KnK8V+0HR4Ny4Bwv8V7/FZCPxJgsCjYxXGxqxzHs7VBxMKZfgvtKhafuJkJSPGA==
-  dependencies:
-    "@remix-run/router" "1.6.3"
-    react-router "6.12.1"
-
 react-router@5.3.4:
   version "5.3.4"
   resolved "https://registry.npmmirror.com/react-router/-/react-router-5.3.4.tgz#8ca252d70fcc37841e31473c7a151cf777887bb5"
@@ -10368,32 +10305,10 @@ react-router@5.3.4:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-router@6.12.1:
-  version "6.12.1"
-  resolved "https://registry.npmmirror.com/react-router/-/react-router-6.12.1.tgz#9e4126aa1139ec6b5d347e19576d5e940cd46362"
-  integrity sha512-evd/GrKJOeOypD0JB9e1r7pQh2gWCsTbUfq059Wm1AFT/K2MNZuDo19lFtAgIhlBrp0MmpgpqtvZC7LPAs7vSw==
-  dependencies:
-    "@remix-run/router" "1.6.3"
-
 react-select@5.7.0:
   version "5.7.0"
   resolved "https://registry.npmmirror.com/react-select/-/react-select-5.7.0.tgz#82921b38f1fcf1471a0b62304da01f2896cd8ce6"
   integrity sha512-lJGiMxCa3cqnUr2Jjtg9YHsaytiZqeNOKeibv6WF5zbK/fPegZ1hg3y/9P1RZVLhqBTs0PfqQLKuAACednYGhQ==
-  dependencies:
-    "@babel/runtime" "^7.12.0"
-    "@emotion/cache" "^11.4.0"
-    "@emotion/react" "^11.8.1"
-    "@floating-ui/dom" "^1.0.1"
-    "@types/react-transition-group" "^4.4.0"
-    memoize-one "^6.0.0"
-    prop-types "^15.6.0"
-    react-transition-group "^4.3.0"
-    use-isomorphic-layout-effect "^1.1.2"
-
-react-select@^5.2.2:
-  version "5.7.3"
-  resolved "https://registry.npmmirror.com/react-select/-/react-select-5.7.3.tgz#fa0dc9a23cad6ff3871ad3829f6083a4b54961a2"
-  integrity sha512-z8i3NCuFFWL3w27xq92rBkVI2onT0jzIIPe480HlBjXJ3b5o6Q+Clp4ydyeKrj9DZZ3lrjawwLC5NGl0FSvUDg==
   dependencies:
     "@babel/runtime" "^7.12.0"
     "@emotion/cache" "^11.4.0"
@@ -10533,7 +10448,7 @@ rechoir@^0.8.0:
   dependencies:
     resolve "^1.20.0"
 
-redux@^4.0.0, redux@^4.1.2, redux@^4.2.0, redux@^4.2.1:
+redux@^4.1.2, redux@^4.2.1:
   version "4.2.1"
   resolved "https://registry.npmmirror.com/redux/-/redux-4.2.1.tgz#c08f4306826c49b5e9dc901dee0452ea8fce6197"
   integrity sha512-LAUYz4lc+Do8/g7aeRa8JkyDErK6ekstQaqWQrNRW//MY1TvCEpMtpTWvlQ+FPbWCx+Xixu/6SHt5N0HR+SB4w==
@@ -11155,6 +11070,11 @@ slash@^3.0.0:
   resolved "https://registry.npmmirror.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
+sm3@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmmirror.com/sm3/-/sm3-1.0.3.tgz#0051f0cc948c983944843136e7baa244eec5cd49"
+  integrity sha512-KyFkIfr8QBlFG3uc3NaljaXdYcsbRy1KrSfc4tsQV8jW68jAktGeOcifu530Vx/5LC+PULHT0Rv8LiI8Gw+c1g==
+
 smart-buffer@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmmirror.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
@@ -11355,7 +11275,7 @@ std-env@^3.0.1:
   resolved "https://registry.npmmirror.com/std-env/-/std-env-3.3.3.tgz#a54f06eb245fdcfef53d56f3c0251f1d5c3d01fe"
   integrity sha512-Rz6yejtVyWnVjC1RFvNmYL10kgjC49EOghxWn0RFqlCHGFpQx+Xe7yW3I4ceK1SGrWIGMjD5Kbue8W/udkbMJg==
 
-strapi-plugin-comments@^2.2.10:
+strapi-plugin-comments@^2.2.11:
   version "2.2.11"
   resolved "https://registry.npmmirror.com/strapi-plugin-comments/-/strapi-plugin-comments-2.2.11.tgz#a31435dfad3fc538ddf691ae4e5913431ed992b5"
   integrity sha512-WWZB502AmjYYMP1dXNEmdZovMphlFuHiTLsqfec5AwcY9JZazMXkKNraKUTc8Rwjetl+rruBhd2+tzUxSCPbnA==
@@ -11371,7 +11291,7 @@ strapi-plugin-comments@^2.2.10:
     match-sorter "^4.0.2"
     styled-components "^5.3.8"
 
-strapi-plugin-import-export-entries@^1.19.2:
+strapi-plugin-import-export-entries@^1.21.0:
   version "1.21.0"
   resolved "https://registry.npmmirror.com/strapi-plugin-import-export-entries/-/strapi-plugin-import-export-entries-1.21.0.tgz#c01ddc99addfa4c834bb2093dac494f877a0e207"
   integrity sha512-TEnIwL1UlgD/7jzbQpnTBsn1uhRe2ROF43FfgHElumhLS7RVldnZ07+kMxmN4VcTcmGTrNAaTrwxTCq58fq7cA==
@@ -11385,26 +11305,6 @@ strapi-plugin-import-export-entries@^1.19.2:
     monaco-editor-webpack-plugin "7.0.1"
     node-fetch "2.6.9"
     react-singleton-hook "3.3.0"
-
-strapi-plugin-menus@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.npmmirror.com/strapi-plugin-menus/-/strapi-plugin-menus-1.4.1.tgz#c3fb500a300ce369a9c45f02fd2c1b4107679990"
-  integrity sha512-CcguAuS6a88lFav9Vll0G80jgno2FlXUSZIxicU5m6ODo4mSUpZeM19N9VTBvJn7cpyWPcKFcMsIOyTF2jKp8g==
-  dependencies:
-    axios "^0.27.2"
-    lodash "4.17.21"
-    prop-types "^15.8.1"
-    qs "^6.10.3"
-    react "^17.0.2"
-    react-dnd "^16.0.1"
-    react-dnd-html5-backend "^16.0.1"
-    react-flip-move "^3.0.4"
-    react-intl "^5.24.6"
-    react-query "^3.34.15"
-    react-redux "^7.2.6"
-    react-router-dom "^6.2.1"
-    react-select "^5.2.2"
-    styled-components "5.3.3"
 
 strapi-provider-upload-oss@^0.1.7:
   version "0.1.7"
@@ -12476,7 +12376,7 @@ xdg-basedir@^4.0.0:
   resolved "https://registry.npmmirror.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
   integrity sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q==
 
-xml2js@^0.4.16:
+xml2js@^0.4.16, xml2js@^0.4.22:
   version "0.4.23"
   resolved "https://registry.npmmirror.com/xml2js/-/xml2js-0.4.23.tgz#a0c69516752421eb2ac758ee4d4ccf58843eac66"
   integrity sha512-ySPiMjM0+pLDftHgXY4By0uswI3SPKLDw/i3UXbnO8M/p28zqexCUoPmQFrYD+/1BzhGJSs2i1ERWKJAtiLrug==

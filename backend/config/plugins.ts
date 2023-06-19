@@ -1,8 +1,8 @@
 module.exports = ({ env }) => ({
-  'generic-vod': {
-    enabled: true,
-    resolve: './src/plugins/generic-vod'
-  },
+  // 'generic-vod': {
+  //   enabled: true,
+  //   resolve: './src/plugins/generic-vod'
+  // },
   'import-export-entries': {
     enabled: true,
   },

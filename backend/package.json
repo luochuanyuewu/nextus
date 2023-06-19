@@ -17,19 +17,19 @@
     "@types/node": "18.16.0"
   },
   "dependencies": {
+    "@luochuanyuewu/strapi-plugin-generic-vod": "^1.0.1",
     "@luochuanyuewu/strapi-tiptap-editor": "0.9.13",
     "@strapi/plugin-documentation": "4.11.1",
     "@strapi/plugin-graphql": "4.11.1",
     "@strapi/plugin-i18n": "4.11.1",
-    "@strapi/plugin-seo": "^1.8.0",
+    "@strapi/plugin-seo": "^1.9.2",
     "@strapi/plugin-users-permissions": "4.11.1",
     "@strapi/strapi": "4.11.1",
     "better-sqlite3": "^8.4.0",
     "mysql": "^2.18.1",
-    "react-intl": "^6.4.2",
-    "strapi-plugin-comments": "^2.2.10",
-    "strapi-plugin-import-export-entries": "^1.19.2",
-    "strapi-plugin-menus": "^1.4.1",
+    "react-intl": "^6.4.4",
+    "strapi-plugin-comments": "^2.2.11",
+    "strapi-plugin-import-export-entries": "^1.21.0",
     "strapi-provider-upload-oss": "^0.1.7"
   },
   "author": {
