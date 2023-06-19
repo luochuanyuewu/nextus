@@ -3,10 +3,6 @@ module.exports = ({ env }) => ({
     enabled: true,
     resolve: './src/plugins/generic-vod'
   },
-  'strapi-tiptap-editor': {
-    enabled: true,
-    resolve: './src/plugins/strapi-tiptap-editor'
-  },
   'import-export-entries': {
     enabled: true,
   },
