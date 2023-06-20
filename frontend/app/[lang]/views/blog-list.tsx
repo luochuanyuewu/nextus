@@ -80,7 +80,7 @@ export default function PostList({
                 <article className="card card-compact mb-2 shadow-md">
                   <div className="card-body">
                     <div className="flex flex-row">
-                      <Link
+                      <Link className="hidden md:inline"
                         href={`p/${category?.slug}/${article.attributes.slug}`}
                       >
                         {imageUrl && (
@@ -93,11 +93,11 @@ export default function PostList({
                           />
                         )}
                       </Link>
-                      <div className="flex flex-col flex-grow">
+                      <div className="flex flex-col flex-grow mx-1">
                         <div className="mt-3 flex flex-col">
                           <h1 className="text-2xl font-bold">
                             <Link href={`p/${category?.slug}/${article.attributes.slug}`}>
-                              <span className="badge badge-secondary mr-2">分类</span>
+                              <span className="badge badge-secondary mx-1">{article.attributes.category.data.attributes.name}</span>
                               {article.attributes.title}
                             </Link>
                           </h1>
