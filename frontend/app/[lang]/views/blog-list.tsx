@@ -79,7 +79,7 @@ export default function PostList({
               <li key={article.id} className="">
                 <article className="card card-compact mb-2 shadow-md">
                   <div className="card-body">
-                    <div className="flex flex-row">
+                    <div className="flex flex-row items-center">
                       <Link className="hidden md:inline"
                         href={`p/${category?.slug}/${article.attributes.slug}`}
                       >
