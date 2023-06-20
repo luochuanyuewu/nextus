@@ -32,6 +32,15 @@ services:
   #   depends_on:
   #     - strapiDB
 
+  strapiAdmin:
+    container_name: strapiAdmin
+    image: httpd:2.4
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./dist/build:/usr/local/apache2/htdocs/
+    ports:
+      - '8000:80'
   strapiDB:
     container_name: strapiDB
     platform: linux/amd64 #for platform error on Apple M1 chips
