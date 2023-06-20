@@ -1,7 +1,9 @@
 .tmp/
 .cache/
 .git/
+.vscode/
 build/
+dist/
 node_modules/
 .env
 data/

@@ -1,7 +1,7 @@
 {
   "name": "yuewu.dev",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "yuewu.dev",
   "scripts": {
     "install-plugin": "cd src/plugins/generic-vod && yarn install && cd ../generic-pay && yarn install && cd ../../..",
