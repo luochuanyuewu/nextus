@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkyuewu_dev=self.webpackChunkyuewu_dev||[]).push([[4816],{39987:(P,s,e)=>{e.r(s),e.d(s,{default:()=>_});var t=e(53547),n=e(22551),E=e(87751),r=e(53219);const _=()=>t.createElement(n.CheckPagePermissions,{permissions:E.Z.settings["transfer-tokens"].create},t.createElement(r.Z,null))}}]);

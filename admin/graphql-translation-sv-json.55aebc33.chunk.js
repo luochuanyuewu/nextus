@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkyuewu_dev=self.webpackChunkyuewu_dev||[]).push([[6068],{73287:e=>{e.exports=JSON.parse('{"plugin.description.long":"L\xE4gger till en GraphQL-rutt med standard API-metoder.","plugin.description.short":"L\xE4gger till en GraphQL-rutt med standard API-metoder.","plugin.name":"GraphQL"}')}}]);
