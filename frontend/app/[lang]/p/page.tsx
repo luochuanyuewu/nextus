@@ -7,6 +7,7 @@ import { Metadata } from 'next'
 import Loader from "../components/Loader";
 import BlogList from "../views/blog-list";
 import PageHeader from "../components/PageHeader";
+import Link from "next/link";
 
 interface Meta {
   pagination: {
@@ -98,7 +99,9 @@ export default function BlogHomePage() {
                 <h2 className="card-title">用户中心</h2>
                 <p>需要登录才能进入用户中心</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">登录</button>
+                  <Link href="/login">
+                    <button className="btn btn-primary">登录</button>
+                  </Link>
                   <button className="btn btn-secondary">注册</button>
                 </div>
               </div>
