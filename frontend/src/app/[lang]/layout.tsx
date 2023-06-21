@@ -6,7 +6,7 @@ import { fetchAPI } from "./utils/fetch-api";
 import Banner from "./components/Banner";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import { i18n } from "@/i18n-config";
+import { i18n } from "i18n-config";
 import { Analytics } from "@/components/analytics";
 
 const FALLBACK_SEO = {
