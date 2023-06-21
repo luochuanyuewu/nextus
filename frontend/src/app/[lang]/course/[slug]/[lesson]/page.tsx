@@ -62,7 +62,11 @@ async function getCourseLessonsBySlug(slug: string, lang: string) {
     const path = `/lessons`;
 
     const urlParamsObject = {
-
+        filters: {
+            course: {
+                slug: slug
+            }
+        },
         locale: lang,
         populate: {
             video: '*',
@@ -131,12 +135,16 @@ export default async function ViewCourse({ params }: { params: { lang: string, s
 
     const videoId = activeLesson.attributes.video?.data.attributes.videoId
 
+    let playAuth = ""
+
     // const [playAuth, setPlayAuth] = useState<string>()
 
     // const [mounted, setMounted] = useState<boolean>(true)
 
-    const res = await getVideoPlayingToken(videoId as any)
-    const playAuth = res.playAuth
+    if (typeof videoId !== 'undefined') {
+        const res = await getVideoPlayingToken(videoId as any)
+        playAuth = res.playAuth
+    }
 
     // useEffect(() => {
     //     getVideoPlayingToken(videoId as any).then((res) => {

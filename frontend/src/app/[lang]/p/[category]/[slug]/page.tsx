@@ -60,23 +60,6 @@ export async function generateStaticParams({ params }: { params: { lang: string 
         options
     );
 
-    // articleResponse.data.map(
-    //     (article: {
-    //         attributes: {
-    //             slug: string;
-    //             category: {
-    //                 data: {
-    //                     attributes: {
-    //                         slug: string;
-    //                     }
-    //                 }
-    //             };
-    //         };
-    //     }) => {
-    //         console.log(article.attributes.category.data.attributes.slug)
-    //     }
-    // )
-
     return articleResponse.data.map(
         (article: {
             attributes: {

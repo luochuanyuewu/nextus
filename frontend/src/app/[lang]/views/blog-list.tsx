@@ -79,8 +79,8 @@ export default function PostList({
               <li key={article.id} className="">
                 <article className="card card-compact mb-2 shadow-md">
                   <div className="card-body">
-                    <div className="flex flex-row items-center">
-                      <Link className="hidden md:inline"
+                    <div className="grid grid-cols-1 md:grid-cols-4 flex-row items-center">
+                      <Link className="hidden md:inline "
                         href={`p/${category?.slug}/${article.attributes.slug}`}
                       >
                         {imageUrl && (
@@ -93,7 +93,7 @@ export default function PostList({
                           />
                         )}
                       </Link>
-                      <div className="flex flex-col flex-grow mx-1">
+                      <div className="col-span-3 flex flex-col flex-grow mx-1">
                         <div className="mt-3 flex flex-col">
                           <h1 className="text-2xl font-bold">
                             <Link href={`p/${category?.slug}/${article.attributes.slug}`}>
@@ -111,7 +111,7 @@ export default function PostList({
                                 width="50"
                                 height="50"
                                 src={avatarUrl}
-                                className="object-cover w-10 h-10  rounded-full"
+                                className="object-cover w-10 h-10 rounded-full"
                               />
                             )}
                             {authorsBio && (
