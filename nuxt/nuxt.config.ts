@@ -1,18 +1,35 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-
 export default defineNuxtConfig({
-    runtimeConfig: {
-        public: {
-            baseURL: process.env.BASE_URL || 'http://localhost:1337',
-        }
+  // https://v3.nuxtjs.org/guide/directory-structure/nuxt.config/
+
+  // As of RC12 Nuxt 3 supports Hybrid rendering mode
+  // https://v3.nuxtjs.org/guide/concepts/rendering#route-rules
+  //   routeRules: {
+  //     '/pages/**': { swr: true },
+  //     '/posts/**': { static: true },
+  //   },
+
+  css: [],
+
+  modules: [
+    '@nuxtjs/tailwindcss',
+    // https://pinia.esm.dev
+    '@pinia/nuxt',
+    // https://vueuse.org/
+    '@vueuse/nuxt',
+  ],
+
+  runtimeConfig: {
+    public: {
+      directusUrl: process.env.DIRECTUS_URL,
     },
-    css: ['vuetify/styles', '@mdi/font/css/materialdesignicons.min.css'],
-    build: {
-        transpile: ['vuetify']
+  },
+
+  postcss: {
+    plugins: {
+      'postcss-import': {},
+      'tailwindcss/nesting': {},
+      tailwindcss: {},
+      autoprefixer: {},
     },
-    vite: {
-        define: {
-            'process.env.DEBUG': false
-        }
-    }
+  },
 })

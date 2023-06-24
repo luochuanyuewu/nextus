@@ -1,10 +1,11 @@
 <template>
-  <NuxtLayout>
-    <NuxtPage></NuxtPage>
-  </NuxtLayout>
+  <div>
+    <NuxtLayout>
+      <NuxtLoadingIndicator
+        color="repeating-linear-gradient(to right,#F21BB9
+    0%,#6366f1 100%)"
+      />
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
 </template>
-
-<script setup lang="ts">
-const { data } = await useFetch(() => `http://localhost:1337/api/home-page`)
-console.log(data)
-</script>

@@ -1,26 +1,5 @@
-<script lang="ts" setup></script>
-
 <template>
-  <v-layout align-center justify-center>
-    <v-app-bar title="网站标题">
-      <template v-slot:append>
-        <v-btn icon="mdi-heart"></v-btn>
-
-        <v-btn icon="mdi-magnify"></v-btn>
-
-        <v-btn icon="mdi-dots-vertical"></v-btn>
-      </template>
-    </v-app-bar>
-
-    <v-navigation-drawer>
-      <v-list>
-        <v-list-item title="Navigation drawer"></v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-main>
-      <slot />
-    </v-main>
-  </v-layout>
+  <div class="min-h-screen transition duration-150 bg-white dark:bg-slate-900">
+    <slot />
+  </div>
 </template>
-
-<style scoped></style>
