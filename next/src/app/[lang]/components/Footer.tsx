@@ -8,8 +8,8 @@ import { AiFillGithub, AiFillTwitterCircle, AiFillYoutube, AiFillZhihuCircle } f
 
 interface FooterLink {
   id: number;
-  url: string;
-  newTab: boolean;
+  href: string;
+  new_tab: boolean;
   text: string;
   social?: string;
 }
@@ -22,11 +22,11 @@ interface CategoryLink {
   };
 }
 
-function FooterLink({ url, text }: FooterLink) {
+function FooterLink({ href, text }: FooterLink) {
   const path = usePathname();
   return (
     <Link
-      href={url}
+      href={href}
       className="link link-hover"
     >
       {text}
@@ -85,7 +85,7 @@ export default function Footer({
   categoryLinks: Array<CategoryLink>;
   legalTitle: string | null
   legalLinks: Array<FooterLink>;
-  socialTitle: string | null
+  socialTitle?: string | null
   socialLinks: Array<FooterLink>;
 }) {
 
@@ -100,23 +100,23 @@ export default function Footer({
         </div>
         {categoryLinks && categoryLinks.length > 0 && <div>
           <span className="footer-title">{categoryTitle}</span>
-          {categoryLinks.map((link: CategoryLink) => (
-            <CategoryLink key={link.id} {...link} />
+          {categoryLinks.map((link: CategoryLink, i: number) => (
+            <CategoryLink key={i} {...link} />
           ))}
         </div>}
         {menuLinks && menuLinks.length > 0 && < div >
           <span className="footer-title">{menuTitle}</span>
-          {menuLinks.map((link: FooterLink) => (
-            <FooterLink key={link.id} {...link} />
+          {menuLinks.map((link: FooterLink, i: number) => (
+            <FooterLink key={i} {...link} />
           ))}
         </div>}
         {legalLinks && legalLinks.length > 0 && <div>
           <span className="footer-title">{legalTitle}</span>
-          {legalLinks.map((link: FooterLink) => (
+          {legalLinks.map((link: FooterLink, i: number) => (
             <Link
-              href={link.url}
+              href={link.href}
               className="link link-hover"
-              key={link.id}
+              key={i}
             >
               {link.text}
             </Link>
@@ -129,14 +129,14 @@ export default function Footer({
         </div>
         <div className="md:place-self-center md:justify-self-end">
           <div className="grid grid-flow-col gap-4">
-            {socialLinks.map((link: FooterLink) => {
+            {socialLinks.map((link: FooterLink, i: number) => {
               return (
                 <a
-                  key={link.id}
+                  key={i}
                   rel="noopener noreferrer"
-                  href={link.url}
+                  href={link.href}
                   title={link.text}
-                  target={link.newTab ? "_blank" : "_self"}
+                  target={link.new_tab ? "_blank" : "_self"}
                 >
                   <RenderSocialIcon social={link.social} />
                 </a>

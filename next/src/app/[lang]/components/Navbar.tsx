@@ -7,16 +7,16 @@ import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 interface NavLink {
   id: number;
-  url: string;
-  newTab: boolean;
+  href: string;
+  new_tab: boolean;
   text: string;
 }
 
 
-function NavLink({ url, text }: NavLink) {
+function NavLink({ href, text }: NavLink) {
   const path = usePathname();
   let className = classNames(
-    '', path === url
+    '', path === href
     ? 'btn-activate'
     : ''
   )
@@ -24,7 +24,7 @@ function NavLink({ url, text }: NavLink) {
     <li>
       <Link
         key={text}
-        href={url}
+        href={href}
       // data-umami-event={`nav-${link.href.replace('/', '')}`}
       >
         <span className={className}>{text}</span>
@@ -64,8 +64,8 @@ export default function Navbar({
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </label>
             <ul tabIndex={0} onClick={handleClick} className="menu menu-compact dropdown-content z-10 mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-              {links.map((item: NavLink) => (
-                <NavLink key={item.id} {...item} />
+              {links.map((item: NavLink, index: number) => (
+                <NavLink key={index} {...item} />
               ))}
             </ul>
           </div>
@@ -73,8 +73,8 @@ export default function Navbar({
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            {links.map((item: NavLink) => (
-              <NavLink key={item.id} {...item} />
+            {links.map((item: NavLink, index: number) => (
+              <NavLink key={index} {...item} />
             ))}
           </ul>
         </div>
@@ -86,8 +86,8 @@ export default function Navbar({
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
             </label>
             <ul tabIndex={0} onClick={handleClick} className="menu menu-compact dropdown-content z-10 mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-              {buttons && buttons.map((item: NavLink) => (
-                <NavLink key={item.id} {...item} />
+              {buttons && buttons.map((item: NavLink, index: number) => (
+                <NavLink key={index} {...item} />
               ))}
             </ul>
           </div>
