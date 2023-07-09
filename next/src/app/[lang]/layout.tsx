@@ -12,8 +12,8 @@ import { readItem, readItems, rest } from "@directus/sdk/rest";
 import { directusApi } from "./utils/directus-api";
 
 const FALLBACK_SEO = {
-  title: "Strapi Starter Next Blog",
-  description: "Strapi Starter Next Blog",
+  title: "Directus Starter Next Blog",
+  description: "Directus Starter Next Blog",
 }
 
 

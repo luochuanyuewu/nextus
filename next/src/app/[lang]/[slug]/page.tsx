@@ -1,5 +1,4 @@
-import { title } from 'process';
-import { fetchAPI } from '../utils/fetch-api';
+import { fetchAPI } from '../utils/directus-api';
 import { sectionRenderer } from '../utils/section-renderer';
 import { Metadata, ResolvingMetadata } from 'next'
 import CommentBox from '../components/CommentBox';
@@ -11,11 +10,22 @@ type Props = {
 }
 
 async function getPageBySlug(slug: string, lang: string) {
-    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+    // const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 
     const path = `/pages`;
-    const urlParamsObject = { filters: { slug }, locale: lang };
-    const options = { headers: { Authorization: `Bearer ${token}` } };
+    const urlParamsObject = {
+        filters: { slug }, deep: {
+            translations: {
+                _filter: {
+                    languages_code: {
+                        _eq: lang,
+                    },
+                },
+            },
+        }
+    };
+    // const options = { headers: { Authorization: `Bearer ${token}` } };
+    const options = {}
     const response = await fetchAPI(path, urlParamsObject, options);
     return response;
 }
