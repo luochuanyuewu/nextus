@@ -5,7 +5,7 @@
             "name": "Next.js: debug server-side",
             "type": "node-terminal",
             "request": "launch",
-            "command": "yarn dev"
+            "command": "pnpm run dev"
         },
         {
             "name": "Next.js: debug client-side",

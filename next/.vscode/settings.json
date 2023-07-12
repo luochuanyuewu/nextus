@@ -3,5 +3,6 @@
         "other": "on",
         "comments": "off",
         "strings": "on"
-    }
+    },
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }
