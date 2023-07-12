@@ -38,6 +38,9 @@ dependencies:
   eslint-config-next:
     specifier: 13.4.9
     version: registry.npmmirror.com/eslint-config-next@13.4.9(eslint@8.44.0)(typescript@5.1.6)
+  formik:
+    specifier: ^2.4.2
+    version: registry.npmmirror.com/formik@2.4.2(react@18.2.0)
   negotiator:
     specifier: ^0.6.3
     version: registry.npmmirror.com/negotiator@0.6.3
@@ -53,9 +56,6 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
-  react-icons:
-    specifier: ^4.10.1
-    version: registry.npmmirror.com/react-icons@4.10.1(react@18.2.0)
   react-markdown:
     specifier: ^8.0.7
     version: registry.npmmirror.com/react-markdown@8.0.7(@types/react@18.2.14)(react@18.2.0)
@@ -1138,6 +1138,13 @@ packages:
     version: 0.1.4
     dev: false
 
+  registry.npmmirror.com/deepmerge@2.2.1:
+    resolution: {integrity: sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/deepmerge/-/deepmerge-2.2.1.tgz}
+    name: deepmerge
+    version: 2.2.1
+    engines: {node: '>=0.10.0'}
+    dev: false
+
   registry.npmmirror.com/default-browser-id@3.0.0:
     resolution: {integrity: sha512-OZ1y3y0SqSICtE8DE4S8YOE9UZOJ8wO16fKWVP5J1Qz42kV9jcnMVFrEE/noXb/ss3Q4pZIH79kxofzyNNtUNA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/default-browser-id/-/default-browser-id-3.0.0.tgz}
     name: default-browser-id
@@ -1790,6 +1797,24 @@ packages:
       is-callable: registry.npmmirror.com/is-callable@1.2.7
     dev: false
 
+  registry.npmmirror.com/formik@2.4.2(react@18.2.0):
+    resolution: {integrity: sha512-C6nx0hifW2uENP3M6HpPmnAE6HFWCcd8/sqBZEOHZY6lpHJ5qehsfAy43ktpFLEmkBmhiZDei726utcUB9leqg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/formik/-/formik-2.4.2.tgz}
+    id: registry.npmmirror.com/formik/2.4.2
+    name: formik
+    version: 2.4.2
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      deepmerge: registry.npmmirror.com/deepmerge@2.2.1
+      hoist-non-react-statics: registry.npmmirror.com/hoist-non-react-statics@3.3.2
+      lodash: registry.npmmirror.com/lodash@4.17.21
+      lodash-es: registry.npmmirror.com/lodash-es@4.17.21
+      react: registry.npmmirror.com/react@18.2.0
+      react-fast-compare: registry.npmmirror.com/react-fast-compare@2.0.4
+      tiny-warning: registry.npmmirror.com/tiny-warning@1.0.3
+      tslib: registry.npmmirror.com/tslib@2.6.0
+    dev: false
+
   registry.npmmirror.com/fraction.js@4.2.0:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/fraction.js/-/fraction.js-4.2.0.tgz}
     name: fraction.js
@@ -2050,6 +2075,14 @@ packages:
     resolution: {integrity: sha512-nAxA0v8+vXSBDt3AnRUNjyRIQ0rD+ntpbAp4LnPkumc5M9yUbSMa4XDU9Q6etY4f1Wp4bNgvc1yjiZtsTTrSng==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hast-util-whitespace/-/hast-util-whitespace-2.0.1.tgz}
     name: hast-util-whitespace
     version: 2.0.1
+    dev: false
+
+  registry.npmmirror.com/hoist-non-react-statics@3.3.2:
+    resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz}
+    name: hoist-non-react-statics
+    version: 3.3.2
+    dependencies:
+      react-is: registry.npmmirror.com/react-is@16.13.1
     dev: false
 
   registry.npmmirror.com/human-signals@2.1.0:
@@ -2452,6 +2485,12 @@ packages:
       p-locate: registry.npmmirror.com/p-locate@5.0.0
     dev: false
 
+  registry.npmmirror.com/lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash-es/-/lodash-es-4.17.21.tgz}
+    name: lodash-es
+    version: 4.17.21
+    dev: false
+
   registry.npmmirror.com/lodash.castarray@4.4.0:
     resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash.castarray/-/lodash.castarray-4.4.0.tgz}
     name: lodash.castarray
@@ -2468,6 +2507,12 @@ packages:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash.merge/-/lodash.merge-4.6.2.tgz}
     name: lodash.merge
     version: 4.6.2
+
+  registry.npmmirror.com/lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash/-/lodash-4.17.21.tgz}
+    name: lodash
+    version: 4.17.21
+    dev: false
 
   registry.npmmirror.com/longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/longest-streak/-/longest-streak-3.1.0.tgz}
@@ -3522,15 +3567,10 @@ packages:
       scheduler: registry.npmmirror.com/scheduler@0.23.0
     dev: false
 
-  registry.npmmirror.com/react-icons@4.10.1(react@18.2.0):
-    resolution: {integrity: sha512-/ngzDP/77tlCfqthiiGNZeYFACw85fUjZtLbedmJ5DTlNDIwETxhwBzdOJ21zj4iJdvc0J3y7yOsX3PpxAJzrw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-icons/-/react-icons-4.10.1.tgz}
-    id: registry.npmmirror.com/react-icons/4.10.1
-    name: react-icons
-    version: 4.10.1
-    peerDependencies:
-      react: '*'
-    dependencies:
-      react: registry.npmmirror.com/react@18.2.0
+  registry.npmmirror.com/react-fast-compare@2.0.4:
+    resolution: {integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz}
+    name: react-fast-compare
+    version: 2.0.4
     dev: false
 
   registry.npmmirror.com/react-is@16.13.1:
@@ -4061,6 +4101,12 @@ packages:
     version: 3.3.1
     dependencies:
       any-promise: registry.npmmirror.com/any-promise@1.3.0
+
+  registry.npmmirror.com/tiny-warning@1.0.3:
+    resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tiny-warning/-/tiny-warning-1.0.3.tgz}
+    name: tiny-warning
+    version: 1.0.3
+    dev: false
 
   registry.npmmirror.com/titleize@3.0.0:
     resolution: {integrity: sha512-KxVu8EYHDPBdUYdKZdKtU2aj2XfEx9AfjXxE/Aj0vT06w2icA09Vus1rh6eSu1y01akYg6BjIK/hxyLJINoMLQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/titleize/-/titleize-3.0.0.tgz}

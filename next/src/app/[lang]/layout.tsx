@@ -83,6 +83,9 @@ export default async function RootLayout({
 
   return (
     <html lang={params.lang}>
+      <head>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      </head>
       <body>
         {/* {navbar && <Navbar
           links={navbar.links}
