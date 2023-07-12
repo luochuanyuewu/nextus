@@ -4,6 +4,7 @@ import "./globals.css";
 import { i18n } from "i18n-config";
 import { Analytics } from "@/components/analytics";
 import TheHeader from "./components/navigation/TheHeader";
+import TheFooter from "./components/navigation/TheFooter";
 
 const FALLBACK_SEO = {
   title: "Directus Starter Next Blog",
@@ -111,6 +112,8 @@ export default async function RootLayout({
           // socialTitle={footer.socialTitle}
           socialLinks={footer.social_links}
         />} */}
+
+        <TheFooter />
 
         <Analytics />
       </body>

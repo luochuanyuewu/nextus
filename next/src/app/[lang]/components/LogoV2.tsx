@@ -1,8 +1,13 @@
 import * as React from "react";
 
-function LogoV2() {
+function LogoV2({ className }: { className: string }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 95 19">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 95 19"
+      className={className}
+    >
       <path
         fill="#FFA3E0"
         fillRule="evenodd"

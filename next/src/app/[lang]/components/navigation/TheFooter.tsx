@@ -1,40 +1,43 @@
-import { Icon } from "@iconify/react";
-import { useState, useEffect } from "react";
+import LogoV2 from "../LogoV2";
+import TypographyHeadline from "../typography/TypographyHeadline";
+import TypographyTitle from "../typography/TypographyTitle";
+import { Navigation, NavigationItem } from "@/types/schemas";
+import { getDirectusSDK } from "../../utils/useDirectusSDK";
+import { readItem, readItems, readSingleton } from "@directus/sdk";
+import { title } from "process";
+import VIcon from "../base/VIcon";
 
-function Footer() {
-  const [navigation, setNavigation] = useState(null);
-  const [form, setForm] = useState(null);
-  const [tagline, setTagline] = useState("");
-  const [title, setTitle] = useState("");
-  const [socialLinks, setSocialLinks] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const navigationResponse = await fetch("/api/navigation");
-      const navigationData = await navigationResponse.json();
-      setNavigation(navigationData);
-
-      const formResponse = await fetch("/api/newsletterForm");
-      const formData = await formResponse.json();
-      setForm(formData);
-
-      const runtimeConfigResponse = await fetch("/api/runtimeConfig");
-      const runtimeConfigData = await runtimeConfigResponse.json();
-      setTagline(runtimeConfigData.tagline);
-      setTitle(runtimeConfigData.title);
-      setSocialLinks(runtimeConfigData.social_links);
-    }
-
-    fetchData();
-  }, []);
-
-  function getUrl(item) {
+async function TheFooter() {
+  function getUrl(item: NavigationItem) {
     if (item.type === "page") {
       return `/${item.page.slug}`;
     } else {
       return item.url;
     }
   }
+
+  const { api } = getDirectusSDK();
+
+  const navigation = await api.request(
+    readItem("navigation", "footer", {
+      // @ts-ignore
+      fields: ["items.*", "items.page.slug", "items.children.*"],
+    })
+  );
+
+  const form = await api.request(
+    readItems("forms", {
+      filter: {
+        key: {
+          _eq: "newsletter",
+        },
+      },
+    })
+  );
+
+  const globals = await api.request(readSingleton("globals"));
+
+  const { tagline, title, social_links } = globals;
 
   return (
     <footer
@@ -46,12 +49,12 @@ function Footer() {
         <div className="flex justify-between">
           <div className="w-full">
             <a href="/">
-              <Logo className="h-8 dark:text-white" />
+              <LogoV2 className="h-8 dark:text-white" />
             </a>
             <p className="mt-2 font-mono text-sm text-gray-500">{tagline}</p>
           </div>
           <div className="flex items-center justify-end w-full space-x-2">
-            <DarkModeToggle className="hidden text-gray-600 md:block hover:text-gray-400" />
+            {/* <DarkModeToggle className="hidden text-gray-600 md:block hover:text-gray-400" /> */}
           </div>
         </div>
 
@@ -61,7 +64,7 @@ function Footer() {
             <TypographyTitle>Menu</TypographyTitle>
             <ul role="list" className="grid grid-flow-col mt-4 md:grid-cols-2">
               {navigation &&
-                navigation.items.map((item) => (
+                navigation.items.map((item: NavigationItem) => (
                   <li key={item.id}>
                     <a
                       href={getUrl(item)}
@@ -81,29 +84,30 @@ function Footer() {
               <TypographyHeadline content="<p>Subscribe to our <em>newsletter</em></p>">
                 Subscribe to our newsletter
               </TypographyHeadline>
-              {form && <VForm className="mt-4" form={form} />}
+              {/* {form && <VForm className="mt-4" form={form} />} */}
             </div>
           </div>
         </nav>
       </div>
 
       {/* Bottom */}
-      <div className="py-6 mx-6 mx-auto border-t dark:border-t-gray-700 max-w-7xl md:flex md:items-center md:justify-between lg:px-16">
+      <div className="py-6 mx-auto border-t dark:border-t-gray-700 max-w-7xl md:flex md:items-center md:justify-between lg:px-16">
         <div className="flex items-center justify-center space-x-6 md:order-last md:mb-0">
-          {socialLinks.map((link) => (
-            <a
-              key={link.service}
-              href={link.url}
-              target="_blank"
-              className="w-6 h-6 text-white"
-            >
-              <span className="sr-only">{link.service}</span>
-              <Icon
+          {social_links &&
+            social_links.map((link) => (
+              <a
+                key={link.service}
+                href={link.url}
+                target="_blank"
+                className="w-6 h-6 text-white"
+              >
+                <span className="sr-only">{link.service}</span>
+                {/* <Icon
                 className="w-8 h-8 text-gray-700 dark:text-white hover:opacity-75"
                 icon={`mdi:${link.service}`}
-              />
-            </a>
-          ))}
+              /> */}
+              </a>
+            ))}
         </div>
         <div className="mt-8 md:mt-0 md:order-1">
           <span className="mt-2 font-serif text-gray-700 dark:text-gray-300">
@@ -119,7 +123,7 @@ function Footer() {
           </span>
           {/* You're free to remove this footer if you want. But we'd appreciate it if you keep the credits. */}
           <span className="mt-2 font-serif text-gray-700 dark:text-gray-300">
-            <Icon icon="heroicons:bolt" className="w-4 h-4 text-accent" />
+            <VIcon icon="heroicons:bolt" className="w-4 h-4 text-accent" />
             Site powered by
             <a
               href="https://www.directus.io?ref=agencyos_footer"
@@ -145,3 +149,5 @@ function Footer() {
     </footer>
   );
 }
+
+export default TheFooter;

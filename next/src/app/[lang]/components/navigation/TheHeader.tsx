@@ -2,12 +2,14 @@ import { readItem } from "@directus/sdk/rest";
 import { getDirectusSDK } from "../../utils/useDirectusSDK";
 import MenuItem from "./MenuItem";
 import { NavigationItem } from "@/types/schemas";
+import VButton from "../base/VButton";
 
 export default async function TheHeader() {
   const { api } = getDirectusSDK();
 
   const results = await api.request(
     readItem("navigation", "main", {
+      // @ts-ignore
       fields: ["items.*", "items.page.slug", "items.children.*"],
     })
   );
@@ -32,9 +34,9 @@ export default async function TheHeader() {
         </div>
 
         <div className="hidden md:block">
-          {/* <VButton href="/contact-us" variant="primary" className="uppercase">
-            Let's Talk
-          </VButton> */}
+          <VButton href="/contact-us" variant="primary" className="uppercase">
+            {"Let's Talk"}
+          </VButton>
         </div>
 
         {/* <NavigationMobileMenu navigation={navigation} /> */}
