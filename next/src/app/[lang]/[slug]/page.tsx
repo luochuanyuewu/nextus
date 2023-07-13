@@ -10,20 +10,14 @@ type Props = {
 };
 
 async function PageRoute({ params, searchParams }: Props) {
-  function getSlug() {
-    if (params.slug === "/") {
-      return "home";
-    } else params.slug;
-  }
-
-  console.log(params + "Slug" + params.slug);
-
   const { api } = getDirectusSDK();
 
-  const page = await api.request(
+  console.log(`请求的slug = ${params.slug}`);
+
+  const pages = await api.request(
     readItems("pages", {
       filter: {
-        slug: { _eq: params.slug },
+        slug: { _eq: params.slug === "/" ? "home" : params.slug },
       },
       fields: [
         "*",
@@ -43,11 +37,11 @@ async function PageRoute({ params, searchParams }: Props) {
     })
   );
 
-  if (page == null) return null;
+  if (pages.length === 0) return null;
 
   return (
     <div>
-      <PageBuilder page={page as any} />
+      <PageBuilder page={pages[0]} />
     </div>
   );
 }

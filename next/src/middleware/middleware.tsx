@@ -1,25 +1,24 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 import MiddlewareConfig, {
-  MiddlewareConfigWithDefaults
-} from './NextIntlMiddlewareConfig';
-import getAlternateLinksHeaderValue from './getAlternateLinksHeaderValue';
-import resolveLocale from './resolveLocale';
+  MiddlewareConfigWithDefaults,
+} from "./NextIntlMiddlewareConfig";
+import getAlternateLinksHeaderValue from "./getAlternateLinksHeaderValue";
+import resolveLocale from "./resolveLocale";
 import {
   COOKIE_LOCALE_NAME,
   getBestMatchingDomain,
   getLocaleFromPathname,
-  isLocaleSupportedOnDomain
-} from './utils';
+  isLocaleSupportedOnDomain,
+} from "./utils";
 
-
-const ROOT_URL = '/';
+const ROOT_URL = "/";
 
 function receiveConfig(config: MiddlewareConfig) {
   const result: MiddlewareConfigWithDefaults = {
     ...config,
     alternateLinks: config.alternateLinks ?? true,
-    localePrefix: config.localePrefix ?? 'as-needed',
-    localeDetection: config.localeDetection ?? true
+    localePrefix: config.localePrefix ?? "as-needed",
+    localeDetection: config.localeDetection ?? true,
   };
 
   return result;
@@ -33,6 +32,17 @@ export default function createMiddleware(config: MiddlewareConfig) {
   const matcher: Array<string> | undefined = (config as any)._matcher;
 
   return function middleware(request: NextRequest) {
+    //     // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
+    // // If you have one
+    if (
+      [
+        "/manifest.json",
+        "/favicon.ico",
+        // Your other files in `public`
+      ].includes(request.nextUrl.pathname)
+    )
+      return;
+
     const matches =
       !matcher ||
       matcher.some((pattern) => request.nextUrl.pathname.match(pattern));
@@ -61,8 +71,8 @@ export default function createMiddleware(config: MiddlewareConfig) {
     function getResponseInit() {
       const responseInit = {
         request: {
-          headers: request.headers
-        }
+          headers: request.headers,
+        },
       };
 
       return responseInit;
@@ -92,9 +102,9 @@ export default function createMiddleware(config: MiddlewareConfig) {
 
             if (
               bestMatchingDomain.defaultLocale === locale &&
-              configWithDefaults.localePrefix === 'as-needed'
+              configWithDefaults.localePrefix === "as-needed"
             ) {
-              urlObj.pathname = urlObj.pathname.replace(`/${locale}`, '');
+              urlObj.pathname = urlObj.pathname.replace(`/${locale}`, "");
             }
           }
         }
@@ -116,7 +126,7 @@ export default function createMiddleware(config: MiddlewareConfig) {
 
       if (
         hasMatchedDefaultLocale &&
-        configWithDefaults.localePrefix === 'as-needed'
+        configWithDefaults.localePrefix === "as-needed"
       ) {
         response = rewrite(pathWithSearch);
       } else {
@@ -139,12 +149,12 @@ export default function createMiddleware(config: MiddlewareConfig) {
       }
 
       if (hasLocalePrefix) {
-        const basePath = pathWithSearch.replace(`/${pathLocale}`, '') || '/';
+        const basePath = pathWithSearch.replace(`/${pathLocale}`, "") || "/";
 
         if (pathLocale === locale) {
           if (
             hasMatchedDefaultLocale &&
-            configWithDefaults.localePrefix === 'as-needed'
+            configWithDefaults.localePrefix === "as-needed"
           ) {
             response = redirect(basePath);
           } else {
@@ -170,7 +180,7 @@ export default function createMiddleware(config: MiddlewareConfig) {
       } else {
         if (
           hasMatchedDefaultLocale &&
-          (configWithDefaults.localePrefix === 'as-needed' ||
+          (configWithDefaults.localePrefix === "as-needed" ||
             configWithDefaults.domains)
         ) {
           response = rewrite(`/${locale}${pathWithSearch}`);
@@ -182,7 +192,7 @@ export default function createMiddleware(config: MiddlewareConfig) {
 
     if (hasOutdatedCookie) {
       response.cookies.set(COOKIE_LOCALE_NAME, locale, {
-        sameSite: 'strict'
+        sameSite: "strict",
       });
     }
 
@@ -191,7 +201,7 @@ export default function createMiddleware(config: MiddlewareConfig) {
       configWithDefaults.locales.length > 1
     ) {
       response.headers.set(
-        'Link',
+        "Link",
         getAlternateLinksHeaderValue(configWithDefaults, request)
       );
     }

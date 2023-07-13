@@ -3,7 +3,7 @@ import React from "react";
 
 interface ButtonProps {
   type?: "button" | "submit" | "reset";
-  variant?: "default" | "primary" | "outline" | "danger";
+  variant?: "default" | "primary" | "outline" | "danger" | string;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   loading?: boolean;
   disabled?: boolean;
@@ -14,7 +14,7 @@ interface ButtonProps {
   children: React.ReactNode;
 }
 
-function Button(props: ButtonProps) {
+function VButton(props: ButtonProps) {
   const {
     type = "button",
     variant = "default",
@@ -59,4 +59,4 @@ function Button(props: ButtonProps) {
   );
 }
 
-export default Button;
+export default VButton;
