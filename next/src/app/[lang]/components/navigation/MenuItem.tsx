@@ -1,5 +1,5 @@
 "use client";
-import { NavigationItem } from "../../../../types/schemas";
+import { NavigationItem } from "@/types/schemas";
 import { Popover } from "@headlessui/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
