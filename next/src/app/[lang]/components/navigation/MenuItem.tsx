@@ -1,6 +1,4 @@
 "use client";
-import { readItem } from "@directus/sdk/rest";
-import { getDirectusSDK } from "../../utils/useDirectusSDK";
 import { NavigationItem } from "../../../../types/schemas";
 import { Popover } from "@headlessui/react";
 import { Icon } from "@iconify/react";

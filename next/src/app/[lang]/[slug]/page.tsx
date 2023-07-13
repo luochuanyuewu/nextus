@@ -1,6 +1,6 @@
 import React from "react";
 
-import { getDirectusSDK } from "../utils/useDirectusSDK";
+import directusApi from "../utils/directus-api";
 import { readItems } from "@directus/sdk";
 import PageBuilder from "../components/PageBuilder";
 
@@ -9,12 +9,11 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-async function PageRoute({ params, searchParams }: Props) {
-  const { api } = getDirectusSDK();
+export default async function PageRoute({ params }: Props) {
 
   console.log(`请求的slug = ${params.slug}`);
 
-  const pages = await api.request(
+  const pages = await directusApi.request(
     readItems("pages", {
       filter: {
         slug: { _eq: params.slug === "/" ? "home" : params.slug },
@@ -40,10 +39,9 @@ async function PageRoute({ params, searchParams }: Props) {
   if (pages.length === 0) return null;
 
   return (
-    <div>
+    <>
       <PageBuilder page={pages[0]} />
-    </div>
+    </>
   );
 }
 
-export default PageRoute;

@@ -91,6 +91,9 @@ devDependencies:
   '@types/node':
     specifier: 18.16.1
     version: registry.npmmirror.com/@types/node@18.16.1
+  '@types/uuid':
+    specifier: ^9.0.2
+    version: registry.npmmirror.com/@types/uuid@9.0.2
   autoprefixer:
     specifier: ^10.4.14
     version: registry.npmmirror.com/autoprefixer@10.4.14(postcss@8.4.25)
@@ -582,6 +585,12 @@ packages:
     name: '@types/unist'
     version: 3.0.0
     dev: false
+
+  registry.npmmirror.com/@types/uuid@9.0.2:
+    resolution: {integrity: sha512-kNnC1GFBLuhImSnV7w4njQkUiJi0ZXUycu1rUaouPqiKlXkh77JKgdRnTAp1x5eBwcIwbtI+3otwzuIDEuDoxQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/uuid/-/uuid-9.0.2.tgz}
+    name: '@types/uuid'
+    version: 9.0.2
+    dev: true
 
   registry.npmmirror.com/@typescript-eslint/parser@5.61.0(eslint@8.44.0)(typescript@5.1.6):
     resolution: {integrity: sha512-yGr4Sgyh8uO6fSi9hw3jAFXNBHbCtKKFMdX2IkT3ZqpKmtAq3lHS4ixB/COFuAIJpwl9/AqF7j72ZDWYKmIfvg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@typescript-eslint/parser/-/parser-5.61.0.tgz}

@@ -1,10 +1,9 @@
 import LogoV2 from "../LogoV2";
 import TypographyHeadline from "../typography/TypographyHeadline";
 import TypographyTitle from "../typography/TypographyTitle";
-import { Navigation, NavigationItem } from "@/types/schemas";
-import { getDirectusSDK } from "../../utils/useDirectusSDK";
+import {  NavigationItem } from "@/types/schemas";
+import directusApi from "../../utils/directus-api";
 import { readItem, readItems, readSingleton } from "@directus/sdk";
-import { title } from "process";
 import VIcon from "../base/VIcon";
 
 async function TheFooter() {
@@ -16,16 +15,14 @@ async function TheFooter() {
     }
   }
 
-  const { api } = getDirectusSDK();
-
-  const navigation = await api.request(
+  const navigation = await directusApi.request(
     readItem("navigation", "footer", {
       // @ts-ignore
       fields: ["items.*", "items.page.slug", "items.children.*"],
     })
   );
 
-  const form = await api.request(
+  const form = await directusApi.request(
     readItems("forms", {
       filter: {
         key: {
