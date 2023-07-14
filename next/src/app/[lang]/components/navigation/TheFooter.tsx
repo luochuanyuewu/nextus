@@ -32,7 +32,7 @@ async function TheFooter() {
     })
   );
 
-  const globals = await api.request(readSingleton("globals"));
+  const globals = await directusApi.request(readSingleton("globals"));
 
   const { tagline, title, social_links } = globals;
 

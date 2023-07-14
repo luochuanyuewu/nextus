@@ -34,7 +34,7 @@ function Prose({ content, className }: ProseProps) {
         router.push(url);
       });
     });
-  }, []);
+  }, [router,siteUrl]);
 
   const classNames = [
     "prose prose-sm md:prose-base lg:prose-lg dark:prose-invert prose-img:rounded-br-3xl prose-img:rounded-tl-3xl prose-img:border-2 prose-img:border-gray-500 prose-headings:font-serif prose-p:font-mono",

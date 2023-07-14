@@ -3,6 +3,7 @@ import directusApi from "../../utils/directus-api";
 import MenuItem from "./MenuItem";
 import { NavigationItem } from "@/types/schemas";
 import VButton from "../base/VButton";
+import {ThemeSwitcher} from "@/components/ThemeSwitcher";
 
 export default async function TheHeader() {
 
@@ -36,6 +37,7 @@ export default async function TheHeader() {
           <VButton href="/contact-us" variant="primary" className="uppercase">
             {"Let's Talk"}
           </VButton>
+          <ThemeSwitcher />
         </div>
 
         {/* <NavigationMobileMenu navigation={navigation} /> */}

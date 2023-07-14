@@ -21,23 +21,26 @@ export interface Gallery {
 }
 
 interface GalleryBlockProps {
+  className?: string;
   data: Gallery;
 }
 
-function GalleryBlock({ data }: GalleryBlockProps) {
+function GalleryBlock({ data, className }: GalleryBlockProps) {
   return (
-    <BlockContainer>
-      {/* Title */}
-      {data.title && <TypographyTitle>{data.title}</TypographyTitle>}
-      {data.headline && <TypographyHeadline content={data.headline} />}
-      {data.gallery_items.length > 0 && (
-        <VGallery
-          items={data.gallery_items.map((item) => {
-            return item.directus_files_id as any;
-          })}
-        />
-      )}
-    </BlockContainer>
+    <div className={className}>
+      <BlockContainer>
+        {/* Title */}
+        {data.title && <TypographyTitle>{data.title}</TypographyTitle>}
+        {data.headline && <TypographyHeadline content={data.headline} />}
+        {data.gallery_items.length > 0 && (
+          <VGallery
+            items={data.gallery_items.map((item) => {
+              return item.directus_files_id as any;
+            })}
+          />
+        )}
+      </BlockContainer>
+    </div>
   );
 }
 
