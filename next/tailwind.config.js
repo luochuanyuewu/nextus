@@ -1,19 +1,27 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // content: [
-  //   './pages/**/*.{js,ts,jsx,tsx,mdx}',
-  //   './components/**/*.{js,ts,jsx,tsx,mdx}',
-  //   './app/**/*.{js,ts,jsx,tsx,mdx}',
-  // ],
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: "class",
   theme: {
     extend: {
-      // backgroundImage: {
-      //   'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      //   'gradient-conic':
-      //     'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      // },
+      animation: {
+        "fade-in": "fade-in 0.5s linear forwards",
+        marquee: "marquee 25s linear infinite",
+      },
+      keyframes: {
+        "fade-in": {
+          from: {
+            opacity: 0,
+          },
+          to: {
+            opacity: 1,
+          },
+        },
+        marquee: {
+          "0%": { transform: "translateY(0%)" },
+          "100%": { transform: "translateY(-50%)" },
+        },
+      },
     },
   },
   // daisyUI config (optional) //https://daisyui.com/docs/config/
@@ -27,5 +35,9 @@ module.exports = {
     prefix: "",
     darkTheme: "dark",
   },
-  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography"), require("daisyui")],
-}
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+    require("daisyui"),
+  ],
+};

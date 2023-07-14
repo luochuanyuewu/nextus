@@ -43,7 +43,7 @@ export default function LogoCloudBlock({ data }: Props) {
               //     delay: 250 + 100 * fileIdx,
               // }}
             >
-              <Image
+              <img
                 className="h-12"
                 width={500}
                 height={500}
