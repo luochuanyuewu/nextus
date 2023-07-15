@@ -1,5 +1,4 @@
 'use client'
-import styles from './TeamBlock.module.css'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import directusApi from '../../utils/directus-api'
 import { readItems } from '@directus/sdk'

@@ -21,3 +21,20 @@
     animation-play-state: paused;
   }
 }
+
+
+.steps-animation .path {
+  stroke-dasharray: 1, 30;
+  -webkit-animation: dash 5s linear both infinite;
+  animation: dash 5s linear both infinite;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -15rem;
+  }
+}
