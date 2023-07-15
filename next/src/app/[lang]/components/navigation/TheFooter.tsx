@@ -98,10 +98,12 @@ async function TheFooter() {
                 className='h-6 w-6 text-white'
               >
                 <span className='sr-only'>{link.service}</span>
-                {/* <Icon
-                className="w-8 h-8 text-gray-700 dark:text-white hover:opacity-75"
-                icon={`mdi:${link.service}`}
-              /> */}
+                {
+                  <VIcon
+                    className='h-8 w-8 text-gray-700 hover:opacity-75 dark:text-white'
+                    icon={`mdi:${link.service}`}
+                  />
+                }
               </a>
             ))}
         </div>
