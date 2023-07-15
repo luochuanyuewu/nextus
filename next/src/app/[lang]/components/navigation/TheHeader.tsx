@@ -1,13 +1,13 @@
-import { readItem } from "@directus/sdk/rest";
+import {readItem} from "@directus/sdk/rest";
 import directusApi from "../../utils/directus-api";
 import MenuItem from "./MenuItem";
-import { NavigationItem } from "@/types/schemas";
+import {NavigationItem} from "@/types/schemas";
 import VButton from "../base/VButton";
 import {ThemeSwitcher} from "@/components/ThemeSwitcher";
 
 export default async function TheHeader() {
 
-  const results = await directusApi.request(
+     const results = await directusApi.request(
     readItem("navigation", "main", {
       // @ts-ignore
       fields: ["items.*", "items.page.slug", "items.children.*"],

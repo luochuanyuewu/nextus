@@ -14,7 +14,7 @@ interface DropdownProps {
 export const Dropdown: React.FC<DropdownProps> = ({
   buttonLabel = "Actions",
   variant = "primary",
-  menuItems = [{ label: "Action", action: () => {} }],
+  menuItems = [{ label: "Action", action: () => { } }],
 }) => {
   const handleMenuItemClick = (item: { action: () => void }) => {
     item.action();
@@ -48,11 +48,10 @@ export const Dropdown: React.FC<DropdownProps> = ({
                     <button
                       type="button"
                       onClick={() => handleMenuItemClick(item)}
-                      className={`${
-                        active
-                          ? "bg-accent dark:bg-accent text-white"
-                          : "text-gray-900 dark:text-gray-100"
-                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      className={`${active
+                        ? "bg-accent dark:bg-accent text-white"
+                        : "text-gray-900 dark:text-gray-100"
+                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                     >
                       {item.label}
                     </button>
