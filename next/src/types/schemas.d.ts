@@ -36,6 +36,7 @@ export interface Post {
   summary: string;
   image: string;
   slug: string;
+  content: string;
   category?: {
     title: string;
     slug: string;
@@ -43,6 +44,7 @@ export interface Post {
   };
   author: Partial<User>;
   seo?: Seo;
+  date_published:string
 }
 
 export interface Project {

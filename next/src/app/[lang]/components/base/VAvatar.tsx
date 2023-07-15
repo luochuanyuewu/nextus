@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import Image from 'next/image'
 import { getDirectusMedia } from '../../utils/api-helpers'
 import { userName } from '../../utils/user-name'
@@ -11,13 +10,6 @@ interface AvatarProps {
 }
 
 function VAvatar({ author, size = 'md', className }: AvatarProps) {
-  useEffect(() => {
-    // withDefaults is not available in React, you may need to manually set the default values for props if needed
-    // withDefaults(defineProps<AvatarProps>(), {
-    //   size: 'md',
-    // });
-  }, [])
-
   return (
     <div
       className={`group flex flex-none items-center dark:text-gray-100 ${className}`}
@@ -30,6 +22,8 @@ function VAvatar({ author, size = 'md', className }: AvatarProps) {
             size === 'lg' ? 'h-12 w-12 sm:h-16 sm:w-16' : '',
             'rounded-full object-cover dark:brightness-90',
           ].join(' ')}
+          width={100}
+          height={100}
           src={author.avatar_url ?? getDirectusMedia(author.avatar)}
           alt=''
         />
