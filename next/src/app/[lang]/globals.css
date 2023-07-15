@@ -16,11 +16,29 @@
   margin-right: 1rem;
 }
 
+
+
 @layer utilities {
   .animate-pause {
     animation-play-state: paused;
   }
 }
+
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+
+
+/* for StepsBlock */
 
 
 .steps-animation .path {

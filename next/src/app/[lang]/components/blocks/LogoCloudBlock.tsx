@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client' // add this line make famer-motion works.
 
 import React from 'react'
@@ -46,13 +47,7 @@ export default function LogoCloudBlock({ data }: Props) {
                 delay: 0.25 + 0.1 * fileIdx,
               }}
             >
-              <img
-                className='h-12'
-                width={500}
-                height={500}
-                src={getDirectusMedia(file.id)}
-                alt=''
-              />
+              <img className='h-12' src={getDirectusMedia(file.id)} alt='' />
             </motion.div>
           ))}
         </div>
