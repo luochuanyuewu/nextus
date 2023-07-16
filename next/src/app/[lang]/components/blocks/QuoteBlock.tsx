@@ -33,7 +33,8 @@ export default function QuoteBlock({ data }: QuoteBlockProps) {
         <div className='my-24'>
           <motion.div
             initial={{ opacity: 0, y: 100 }}
-            animate={{
+            viewport={{ once: true }}
+            whileInView={{
               opacity: 1,
               y: 0,
               transition: {

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    dangerouslyAllowSVG: true, // allow <Image> to show svg.
     remotePatterns: [
       {
         hostname: 'localhost',

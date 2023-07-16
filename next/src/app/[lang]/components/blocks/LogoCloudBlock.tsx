@@ -39,15 +39,22 @@ export default function LogoCloudBlock({ data }: Props) {
                 opacity: 0,
                 y: 100,
               }}
-              animate={{
+              whileInView={{
                 opacity: 1,
                 y: 0,
               }}
+              viewport={{ once: true }}
               transition={{
                 delay: 0.25 + 0.1 * fileIdx,
               }}
             >
-              <img className='h-12' src={getDirectusMedia(file.id)} alt='' />
+              <Image
+                width={200}
+                height={200}
+                className='h-12'
+                src={getDirectusMedia(file.id)}
+                alt=''
+              />
             </motion.div>
           ))}
         </div>

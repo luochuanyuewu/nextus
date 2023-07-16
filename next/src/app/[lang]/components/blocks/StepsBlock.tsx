@@ -1,5 +1,5 @@
 'use client'
-import React, { useMemo } from 'react'
+import React, { useMemo, useRef } from 'react'
 import BlockContainer from '@/app/[lang]/components/blocks/BlockContainer'
 import TypographyTitle from '@/app/[lang]/components/typography/TypographyTitle'
 import TypographyHeadline from '@/app/[lang]/components/typography/TypographyHeadline'
@@ -44,7 +44,7 @@ export function StepsBlock({ data }: Props) {
                 scale: 1,
                 x: isEven(stepIdx) ? -200 : 200,
               }}
-              animate={{
+              whileInView={{
                 opacity: 1,
                 x: 0,
                 scale: 1,
@@ -53,6 +53,7 @@ export function StepsBlock({ data }: Props) {
                   duration: 0.3,
                 },
               }}
+              viewport={{ once: true }}
               className={`relative p-6 ring-2 ring-accent md:flex md:space-x-8 ${
                 isEven(stepIdx)
                   ? 'mr-8 rounded-br-3xl rounded-tl-3xl'
