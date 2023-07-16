@@ -1,7 +1,7 @@
 import LogoV2 from '../LogoV2'
 import TypographyHeadline from '../typography/TypographyHeadline'
 import TypographyTitle from '../typography/TypographyTitle'
-import { NavigationItem } from '@/types/schemas'
+import { Globals, Navigation, NavigationItem } from '@/types/schemas'
 import directusApi from '../../utils/directus-api'
 import { readItem, readItems, readSingleton } from '@directus/sdk'
 import VIcon from '../base/VIcon'
@@ -15,11 +15,12 @@ async function TheFooter() {
     }
   }
 
-  const navigation = await directusApi.request(
+  const navigation = (await directusApi.request(
     readItem('navigation', 'footer', {
+      // @ts-ignore
       fields: ['items.*', 'items.page.slug', 'items.children.*'],
     })
-  )
+  )) as Navigation
 
   const form = await directusApi.request(
     readItems('forms', {
@@ -31,7 +32,9 @@ async function TheFooter() {
     })
   )
 
-  const globals = await directusApi.request(readSingleton('globals'))
+  const globals = (await directusApi.request(
+    readSingleton('globals')
+  )) as Globals
 
   const { tagline, title, social_links } = globals
 
@@ -60,7 +63,7 @@ async function TheFooter() {
             <TypographyTitle>Menu</TypographyTitle>
             <ul role='list' className='mt-4 grid grid-flow-col md:grid-cols-2'>
               {navigation &&
-                navigation.items.map((item: NavigationItem) => (
+                navigation.items.map((item) => (
                   <li key={item.id}>
                     <a
                       href={getUrl(item)}
@@ -109,7 +112,7 @@ async function TheFooter() {
         </div>
         <div className='mt-8 md:order-1 md:mt-0'>
           <span className='mt-2 font-serif text-gray-700 dark:text-gray-300'>
-            Copyright © 1988 - {new Date().getFullYear()}
+            Copyright © 1995 - {new Date().getFullYear()}
             <a
               href='/'
               className='mx-2 hover:text-accent'
@@ -138,7 +141,7 @@ async function TheFooter() {
               rel='noopener noreferrer'
               className='border-b hover:text-accent dark:border-b-gray-700'
             >
-              Nuxt
+              NextJs
             </a>
             .
           </span>

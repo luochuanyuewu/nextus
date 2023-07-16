@@ -5,18 +5,10 @@ import { getDirectusMedia } from '../utils/api-helpers'
 import Link from 'next/link'
 import VIcon from './base/VIcon'
 import { motion } from 'framer-motion'
+import { Team } from '@/types/schemas'
 
 interface TeamCardProps {
-  person: {
-    id: string
-    name: string
-    job_title: string
-    image: string
-    social_media?: {
-      service?: string
-      url?: string
-    }[]
-  }
+  person: Team
   style?: CSSProperties | undefined
 }
 

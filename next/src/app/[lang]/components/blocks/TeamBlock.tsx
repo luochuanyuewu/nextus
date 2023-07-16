@@ -10,15 +10,20 @@ import TypographyTitle from '../typography/TypographyTitle'
 import { useIntersection } from 'react-use'
 import useResizeObserver from '../../../../hooks/useResizeObserver'
 
-function splitArray(array: Array<any>, numParts: number) {
-  let result: Array<any> = []
-  for (let i = 0; i < array.length; i++) {
-    let index = i % numParts
-    if (!result[index]) {
-      result[index] = []
-    }
-    result[index].push(array[i])
+function splitArray(array: Team[], numParts: number): Team[][] {
+  if (numParts <= 0) {
+    throw new Error('The number of parts must be greater than 0.')
   }
+
+  const length = array.length
+  const chunkSize = Math.ceil(length / numParts)
+  const result: Team[][] = []
+
+  for (let i = 0; i < length; i += chunkSize) {
+    const chunk = array.slice(i, i + chunkSize)
+    result.push(chunk)
+  }
+
   return result
 }
 
@@ -41,31 +46,17 @@ export interface TeamBlockProps {
 }
 
 export default function TeamBlock({ data }: TeamBlockProps) {
-  const [teamMembers, setTeamMembers] = useState<Array<any>>([])
-  // const [isVisible, setIsVisible] = useState(false)
+  const [teamMembers, setTeamMembers] = useState<Array<Team>>([])
 
   const [duration, setDuration] = useState<string>('3000 ms')
 
   const targetRef = useRef<HTMLDivElement>(null)
 
   const onResize = useCallback((target: HTMLDivElement) => {
-    // Handle the resize event
-    colHeightRef.current = target.offsetHeight
-    console.log('set duration:' + `${colHeightRef.current * 15}ms`)
-    setDuration(`${colHeightRef.current * 15}ms`)
+    setDuration(`${target.offsetHeight * 15}ms`)
   }, [])
 
   const leftColRef = useResizeObserver(onResize)
-
-  const colHeightRef = useRef(0)
-
-  // const duration = useMemo(() => {
-  //   console.log(`duration: ${colHeightRef.current * 15}ms`)
-  //   return `${colHeightRef.current * 15}ms`
-  // }, [colHeightRef])
-
-  // const duration = `${colHeightRef.current * 15}ms`
-  // console.log('duration:' + duration)
 
   const teamToDisplay = useMemo(() => {
     if (teamMembers.length === 0)
@@ -78,7 +69,7 @@ export default function TeamBlock({ data }: TeamBlockProps) {
 
     return {
       // Return the two arrays as an object
-      // Duplicate each array so we can animate the last item to the first position
+      // Duplicate each array so that we can animate the last item to the first position
       left: [...teamMembersSplit[0], ...teamMembersSplit[0]],
       right: [...teamMembersSplit[1], ...teamMembersSplit[1]],
     }
@@ -90,24 +81,16 @@ export default function TeamBlock({ data }: TeamBlockProps) {
     threshold: 0.25,
   })
 
-  // const isVisible = useMemo(() => {
-  //   console.log('isVisible:' + intersection?.isIntersecting)
-  //   return intersection?.isIntersecting
-  // }, [intersection])
-
   const isVisible = intersection ? intersection.isIntersecting : false
 
   useEffect(() => {
     async function fetchData() {
       const team = await directusApi.request(readItems('team'))
-      console.log('team:' + JSON.stringify(team))
       setTeamMembers(team as any)
     }
 
     fetchData()
   }, [])
-
-  console.log('readering')
 
   return (
     <section>
@@ -135,7 +118,7 @@ export default function TeamBlock({ data }: TeamBlockProps) {
               className={`${
                 isVisible ? 'animate-marquee' : ''
               } hover:animate-pause -mt-10 max-w-[320px] space-y-10 py-4`}
-              style={{ '--marquee-duration': duration }}
+              style={{ '--marquee-duration': duration } as any}
               ref={leftColRef}
             >
               {teamToDisplay.left.map((person, index: number) => (
@@ -146,7 +129,7 @@ export default function TeamBlock({ data }: TeamBlockProps) {
               className={`${
                 isVisible ? 'animate-marquee' : ''
               } hover:animate-pause max-w-[320px] space-y-10 py-4`}
-              style={{ '--marquee-duration': duration }}
+              style={{ '--marquee-duration': duration } as any}
             >
               {teamToDisplay.right.map((person, index: number) => (
                 <TeamCard

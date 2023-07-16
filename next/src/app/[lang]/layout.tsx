@@ -8,6 +8,7 @@ import TheFooter from './components/navigation/TheFooter'
 import directusApi from './utils/directus-api'
 import { readSingleton } from '@directus/sdk'
 import { getDirectusMedia } from './utils/api-helpers'
+import { Globals } from '@/types/schemas'
 
 const FALLBACK_SEO = {
   title: 'Directus Starter Next',
@@ -19,7 +20,9 @@ export async function generateMetadata({
 }: {
   params: { lang: string }
 }): Promise<Metadata> {
-  const global = await directusApi.request(readSingleton('globals'))
+  const global = (await directusApi.request(
+    readSingleton('globals')
+  )) as Globals
 
   // const { url } = favicon.data.attributes;
   // const url = new URL(favicon, `${getDirectusURL()}/assets/`)

@@ -1,201 +1,202 @@
 // import CourseViewer from '@/components/course/CourseViewer';
-import { fetchAPI } from '../../../utils/fetch-api';
-import clsx from 'classnames';
-import { Player } from '@/components/aliplayer/Player';
-
-
+import { fetchAPI } from '../../../utils/fetch-api'
+import clsx from 'classnames'
+import { Player } from '@/components/aliplayer/Player'
 
 interface VideoData {
-    id: number;
-    attributes: {
-        title: string;
-        description: string
-        videoId: string
-        thumbnail?: string
-
-    };
+  id: number
+  attributes: {
+    title: string
+    description: string
+    videoId: string
+    thumbnail?: string
+  }
 }
 
 interface Video {
-    data: VideoData
+  data: VideoData
 }
 
 interface CourseData {
-    id: number;
-    attributes: {
-        name: string;
-        slug: string;
-        description: string
-        lessons: Array<Lesson>
-    };
+  id: number
+  attributes: {
+    name: string
+    slug: string
+    description: string
+    lessons: Array<Lesson>
+  }
 }
 
 interface LessonData {
-    id: number;
-    attributes: {
-        name: string;
-        description: string
-        article: string
-        video?: Video
-    };
+  id: number
+  attributes: {
+    name: string
+    description: string
+    article: string
+    video?: Video
+  }
 }
 
 interface Lesson {
-    data: LessonData
+  data: LessonData
 }
 
-
 interface Course {
-    data: CourseData
+  data: CourseData
 }
 
 interface Props {
-    course: CourseData
-    lessons: Array<LessonData>
-    completedLessons?: number[];
-};
-
+  course: CourseData
+  lessons: Array<LessonData>
+  completedLessons?: number[]
+}
 
 async function getCourseLessonsBySlug(slug: string, lang: string) {
-    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+  const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN
 
-    const path = `/lessons`;
+  const path = `/lessons`
 
-    const urlParamsObject = {
-        filters: {
-            course: {
-                slug: slug
-            }
-        },
-        locale: lang,
-        populate: {
-            video: '*',
-            course: '*'
-        }
-    };
-    const options = { headers: { Authorization: `Bearer ${token}` } };
-    const response = await fetchAPI(path, urlParamsObject, options);
-    return response.data;
+  const urlParamsObject = {
+    filters: {
+      course: {
+        slug: slug,
+      },
+    },
+    locale: lang,
+    populate: {
+      video: '*',
+      course: '*',
+    },
+  }
+  const options = { headers: { Authorization: `Bearer ${token}` } }
+  const response = await fetchAPI(path, urlParamsObject, options)
+  return response.data
 }
 
+async function fetchData(
+  slug: string,
+  lang: string
+): Promise<{ course: CourseData; lessons: Array<LessonData> } | null> {
+  const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN
 
-async function fetchData(slug: string, lang: string): Promise<{ course: CourseData, lessons: Array<LessonData> } | null> {
-    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+  const path = `/courses`
 
-    const path = `/courses`;
+  const urlParamsObject = {
+    filters: { slug },
+    locale: lang,
+    // populate: {
+    //     lessons: "*"
+    // }
+  }
+  const options = { headers: { Authorization: `Bearer ${token}` } }
+  const { data, meta } = await fetchAPI(path, urlParamsObject, options)
+  if (data.length === 0) return null
 
-    const urlParamsObject = {
-        filters: { slug },
-        locale: lang,
-        // populate: {
-        //     lessons: "*"
-        // }
-    };
-    const options = { headers: { Authorization: `Bearer ${token}` } };
-    const { data, meta } = await fetchAPI(path, urlParamsObject, options);
-    if (data.length === 0) return null;
+  const course = data[0]
 
-    const course = data[0]
+  const lessons = await getCourseLessonsBySlug(course.attributes.slug, lang)
 
-    const lessons = await getCourseLessonsBySlug(course.attributes.slug, lang)
-
-    return { course: course, lessons: lessons };
+  return { course: course, lessons: lessons }
 }
-
 
 async function getVideoPlayingToken(videoId: string): Promise<any> {
-    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+  const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN
 
-    const path = `/generic-vod/vod-video/token/${videoId}`;
+  const path = `/generic-vod/vod-video/token/${videoId}`
 
-    const options = { headers: { Authorization: `Bearer ${token}` } };
-    const response = await fetchAPI(path, {}, options);
-    return response;
+  const options = { headers: { Authorization: `Bearer ${token}` } }
+  const response = await fetchAPI(path, {}, options)
+  return response
 }
 
+export default async function ViewCourse({
+  params,
+}: {
+  params: { lang: string; slug: string; lesson: string }
+}) {
+  // const [lessonProgress, setLessonProgress] = useState(completedLessons)
 
+  const data = await fetchData(params.slug, params.lang)
 
+  if (data == null) {
+    return null
+  }
 
-export default async function ViewCourse({ params }: { params: { lang: string, slug: string, lesson: string } }) {
-    // const [lessonProgress, setLessonProgress] = useState(completedLessons)
+  const { course, lessons } = data
 
-    const data = await fetchData(params.slug, params.lang);
+  const lessonIndex = params.lesson ? parseInt(params.lesson) - 1 : 0
 
-    if (data == null) {
-        return null
-    }
+  // const [activeLesson, setActiveLesson] = useState(lessons[lessonIndex]);
 
-    const { course, lessons } = data
+  const activeLesson = lessons[lessonIndex]
 
-    const lessonIndex = params.lesson ? parseInt(params.lesson) - 1 : 0
+  const videoId = activeLesson.attributes.video?.data.attributes.videoId
 
-    // const [activeLesson, setActiveLesson] = useState(lessons[lessonIndex]);
+  let playAuth = ''
 
-    const activeLesson = lessons[lessonIndex]
+  // const [playAuth, setPlayAuth] = useState<string>()
 
-    const videoId = activeLesson.attributes.video?.data.attributes.videoId
+  // const [mounted, setMounted] = useState<boolean>(true)
 
-    let playAuth = ""
+  if (typeof videoId !== 'undefined') {
+    const res = await getVideoPlayingToken(videoId as any)
+    playAuth = res.playAuth
+  }
 
-    // const [playAuth, setPlayAuth] = useState<string>()
+  // useEffect(() => {
+  //     getVideoPlayingToken(videoId as any).then((res) => {
+  //         setPlayAuth(res.playAuth)
+  //         setMounted(true)
+  //     })
 
-    // const [mounted, setMounted] = useState<boolean>(true)
+  // }, [])
 
-    if (typeof videoId !== 'undefined') {
-        const res = await getVideoPlayingToken(videoId as any)
-        playAuth = res.playAuth
-    }
-
-    // useEffect(() => {
-    //     getVideoPlayingToken(videoId as any).then((res) => {
-    //         setPlayAuth(res.playAuth)
-    //         setMounted(true)
-    //     })
-
-    // }, [])
-
-
-    if (!lessons.length) {
-        return (
-            <div className="max-w-lg mt-12 mx-8 lg:mx-auto">
-                This course {course.attributes.name} does not have any lessons
-            </div>
-        );
-    }
-
-
-
+  if (!lessons.length) {
     return (
-        <div className='px-5 grid lg:grid-cols-[70%_30%] '>
-            <div>
-                {videoId ? (
-                    <Player source='' options={{
-                        vid: videoId, playauth: playAuth,
-                    }} className='mb-6 w-full aspect-video' />
-                ) : (
-                    <div className='mb-6 w-full aspect-video bg-gray-200' />
-                )}
+      <div className='mx-8 mt-12 max-w-lg lg:mx-auto'>
+        This course {course.attributes.name} does not have any lessons
+      </div>
+    )
+  }
 
-                {/* <Player source='https://outin-068e41f2f56c11e9a7c500163e024c6a.oss-cn-shanghai.aliyuncs.com/sv/33a63a72-188481eb72b/33a63a72-188481eb72b.mp4?Expires=1685286938&OSSAccessKeyId=LTAI3DkxtsbUyNYV&Signature=0YIC3IsfFN1B0hNIiN29XWpMQZ4%3D' className='mb-6 w-full aspect-video' /> */}
-                <h1>{activeLesson.attributes.name}</h1>
-                <p className='text-slate-600 text-lg'>{activeLesson.attributes.description}</p>
-            </div>
+  return (
+    <div className='grid px-5 lg:grid-cols-[70%_30%] '>
+      <div>
+        {videoId ? (
+          <Player
+            source=''
+            options={{
+              vid: videoId,
+              playauth: playAuth,
+            }}
+            className='mb-6 aspect-video w-full'
+          />
+        ) : (
+          <div className='mb-6 aspect-video w-full bg-gray-200' />
+        )}
 
-            <div>
-                {lessons.map((lesson: any) => (
-                    <a
-                        key={lesson.id}
-                        className={clsx({
-                            'flex gap-5 cursor-pointer hover:bg-gray-50 px-6 py-4': true,
-                            'bg-yellow-50': activeLesson.id === lesson.id
-                        })}
-                    >
-                        {/* {lessonProgress.includes(lesson.id) && (
+        {/* <Player source='https://outin-068e41f2f56c11e9a7c500163e024c6a.oss-cn-shanghai.aliyuncs.com/sv/33a63a72-188481eb72b/33a63a72-188481eb72b.mp4?Expires=1685286938&OSSAccessKeyId=LTAI3DkxtsbUyNYV&Signature=0YIC3IsfFN1B0hNIiN29XWpMQZ4%3D' className='mb-6 w-full aspect-video' /> */}
+        <h1>{activeLesson.attributes.name}</h1>
+        <p className='text-lg text-slate-600'>
+          {activeLesson.attributes.description}
+        </p>
+      </div>
+
+      <div>
+        {lessons.map((lesson: any) => (
+          <a
+            key={lesson.id}
+            className={clsx({
+              'flex cursor-pointer gap-5 px-6 py-4 hover:bg-gray-50': true,
+              'bg-yellow-50': activeLesson.id === lesson.id,
+            })}
+          >
+            {/* {lessonProgress.includes(lesson.id) && (
                         <span className='absolute z-10 -translate-x-2 -translate-y-2'>
                             <svg className="w-6 h-6 fill-green-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
                         </span>
                     )} */}
-                        {/* 
+            {/* 
                     {lesson.attributes.video?.data?.attributes?.thumbnail && (
                         <Image
                             src={lesson.attributes.video?.data.attributes.thumbnail}
@@ -204,20 +205,24 @@ export default async function ViewCourse({ params }: { params: { lang: string, s
                             height={60}
                         />
                     )} */}
-                        <div className='overflow-hidden'>
-                            <h2>
-                                <span className='font-semibold font-cal text-lg text-slate-800'>{lesson.attributes.name}</span>
-                                {/* {lesson.video?.duration && (
+            <div className='overflow-hidden'>
+              <h2>
+                <span className='font-cal text-lg font-semibold text-slate-800'>
+                  {lesson.attributes.name}
+                </span>
+                {/* {lesson.video?.duration && (
                                 <span className='text-sm italic text-slate-600 truncate'> • {formatDuration(Math.round(lesson.video.duration))}</span>
                             )} */}
-                            </h2>
-                            <p className='text-md italic text-slate-600 my-1 truncate'>{lesson.attributes.description}</p>
-                        </div>
-                    </a>
-                ))}
+              </h2>
+              <p className='text-md my-1 truncate italic text-slate-600'>
+                {lesson.attributes.description}
+              </p>
             </div>
-        </div>
-    )
+          </a>
+        ))}
+      </div>
+    </div>
+  )
 }
 
 // export const getServerSideProps: GetServerSideProps = async (context) => {

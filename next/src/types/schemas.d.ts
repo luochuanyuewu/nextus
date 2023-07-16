@@ -44,7 +44,7 @@ export interface Post {
   };
   author: Partial<User>;
   seo?: Seo;
-  date_published:string
+  date_published: string
 }
 
 export interface Project {
@@ -65,6 +65,18 @@ export interface Project {
   user_created?: string;
   user_updated?: string;
   seo?: Seo;
+}
+
+export interface Team {
+  id: string
+  bio?:string
+  image?: string
+  job_title?: string
+  name?: string
+  social_media?: {
+    service?: string
+    url?: string
+  }[]
 }
 
 export interface Category {
@@ -261,10 +273,25 @@ export interface Message {
 // ** Directus SDK Types **
 // This is not required, but it makes it easier to use the SDK
 
+
+export interface Globals{
+  id:string;
+  url:string;
+  title:string;
+  tagline:string;
+  description:string;
+  og_image:string;
+  social_links?: Array<{
+    service?: string;
+    url?: string;
+  }>;
+}
+
 export interface Schema {
   pages: Page[];
   posts: Post[];
   projects: Project[];
+  team:Team[];
   categories: Category[];
   directus_users: User[];
   forms: Form[];
