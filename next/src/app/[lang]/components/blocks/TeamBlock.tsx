@@ -8,7 +8,7 @@ import TypographyHeadline from '../typography/TypographyHeadline'
 import BlockContainer from './BlockContainer'
 import TypographyTitle from '../typography/TypographyTitle'
 import { useIntersection } from 'react-use'
-import useResizeObserver from '../../hooks/useResizeObserver'
+import useResizeObserver from '../../../../hooks/useResizeObserver'
 
 function splitArray(array: Array<any>, numParts: number) {
   let result: Array<any> = []

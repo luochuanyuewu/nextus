@@ -23,25 +23,25 @@ const colorMappings = {
   yellow: 'bg-yellow-100 text-yellow-800',
 }
 
-const getStyleByColor = (color: string) => {
-  const [foundColor, style] =
-    Object.entries(colorMappings).find(([key]) => key === color) || []
-  return style || colorMappings.default
-}
-
 function VBadge({
   color = 'default',
   size = 'sm',
   children,
   className,
 }: BadgeProps) {
-  const colorClassName = useMemo(() => {
-    return getStyleByColor(color)
-  }, [color])
-
   const classNames = [
     'inline-flex items-center font-serif font-medium',
-    colorClassName,
+    `${color === 'gray' ? `bg-gray-100 text-gray-800` : ''}`,
+    `${color === 'green' ? `bg-green-100 text-green-800` : ''}`,
+    `${color === 'purple' ? `bg-purple-100 text-purple-800` : ''}`,
+    `${color === 'blue' ? `bg-blue-100 text-blue-800` : ''}`,
+    `${color === 'amber' ? `bg-amber-100 text-amber-800` : ''}`,
+    `${color === 'orange' ? `bg-orange-100 text-orange-800` : ''}`,
+    `${color === 'red' ? `bg-red-100 text-red-800` : ''}`,
+    `${color === 'indigo' ? `bg-indigo-100 text-indigo-800` : ''}`,
+    `${color === 'violet' ? `bg-violet-100 text-violet-800` : ''}`,
+    `${color === 'pink' ? `bg-primary-100 text-accent` : ''}`,
+    `${color === 'yellow' ? `bg-yellow-100 text-yellow-800` : ''}`,
     `${size === 'sm' ? 'px-2 py-0.5 text-xs' : ''}`,
     `${size === 'lg' ? ' px-2.5 py-0.5' : ''}`,
     className,

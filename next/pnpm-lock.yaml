@@ -77,6 +77,9 @@ dependencies:
   typescript:
     specifier: 5.1.6
     version: registry.npmmirror.com/typescript@5.1.6
+  ufo:
+    specifier: ^1.1.2
+    version: registry.npmmirror.com/ufo@1.1.2
   uuid:
     specifier: ^9.0.0
     version: registry.npmmirror.com/uuid@9.0.0
@@ -4514,6 +4517,12 @@ packages:
     version: 5.1.6
     engines: {node: '>=14.17'}
     hasBin: true
+    dev: false
+
+  registry.npmmirror.com/ufo@1.1.2:
+    resolution: {integrity: sha512-TrY6DsjTQQgyS3E3dBaOXf0TpPD8u9FVrVYmKVegJuFw51n/YB9XPt+U6ydzFG5ZIN7+DIjPbNmXoBj9esYhgQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ufo/-/ufo-1.1.2.tgz}
+    name: ufo
+    version: 1.1.2
     dev: false
 
   registry.npmmirror.com/unbox-primitive@1.0.2:

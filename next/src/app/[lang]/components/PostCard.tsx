@@ -9,13 +9,14 @@ import { isObject } from '../utils/objects'
 
 interface PostCardProps {
   post: Post
+  className?: string
   even?: boolean
 }
 
-function PostCard({ post, even }: PostCardProps) {
+function PostCard({ post, even, className }: PostCardProps) {
   return (
-    <figure className='group flex flex-col'>
-      <Link className='' href={`/posts/${post.slug}`}>
+    <figure className={`'group flex flex-col ${className}`}>
+      <Link href={`/posts/${post.slug}`}>
         <div
           className={[
             even

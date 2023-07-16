@@ -7,6 +7,7 @@ import TypographyProse from '@/app/[lang]/components/typography/TypographyProse'
 import { getDirectusMedia } from '@/app/[lang]/utils/api-helpers'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { isEven } from '../../utils/math'
 
 interface Step {
   id: string
@@ -29,8 +30,6 @@ interface Props {
 }
 
 export default function StepsBlock({ data }: Props) {
-  const isEven = (num: number) => num % 2 === 0
-
   return (
     <BlockContainer className='mx-auto max-w-4xl text-center'>
       {data.title && <TypographyTitle>{data.title}</TypographyTitle>}
