@@ -17,7 +17,7 @@ interface Testimonial {
   content: string
 }
 
-interface TestimonialsBlockProps {
+interface Testimonials {
   id: string
   title?: string
   headline?: string
@@ -25,11 +25,11 @@ interface TestimonialsBlockProps {
   testimonials: { testimonial: Testimonial }[]
 }
 
-interface Props {
-  data: TestimonialsBlockProps
+interface TestimonialsBlockProps {
+  data: Testimonials
 }
 
-export const TestimonialsBlock: React.FC<Props> = ({ data }) => {
+export default function TestimonialsBlock({ data }: TestimonialsBlockProps) {
   const testimonialContainer = useRef<HTMLDivElement>(null)
   const testimonialRefs = useRef<HTMLDivElement[]>([])
   const [currentItemIdx, setCurrentItemIdx] = useState(0)

@@ -40,7 +40,7 @@ export interface TeamBlockProps {
   data: Team
 }
 
-export function TeamBlock({ data }: TeamBlockProps) {
+export default function TeamBlock({ data }: TeamBlockProps) {
   const [teamMembers, setTeamMembers] = useState<Array<any>>([])
   // const [isVisible, setIsVisible] = useState(false)
 

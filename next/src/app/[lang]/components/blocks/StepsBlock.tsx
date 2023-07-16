@@ -28,7 +28,7 @@ interface Props {
   data: StepsBlockProps
 }
 
-export function StepsBlock({ data }: Props) {
+export default function StepsBlock({ data }: Props) {
   const isEven = (num: number) => num % 2 === 0
 
   return (

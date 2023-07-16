@@ -6,14 +6,15 @@ import HeroBlock from './blocks/HeroBlock'
 import GalleryBlock from './blocks/GalleryBlock'
 import QuoteBlock from './blocks/QuoteBlock'
 import LogoCloudBlock from '@/app/[lang]/components/blocks/LogoCloudBlock'
-import { VideoBlock } from '@/app/[lang]/components/blocks/VideoBlock'
-import { TestimonialsBlock } from '@/app/[lang]/components/blocks/TestimonialsBlock'
-import { StepsBlock } from '@/app/[lang]/components/blocks/StepsBlock'
-import { FaqsBlock } from './blocks/FaqsBlock'
-import { CtaBlock } from './blocks/CtaBlock'
+import VideoBlock from '@/app/[lang]/components/blocks/VideoBlock'
+import TestimonialsBlock from '@/app/[lang]/components/blocks/TestimonialsBlock'
+import StepsBlock from '@/app/[lang]/components/blocks/StepsBlock'
+import FaqsBlock from './blocks/FaqsBlock'
+import CtaBlock from './blocks/CtaBlock'
 import RawHtmlBlock from './blocks/RawHtmlBlock'
-import { TeamBlock } from './blocks/TeamBlock'
+import TeamBlock from './blocks/TeamBlock'
 import ColumnsBlock from './blocks/ColumnsBlock'
+import CardGroupBlock from './blocks/CardGroupBlock'
 
 function PageBuilder({ page }: { page: Page }) {
   return (
@@ -49,6 +50,8 @@ function PageBuilder({ page }: { page: Page }) {
               return <TeamBlock data={block.item as any}></TeamBlock>
             case 'block_columns':
               return <ColumnsBlock data={block.item as any}></ColumnsBlock>
+            case 'block_cardgroup':
+              return <CardGroupBlock data={block.item as any}></CardGroupBlock>
           }
         })}
     </div>

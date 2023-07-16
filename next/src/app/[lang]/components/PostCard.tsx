@@ -4,6 +4,8 @@ import { Post } from '@/types/schemas'
 import Link from 'next/link'
 import VBadge from './base/VBadge'
 import VAvatar from './base/VAvatar'
+import { truncateString } from '../utils/strings'
+import { isObject } from '../utils/objects'
 
 interface PostCardProps {
   post: Post
@@ -11,19 +13,6 @@ interface PostCardProps {
 }
 
 function PostCard({ post, even }: PostCardProps) {
-  function truncateString(str: string, maxLength: number) {
-    // Implement the truncateString function according to your needs
-    // This is just a placeholder
-    if (str.length > maxLength) {
-      return str.substring(0, maxLength) + '...'
-    }
-    return str
-  }
-
-  function isObject(value: any) {
-    return typeof value === 'object' && value !== null
-  }
-
   return (
     <figure className='group flex flex-col'>
       <Link className='' href={`/posts/${post.slug}`}>

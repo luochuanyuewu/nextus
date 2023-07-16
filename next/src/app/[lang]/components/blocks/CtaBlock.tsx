@@ -5,7 +5,7 @@ import TypographyHeadline from '../typography/TypographyHeadline'
 import TypographyProse from '../typography/TypographyProse'
 import VButton from '../base/VButton'
 
-interface CtaBlockProps {
+interface Cta {
   id: string
   title?: string
   headline?: string
@@ -19,7 +19,11 @@ interface CtaBlockProps {
   }[]
 }
 
-export const CtaBlock: React.FC<{ data: CtaBlockProps }> = ({ data }) => {
+interface CtaBlockProps {
+  data: Cta
+}
+
+export default function CtaBlock({ data }: CtaBlockProps) {
   return (
     <BlockContainer className='mx-auto w-full max-w-5xl'>
       <div className='relative overflow-hidden rounded-br-3xl rounded-tl-3xl border-4 border-accent bg-transparent bg-white p-2 text-gray-900 dark:bg-transparent'>
