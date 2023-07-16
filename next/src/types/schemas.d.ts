@@ -273,20 +273,6 @@ export interface Message {
 // ** Directus SDK Types **
 // This is not required, but it makes it easier to use the SDK
 
-
-export interface Globals{
-  id:string;
-  url:string;
-  title:string;
-  tagline:string;
-  description:string;
-  og_image:string;
-  social_links?: Array<{
-    service?: string;
-    url?: string;
-  }>;
-}
-
 export interface Schema {
   pages: Page[];
   posts: Post[];

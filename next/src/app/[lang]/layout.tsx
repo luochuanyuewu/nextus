@@ -9,6 +9,7 @@ import directusApi from './utils/directus-api'
 import { readSingleton } from '@directus/sdk'
 import { getDirectusMedia } from './utils/api-helpers'
 import { Globals } from '@/types/schemas'
+import ScrollToTopButton from './components/ScrollToTopButton'
 
 const FALLBACK_SEO = {
   title: 'Directus Starter Next',
@@ -59,7 +60,7 @@ export default async function RootLayout({
         {/* {notificationBanner && <Banner data={notificationBanner} />} */}
 
         <TheFooter />
-
+        <ScrollToTopButton></ScrollToTopButton>
         <Analytics />
       </body>
     </html>
