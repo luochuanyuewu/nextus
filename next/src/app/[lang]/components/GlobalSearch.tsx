@@ -86,7 +86,7 @@ export default function GlobalSearch({
       <div className={`relative mt-2 w-full ${className}`}>
         <Combobox.Input
           placeholder={placeholder}
-          className='input pr-10'
+          className='input-bordered input w-full pr-10'
           onChange={(event) => setQuery(event.target.value)}
           value={query}
         />

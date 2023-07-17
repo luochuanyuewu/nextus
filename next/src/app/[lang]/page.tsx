@@ -3,9 +3,10 @@ import React from 'react'
 import { readItems } from '@directus/sdk'
 import directusApi from '@/app/[lang]/utils/directus-api'
 import PageBuilder from '@/app/[lang]/components/PageBuilder'
+import { Page } from '@/types/schemas'
 
 export default async function PageRoute() {
-  const pages = await directusApi.request(
+  const pages = (await directusApi.request(
     readItems('pages', {
       filter: {
         slug: { _eq: 'home' },
@@ -26,7 +27,7 @@ export default async function PageRoute() {
       ],
       limit: 1,
     })
-  )
+  )) as Array<Page>
 
   if (pages.length === 0) return null
 

@@ -228,7 +228,7 @@ export interface HelpArticle {
   summary?: string;
   owner?: User;
   content?: string;
-  help_collection?: HelpCollection | string;
+  help_collection?: HelpCollection;
   user_created?: string;
   user_updated?: string;
   date_created?: string;

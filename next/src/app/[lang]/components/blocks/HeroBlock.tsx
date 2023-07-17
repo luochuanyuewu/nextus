@@ -37,7 +37,7 @@ function HeroBlock({ data }: HeroBlockProps) {
           {data.buttons &&
             data.buttons.map((button, buttonIdx) => (
               <VButton
-                key={buttonIdx}
+                key={button.label}
                 href={button.href}
                 variant={button.variant}
                 target={button.open_in_new_window ? '_blank' : '_self'}
