@@ -7,7 +7,9 @@ interface TitleProps {
 }
 
 function TypographyTitle({ as = 'h2', className, children }: TitleProps) {
-  const classNames = `'font-mono font-bold tracking-wider uppercase text-accent' ${className}`
+  const classNames = `font-mono font-bold tracking-wider uppercase text-accent ${
+    className || ''
+  }`
 
   switch (as) {
     case 'h1':

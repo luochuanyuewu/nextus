@@ -1,15 +1,33 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
+
 module.exports = {
-  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   darkMode: 'class',
+
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+
+  // Using a separate config file for typography to keep things clean and tidy
+  presets: [require('./tailwind.config.typography.js')],
+
   theme: {
     extend: {
-      // custom animation
+      colors: {
+        gray: colors.slate,
+        accent: {
+          DEFAULT: '#FF99DD',
+        },
+        red: colors.rose,
+      },
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        serif: ['Playfair Display', ...defaultTheme.fontFamily.serif],
+        mono: ['Fira Code', ...defaultTheme.fontFamily.mono],
+      },
       animation: {
         'fade-in': 'fade-in 0.5s linear forwards',
         marquee: 'marquee var(--marquee-duration) linear infinite',
       },
-      // custom animation keyframes.
       keyframes: {
         'fade-in': {
           from: {
@@ -26,6 +44,11 @@ module.exports = {
       },
     },
   },
+
+  variants: {
+    extend: {},
+  },
+
   // daisyUI config (optional) //https://daisyui.com/docs/config/
   daisyui: {
     styled: true,
@@ -37,9 +60,9 @@ module.exports = {
     prefix: '',
     darkTheme: 'dark',
   },
+
   plugins: [
     require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-    require('daisyui'),
+    // require('daisyui'),
   ],
 }

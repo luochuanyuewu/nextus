@@ -15,7 +15,7 @@ interface PostCardProps {
 
 function PostCard({ post, even, className }: PostCardProps) {
   return (
-    <figure className={`'group flex flex-col ${className}`}>
+    <figure className={`group flex flex-col ${className}`}>
       <Link href={`/posts/${post.slug}`}>
         <div
           className={[

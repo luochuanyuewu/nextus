@@ -17,6 +17,8 @@ const nextConfig = {
       },
     ],
   },
+  // transpilePackages: ['react-daisyui'],
+  // reactStrictMode: true,
   experimental: {
     appDir: true,
   },
