@@ -69,7 +69,7 @@ export interface Project {
 
 export interface Team {
   id: string
-  bio?:string
+  bio?: string
   image?: string
   job_title?: string
   name?: string
@@ -123,7 +123,9 @@ export interface User {
   role: Role;
   timezone?: string;
   language?: string;
+  title?: string
   avatar?: null | Avatar;
+  avatar_url?: string
 }
 
 export interface Form {
@@ -277,7 +279,7 @@ export interface Schema {
   pages: Page[];
   posts: Post[];
   projects: Project[];
-  team:Team[];
+  team: Team[];
   categories: Category[];
   directus_users: User[];
   forms: Form[];

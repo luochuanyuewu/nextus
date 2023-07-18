@@ -5,7 +5,11 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   darkMode: 'class',
 
-  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
 
   // Using a separate config file for typography to keep things clean and tidy
   presets: [require('./tailwind.config.typography.js')],

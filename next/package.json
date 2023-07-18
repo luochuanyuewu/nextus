@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lintfix": "next lint --fix",
+    "format": "prettier '**/*.{json,yaml}' --write --ignore-path .gitignore"
   },
   "dependencies": {
     "@directus/sdk": "11.0.0-beta.4",

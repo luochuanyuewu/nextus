@@ -24,22 +24,22 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./src/*"
+        "./*"
       ]
     }
   },
   "include": [
     "next-env.d.ts",
-    "@directus/sdk/*",
-    "i18n-config.ts",
-    "middleware.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".src/types/*.ts",
+    "types/*.ts",
+    "hooks/*.ts",
+    "middleware.ts",
+    "@directus/sdk/*",
+    "./i18n-config.ts"
   ],
   "exclude": [
     "node_modules"
