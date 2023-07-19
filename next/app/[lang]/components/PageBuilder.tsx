@@ -14,6 +14,7 @@ import RawHtmlBlock from '@/app/[lang]/components/blocks/RawHtmlBlock'
 import TeamBlock from '@/app/[lang]/components/blocks/TeamBlock'
 import ColumnsBlock from '@/app/[lang]/components/blocks/ColumnsBlock'
 import CardGroupBlock from '@/app/[lang]/components/blocks/CardGroupBlock'
+import FormBlock from './blocks/FormBlock'
 
 function PageBuilder({ page }: { page: Page }) {
   return (
@@ -51,6 +52,8 @@ function PageBuilder({ page }: { page: Page }) {
               return <ColumnsBlock data={block.item as any}></ColumnsBlock>
             case 'block_cardgroup':
               return <CardGroupBlock data={block.item as any}></CardGroupBlock>
+            case 'block_form':
+              return <FormBlock data={block.item as any}></FormBlock>
           }
         })}
     </div>

@@ -55,7 +55,7 @@ export default async function RootLayout({
           <TheHeader />
         </div>
 
-        <main className='mx-auto mb-5 max-w-7xl'>{children}</main>
+        <main className='relative text-gray-900'>{children}</main>
 
         {/* {notificationBanner && <Banner data={notificationBanner} />} */}
 

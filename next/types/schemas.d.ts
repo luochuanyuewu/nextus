@@ -128,19 +128,23 @@ export interface User {
   avatar_url?: string
 }
 
+export interface FormElement {
+  name: string;
+  required: boolean;
+  type: string;
+  label: string;
+  placeholder: string;
+  help: string;
+  validation: string;
+  width: string | number;
+  outerclass?: string //not coming from backend.
+}
+
 export interface Form {
   id: string;
   key?: string;
   submit_label?: string;
-  schema: Array<{
-    name: string;
-    type: string;
-    label: string;
-    placeholder: string;
-    help: string;
-    validation: string;
-    width: string | number;
-  }>;
+  schema: Array<FormElement>;
   on_success?: string;
   redirect_url?: string;
   success_message?: string;
@@ -250,6 +254,10 @@ export interface HelpFeedback {
   date_updated?: string;
 }
 
+export interface InBox{
+
+}
+
 // ** Realtime Types **
 
 export interface Conversation {
@@ -293,5 +301,5 @@ export interface Schema {
   help_feedback: HelpFeedback[];
   // Realtime
   conversations: Conversation[];
-  messages: Message[];
 }
+  messages: Message[];
