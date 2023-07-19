@@ -1,13 +1,13 @@
-import directusApi from '@/app/[lang]/utils/directus-api'
+import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { HelpCollection } from '@/types/schemas'
-import PageContainer from '@/app/[lang]/components/PageContainer'
-import TypographyTitle from '@/app/[lang]/components/typography/TypographyTitle'
-import TypographyHeadline from '@/app/[lang]/components/typography/TypographyHeadline'
-import GlobalSearch from '@/app/[lang]/components/GlobalSearch'
+import { HelpCollection } from '@/lib/schemas'
+import PageContainer from '@/components/PageContainer'
+import TypographyTitle from '@/components/typography/TypographyTitle'
+import TypographyHeadline from '@/components/typography/TypographyHeadline'
+import GlobalSearch from '@/components/GlobalSearch'
 import Link from 'next/link'
-import VIcon from '@/app/[lang]/components/base/VIcon'
-import { convertIconName } from '@/app/[lang]/utils/strings'
+import VIcon from '@/components/base/VIcon'
+import { convertIconName } from '@/lib/utils/strings'
 
 export default async function HelpCenterPage() {
   const collections = (await directusApi.request(

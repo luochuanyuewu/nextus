@@ -1,12 +1,12 @@
-import directusApi from '@/app/[lang]/utils/directus-api'
+import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { Project } from '@/types/schemas'
-import { getDirectusMedia } from '@/app/[lang]/utils/api-helpers'
-import TypographyHeadline from '@/app/[lang]/components/typography/TypographyHeadline'
-import PageContainer from '@/app/[lang]/components/PageContainer'
-import TypographyProse from '@/app/[lang]/components/typography/TypographyProse'
-import GalleryBlock from '@/app/[lang]/components/blocks/GalleryBlock'
-import TypographyTitle from '@/app/[lang]/components/typography/TypographyTitle'
+import { Project } from '@/lib/schemas'
+import { getDirectusMedia } from '@/lib/utils/api-helpers'
+import TypographyHeadline from '@/components/typography/TypographyHeadline'
+import PageContainer from '@/components/PageContainer'
+import TypographyProse from '@/components/typography/TypographyProse'
+import GalleryBlock from '@/components/blocks/GalleryBlock'
+import TypographyTitle from '@/components/typography/TypographyTitle'
 
 export default async function PageRoute({ params }: { params: any }) {
   const projects = await directusApi.request(

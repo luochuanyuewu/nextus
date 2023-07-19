@@ -1,9 +1,8 @@
 import React from 'react'
-
+import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import directusApi from '@/app/[lang]/utils/directus-api'
-import PageBuilder from '@/app/[lang]/components/PageBuilder'
-import { Page } from '../../../types/schemas'
+import { Page } from '@/lib/schemas'
+import PageBuilder from '@/components/PageBuilder'
 
 export default async function PageRoute() {
   const pages = (await directusApi.request(

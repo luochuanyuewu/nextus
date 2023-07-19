@@ -1,8 +1,8 @@
 import React from 'react'
-import directusApi from '@/app/[lang]/utils/directus-api'
+import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { Page } from '@/types/schemas'
-import PageBuilder from '@/app/[lang]/components/PageBuilder'
+import { Page } from '@/lib/schemas'
+import PageBuilder from '@/components/PageBuilder'
 
 type Props = {
   params: { slug: string; lang: string }

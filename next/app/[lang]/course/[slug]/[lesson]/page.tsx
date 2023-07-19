@@ -1,5 +1,5 @@
 // import CourseViewer from '@/components/course/CourseViewer';
-import { fetchAPI } from '../../../utils/fetch-api'
+import { fetchAPI } from '@/lib/utils/fetch-api'
 import clsx from 'classnames'
 import { Player } from '@/components/aliplayer/Player'
 
@@ -68,7 +68,7 @@ async function getCourseLessonsBySlug(slug: string, lang: string) {
       course: '*',
     },
   }
-  const options = { headers: { Authorization: `Bearer ${token}` } }
+  const options = {headers: {Authorization: `Bearer ${token}`}}
   const response = await fetchAPI(path, urlParamsObject, options)
   return response.data
 }
@@ -82,21 +82,21 @@ async function fetchData(
   const path = `/courses`
 
   const urlParamsObject = {
-    filters: { slug },
+    filters: {slug},
     locale: lang,
     // populate: {
     //     lessons: "*"
     // }
   }
-  const options = { headers: { Authorization: `Bearer ${token}` } }
-  const { data, meta } = await fetchAPI(path, urlParamsObject, options)
+  const options = {headers: {Authorization: `Bearer ${token}`}}
+  const {data, meta} = await fetchAPI(path, urlParamsObject, options)
   if (data.length === 0) return null
 
   const course = data[0]
 
   const lessons = await getCourseLessonsBySlug(course.attributes.slug, lang)
 
-  return { course: course, lessons: lessons }
+  return {course: course, lessons: lessons}
 }
 
 async function getVideoPlayingToken(videoId: string): Promise<any> {
@@ -104,14 +104,14 @@ async function getVideoPlayingToken(videoId: string): Promise<any> {
 
   const path = `/generic-vod/vod-video/token/${videoId}`
 
-  const options = { headers: { Authorization: `Bearer ${token}` } }
+  const options = {headers: {Authorization: `Bearer ${token}`}}
   const response = await fetchAPI(path, {}, options)
   return response
 }
 
 export default async function ViewCourse({
-  params,
-}: {
+                                           params,
+                                         }: {
   params: { lang: string; slug: string; lesson: string }
 }) {
   // const [lessonProgress, setLessonProgress] = useState(completedLessons)
@@ -122,7 +122,7 @@ export default async function ViewCourse({
     return null
   }
 
-  const { course, lessons } = data
+  const {course, lessons} = data
 
   const lessonIndex = params.lesson ? parseInt(params.lesson) - 1 : 0
 
@@ -172,7 +172,7 @@ export default async function ViewCourse({
             className='mb-6 aspect-video w-full'
           />
         ) : (
-          <div className='mb-6 aspect-video w-full bg-gray-200' />
+          <div className='mb-6 aspect-video w-full bg-gray-200'/>
         )}
 
         {/* <Player source='https://outin-068e41f2f56c11e9a7c500163e024c6a.oss-cn-shanghai.aliyuncs.com/sv/33a63a72-188481eb72b/33a63a72-188481eb72b.mp4?Expires=1685286938&OSSAccessKeyId=LTAI3DkxtsbUyNYV&Signature=0YIC3IsfFN1B0hNIiN29XWpMQZ4%3D' className='mb-6 w-full aspect-video' /> */}

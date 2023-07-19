@@ -1,7 +1,7 @@
 import { createItem, updateItem } from '@directus/sdk'
 import { NextRequest, NextResponse } from 'next/server'
-import { HelpFeedback } from '@/types/schemas'
-import directusApi from '@/app/[lang]/utils/directus-api'
+import { HelpFeedback } from '@/lib/schemas'
+import directusApi from '@/lib/utils/directus-api'
 
 export async function POST(req: NextRequest, ctx: { params: any }) {
   try {

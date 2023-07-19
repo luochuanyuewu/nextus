@@ -1,4 +1,4 @@
-import directusApi from '@/app/[lang]/utils/directus-api'
+import directusApi from '@/lib/utils/directus-api'
 import { NextRequest, NextResponse } from 'next/server'
 import { getQuery } from 'ufo'
 import { readItems } from '@directus/sdk'

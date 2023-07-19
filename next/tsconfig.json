@@ -36,7 +36,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "types/*.ts",
-    "hooks/*.ts",
     "middleware.ts",
     "@directus/sdk/*",
     "./i18n-config.ts"

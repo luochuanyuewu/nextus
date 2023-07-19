@@ -1,13 +1,13 @@
-import directusApi from '@/app/[lang]/utils/directus-api'
+import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { HelpArticle } from '@/types/schemas'
-import PageContainer from '@/app/[lang]/components/PageContainer'
-import GlobalSearch from '@/app/[lang]/components/GlobalSearch'
-import VBreadcrumbs from '@/app/[lang]/components/base/VBreadcrumbs'
-import TypographyHeadline from '@/app/[lang]/components/typography/TypographyHeadline'
-import VAvatar from '@/app/[lang]/components/base/VAvatar'
-import TypographyProse from '@/app/[lang]/components/typography/TypographyProse'
-import { markdownToHtml } from '@/app/[lang]/utils/markdown'
+import { HelpArticle } from '@/lib/schemas'
+import PageContainer from '@/components/PageContainer'
+import GlobalSearch from '@/components/GlobalSearch'
+import VBreadcrumbs from '@/components/base/VBreadcrumbs'
+import TypographyHeadline from '@/components/typography/TypographyHeadline'
+import VAvatar from '@/components/base/VAvatar'
+import TypographyProse from '@/components/typography/TypographyProse'
+import { markdownToHtml } from '@/lib/utils/markdown'
 
 export default async function ArticlePage({
   params,
