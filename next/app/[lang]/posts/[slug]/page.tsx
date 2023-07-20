@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Posts } from '@/lib/directus-collections'
+import { DirectusUsers } from '@/lib/directus-collections'
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
 import { Metadata } from 'next'
@@ -14,7 +14,7 @@ import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import PageContainer from '@/components/PageContainer'
 import TypographyProse from '@/components/typography/TypographyProse'
 
-async function getPostBySlug(slug: string): Promise<Posts | null> {
+async function getPostBySlug(slug: string) {
   const posts = await directusApi.request(
     readItems('posts', {
       filter: { slug: { _eq: slug } },
@@ -80,25 +80,25 @@ export default async function PageRoute({
             </div>
             {/* Post Meta */}
             <div className='mt-12 hidden space-y-6 p-8 md:block'>
-              {page.category && (
+              {page.category && typeof page.category !== 'string' && (
                 <Link
                   href={`/posts/categories/${page.category.slug}`}
                   className='inline-block hover:opacity-90'
                 >
-                  <VBadge size='lg' color={page.category.color}>
+                  <VBadge size='lg' color={page.category.color ?? ''}>
                     {page.category.title}
                   </VBadge>
                 </Link>
               )}
-              {page.author && <VAvatar author={page.author} />}
+              {page.author && <VAvatar author={page.author as DirectusUsers} />}
               <div className='space-y-2'>
                 <p className='flex font-mono text-gray-500 dark:text-gray-300'>
                   <VIcon icon='heroicons:clock' className='mr-2 h-6 w-6' />
-                  {calculateReadTime(page.content)}
+                  {page.content && calculateReadTime(page.content)}
                 </p>
                 <p className='flex font-mono text-gray-500 dark:text-gray-300'>
                   <VIcon icon='heroicons:calendar' className='mr-2 h-6 w-6' />
-                  {getRelativeTime(page.date_published)}
+                  {page.date_published && getRelativeTime(page.date_published)}
                 </p>
               </div>
             </div>
@@ -120,24 +120,24 @@ export default async function PageRoute({
           </div>
 
           <div className='mt-6 block px-6 md:hidden'>
-            {page.author && <VAvatar author={page.author} />}
+            {page.author && <VAvatar author={page.author as DirectusUsers} />}
             <div className='mt-4 flex justify-between border-b pb-4 dark:border-gray-700'>
               <div className='space-y-2'>
                 <p className='flex font-mono text-gray-500 dark:text-gray-300'>
                   <VIcon icon='heroicons:clock' className='mr-2 h-6 w-6' />
-                  {calculateReadTime(page.content)}
+                  {calculateReadTime(page?.content ?? '')}
                 </p>
                 <p className='flex font-mono text-gray-500 dark:text-gray-300'>
                   <VIcon icon='heroicons:calendar' className='mr-2 h-6 w-6' />
-                  {getRelativeTime(page.date_published)}
+                  {getRelativeTime(page?.date_published ?? '')}
                 </p>
               </div>
-              {page.category && (
+              {page.category && typeof page.category !== 'string' && (
                 <Link
                   href={`/posts/categories/${page.category.slug}`}
                   className='inline-block hover:opacity-90'
                 >
-                  <VBadge size='lg' color={page.category.color}>
+                  <VBadge size='lg' color={page.category?.color ?? ''}>
                     {page.category.title}
                   </VBadge>
                 </Link>

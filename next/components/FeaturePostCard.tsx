@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Posts } from '@/lib/directus-collections'
+import { DirectusUsers, Posts } from '@/lib/directus-collections'
 import Link from 'next/link'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import VBadge from '@/components/base/VBadge'
@@ -20,10 +20,10 @@ const FeaturePostCard = ({ post }: { post: Posts }) => {
           />
           <div className='absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
 
-          {post.category && (
+          {post.category && typeof post.category != 'string' && (
             <VBadge
               size='lg'
-              color={post.category.color as any}
+              color={post.category?.color ?? ''}
               className='absolute bottom-0 left-0 mb-4 ml-4 rounded-bl-lg'
             >
               {post.category.title}
@@ -42,7 +42,11 @@ const FeaturePostCard = ({ post }: { post: Posts }) => {
           </p>
         </Link>
         {post.author && (
-          <VAvatar className='relative mt-4' size='sm' author={post.author} />
+          <VAvatar
+            className='relative mt-4'
+            size='sm'
+            author={post.author as DirectusUsers}
+          />
         )}
       </div>
     </figure>

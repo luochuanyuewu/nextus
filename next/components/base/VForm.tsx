@@ -1,6 +1,6 @@
 'use client'
 
-import { FormElement, Forms } from '@/lib/directus-collections'
+import { Forms } from '@/lib/directus-collections'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import VAlert from '@/components/base/VAlert'
@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
 import VFieldRender from '@/components/form/VFieldRender'
 import VButton from '@/components/base/VButton'
+import { FormElement } from '@/lib/schemas'
 
 interface FormProps {
   form: Forms

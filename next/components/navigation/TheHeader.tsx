@@ -9,7 +9,11 @@ import LogoV2 from '@/components/LogoV2'
 export default async function TheHeader() {
   const results = await directusApi.request(
     readItem('navigation', 'main', {
-      fields: ['items.*', 'items.page.slug', 'items.children.*'],
+      fields: [
+        {
+          items: ['*', { page: ['slug'] }, { children: ['*'] }],
+        },
+      ],
     })
   )
 

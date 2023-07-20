@@ -1,7 +1,7 @@
 'use client'
 
 import { FieldValues, UseFormReturn } from 'react-hook-form'
-import { FormElement } from '@/lib/directus-collections'
+import { FormElement } from '@/lib/schemas'
 
 export const VTextArea = (props: {
   element: FormElement

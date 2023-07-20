@@ -1,6 +1,5 @@
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { HelpCollections } from '@/lib/directus-collections'
 import PageContainer from '@/components/PageContainer'
 import GlobalSearch from '@/components/GlobalSearch'
 import VBreadcrumbs from '@/components/base/VBreadcrumbs'
@@ -8,13 +7,14 @@ import VIcon from '@/components/base/VIcon'
 import { convertIconName } from '@/lib/utils/strings'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import Link from 'next/link'
+import { HelpArticles } from '@/lib/directus-collections'
 
 export default async function CollectionPage({
   params,
 }: {
   params: { slug: string }
 }) {
-  const collections = (await directusApi.request(
+  const collections = await directusApi.request(
     readItems('help_collections', {
       filter: {
         slug: {
@@ -22,15 +22,9 @@ export default async function CollectionPage({
         },
       },
       limit: 1,
-      fields: [
-        '*',
-        'articles.slug',
-        'articles.title',
-        'articles.id',
-        'articles.summary',
-      ],
+      fields: ['*', { articles: ['slug', 'title', 'id', 'summary'] }],
     })
-  )) as Array<HelpCollections>
+  )
 
   if (collections.length === 0) return null
 
@@ -73,12 +67,13 @@ export default async function CollectionPage({
               </div>
             </div>
             <div className='mt-5 font-mono text-gray-500'>
-              {collection.articles && collection.articles.length} articles
+              {collection.articles && (collection.articles as any).length}{' '}
+              articles
             </div>
           </div>
           <div className='flex flex-col gap-5 rounded-br-xl rounded-tl-xl border-2 p-2 dark:border-gray-600'>
             {collection.articles &&
-              collection.articles.map((article) => (
+              (collection.articles as any).map((article: HelpArticles) => (
                 <Link
                   key={article.id}
                   href={`/help/articles/${article.slug}`}

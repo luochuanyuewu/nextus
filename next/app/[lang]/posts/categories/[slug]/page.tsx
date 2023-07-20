@@ -73,7 +73,7 @@ export default async function PageRoute({
             </TypographyTitle>
             <span>{}</span>
             <div className='relative grid grid-cols-2 gap-6 md:grid-cols-2 lg:grid-cols-4'>
-              {posts.map((post: Post, postIdx: number) => (
+              {posts.map((post: Posts, postIdx: number) => (
                 <PostCard
                   key={post.id}
                   post={post}

@@ -1,27 +1,28 @@
-import {
-  Globals,
-  Navigation,
-  NavigationItems,
-} from '@/lib/directus-collections'
+import { Navigation, NavigationItems } from '@/lib/directus-collections'
 import directusApi from '@/lib/utils/directus-api'
 import { readItem, readItems, readSingleton } from '@directus/sdk'
 import LogoV2 from '@/components/LogoV2'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import VIcon from '@/components/base/VIcon'
+import Link from 'next/link'
 
 async function TheFooter() {
   function getUrl(item: NavigationItems) {
-    if (item.type === 'page') {
+    if (item.type === 'page' && typeof item.page !== 'string') {
       return `/${item.page?.slug}`
     } else {
-      return item.url
+      return item?.url ?? ''
     }
   }
 
   const navigation = (await directusApi.request(
     readItem('navigation', 'footer', {
-      fields: ['items.*', 'items.page.slug', 'items.children.*'],
+      fields: [
+        {
+          items: ['*', { page: ['slug'] }, { children: ['*'] }],
+        },
+      ],
     })
   )) as Navigation
 
@@ -35,9 +36,7 @@ async function TheFooter() {
     })
   )
 
-  const globals = (await directusApi.request(
-    readSingleton('globals')
-  )) as Globals
+  const globals = await directusApi.request(readSingleton('globals'))
 
   const { tagline, title, social_links } = globals
 
@@ -69,12 +68,12 @@ async function TheFooter() {
                 navigation.items &&
                 navigation.items.map((item) => (
                   <li key={item.id}>
-                    <a
+                    <Link
                       href={getUrl(item)}
                       className='font-mono font-medium text-gray-500 hover:text-gray-700 dark:text-gray-200 dark:hover:text-accent'
                     >
                       {item.title}
-                    </a>
+                    </Link>
                   </li>
                 ))}
             </ul>

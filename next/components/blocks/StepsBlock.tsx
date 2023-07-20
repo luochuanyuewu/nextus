@@ -80,7 +80,7 @@ export default function StepsBlock({ data }: Props) {
               </motion.div>
 
               {/* <!-- Animation Timeline --> */}
-              {stepIdx !== data.steps.length - 1 && (
+              {data.steps && stepIdx !== data.steps.length - 1 && (
                 <svg
                   className='steps-animation m-0 mx-auto h-16 stroke-current text-accent md:h-20'
                   viewBox='0 0 60 200'

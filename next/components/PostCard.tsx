@@ -1,4 +1,4 @@
-import { Posts } from '@/lib/directus-collections'
+import { DirectusUsers, Posts } from '@/lib/directus-collections'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -42,10 +42,10 @@ function PostCard({ post, even, className }: PostCardProps) {
               alt=''
             />
             <div className='absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
-            {post.category && (
+            {post.category && typeof post.category !== 'string' && (
               <VBadge
                 size='lg'
-                color={post.category.color}
+                color={post.category?.color ?? ''}
                 className={[
                   even ? 'rounded-br-lg' : 'rounded-bl-lg',
                   'absolute bottom-0 left-0 mb-4 ml-4',
@@ -64,12 +64,16 @@ function PostCard({ post, even, className }: PostCardProps) {
           {post.title}
         </p>
         <p className='mt-3 font-mono text-sm text-gray-500 dark:text-gray-300'>
-          {truncateString(post.summary, 150)}
+          {truncateString(post?.summary ?? '', 150)}
         </p>
       </Link>
 
       {isObject(post.author) && (
-        <VAvatar className='mt-4' size='sm' author={post.author} />
+        <VAvatar
+          className='mt-4'
+          size='sm'
+          author={post.author as DirectusUsers}
+        />
       )}
     </figure>
   )
