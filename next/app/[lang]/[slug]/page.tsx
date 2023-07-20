@@ -28,8 +28,11 @@ export default async function PageRoute({ params }: Props) {
                 block_quote: ['*'],
                 block_columns: ['*', { rows: ['*'] }],
                 block_form: ['*', { form: ['*'] }],
-                block_testimonials: ['*', { testimonials: ['*'] }],
-                block_logocloud: ['*', { logos: ['file'] }],
+                block_testimonials: [
+                  '*',
+                  { testimonials: ['*', { testimonial: ['*'] }] },
+                ],
+                block_logocloud: ['*', { logos: [{ file: ['*'] }] }],
                 block_team: ['*'],
                 block_cta: ['*'],
                 block_richtext: ['*'],

@@ -128,7 +128,12 @@ export type BlockGalleryFiles = {
 };
 
 export type BlockHero = {
-  buttons?: unknown | null;
+  buttons?:  Array<{
+    label: string
+    href: string
+    variant: string
+    open_in_new_window: boolean
+  }> | null;
   content?: string | null;
   headline?: string | null;
   id: string;

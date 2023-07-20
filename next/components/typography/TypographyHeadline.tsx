@@ -1,6 +1,6 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
-
+import './TypographyHeadline.css'
 interface HeadlineProps {
   content?: string | null
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'

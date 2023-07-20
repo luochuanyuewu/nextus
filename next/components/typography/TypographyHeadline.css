@@ -1,0 +1,5 @@
+.color-em {
+    em {
+      @apply text-accent not-italic;
+    }
+  }

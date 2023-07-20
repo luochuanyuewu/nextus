@@ -30,7 +30,6 @@ module.exports = {
       },
       animation: {
         'fade-in': 'fade-in 0.5s linear forwards',
-        marquee: 'marquee var(--marquee-duration) linear infinite',
       },
       keyframes: {
         'fade-in': {
@@ -40,10 +39,6 @@ module.exports = {
           to: {
             opacity: 1,
           },
-        },
-        marquee: {
-          '0%': { transform: 'translateY(0%)' },
-          '100%': { transform: 'translateY(-50%)' },
         },
       },
     },

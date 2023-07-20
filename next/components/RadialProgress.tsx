@@ -1,5 +1,5 @@
 'use client'
-
+import './RadialProgress.css'
 import { useState, useEffect } from 'react'
 
 const RadialProgress = ({

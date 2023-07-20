@@ -1,5 +1,5 @@
 'use client'
-
+import './TeamBlock.css'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import useResizeObserver from '@/lib/hooks/useResizeObserver'
 import { useIntersection } from 'react-use'
@@ -112,7 +112,7 @@ export default function TeamBlock({ data }: TeamBlockProps) {
             <div
               className={`${
                 isVisible ? 'animate-marquee' : ''
-              } hover:animate-pause -mt-10 max-w-[320px] space-y-10 py-4`}
+              }  -mt-10 max-w-[320px] space-y-10 py-4`}
               style={{ '--marquee-duration': duration } as any}
               ref={leftColRef}
             >
@@ -123,7 +123,7 @@ export default function TeamBlock({ data }: TeamBlockProps) {
             <div
               className={`${
                 isVisible ? 'animate-marquee' : ''
-              } hover:animate-pause max-w-[320px] space-y-10 py-4`}
+              }  max-w-[320px] space-y-10 py-4`}
               style={{ '--marquee-duration': duration } as any}
             >
               {teamToDisplay.right.map((person, index: number) => (

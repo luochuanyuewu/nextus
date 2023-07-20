@@ -1,4 +1,5 @@
 'use client'
+import './StepBlock.css'
 import React from 'react'
 import BlockContainer from '@/components/BlockContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'

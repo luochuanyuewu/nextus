@@ -5,7 +5,7 @@ import PageBuilder from '@/components/PageBuilder'
 import { Pages } from '@/lib/directus-collections'
 
 export default async function PageRoute() {
-  const pages = (await directusApi.request(
+  const pages = await directusApi.request(
     readItems('pages', {
       filter: {
         slug: { _eq: 'home' },
@@ -23,8 +23,11 @@ export default async function PageRoute() {
                 block_quote: ['*'],
                 block_columns: ['*', { rows: ['*'] }],
                 block_form: ['*', { form: ['*'] }],
-                block_testimonials: ['*', { testimonials: ['*'] }],
-                block_logocloud: ['*', { logos: ['file'] }],
+                block_testimonials: [
+                  '*',
+                  { testimonials: ['*', { testimonial: ['*'] }] },
+                ],
+                block_logocloud: ['*', { logos: [{ file: ['*'] }] }],
                 block_team: ['*'],
                 block_cta: ['*'],
                 block_richtext: ['*'],
@@ -43,7 +46,7 @@ export default async function PageRoute() {
       ],
       limit: 1,
     })
-  )) as Array<Pages>
+  )
 
   if (pages.length === 0) return null
 

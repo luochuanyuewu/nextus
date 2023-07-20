@@ -3,6 +3,7 @@ import VButton from '../base/VButton'
 import BlockContainer from '../BlockContainer'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import Image from 'next/image'
+import { BlockHero } from '@/lib/directus-collections'
 
 interface Hero {
   id: string
@@ -18,7 +19,7 @@ interface Hero {
 }
 
 interface HeroBlockProps {
-  data: Hero
+  data: BlockHero
 }
 
 function HeroBlock({ data }: HeroBlockProps) {
@@ -28,7 +29,9 @@ function HeroBlock({ data }: HeroBlockProps) {
       <div className='md:col-span-2 md:pt-12'>
         <h1
           className='xs:text-5xl color-em font-serif text-4xl font-extrabold leading-9 text-gray-900 dark:text-gray-100 dark:drop-shadow sm:text-7xl lg:text-8xl'
-          dangerouslySetInnerHTML={{ __html: data.headline }}
+          dangerouslySetInnerHTML={
+            data.headline ? { __html: data.headline } : undefined
+          }
         />
         <p className='w-full py-6 font-serif text-xl dark:text-gray-200 lg:text-2xl lg:leading-loose'>
           {data.content}
