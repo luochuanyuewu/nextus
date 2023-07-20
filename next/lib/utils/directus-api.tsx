@@ -1,8 +1,8 @@
 import { getDirectusURL } from './api-helpers'
 import { authentication, createDirectus, rest } from '@directus/sdk'
-import { Schema } from '@/lib/schemas'
+import { DirectusSchema } from '@/lib/directus-collections'
 
-const directusApi = createDirectus<Schema>(getDirectusURL())
+const directusApi = createDirectus<DirectusSchema>(getDirectusURL())
   .with(
     rest({
       onRequest: (currentOptions: RequestInit) => {

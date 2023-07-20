@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import classNames from 'classnames'
+import clsx from 'clsx'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 
 interface NavLink {
@@ -13,7 +13,7 @@ interface NavLink {
 
 function NavLink({ href, text }: NavLink) {
   const path = usePathname()
-  let className = classNames('', path === href ? 'btn-activate' : '')
+  let className = clsx('', path === href ? 'btn-activate' : '')
   return (
     <li>
       <Link

@@ -1,6 +1,5 @@
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { HelpArticle } from '@/lib/schemas'
 import PageContainer from '@/components/PageContainer'
 import GlobalSearch from '@/components/GlobalSearch'
 import VBreadcrumbs from '@/components/base/VBreadcrumbs'
@@ -14,7 +13,7 @@ export default async function ArticlePage({
 }: {
   params: { slug: string }
 }) {
-  const articles = (await directusApi.request(
+  const articles = await directusApi.request(
     readItems('help_articles', {
       filter: {
         slug: {
@@ -24,15 +23,11 @@ export default async function ArticlePage({
       limit: 1,
       fields: [
         '*',
-        'help_collection.slug',
-        'help_collection.title',
-        'help_collection.id',
-        'owner.first_name',
-        'owner.last_name',
-        'owner.avatar',
+        { help_collection: ['slug', 'title', 'id'] },
+        { owner: ['first_name', 'last_name', 'avatar'] },
       ],
     })
-  )) as Array<HelpArticle>
+  )
 
   if (articles.length === 0) return null
 
@@ -97,11 +92,11 @@ export default async function ArticlePage({
             </div>
             <hr className='mt-12 dark:border-gray-700' />
             {/* Feedback Widget */}
-            <HelpFeedback
-              className='mt-4'
-              title={article.title}
-              url={`/help/articles/${article.slug}`}
-            />
+            {/*<HelpFeedback*/}
+            {/*  className='mt-4'*/}
+            {/*  title={article.title}*/}
+            {/*  url={`/help/articles/${article.slug}`}*/}
+            {/*/>*/}
           </div>
         </div>
       </section>

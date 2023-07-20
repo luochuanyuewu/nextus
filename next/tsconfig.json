@@ -35,7 +35,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "types/*.ts",
+    "lib/**/*.ts",
     "middleware.ts",
     "@directus/sdk/*",
     "./i18n-config.ts"

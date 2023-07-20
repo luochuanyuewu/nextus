@@ -1,10 +1,10 @@
 import Image from 'next/image'
-import { User } from '@/lib/schemas'
+import { DirectusUsers } from '@/lib/directus-collections'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import { userName } from '@/lib/utils/user-name'
 
 interface AvatarProps {
-  author: Partial<User>
+  author: Partial<DirectusUsers>
   className?: string
   size?: 'sm' | 'md' | 'lg'
 }

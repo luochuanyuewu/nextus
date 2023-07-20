@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 import { motion } from 'framer-motion'
-import { Team } from '@/lib/schemas'
+import { Team } from '@/lib/directus-collections'
 import { CSSProperties, useState } from 'react'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import Link from 'next/link'

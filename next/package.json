@@ -11,7 +11,7 @@
     "format": "prettier '**/*.{json,yaml}' --write --ignore-path .gitignore"
   },
   "dependencies": {
-    "@directus/sdk": "11.0.0-beta.4",
+    "@directus/sdk": "11.0.0-beta.5",
     "@formatjs/intl-localematcher": "^0.4.0",
     "@headlessui/react": "^1.7.15",
     "@radix-ui/react-dropdown-menu": "^2.0.5",

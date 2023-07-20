@@ -1,4 +1,8 @@
-import { Globals, Navigation, NavigationItem } from '@/lib/schemas'
+import {
+  Globals,
+  Navigation,
+  NavigationItems,
+} from '@/lib/directus-collections'
 import directusApi from '@/lib/utils/directus-api'
 import { readItem, readItems, readSingleton } from '@directus/sdk'
 import LogoV2 from '@/components/LogoV2'
@@ -7,9 +11,9 @@ import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import VIcon from '@/components/base/VIcon'
 
 async function TheFooter() {
-  function getUrl(item: NavigationItem) {
+  function getUrl(item: NavigationItems) {
     if (item.type === 'page') {
-      return `/${item.page.slug}`
+      return `/${item.page?.slug}`
     } else {
       return item.url
     }
@@ -17,7 +21,6 @@ async function TheFooter() {
 
   const navigation = (await directusApi.request(
     readItem('navigation', 'footer', {
-      // @ts-ignore
       fields: ['items.*', 'items.page.slug', 'items.children.*'],
     })
   )) as Navigation
@@ -63,6 +66,7 @@ async function TheFooter() {
             <TypographyTitle>Menu</TypographyTitle>
             <ul role='list' className='mt-4 grid grid-flow-col md:grid-cols-2'>
               {navigation &&
+                navigation.items &&
                 navigation.items.map((item) => (
                   <li key={item.id}>
                     <a

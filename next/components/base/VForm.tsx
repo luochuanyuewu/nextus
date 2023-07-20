@@ -1,6 +1,6 @@
 'use client'
 
-import { Form, FormElement } from '@/lib/schemas'
+import { FormElement, Forms } from '@/lib/directus-collections'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import VAlert from '@/components/base/VAlert'
@@ -12,7 +12,7 @@ import VFieldRender from '@/components/form/VFieldRender'
 import VButton from '@/components/base/VButton'
 
 interface FormProps {
-  form: Form
+  form: Forms
   className?: string
 }
 

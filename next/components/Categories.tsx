@@ -1,13 +1,13 @@
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { Category } from '@/lib/schemas'
+import { Categories } from '@/lib/directus-collections'
 import Link from 'next/link'
 import VBadge from '@/components/base/VBadge'
 
 async function fetchData() {
   const categories = await directusApi.request(readItems('categories'))
 
-  return categories as Array<Category>
+  return categories as Array<Categories>
 }
 
 export default async function Categories() {
@@ -22,7 +22,7 @@ export default async function Categories() {
             href={`/posts/categories/${category.id}`}
             className='font-mono hover:opacity-80 dark:text-gray-200'
           >
-            <VBadge color={category.color} size='lg'>
+            <VBadge color={category.color as any} size='lg'>
               {category.title}
             </VBadge>
           </Link>

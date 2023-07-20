@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Post } from '@/lib/schemas'
+import { Posts } from '@/lib/directus-collections'
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
 import { Metadata } from 'next'
@@ -14,18 +14,16 @@ import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import PageContainer from '@/components/PageContainer'
 import TypographyProse from '@/components/typography/TypographyProse'
 
-async function getPostBySlug(slug: string): Promise<Post | null> {
+async function getPostBySlug(slug: string): Promise<Posts | null> {
   const posts = await directusApi.request(
     readItems('posts', {
       filter: { slug: { _eq: slug } },
       limit: 1,
       fields: [
         '*',
-        'seo.*',
-        'author.*',
-        'category.title',
-        'category.slug',
-        'category.color',
+        { seo: ['*'] },
+        { author: ['*'] },
+        { category: ['title', 'slug', 'color'] },
       ],
     })
   )

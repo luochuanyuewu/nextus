@@ -1,5 +1,5 @@
 import React from 'react'
-import { Page } from '@/lib/schemas'
+import { Pages } from '@/lib/directus-collections'
 import RichTextBlock from '@/components/blocks/RichTextBlock'
 import HeroBlock from '@/components/blocks/HeroBlock'
 import GalleryBlock from '@/components/blocks/GalleryBlock'
@@ -16,7 +16,7 @@ import ColumnsBlock from '@/components/blocks/ColumnsBlock'
 import CardGroupBlock from '@/components/blocks/CardGroupBlock'
 import FormBlock from './blocks/FormBlock'
 
-function PageBuilder({ page }: { page: Page }) {
+function PageBuilder({ page }: { page: Pages }) {
   return (
     <div className='mx-auto' id='content'>
       {page.blocks &&

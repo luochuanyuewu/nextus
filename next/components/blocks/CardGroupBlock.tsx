@@ -1,4 +1,4 @@
-import { Post } from '@/lib/schemas'
+import { Posts } from '@/lib/directus-collections'
 import BlockContainer from '@/components/BlockContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
@@ -10,7 +10,7 @@ export interface CardGroup {
   headline: string
   content: string
   posts: Array<{
-    posts_id: Post
+    posts_id: Posts
   }>
 }
 

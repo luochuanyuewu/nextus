@@ -4,7 +4,7 @@ import React from 'react'
 import { FieldValues, UseFormReturn } from 'react-hook-form'
 import { VInput } from '@/components/form/VInput'
 import { VTextArea } from '@/components/form/VTextArea'
-import { FormElement } from '@/lib/schemas'
+import { FormElement } from '@/lib/directus-collections'
 
 export default function VFieldRender(props: {
   element: FormElement

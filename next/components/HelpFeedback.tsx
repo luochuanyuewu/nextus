@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useCookie } from 'react-use'
-import { HelpFeedback } from '@/lib/schemas'
+import { HelpFeedback } from '@/lib/directus-collections'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import VButton from '@/components/base/VButton'
 import VIcon from '@/components/base/VIcon'
@@ -133,7 +133,7 @@ export default function HelpFeedbackForm(props: any) {
             />
             <input
               type='textarea'
-              value={feedback.comments}
+              value={feedback.comments as any}
               onChange={(value) =>
                 setFeedback({ ...feedback, comments: value.target.value })
               }

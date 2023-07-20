@@ -1,15 +1,15 @@
 'use client'
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
-import { NavigationItem } from '@/lib/schemas'
+import { NavigationItems } from '@/lib/directus-collections'
 import { convertIconName } from '@/lib/utils/strings'
 import * as Popover from '@radix-ui/react-popover'
 
 interface MenuItemProps {
-  item: NavigationItem
+  item: NavigationItems
 }
 
-function getUrl(item: NavigationItem) {
+function getUrl(item: NavigationItems) {
   if (item.type === 'page') {
     return `/${item.page.slug}`
   } else {
@@ -66,7 +66,7 @@ export default function MenuItem({ item }: MenuItemProps) {
                   </div>
                   <div className='flex-auto'>
                     <Link
-                      href={getUrl(childItem)}
+                      href={getUrl(childItem) as any}
                       className='block font-bold uppercase text-white'
                     >
                       {childItem.title}

@@ -1,5 +1,3 @@
-import classNames from 'classnames'
-
 function colors(type: string) {
   switch (type) {
     case 'info':

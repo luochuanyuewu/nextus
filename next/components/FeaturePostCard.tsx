@@ -1,12 +1,12 @@
 import Image from 'next/image'
-import { Post } from '@/lib/schemas'
+import { Posts } from '@/lib/directus-collections'
 import Link from 'next/link'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import VBadge from '@/components/base/VBadge'
 import { truncateString } from '@/lib/utils/strings'
 import VAvatar from '@/components/base/VAvatar'
 
-const FeaturePostCard = ({ post }: { post: Post }) => {
+const FeaturePostCard = ({ post }: { post: Posts }) => {
   return (
     <figure className='relative space-x-2 rounded-bl-3xl rounded-tr-3xl border-2 border-accent p-2 md:flex'>
       <Link className='group' href={`/posts/${post.slug}`}>
@@ -23,7 +23,7 @@ const FeaturePostCard = ({ post }: { post: Post }) => {
           {post.category && (
             <VBadge
               size='lg'
-              color={post.category.color}
+              color={post.category.color as any}
               className='absolute bottom-0 left-0 mb-4 ml-4 rounded-bl-lg'
             >
               {post.category.title}
@@ -38,7 +38,7 @@ const FeaturePostCard = ({ post }: { post: Post }) => {
             {post.title}
           </p>
           <p className='mt-3 font-mono text-sm text-gray-500 dark:text-gray-300'>
-            {truncateString(post.summary, 150)}
+            {truncateString(post.summary as any, 150)}
           </p>
         </Link>
         {post.author && (

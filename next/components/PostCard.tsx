@@ -1,4 +1,4 @@
-import { Post } from '@/lib/schemas'
+import { Posts } from '@/lib/directus-collections'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -9,7 +9,7 @@ import { isObject } from '@/lib/utils/objects'
 import VAvatar from '@/components/base/VAvatar'
 
 interface PostCardProps {
-  post: Post
+  post: Posts
   className?: string
   even?: boolean
 }

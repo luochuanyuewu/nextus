@@ -4,7 +4,7 @@ export function getDirectusURL(path = '') {
   }${path}`
 }
 
-export function getDirectusMedia(url: string | null) {
+export function getDirectusMedia(url: string | null | undefined) {
   if (url == null) {
     return ''
   }

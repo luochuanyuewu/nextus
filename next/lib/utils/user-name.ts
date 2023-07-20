@@ -1,6 +1,6 @@
-import { User } from '@/lib/schemas'
+import { DirectusUsers } from '@/lib/directus-collections'
 
-export function userName(user: Partial<User>): string {
+export function userName(user: Partial<DirectusUsers>): string {
   if (!user) {
     return 'Unknown User' as string
   }

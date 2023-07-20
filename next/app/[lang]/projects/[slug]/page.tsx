@@ -1,31 +1,34 @@
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { Project } from '@/lib/schemas'
+import { Projects } from '@/lib/directus-collections'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import PageContainer from '@/components/PageContainer'
 import TypographyProse from '@/components/typography/TypographyProse'
 import GalleryBlock from '@/components/blocks/GalleryBlock'
 import TypographyTitle from '@/components/typography/TypographyTitle'
+import Image from 'next/image'
 
 export default async function PageRoute({ params }: { params: any }) {
   const projects = await directusApi.request(
     readItems('projects', {
       filter: { slug: { _eq: params.slug } },
       limit: 1,
-      // @ts-ignore
-      fields: ['*', 'gallery.directus_files_id.*'],
+      fields: ['*', { gallery: ['*', { directus_files_id: ['*'] }] }],
     })
   )
 
   if (projects.length === 0) return null
 
-  const project = projects[0] as Project
+  const project = projects[0]
 
   return (
     <div className='py-12'>
       <div className='relative flex h-[400px] items-center justify-center overflow-hidden rounded-bl-[48px] rounded-tr-[48px]'>
-        <img
+        <Image
+          width={500}
+          height={500}
+          alt=''
           className='absolute inset-0 h-full w-full object-cover'
           src={getDirectusMedia(project.image) || ''}
         />

@@ -10,6 +10,7 @@ import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import TypographyProse from '@/components/typography/TypographyProse'
 import TeamCard from '@/components/TeamCard'
+import { BlockTeam, Team } from '@/lib/directus-collections'
 
 function splitArray(array: Team[], numParts: number): Team[][] {
   if (numParts <= 0) {
@@ -35,15 +36,8 @@ function animationDelay() {
   ]
 }
 
-export interface Team {
-  id: string
-  headline?: string
-  title?: string
-  content?: string
-}
-
 export interface TeamBlockProps {
-  data: Team
+  data: BlockTeam
 }
 
 export default function TeamBlock({ data }: TeamBlockProps) {
@@ -87,7 +81,7 @@ export default function TeamBlock({ data }: TeamBlockProps) {
   useEffect(() => {
     async function fetchData() {
       const team = await directusApi.request(readItems('team'))
-      setTeamMembers(team as any)
+      setTeamMembers(team)
     }
 
     fetchData()

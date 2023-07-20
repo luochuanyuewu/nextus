@@ -1,5 +1,5 @@
 import VForm from '@/components/base/VForm'
-import { Form } from '@/lib/schemas'
+import { Forms } from '@/lib/directus-collections'
 import BlockContainer from '@/components/BlockContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
@@ -7,7 +7,7 @@ import TypographyHeadline from '@/components/typography/TypographyHeadline'
 interface FormBlockProps {
   title?: string
   headline?: string
-  form: Form
+  form: Forms
 }
 
 const FormBlock = ({ data }: { data: FormBlockProps }) => {

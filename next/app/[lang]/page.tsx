@@ -1,8 +1,8 @@
 import React from 'react'
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { Page } from '@/lib/schemas'
 import PageBuilder from '@/components/PageBuilder'
+import { Pages } from '@/lib/directus-collections'
 
 export default async function PageRoute() {
   const pages = (await directusApi.request(
@@ -12,21 +12,38 @@ export default async function PageRoute() {
       },
       fields: [
         '*',
-        'seo.*',
-        'blocks.collection',
-        'blocks.item.*',
-        'blocks.item.testimonials.testimonial.*',
-        'blocks.item.logos.file.*',
-        'blocks.item.form.*',
-        'blocks.item.steps.*',
-        'blocks.item.gallery_items.directus_files_id.*',
-        'blocks.item.*',
-        'blocks.item.rows.*',
-        'blocks.item.posts.posts_id.*',
+        { seo: ['*'] },
+        {
+          blocks: [
+            'collection',
+            {
+              item: {
+                block_hero: ['*'],
+                block_faqs: ['*'],
+                block_quote: ['*'],
+                block_columns: ['*', { rows: ['*'] }],
+                block_form: ['*', { form: ['*'] }],
+                block_testimonials: ['*', { testimonials: ['*'] }],
+                block_logocloud: ['*', { logos: ['file'] }],
+                block_team: ['*'],
+                block_cta: ['*'],
+                block_richtext: ['*'],
+                block_steps: ['*', { steps: ['*'] }],
+                block_gallery: [
+                  '*',
+                  { gallery_items: ['*', { directus_files_id: ['*'] }] },
+                ],
+                block_cardgroup: ['*', { posts: [{ posts_id: ['*'] }] }],
+                block_html: ['*'],
+                block_video: ['*'],
+              },
+            },
+          ],
+        },
       ],
       limit: 1,
     })
-  )) as Array<Page>
+  )) as Array<Pages>
 
   if (pages.length === 0) return null
 

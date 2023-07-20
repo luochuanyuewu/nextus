@@ -3,7 +3,7 @@ import { readItems } from '@directus/sdk'
 import PageContainer from '@/components/PageContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
-import { Project } from '@/lib/schemas'
+import { Projects } from '@/lib/directus-collections'
 import Link from 'next/link'
 import { isEven } from '@/lib/utils/math'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
@@ -21,7 +21,7 @@ export default async function PageRoute({ params }: Props) {
       filter: {
         // status: { _eq: 'published' },
       },
-      fields: [],
+      fields: ['*'],
     })
   )
 
@@ -34,7 +34,7 @@ export default async function PageRoute({ params }: Props) {
       <section className='relative w-full items-center py-12'>
         <TypographyTitle>Latest Projects</TypographyTitle>
         <div className='mt-4 grid gap-6 md:grid-cols-3'>
-          {(projects as any).map((project: Project, projectIdx: number) => (
+          {(projects as any).map((project: Projects, projectIdx: number) => (
             <Link
               key={project.id}
               href={`/projects/${project.slug}`}

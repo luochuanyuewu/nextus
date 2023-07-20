@@ -1,6 +1,6 @@
 import directusApi from '@/lib/utils/directus-api'
 import { readItem, readSingleton } from '@directus/sdk'
-import { Globals, NavigationItem } from '@/lib/schemas'
+import { Globals, NavigationItems } from '@/lib/directus-collections'
 import MenuItem from '@/components/navigation/MenuItem'
 import VButton from '@/components/base/VButton'
 import Link from 'next/link'
@@ -9,7 +9,6 @@ import LogoV2 from '@/components/LogoV2'
 export default async function TheHeader() {
   const results = await directusApi.request(
     readItem('navigation', 'main', {
-      // @ts-ignore
       fields: ['items.*', 'items.page.slug', 'items.children.*'],
     })
   )
@@ -33,7 +32,7 @@ export default async function TheHeader() {
             className='hidden font-mono md:flex md:space-x-4 lg:space-x-6'
             aria-label='Global'
           >
-            {items.map((item: NavigationItem) => (
+            {items.map((item: NavigationItems) => (
               <MenuItem key={item.id} item={item} />
             ))}
           </nav>

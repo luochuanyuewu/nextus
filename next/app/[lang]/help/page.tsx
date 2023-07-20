@@ -1,6 +1,6 @@
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { HelpCollection } from '@/lib/schemas'
+import { HelpCollections } from '@/lib/directus-collections'
 import PageContainer from '@/components/PageContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
@@ -18,7 +18,7 @@ export default async function HelpCenterPage() {
         },
       },
     })
-  )) as Array<HelpCollection>
+  )) as Array<HelpCollections>
 
   return (
     <PageContainer className='max-w-7xl'>

@@ -1,6 +1,6 @@
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { Post } from '@/lib/schemas'
+import { Posts } from '@/lib/directus-collections'
 import PageContainer from '@/components/PageContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
@@ -24,15 +24,13 @@ async function getPostsByCategory(categorySlug: string) {
 
       fields: [
         '*',
-        'author.*',
-        'category.title',
-        'category.slug',
-        'category.color',
+        { author: ['*'] },
+        { category: ['title', 'slug', 'color'] },
       ],
     })
   )
 
-  return posts as Array<Post>
+  return posts as Array<Posts>
 }
 
 export default async function PageRoute({

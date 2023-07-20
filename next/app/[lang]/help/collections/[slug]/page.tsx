@@ -1,6 +1,6 @@
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { HelpCollection } from '@/lib/schemas'
+import { HelpCollections } from '@/lib/directus-collections'
 import PageContainer from '@/components/PageContainer'
 import GlobalSearch from '@/components/GlobalSearch'
 import VBreadcrumbs from '@/components/base/VBreadcrumbs'
@@ -30,7 +30,7 @@ export default async function CollectionPage({
         'articles.summary',
       ],
     })
-  )) as Array<HelpCollection>
+  )) as Array<HelpCollections>
 
   if (collections.length === 0) return null
 
