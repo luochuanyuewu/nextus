@@ -1,6 +1,6 @@
 import { Navigation, NavigationItems } from '@/lib/directus-collections'
 import directusApi from '@/lib/utils/directus-api'
-import { readItem, readItems, readSingleton } from '@directus/sdk'
+import { readItem, readSingleton } from '@directus/sdk'
 import LogoV2 from '@/components/LogoV2'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
@@ -26,15 +26,15 @@ async function TheFooter() {
     })
   )) as Navigation
 
-  const form = await directusApi.request(
-    readItems('forms', {
-      filter: {
-        key: {
-          _eq: 'newsletter',
-        },
-      },
-    })
-  )
+  // const form = await directusApi.request(
+  //   readItems('forms', {
+  //     filter: {
+  //       key: {
+  //         _eq: 'newsletter',
+  //       },
+  //     },
+  //   })
+  // )
 
   const globals = await directusApi.request(readSingleton('globals'))
 

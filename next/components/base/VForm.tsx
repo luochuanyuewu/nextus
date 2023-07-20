@@ -52,7 +52,7 @@ function VForm(props: FormProps) {
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(false)
 
-  const schema = transformSchema(form.schema)
+  const schema = transformSchema(form.schema as any)
 
   const hookForm = useForm()
 
