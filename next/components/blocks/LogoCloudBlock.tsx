@@ -2,7 +2,7 @@
 'use client' // add this line make famer-motion works.
 
 import React from 'react'
-import BlockContainer from '@/components/blocks/BlockContainer'
+import BlockContainer from '@/components/BlockContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'

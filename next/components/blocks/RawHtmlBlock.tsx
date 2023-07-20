@@ -1,4 +1,4 @@
-import BlockContainer from '@/components/blocks/BlockContainer'
+import BlockContainer from '@/components/BlockContainer'
 
 interface RawHtml {
   id: string

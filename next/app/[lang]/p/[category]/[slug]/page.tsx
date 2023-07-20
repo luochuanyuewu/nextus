@@ -1,5 +1,5 @@
 import { fetchAPI } from '@/lib/utils/fetch-api'
-import Post from '@/components/views/post'
+import Post from '@/components/deprecated/views/post'
 import type { Metadata } from 'next'
 
 async function getPostBySlug(slug: string) {

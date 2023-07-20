@@ -1,6 +1,6 @@
 import React from 'react'
 import VButton from '../base/VButton'
-import BlockContainer from './BlockContainer'
+import BlockContainer from '../BlockContainer'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import Image from 'next/image'
 

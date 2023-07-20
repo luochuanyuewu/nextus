@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
-import BlockContainer from './BlockContainer'
+import BlockContainer from '../BlockContainer'
 
 interface Quote {
   id: string

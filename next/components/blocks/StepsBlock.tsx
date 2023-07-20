@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import BlockContainer from '@/components/blocks/BlockContainer'
+import BlockContainer from '@/components/BlockContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import TypographyProse from '@/components/typography/TypographyProse'

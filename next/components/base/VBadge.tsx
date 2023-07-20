@@ -1,5 +1,6 @@
 import React from 'react'
 import { getContrastColor } from '@/lib/utils/color'
+import clsx from 'clsx'
 
 interface BadgeProps {
   color: string
@@ -29,8 +30,7 @@ function VBadge({
   children,
   className,
 }: BadgeProps) {
-  const classNames = [
-    'inline-flex items-center font-serif font-medium',
+  const badgeColor = [
     `${color === 'gray' ? `bg-gray-100 text-gray-800` : ''}`,
     `${color === 'green' ? `bg-green-100 text-green-800` : ''}`,
     `${color === 'purple' ? `bg-purple-100 text-purple-800` : ''}`,
@@ -44,7 +44,6 @@ function VBadge({
     `${color === 'yellow' ? `bg-yellow-100 text-yellow-800` : ''}`,
     `${size === 'sm' ? 'px-2 py-0.5 text-xs' : ''}`,
     `${size === 'lg' ? ' px-2.5 py-0.5' : ''}`,
-    className,
   ]
 
   return (
@@ -53,7 +52,11 @@ function VBadge({
         backgroundColor: color,
         color: getContrastColor(color),
       }}
-      className={classNames.join(' ')}
+      className={clsx(
+        'inline-flex items-center font-serif font-medium',
+        className,
+        badgeColor
+      )}
     >
       {children}
     </span>

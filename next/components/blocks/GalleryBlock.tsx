@@ -1,5 +1,5 @@
 import React from 'react'
-import BlockContainer from './BlockContainer'
+import BlockContainer from '../BlockContainer'
 import TypographyHeadline from '../typography/TypographyHeadline'
 import TypographyTitle from '../typography/TypographyTitle'
 import VGallery from '../base/VGallery'

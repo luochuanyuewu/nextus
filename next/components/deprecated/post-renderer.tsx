@@ -1,8 +1,8 @@
-import RichText from '../../components/RichText'
-import ImageSlider from '../../components/ImageSlider'
-import Quote from '../../components/Quote'
-import Media from '../../components/Media'
-import VideoEmbed from '../../components/VideoEmbed'
+import RichText from './RichText'
+import ImageSlider from './comps/ImageSlider'
+import Quote from './comps/Quote'
+import Media from './comps/Media'
+import VideoEmbed from './comps/VideoEmbed'
 
 export function postRenderer(section: any, index: number) {
   switch (section.__component) {

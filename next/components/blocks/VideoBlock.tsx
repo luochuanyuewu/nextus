@@ -1,6 +1,6 @@
 import React from 'react'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
-import BlockContainer from '@/components/blocks/BlockContainer'
+import BlockContainer from '@/components/BlockContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import VVideo from '@/components/base/VVideo'

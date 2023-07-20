@@ -1,5 +1,5 @@
 import { Post } from '@/lib/schemas'
-import BlockContainer from '@/components/blocks/BlockContainer'
+import BlockContainer from '@/components/BlockContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import PostCard from '@/components/PostCard'

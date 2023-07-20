@@ -1,5 +1,5 @@
 import React from 'react'
-import BlockContainer from './BlockContainer'
+import BlockContainer from '../BlockContainer'
 import TypographyTitle from '../typography/TypographyTitle'
 import TypographyHeadline from '../typography/TypographyHeadline'
 import TypographyProse from '../typography/TypographyProse'

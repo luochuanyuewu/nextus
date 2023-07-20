@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ArticleSelect from '@/components/ArticleSelect'
+import ArticleSelect from '@/components/deprecated/ArticleSelect'
 import { fetchAPI } from '@/lib/utils/fetch-api'
 
 async function fetchSideMenuData(filter: string) {

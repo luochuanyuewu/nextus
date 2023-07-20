@@ -3,8 +3,8 @@ import { useCallback, useEffect, useState } from 'react'
 import { fetchAPI } from '@/lib/utils/fetch-api'
 
 import Loader from '../../../components/Loader'
-import BlogList from '@/components/views/blog-list'
-import PageHeader from '../../../components/PageHeader'
+import BlogList from '@/components/deprecated/views/blog-list'
+import PageHeader from '../../../components/deprecated/PageHeader'
 import Link from 'next/link'
 
 interface Meta {

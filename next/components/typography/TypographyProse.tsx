@@ -1,6 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useRef } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 interface ProseProps {
   content: string
@@ -36,15 +37,13 @@ function Prose({ content, className }: ProseProps) {
     })
   }, [router, siteUrl])
 
-  const classNames = [
-    'prose prose-sm md:prose-base lg:prose-lg dark:prose-invert prose-img:rounded-br-3xl prose-img:rounded-tl-3xl prose-img:border-2 prose-img:border-gray-500 prose-headings:font-serif prose-p:font-mono',
-    className,
-  ]
-
   return (
     <div
       ref={contentEl}
-      className={classNames.join(' ')}
+      className={twMerge(
+        'prose prose-sm dark:prose-invert md:prose-base lg:prose-lg prose-headings:font-serif prose-p:font-mono prose-img:rounded-br-3xl prose-img:rounded-tl-3xl prose-img:border-2 prose-img:border-gray-500',
+        className
+      )}
       dangerouslySetInnerHTML={{ __html: content }}
     />
   )

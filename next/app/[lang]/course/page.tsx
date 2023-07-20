@@ -3,8 +3,8 @@ import { useCallback, useEffect, useState } from 'react'
 import { fetchAPI } from '@/lib/utils/fetch-api'
 
 import Loader from '../../../components/Loader'
-import CourseList from '@/components/views/course-list'
-import PageHeader from '../../../components/PageHeader'
+import CourseList from '@/components/deprecated/views/course-list'
+import PageHeader from '../../../components/deprecated/PageHeader'
 
 interface Meta {
   pagination: {

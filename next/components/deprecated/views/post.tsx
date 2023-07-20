@@ -1,5 +1,5 @@
 import { formatDate, getStrapiMedia } from '@/lib/utils/api-helpers'
-import { postRenderer } from '@/lib/utils/post-renderer'
+import { postRenderer } from '@/components/deprecated/post-renderer'
 import Image from 'next/image'
 
 interface Article {

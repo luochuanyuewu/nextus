@@ -1,4 +1,4 @@
-import FormSubmit from './FormSubmit'
+import FormSubmit from '../FormSubmit'
 
 interface EmailProps {
   id: string

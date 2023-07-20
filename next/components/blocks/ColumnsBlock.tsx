@@ -3,7 +3,7 @@ import Image from 'next/image'
 import TypographyHeadline from '../typography/TypographyHeadline'
 import TypographyProse from '../typography/TypographyProse'
 import TypographyTitle from '../typography/TypographyTitle'
-import BlockContainer from './BlockContainer'
+import BlockContainer from '../BlockContainer'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import { motion } from 'framer-motion'
 

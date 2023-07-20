@@ -1,4 +1,5 @@
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
 interface HeadlineProps {
   content?: string
@@ -27,19 +28,17 @@ function TypographyHeadline(props: HeadlineProps) {
     }
   }
 
-  const classNames = [
-    `${getClassNames()}`,
-    'font-serif font-bold leading-snug tracking-tight color-em dark:text-white',
-    props.className,
-  ]
-
   const renderContent = () => {
     return { __html: content ?? '' }
   }
 
   return (
     <div
-      className={classNames.join(' ')}
+      className={twMerge(
+        getClassNames(),
+        'color-em font-serif font-bold leading-snug tracking-tight dark:text-white',
+        props.className
+      )}
       dangerouslySetInnerHTML={renderContent()}
     />
   )
