@@ -2,7 +2,7 @@ import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface HeadlineProps {
-  content?: string
+  content?: string | null
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   className?: string
   children?: React.ReactNode

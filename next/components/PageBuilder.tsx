@@ -23,37 +23,35 @@ function PageBuilder({ page }: { page: Pages }) {
         page.blocks.map((block) => {
           switch (block.collection) {
             case 'block_richtext':
-              return <RichTextBlock data={block.item as any}></RichTextBlock>
+              return <RichTextBlock data={block.item}></RichTextBlock>
             case 'block_hero':
-              return <HeroBlock data={block.item as any}></HeroBlock>
+              return <HeroBlock data={block.item}></HeroBlock>
             case 'block_gallery':
-              return <GalleryBlock data={block.item as any}></GalleryBlock>
+              return <GalleryBlock data={block.item}></GalleryBlock>
             case 'block_quote':
-              return <QuoteBlock data={block.item as any}></QuoteBlock>
+              return <QuoteBlock data={block.item}></QuoteBlock>
             case 'block_logocloud':
-              return <LogoCloudBlock data={block.item as any}></LogoCloudBlock>
+              return <LogoCloudBlock data={block.item}></LogoCloudBlock>
             case 'block_video':
-              return <VideoBlock data={block.item as any}></VideoBlock>
+              return <VideoBlock data={block.item}></VideoBlock>
             case 'block_testimonials':
-              return (
-                <TestimonialsBlock data={block.item as any}></TestimonialsBlock>
-              )
+              return <TestimonialsBlock data={block.item}></TestimonialsBlock>
             case 'block_steps':
-              return <StepsBlock data={block.item as any}></StepsBlock>
+              return <StepsBlock data={block.item}></StepsBlock>
             case 'block_faqs':
-              return <FaqsBlock data={block.item as any}></FaqsBlock>
+              return <FaqsBlock data={block.item}></FaqsBlock>
             case 'block_cta':
-              return <CtaBlock data={block.item as any}></CtaBlock>
+              return <CtaBlock data={block.item}></CtaBlock>
             case 'block_html':
-              return <RawHtmlBlock data={block.item as any}></RawHtmlBlock>
+              return <RawHtmlBlock data={block.item}></RawHtmlBlock>
             case 'block_team':
-              return <TeamBlock data={block.item as any}></TeamBlock>
+              return <TeamBlock data={block.item}></TeamBlock>
             case 'block_columns':
-              return <ColumnsBlock data={block.item as any}></ColumnsBlock>
+              return <ColumnsBlock data={block.item}></ColumnsBlock>
             case 'block_cardgroup':
-              return <CardGroupBlock data={block.item as any}></CardGroupBlock>
+              return <CardGroupBlock data={block.item}></CardGroupBlock>
             case 'block_form':
-              return <FormBlock data={block.item as any}></FormBlock>
+              return <FormBlock data={block.item}></FormBlock>
           }
         })}
     </div>

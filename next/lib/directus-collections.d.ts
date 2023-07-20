@@ -1,44 +1,92 @@
+export interface DirectusSchema {
+  block_cardgroup: BlockCardgroup[];
+  block_cardgroup_cards: BlockCardgroupCards[];
+  block_cardgroup_posts: BlockCardgroupPosts[];
+  block_columns: BlockColumns[];
+  block_columns_rows: BlockColumnsRows[];
+  block_cta: BlockCta[];
+  block_faqs: BlockFaqs[];
+  block_form: BlockForm[];
+  block_gallery: BlockGallery[];
+  block_gallery_files: BlockGalleryFiles[];
+  block_hero: BlockHero[];
+  block_html: BlockHtml[];
+  block_logocloud: BlockLogocloud[];
+  block_logocloud_files: BlockLogocloudFiles[];
+  block_quote: BlockQuote[];
+  block_richtext: BlockRichtext[];
+  block_steps: BlockSteps[];
+  block_steps_items: BlockStepsItems[];
+  block_team: BlockTeam[];
+  block_testimonials: BlockTestimonials[];
+  block_testimonials_items: BlockTestimonialsItems[];
+  block_video: BlockVideo[];
+  blog_settings: BlogSettings[];
+  pages_blocks: PagesBlocks[];
+  categories: Categories[];
+  chat_config: ChatConfig
+  conversations: Conversations[];
+  events: Events[];
+  forms: Forms[];
+  globals: Globals;
+  help_articles: HelpArticles[];
+  help_collections: HelpCollections[];
+  help_feedback: HelpFeedback[];
+  inbox: Inbox[];
+  messages: Messages[];
+  metrics: Metrics[];
+  navigation: Navigation[];
+  navigation_items: NavigationItems[];
+  pages: Pages[];
+  posts: Posts[];
+  projects: Projects[];
+  projects_files: ProjectsFiles[];
+  projects_settings: ProjectsSettings;
+  redirects: Redirects[];
+  seo: Seo[];
+  team: Team[];
+  testimonials: Testimonials[];
+  directus_files: DirectusFiles[];
+}
 
 export type BlockCardgroup = {
-  cards?: (any[] & BlockCardgroupCards[]) | null;
+  cards?: any[] | BlockCardgroupCards[] | null;
   group_type?: string | null;
   headline?: string | null;
   id: string;
-  // posts?: (any[] & BlockCardgroupPosts[]) | null;
-  posts?:  BlockCardgroupPosts[] | null;
+  posts?: any[] | BlockCardgroupPosts[] | null;
   title?: string | null;
 };
 
 export type BlockCardgroupCards = {
-  block_cardgroup_id?: (string & BlockCardgroup) | null;
+  block_cardgroup_id?: string | BlockCardgroup | null;
   href?: string | null;
   id: string;
-  image?: (string & DirectusFiles) | null;
+  image?: string | DirectusFiles | null;
   sort?: number | null;
   summary?: string | null;
   title?: string | null;
 };
 
 export type BlockCardgroupPosts = {
-  block_cardgroup_id?: (string & BlockCardgroup) | null;
+  block_cardgroup_id?: string | BlockCardgroup | null;
   id: number;
-  posts_id?: (string & Posts) | null;
+  posts_id?: string | Posts | null;
 };
 
 export type BlockColumns = {
   headline?: string | null;
   id: string;
-  // rows?: (any[] & BlockColumnsRows[]) | null;
-  rows?:  BlockColumnsRows[] | null;
+  rows?: any[] | BlockColumnsRows[] | null;
   title?: string | null;
 };
 
 export type BlockColumnsRows = {
-  block_columns?: (string & BlockColumns) | null;
+  block_columns?: string | BlockColumns | null;
   content?: string | null;
   headline?: string | null;
   id: number;
-  image?: (string & DirectusFiles) | null;
+  image?: string | DirectusFiles | null;
   image_position?: string | null;
   title?: string | null;
 };
@@ -59,23 +107,22 @@ export type BlockFaqs = {
 };
 
 export type BlockForm = {
-  form?: (string & Forms) | null;
+  form?: string | Forms | null;
   headline?: string | null;
   id: string;
   title?: string | null;
 };
 
 export type BlockGallery = {
-  // gallery_items?: (any[] & BlockGalleryFiles[]) | null;
-  gallery_items?: BlockGalleryFiles[] | null;
+  gallery_items?: any[] | BlockGalleryFiles[] | null;
   headline?: string | null;
   id: string;
   title?: string | null;
 };
 
 export type BlockGalleryFiles = {
-  block_gallery?: (string & BlockGallery) | null;
-  directus_files_id?: (string & DirectusFiles) | null;
+  block_gallery?: string | BlockGallery | null;
+  directus_files_id?: string | DirectusFiles | null;
   id: number;
   sort?: number | null;
 };
@@ -85,7 +132,7 @@ export type BlockHero = {
   content?: string | null;
   headline?: string | null;
   id: string;
-  image?: (string & DirectusFiles) | null;
+  image?: string | DirectusFiles | null;
 };
 
 export type BlockHtml = {
@@ -96,13 +143,13 @@ export type BlockHtml = {
 export type BlockLogocloud = {
   headline?: string | null;
   id: string;
-  logos?: (any[] & BlockLogocloudFiles[]) | null;
+  logos?: any[] | BlockLogocloudFiles[] | null;
   title?: string | null;
 };
 
 export type BlockLogocloudFiles = {
-  block_logocloud_id?: (string & BlockLogocloud) | null;
-  file?: (string & DirectusFiles) | null;
+  block_logocloud_id?: string | BlockLogocloud | null;
+  file?: string | DirectusFiles | null;
   id: number;
   sort?: number | null;
 };
@@ -112,7 +159,7 @@ export type BlockQuote = {
   content?: string | null;
   headline?: string | null;
   id: string;
-  image?: (string & DirectusFiles) | null;
+  image?: string | DirectusFiles | null;
   subtitle?: string | null;
   title?: string | null;
 };
@@ -129,15 +176,15 @@ export type BlockSteps = {
   headline?: string | null;
   id: string;
   show_step_numbers?: boolean | null;
-  steps?: (any[] & BlockStepsItems[]) | null;
+  steps?: any[] | BlockStepsItems[] | null;
   title?: string | null;
 };
 
 export type BlockStepsItems = {
-  block_steps?: (string & BlockSteps) | null;
+  block_steps?: string | BlockSteps | null;
   content?: string | null;
   id: number;
-  image?: (string & DirectusFiles) | null;
+  image?: string | DirectusFiles | null;
   sort?: number | null;
   title?: string | null;
 };
@@ -152,15 +199,15 @@ export type BlockTeam = {
 export type BlockTestimonials = {
   headline?: string | null;
   id: string;
-  testimonials?: (any[] & BlockTestimonialsItems[]) | null;
+  testimonials?: any[] | BlockTestimonialsItems[] | null;
   title?: string | null;
 };
 
 export type BlockTestimonialsItems = {
-  block_testimonials_id?: (string & BlockTestimonials) | null;
+  block_testimonials_id?: string | BlockTestimonials | null;
   id: number;
   sort?: number | null;
-  testimonial?: (string & Testimonials) | null;
+  testimonial?: string | Testimonials | null;
 };
 
 export type BlockVideo = {
@@ -168,16 +215,16 @@ export type BlockVideo = {
   id: string;
   title?: string | null;
   type?: string | null;
-  video_file?: (string & DirectusFiles) | null;
+  video_file?: string | DirectusFiles | null;
   video_url?: string | null;
 };
 
 export type BlogSettings = {
-  featured_post?: (string & Posts) | null;
+  featured_post?: string | Posts | null;
   headline?: string | null;
   id: string;
   posts_per_page?: number | null;
-  seo?: (string & Seo) | null;
+  seo?: string | Seo | null;
   title?: string | null;
 };
 
@@ -185,7 +232,7 @@ export type Categories = {
   color?: string | null;
   content?: string | null;
   id: string;
-  seo?: (string & Seo) | null;
+  seo?: string | Seo | null;
   slug?: string | null;
   sort?: number | null;
   title?: string | null;
@@ -203,7 +250,7 @@ export type Conversations = {
   date_created?: string | null;
   date_updated?: string | null;
   id: string;
-  messages?: (any[] & Messages[]) | null;
+  messages?: any[] | Messages[] | null;
   status: string;
   title?: string | null;
   visitor_id?: string | null;
@@ -217,9 +264,9 @@ export type DirectusActivity = {
   ip?: string | null;
   item: string;
   origin?: string | null;
-  revisions?: (any[] & DirectusRevisions[]) | null;
+  revisions?: any[] | DirectusRevisions[] | null;
   timestamp: string;
-  user?: (string & DirectusUsers) | null;
+  user?: string | DirectusUsers | null;
   user_agent?: string | null;
 };
 
@@ -232,7 +279,7 @@ export type DirectusCollections = {
   collection: string;
   color?: string | null;
   display_template?: string | null;
-  group?: (string & DirectusCollections) | null;
+  group?: string | DirectusCollections | null;
   hidden: boolean;
   icon?: string | null;
   item_duplication_fields?: unknown | null;
@@ -252,17 +299,17 @@ export type DirectusDashboards = {
   id: string;
   name: string;
   note?: string | null;
-  panels?: (any[] & DirectusPanels[]) | null;
-  user_created?: (string & DirectusUsers) | null;
+  panels?: any[] | DirectusPanels[] | null;
+  user_created?: string | DirectusUsers | null;
 };
 
 export type DirectusFields = {
-  collection?: (string & DirectusCollections) | null;
+  collection?: string | DirectusCollections | null;
   conditions?: unknown | null;
   display?: string | null;
   display_options?: unknown | null;
   field: string;
-  group?: (string & DirectusFields) | null;
+  group?: string | DirectusFields | null;
   hidden: boolean;
   id: number;
   interface?: string | null;
@@ -286,18 +333,18 @@ export type DirectusFiles = {
   filename_disk?: string | null;
   filename_download: string;
   filesize?: number | null;
-  folder?: (string & DirectusFolders) | null;
+  folder?: string | DirectusFolders | null;
   height?: number | null;
   id: string;
   location?: string | null;
   metadata?: unknown | null;
-  modified_by?: (string & DirectusUsers) | null;
+  modified_by?: string | DirectusUsers | null;
   modified_on: string;
   storage: string;
   tags?: unknown | null;
   title?: string | null;
   type?: string | null;
-  uploaded_by?: (string & DirectusUsers) | null;
+  uploaded_by?: string | DirectusUsers | null;
   uploaded_on: string;
   width?: number | null;
 };
@@ -310,18 +357,18 @@ export type DirectusFlows = {
   icon?: string | null;
   id: string;
   name: string;
-  operation?: (string & DirectusOperations) | null;
-  operations?: (any[] & DirectusOperations[]) | null;
+  operation?: string | DirectusOperations | null;
+  operations?: any[] | DirectusOperations[] | null;
   options?: unknown | null;
   status: string;
   trigger?: string | null;
-  user_created?: (string & DirectusUsers) | null;
+  user_created?: string | DirectusUsers | null;
 };
 
 export type DirectusFolders = {
   id: string;
   name: string;
-  parent?: (string & DirectusFolders) | null;
+  parent?: string | DirectusFolders | null;
 };
 
 export type DirectusMigrations = {
@@ -335,8 +382,8 @@ export type DirectusNotifications = {
   id: number;
   item?: string | null;
   message?: string | null;
-  recipient?: (string & DirectusUsers) | null;
-  sender?: (string & DirectusUsers) | null;
+  recipient?: string | DirectusUsers | null;
+  sender?: string | DirectusUsers | null;
   status?: string | null;
   subject: string;
   timestamp?: string | null;
@@ -344,22 +391,22 @@ export type DirectusNotifications = {
 
 export type DirectusOperations = {
   date_created?: string | null;
-  flow?: (string & DirectusFlows) | null;
+  flow?: string | DirectusFlows | null;
   id: string;
   key: string;
   name?: string | null;
   options?: unknown | null;
   position_x: number;
   position_y: number;
-  reject?: (string & DirectusOperations) | null;
-  resolve?: (string & DirectusOperations) | null;
+  reject?: string | DirectusOperations | null;
+  resolve?: string | DirectusOperations | null;
   type: string;
-  user_created?: (string & DirectusUsers) | null;
+  user_created?: string | DirectusUsers | null;
 };
 
 export type DirectusPanels = {
   color?: string | null;
-  dashboard?: (string & DirectusDashboards) | null;
+  dashboard?: string | DirectusDashboards | null;
   date_created?: string | null;
   height: number;
   icon?: string | null;
@@ -371,7 +418,7 @@ export type DirectusPanels = {
   position_y: number;
   show_header: boolean;
   type: string;
-  user_created?: (string & DirectusUsers) | null;
+  user_created?: string | DirectusUsers | null;
   width: number;
 };
 
@@ -382,7 +429,7 @@ export type DirectusPermissions = {
   id: number;
   permissions?: unknown | null;
   presets?: unknown | null;
-  role?: (string & DirectusRoles) | null;
+  role?: string | DirectusRoles | null;
   validation?: unknown | null;
 };
 
@@ -397,9 +444,9 @@ export type DirectusPresets = {
   layout_options?: unknown | null;
   layout_query?: unknown | null;
   refresh_interval?: number | null;
-  role?: (string & DirectusRoles) | null;
+  role?: string | DirectusRoles | null;
   search?: string | null;
-  user?: (string & DirectusUsers) | null;
+  user?: string | DirectusUsers | null;
 };
 
 export type DirectusRelations = {
@@ -416,13 +463,13 @@ export type DirectusRelations = {
 };
 
 export type DirectusRevisions = {
-  activity?: (number & DirectusActivity) | null;
+  activity?: number | DirectusActivity | null;
   collection: string;
   data?: unknown | null;
   delta?: unknown | null;
   id: number;
   item: string;
-  parent?: (number & DirectusRevisions) | null;
+  parent?: number | DirectusRevisions | null;
 };
 
 export type DirectusRoles = {
@@ -434,16 +481,16 @@ export type DirectusRoles = {
   id: string;
   ip_access?: unknown | null;
   name: string;
-  users?: (any[] & DirectusUsers[]) | null;
+  users?: any[] | DirectusUsers[] | null;
 };
 
 export type DirectusSessions = {
   expires: string;
   ip?: string | null;
   origin?: string | null;
-  share?: (string & DirectusShares) | null;
+  share?: string | DirectusShares | null;
   token: string;
-  user?: (string & DirectusUsers) | null;
+  user?: string | DirectusUsers | null;
   user_agent?: string | null;
 };
 
@@ -461,20 +508,20 @@ export type DirectusSettings = {
   Open_AI_API_Key?: string | null;
   project_color?: string | null;
   project_descriptor?: string | null;
-  project_logo?: (string & DirectusFiles) | null;
+  project_logo?: string | DirectusFiles | null;
   project_name: string;
   project_url?: string | null;
-  public_background?: (string & DirectusFiles) | null;
-  public_foreground?: (string & DirectusFiles) | null;
+  public_background?: string | DirectusFiles | null;
+  public_foreground?: string | DirectusFiles | null;
   public_note?: string | null;
   Stability_AI_API_Key?: string | null;
   storage_asset_presets?: unknown | null;
   storage_asset_transform?: string | null;
-  storage_default_folder?: (string & DirectusFolders) | null;
+  storage_default_folder?: string | DirectusFolders | null;
 };
 
 export type DirectusShares = {
-  collection?: (string & DirectusCollections) | null;
+  collection?: string | DirectusCollections | null;
   date_created?: string | null;
   date_end?: string | null;
   date_start?: string | null;
@@ -483,9 +530,9 @@ export type DirectusShares = {
   max_uses?: number | null;
   name?: string | null;
   password?: string | null;
-  role?: (string & DirectusRoles) | null;
+  role?: string | DirectusRoles | null;
   times_used?: number | null;
-  user_created?: (string & DirectusUsers) | null;
+  user_created?: string | DirectusUsers | null;
 };
 
 export type DirectusTranslations = {
@@ -497,7 +544,7 @@ export type DirectusTranslations = {
 
 export type DirectusUsers = {
   auth_data?: unknown | null;
-  avatar?: (string & DirectusFiles) | null;
+  avatar?: string | DirectusFiles | null;
   description?: string | null;
   email?: string | null;
   email_notifications?: boolean | null;
@@ -511,7 +558,7 @@ export type DirectusUsers = {
   location?: string | null;
   password?: string | null;
   provider: string;
-  role?: (string & DirectusRoles) | null;
+  role?: string | DirectusRoles | null;
   status: string;
   tags?: unknown | null;
   tfa_secret?: string | null;
@@ -542,19 +589,6 @@ export type Events = {
   user?: string | null;
 };
 
-export interface FormElement {
-  name: string;
-  required: boolean;
-  type: string;
-  label: string;
-  placeholder: string;
-  help: string;
-  validation: string;
-  width: string | number;
-  outerclass?: string //not coming from backend.
-}
-
-
 export type Forms = {
   date_created?: string | null;
   date_updated?: string | null;
@@ -562,14 +596,14 @@ export type Forms = {
   key?: string | null;
   on_success?: string | null;
   redirect_url?: string | null;
-  schema?: Array<FormElement> | null;
+  schema?: unknown | null;
   sort?: number | null;
   status: string;
   submit_label?: string | null;
   success_message?: string | null;
   title?: string | null;
-  user_created?: (string & DirectusUsers) | null;
-  user_updated?: (string & DirectusUsers) | null;
+  user_created?: string | DirectusUsers | null;
+  user_updated?: string | DirectusUsers | null;
 };
 
 export type Globals = {
@@ -582,16 +616,13 @@ export type Globals = {
   description?: string | null;
   email?: string | null;
   id: string;
-  og_image?: (string & DirectusFiles) | null;
+  og_image?: string | DirectusFiles | null;
   phone?: string | null;
   postal_code?: string | null;
   routes?: unknown | null;
   seo: string;
   social: string;
-  social_links?: Array<{
-    service?: string;
-    url?: string;
-  }> | null;
+  social_links?: unknown | null;
   street_address?: string | null;
   tagline?: string | null;
   title?: string | null;
@@ -602,20 +633,20 @@ export type HelpArticles = {
   content?: string | null;
   date_created?: string | null;
   date_updated?: string | null;
-  help_collection?: (string & HelpCollections) | null;
+  help_collection?: string | HelpCollections | null;
   id: string;
-  owner?: (string & DirectusUsers) | null;
+  owner?: string | DirectusUsers | null;
   slug?: string | null;
   sort?: number | null;
   status: string;
   summary?: string | null;
   title?: string | null;
-  user_created?: (string & DirectusUsers) | null;
-  user_updated?: (string & DirectusUsers) | null;
+  user_created?: string | DirectusUsers | null;
+  user_updated?: string | DirectusUsers | null;
 };
 
 export type HelpCollections = {
-  articles?: (any[] & HelpArticles[]) | null;
+  articles?: any[] | HelpArticles[] | null;
   description?: string | null;
   icon?: string | null;
   id: string;
@@ -632,8 +663,8 @@ export type HelpFeedback = {
   rating?: number | null;
   title?: string | null;
   url?: string | null;
-  user_created?: (string & DirectusUsers) | null;
-  user_updated?: (string & DirectusUsers) | null;
+  user_created?: string | DirectusUsers | null;
+  user_updated?: string | DirectusUsers | null;
   visitor_id?: string | null;
 };
 
@@ -641,22 +672,22 @@ export type Inbox = {
   data?: unknown | null;
   date_created?: string | null;
   date_updated?: string | null;
-  form?: (string & Forms) | null;
+  form?: string | Forms | null;
   id: string;
   sort?: number | null;
   status: string;
-  user_created?: (string & DirectusUsers) | null;
-  user_updated?: (string & DirectusUsers) | null;
+  user_created?: string | DirectusUsers | null;
+  user_updated?: string | DirectusUsers | null;
 };
 
 export type Messages = {
-  conversation?: (string & Conversations) | null;
+  conversation?: string | Conversations | null;
   date_created?: string | null;
   date_updated?: string | null;
   id: string;
   text?: string | null;
-  user_created?: (string & DirectusUsers) | null;
-  user_updated?: (string & DirectusUsers) | null;
+  user_created?: string | DirectusUsers | null;
+  user_updated?: string | DirectusUsers | null;
   visitor_id?: string | null;
 };
 
@@ -673,38 +704,36 @@ export type Navigation = {
   date_created?: string | null;
   date_updated?: string | null;
   id: string;
-  items?: (any[] & NavigationItems[]) | null;
+  items?: any[] | NavigationItems[] | null;
   status: string;
   title?: string | null;
-  user_created?: (string & DirectusUsers) | null;
-  user_updated?: (string & DirectusUsers) | null;
+  user_created?: string | DirectusUsers | null;
+  user_updated?: string | DirectusUsers | null;
 };
 
 export type NavigationItems = {
-  children?: (any[] & NavigationItems[]) | null;
+  children?: any[] | NavigationItems[] | null;
   display_details: string;
   has_children?: boolean | null;
   icon?: string | null;
   id: string;
   label?: string | null;
-  navigation?: (string & Navigation) | null;
+  navigation?: string | Navigation | null;
   open_in_new_tab?: boolean | null;
-  page?: (string & Pages) | null;
-  parent?: (string & NavigationItems) | null;
+  page?: string | Pages | null;
+  parent?: string | NavigationItems | null;
   sort?: number | null;
   title?: string | null;
   type?: string | null;
   url?: string | null;
 };
 
-
 export type Pages = {
-  blocks?:  PagesBlocks[] | null;
+  blocks?: any[] | PagesBlocks[] | null;
   date_created?: string | null;
   date_updated?: string | null;
   id: string;
-  // seo?: (string & Seo) | null;
-  seo?: Seo | null;
+  seo?: string | Seo | null;
   slug?: string | null;
   sort?: number | null;
   status: string;
@@ -714,26 +743,10 @@ export type Pages = {
 };
 
 export type PagesBlocks = {
-  collection:"block_hero"
-  | "block_faqs"
-  | "block_richtext"
-  | "block_testimonials"
-  | "block_quote"
-  | "block_cta"
-  | "block_form"
-  | "block_logocloud"
-  | "block_team"
-  | "block_html"
-  | "block_video"
-  | "block_gallery"
-  | "block_steps"
-  | "block_columns"
-  | "block_cardgroup";
+  collection?: string | null;
   id: number;
-  item?: (string & any) | null;
-  // item: BlockHero | BlockFaqs | BlockTestimonials | BlockSteps;
-  // pages_id?: (string & Pages) | null;
-  pages_id?: Pages | null;
+  item?: string | any | null;
+  pages_id?: string | Pages | null;
   sort?: number | null;
 };
 
@@ -757,39 +770,38 @@ export type Posts = {
 };
 
 export type Projects = {
-  built_with?: any[] | null;
+  built_with?: Array<string> | null;
   client?: string | null;
   content?: string | null;
   cost?: string | null;
   date_created?: string | null;
   date_updated?: string | null;
   details: string;
+  gallery?: ProjectsFiles[] | null;
   // gallery?: any[] | ProjectsFiles[] | null;
-  gallery?:  ProjectsFiles[] | null;
-
   id: string;
-  image?: (string & DirectusFiles) | null;
-  seo?: (string & Seo) | null;
+  image?: string | DirectusFiles | null;
+  seo?: string | Seo | null;
   slug?: string | null;
   sort?: number | null;
   status: string;
   summary?: string | null;
   title?: string | null;
-  user_created?: (string & DirectusUsers) | null;
-  user_updated?: (string & DirectusUsers) | null;
+  user_created?: string | DirectusUsers | null;
+  user_updated?: string | DirectusUsers | null;
 };
 
 export type ProjectsFiles = {
-  directus_files_id?: (string & DirectusFiles) | null;
+  directus_files_id?: string | DirectusFiles | null;
   id: number;
-  project?: (string & Projects) | null;
+  project?: string | Projects | null;
   sort?: number | null;
 };
 
 export type ProjectsSettings = {
   headline?: string | null;
   id: string;
-  seo?: (string & Seo) | null;
+  seo?: string | Seo | null;
   title?: string | null;
 };
 
@@ -800,8 +812,8 @@ export type Redirects = {
   response_code?: number | null;
   url_new?: string | null;
   url_old?: string | null;
-  user_created?: (string & DirectusUsers) | null;
-  user_updated?: (string & DirectusUsers) | null;
+  user_created?: string | DirectusUsers | null;
+  user_updated?: string | DirectusUsers | null;
 };
 
 export type Seo = {
@@ -810,7 +822,7 @@ export type Seo = {
   meta_description?: string | null;
   no_follow?: boolean | null;
   no_index?: boolean | null;
-  og_image?: (string & DirectusFiles) | null;
+  og_image?: string | DirectusFiles | null;
   sitemap_change_frequency?: string | null;
   sitemap_priority?: number | null;
   title?: string | null;
@@ -821,37 +833,33 @@ export type Team = {
   date_created?: string | null;
   date_updated?: string | null;
   id: string;
-  image?: (string & DirectusFiles) | null;
+  image?: string | DirectusFiles | null;
   job_title?: string | null;
   name?: string | null;
-  social_media?: {
-    service?: string
-    url?: string
-  }[]
+  social_media?: unknown | null;
   sort?: number | null;
   status: string;
-  user_created?: (string & DirectusUsers) | null;
-  user_updated?: (string & DirectusUsers) | null;
+  user_created?: string | DirectusUsers | null;
+  user_updated?: string | DirectusUsers | null;
 };
 
 export type Testimonials = {
   company?: string | null;
   company_info: string;
-  company_logo?: (string & DirectusFiles) | null;
+  company_logo?: string | DirectusFiles | null;
   content?: string | null;
   date_created?: string | null;
   date_updated?: string | null;
   id: string;
-  image?: (string & DirectusFiles) | null;
+  image?: string | DirectusFiles | null;
   link?: string | null;
   sort?: number | null;
   status: string;
   subtitle?: string | null;
   title?: string | null;
-  user_created?: (string & DirectusUsers) | null;
-  user_updated?: (string & DirectusUsers) | null;
+  user_created?: string | DirectusUsers | null;
+  user_updated?: string | DirectusUsers | null;
 };
-
 
 export type CustomDirectusTypes = {
   block_cardgroup: BlockCardgroup;
@@ -924,55 +932,3 @@ export type CustomDirectusTypes = {
   team: Team;
   testimonials: Testimonials;
 };
-
-
-export interface DirectusSchema {
-  block_cardgroup: BlockCardgroup[];
-  block_cardgroup_cards: BlockCardgroupCards[];
-  block_cardgroup_posts: BlockCardgroupPosts[];
-  block_columns: BlockColumns[];
-  block_columns_rows: BlockColumnsRows[];
-  block_cta: BlockCta[];
-  block_faqs: BlockFaqs[];
-  block_form: BlockForm[];
-  block_gallery: BlockGallery[];
-  block_gallery_files: BlockGalleryFiles[];
-  block_hero: BlockHero[];
-  block_html: BlockHtml[];
-  block_logocloud: BlockLogocloud[];
-  block_logocloud_files: BlockLogocloudFiles[];
-  block_quote: BlockQuote[];
-  block_richtext: BlockRichtext[];
-  block_steps: BlockSteps[];
-  block_steps_items: BlockStepsItems[];
-  block_team: BlockTeam[];
-  block_testimonials: BlockTestimonials[];
-  block_testimonials_items: BlockTestimonialsItems[];
-  block_video: BlockVideo[];
-  blog_settings: BlogSettings[];
-  pages_blocks:PagesBlocks[];
-  categories: Categories[];
-  chat_config: ChatConfig
-  conversations: Conversations[];
-  events: Events[];
-  forms: Forms[];
-  globals: Globals;
-  help_articles: HelpArticles[];
-  help_collections: HelpCollections[];
-  help_feedback: HelpFeedback[];
-  inbox: Inbox[];
-  messages: Messages[];
-  metrics: Metrics[];
-  navigation: Navigation[];
-  navigation_items: NavigationItems[];
-  pages: Pages[];
-  posts: Posts[];
-  projects: Projects[];
-  projects_files: ProjectsFiles[];
-  projects_settings: ProjectsSettings;
-  redirects: Redirects[];
-  seo: Seo[];
-  team: Team[];
-  testimonials: Testimonials[];
-  directus_files: DirectusFiles[];
-}

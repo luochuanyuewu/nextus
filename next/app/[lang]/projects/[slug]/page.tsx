@@ -1,6 +1,5 @@
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { Projects } from '@/lib/directus-collections'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import PageContainer from '@/components/PageContainer'
@@ -8,19 +7,20 @@ import TypographyProse from '@/components/typography/TypographyProse'
 import GalleryBlock from '@/components/blocks/GalleryBlock'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import Image from 'next/image'
+import { Projects } from '@/lib/directus-collections'
 
 export default async function PageRoute({ params }: { params: any }) {
   const projects = await directusApi.request(
     readItems('projects', {
       filter: { slug: { _eq: params.slug } },
       limit: 1,
-      fields: ['*', { gallery: ['*', { directus_files_id: ['*'] }] }],
+      fields: ['*', { gallery: [{ directus_files_id: ['*'] }] }],
     })
   )
 
   if (projects.length === 0) return null
 
-  const project = projects[0]
+  const project = projects[0] as Projects
 
   return (
     <div className='py-12'>
@@ -58,7 +58,7 @@ export default async function PageRoute({ params }: { params: any }) {
                 data={{
                   id: project.id,
                   title: 'Gallery',
-                  gallery_items: project.gallery,
+                  gallery_items: project.gallery as any,
                 }}
               />
             )}

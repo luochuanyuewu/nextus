@@ -1,17 +1,22 @@
+import { DirectusFiles } from '@/lib/directus-collections'
+
 export function getDirectusURL(path = '') {
   return `${
     process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055'
   }${path}`
 }
 
-export function getDirectusMedia(url: string | null | undefined) {
-  if (url == null) {
+export function getDirectusMedia(
+  url: string | DirectusFiles | null | undefined
+) {
+  if (url == null || typeof url === undefined) {
     return ''
   }
+  let localUrl = typeof url === 'string' ? url : url.id
 
   // Return the full URL if the media is hosted on an external provider
-  if (url.startsWith('http') || url.startsWith('//')) {
-    return url
+  if (localUrl.startsWith('http') || localUrl.startsWith('//')) {
+    return localUrl
   }
 
   // Otherwise prepend the URL path with the Strapi URL

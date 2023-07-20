@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface ProseProps {
-  content: string
+  content: string | null | undefined
   className?: string
 }
 
@@ -44,7 +44,7 @@ function Prose({ content, className }: ProseProps) {
         'prose prose-sm dark:prose-invert md:prose-base lg:prose-lg prose-headings:font-serif prose-p:font-mono prose-img:rounded-br-3xl prose-img:rounded-tl-3xl prose-img:border-2 prose-img:border-gray-500',
         className
       )}
-      dangerouslySetInnerHTML={{ __html: content }}
+      dangerouslySetInnerHTML={{ __html: content ? content : '' }}
     />
   )
 }
