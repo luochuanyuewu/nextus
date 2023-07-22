@@ -3,14 +3,15 @@
 import { FieldValues, UseFormReturn } from 'react-hook-form'
 import { FormElement } from '@/lib/schemas'
 
-export const VInput = (props: {
+export const DirectusTextarea = (props: {
   element: FormElement
   hookForm: UseFormReturn<FieldValues, any>
 }) => {
   const { element, hookForm } = props
   const { register } = hookForm
+
   return (
-    <input
+    <textarea
       {...element}
       {...register(element.name!, {
         required: element.required || false,

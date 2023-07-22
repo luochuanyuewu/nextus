@@ -7,5 +7,6 @@ export interface FormElement {
   help: string;
   validation: string;
   width: string | number;
+  choices?: { label: string; value: any }[]
   outerclass?: string //not coming from backend.
 }

@@ -8,7 +8,7 @@ import directusApi from '@/lib/utils/directus-api'
 import { createItem } from '@directus/sdk'
 import { useForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
-import VFieldRender from '@/components/form/VFieldRender'
+import DirectusFormBuilder from '@/components/form/DirectusFormBuilder'
 import VButton from '@/components/base/VButton'
 import { FormElement } from '@/lib/schemas'
 
@@ -52,7 +52,7 @@ function VForm(props: FormProps) {
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(false)
 
-  const schema = transformSchema(form.schema as any)
+  const schema = transformSchema(form.schema)
 
   const hookForm = useForm()
 
@@ -90,26 +90,24 @@ function VForm(props: FormProps) {
       </div>
 
       {!success && (
-        <form
-          className='grid grid-cols-12 gap-5'
-          onSubmit={hookForm.handleSubmit(submitForm)}
-        >
-          <p className='col-span-12 text-center text-xl font-bold'>
-            {props.form.id}
-          </p>
-          {schema.map((res) => (
-            <div
-              key={`fields-${res.name}`}
-              className={twMerge(`col-span-12`, res.outerclass)}
-            >
-              <p className='mb-1'>{res.label}</p>
-              <VFieldRender element={res} hookForm={hookForm} />
+        <form className='relative' onSubmit={hookForm.handleSubmit(submitForm)}>
+          <div className='grid gap-6 md:grid-cols-6'>
+            {schema.map((res) => (
+              <div key={`fields-${res.name}`} className={res.outerclass}>
+                <label
+                  className='formkit-label mb-1 block font-mono text-sm font-bold text-gray-700 dark:text-gray-200'
+                  htmlFor={res.name}
+                >
+                  {res.label}
+                </label>
+                <DirectusFormBuilder element={res} hookForm={hookForm} />
+              </div>
+            ))}
+            <div className='col-span-12 mx-auto'>
+              <VButton type='submit' loading={loading}>
+                {props.form.submit_label}
+              </VButton>
             </div>
-          ))}
-          <div className='col-span-12 mx-auto'>
-            <VButton type='submit' loading={loading}>
-              Submit
-            </VButton>
           </div>
         </form>
       )}

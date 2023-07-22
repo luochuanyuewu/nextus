@@ -1,3 +1,4 @@
+import { FormElement } from '@/types/schemas';
 export interface DirectusSchema {
   block_cardgroup: BlockCardgroup[];
   block_cardgroup_cards: BlockCardgroupCards[];
@@ -601,7 +602,7 @@ export type Forms = {
   key?: string | null;
   on_success?: string | null;
   redirect_url?: string | null;
-  schema?: unknown | null;
+  schema?: FormElement | null;
   sort?: number | null;
   status: string;
   submit_label?: string | null;
