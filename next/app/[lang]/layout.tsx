@@ -51,16 +51,14 @@ export default async function RootLayout({
     <html lang={params.lang}>
       <head></head>
       <body>
-        <main className='visual-effects relative flex min-h-screen flex-col overflow-hidden bg-white bg-gradient-to-br from-white to-gray-100 antialiased transition duration-150 dark:from-gray-900 dark:to-gray-700'>
-          <div
+        <main className='flex min-h-screen flex-col overflow-hidden bg-base-100 antialiased transition duration-150'>
+          {/* <div
             id='mouseLight'
             className='mouse-gradient absolute top-0 h-[200px] w-[200px] rounded-full transition-opacity'
             // style="opacity: 0"
-          />
-          <div className='relative px-6 pt-6'>
-            <TheHeader />
-          </div>
-          <div className='relative text-gray-900'>{children}</div>
+          /> */}
+          <TheHeader />
+          <div className=''>{children}</div>
           <TheFooter />
         </main>
 

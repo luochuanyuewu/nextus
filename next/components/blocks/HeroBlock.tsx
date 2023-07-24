@@ -26,14 +26,14 @@ function HeroBlock({ data }: HeroBlockProps) {
   return (
     <BlockContainer className='relative grid gap-6 md:grid-cols-3'>
       {/* Content */}
-      <div className='md:col-span-2 md:pt-12'>
+      <div className=' md:col-span-2 md:pt-12'>
         <h1
-          className='xs:text-5xl color-em font-serif text-4xl font-extrabold leading-9 text-gray-900 dark:text-gray-100 dark:drop-shadow sm:text-7xl lg:text-8xl'
+          className='xs:text-5xl color-em font-serif text-4xl font-extrabold leading-9  sm:text-7xl lg:text-8xl'
           dangerouslySetInnerHTML={
             data.headline ? { __html: data.headline } : undefined
           }
         />
-        <p className='w-full py-6 font-serif text-xl dark:text-gray-200 lg:text-2xl lg:leading-loose'>
+        <p className='w-full py-6 font-serif text-xl lg:text-2xl lg:leading-loose'>
           {data.content}
         </p>
         <div className='flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0'>
@@ -54,7 +54,7 @@ function HeroBlock({ data }: HeroBlockProps) {
       {/* Image */}
       <div className=''>
         {data.image && (
-          <div className='rounded-tl-[64px] border-2 border-gray-300 p-2 dark:border-gray-700 md:-mr-16 lg:relative lg:-mr-48 lg:h-full'>
+          <div className='rounded-tl-[64px] border-2 md:-mr-16 lg:relative lg:-mr-48 lg:h-full'>
             <Image
               className='max-h-[700px] w-full overflow-hidden rounded-tl-[56px] object-cover dark:brightness-90'
               width='500'

@@ -1,9 +1,10 @@
+import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import React, { MouseEventHandler } from 'react'
 
 interface ButtonProps {
   type?: 'button' | 'submit' | 'reset'
-  variant?: 'default' | 'primary' | 'outline' | 'danger' | string
+  variant?: 'default' | 'primary' | 'outline' | 'danger' | 'link' | string
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   loading?: boolean
   disabled?: boolean
@@ -28,21 +29,28 @@ function VButton(props: ButtonProps) {
     children,
   } = props
 
-  const buttonClasses = [
+  // const buttonClasses = [
+  //   'btn',
+  //   variant === 'default' && '',
+  //   // variant === 'default' && 'btn-default',
+  //   variant === 'primary' && 'btn-primary',
+  //   variant === 'outline' && 'btn-outline',
+  //   variant === 'danger' && 'btn-danger',
+  //   size === 'xs' && 'btn-xs',
+  //   size === 'sm' && 'btn-sm',
+  //   size === 'md' && 'btn-md',
+  //   size === 'lg' && 'btn-lg',
+  //   size === 'xl' && 'btn-xl',
+  //   block && 'btn-block',
+  // ]
+  //   .filter(Boolean)
+  //   .join(' ')
+
+  const buttonClasses = cn(
     'btn',
-    variant === 'default' && 'btn-default',
-    variant === 'primary' && 'btn-primary',
-    variant === 'outline' && 'btn-outline',
-    variant === 'danger' && 'btn-danger',
-    size === 'xs' && 'btn-xs',
-    size === 'sm' && 'btn-sm',
-    size === 'md' && 'btn-md',
-    size === 'lg' && 'btn-lg',
-    size === 'xl' && 'btn-xl',
-    block && 'btn-block',
-  ]
-    .filter(Boolean)
-    .join(' ')
+    variant ? `btn-${variant}` : '',
+    size ? `btn-${size}` : ''
+  )
 
   return (
     <>

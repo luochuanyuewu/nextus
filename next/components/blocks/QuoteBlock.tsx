@@ -19,7 +19,7 @@ interface QuoteBlockProps {
 
 export default function QuoteBlock({ data }: QuoteBlockProps) {
   return (
-    <BlockContainer className='relative px-6 py-10 text-gray-900 dark:text-gray-100 md:px-16 md:py-16 lg:px-28 lg:py-24'>
+    <BlockContainer className='relative bg-base-200 px-6 py-10 md:px-16 md:py-16 lg:px-28 lg:py-24'>
       {data.image && (
         <div
           className='absolute inset-0 z-0 opacity-25'
@@ -47,7 +47,7 @@ export default function QuoteBlock({ data }: QuoteBlockProps) {
 
           <div className='mt-6 flex justify-end'>
             <div className='word-spacing-tight w-full pl-3 text-right font-mono text-sm font-bold uppercase tracking-widest sm:w-1/2 sm:text-left md:pl-0 lg:w-2/5 lg:text-base xl:w-1/3 2xl:w-1/4'>
-              <div className='rounded-xl rounded-bl-none bg-white p-4 dark:bg-gray-800'>
+              <div className='rounded-xl rounded-bl-none'>
                 {data.title && <div className='text-accent'>{data.title}</div>}
                 {data.subtitle && <div>{data.subtitle}</div>}
               </div>

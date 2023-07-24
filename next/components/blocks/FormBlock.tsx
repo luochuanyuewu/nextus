@@ -13,10 +13,12 @@ interface FormBlockProps {
 const FormBlock = ({ data }: { data: FormBlockProps }) => {
   return (
     <BlockContainer>
-      <div className='mx-auto mt-4 max-w-2xl rounded-bl-3xl rounded-tr-3xl bg-gray-100 p-8 dark:bg-gray-800'>
-        {data.title && <TypographyTitle>{data.title}</TypographyTitle>}
-        {data.headline && <TypographyHeadline content={data.headline} />}
-        <VForm form={data.form} className='mt-4' />
+      <div className='card mx-auto mt-4 max-w-2xl bg-base-200'>
+        <div className='card-body'>
+          {data.title && <TypographyTitle>{data.title}</TypographyTitle>}
+          {data.headline && <TypographyHeadline content={data.headline} />}
+          <VForm form={data.form} className='mt-4' />
+        </div>
       </div>
     </BlockContainer>
   )

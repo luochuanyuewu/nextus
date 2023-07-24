@@ -5,6 +5,7 @@ import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import BlockContainer from '@/components/BlockContainer'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
+import Image from 'next/image'
 
 interface Testimonial {
   id: string | number
@@ -77,7 +78,7 @@ export default function TestimonialsBlock({ data }: TestimonialsBlockProps) {
 
   return (
     <BlockContainer className='relative overflow-hidden' fullWidth>
-      <div className='absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-accent dark:from-gray-700 dark:via-gray-900 dark:to-accent' />
+      <div className='absolute inset-0 ' />
       <div className='grain-bg absolute inset-0 dark:opacity-20' />
 
       <div className='relative space-y-4 pt-16 text-center'>
@@ -106,23 +107,17 @@ export default function TestimonialsBlock({ data }: TestimonialsBlockProps) {
           <div className='flex space-x-2 justify-self-end'>
             <button
               disabled={currentItemIdx === 0}
-              className='flex h-10 w-10 items-center justify-center rounded-full bg-gray-900 hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50'
+              className='flex h-10 w-10 items-center justify-center rounded-full  disabled:cursor-not-allowed disabled:opacity-50'
               onClick={() => handleNavButton('left')}
             >
-              <VIcon
-                icon='heroicons:arrow-left'
-                className='h-5 w-5 text-white'
-              />
+              <VIcon icon='heroicons:arrow-left' className='h-5 w-5' />
             </button>
             <button
               disabled={currentItemIdx === data.testimonials.length - 1}
-              className='flex h-10 w-10 items-center justify-center rounded-full bg-gray-900 hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50'
+              className='flex h-10 w-10 items-center justify-center rounded-full  disabled:cursor-not-allowed disabled:opacity-50'
               onClick={() => handleNavButton('right')}
             >
-              <VIcon
-                icon='heroicons:arrow-right'
-                className='h-5 w-5 text-white'
-              />
+              <VIcon icon='heroicons:arrow-right' className='h-5 w-5 ' />
             </button>
           </div>
         </div>
@@ -137,17 +132,19 @@ export default function TestimonialsBlock({ data }: TestimonialsBlockProps) {
               ref={(el) => {
                 if (el) testimonialRefs.current[itemIdx] = el
               }}
-              className='md:w[450px] relative flex w-[350px] flex-shrink-0 snap-center flex-col justify-between overflow-hidden bg-white p-8 shadow-md odd:rounded-br-3xl odd:rounded-tl-3xl even:rounded-bl-3xl even:rounded-tr-3xl dark:bg-gray-900 lg:w-[600px]'
+              className='md:w[450px] relative flex w-[350px] flex-shrink-0 snap-center flex-col justify-between overflow-hidden bg-base-200  p-8 shadow-md odd:rounded-br-3xl odd:rounded-tl-3xl even:rounded-bl-3xl even:rounded-tr-3xl  lg:w-[600px]'
             >
               <div
-                className='prose prose-sm relative font-mono dark:prose-invert md:prose-base'
+                className='prose-sm prose relative font-mono dark:prose-invert md:prose-base'
                 dangerouslySetInnerHTML={{ __html: testimonial.content }}
               />
 
-              <div className='mt-4 flex space-x-2 border-t border-gray-300 pt-6 dark:border-gray-700'>
+              <div className='mt-4 flex space-x-2 border-t pt-6'>
                 {testimonial.image ? (
-                  <img
+                  <Image
                     className='inline-block h-16 w-16 rounded-full border'
+                    width={50}
+                    height={50}
                     src={getDirectusMedia(testimonial.image)}
                     alt=''
                   />

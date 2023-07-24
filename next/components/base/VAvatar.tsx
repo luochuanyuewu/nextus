@@ -24,7 +24,7 @@ function VAvatar({ author, size = 'md', className }: AvatarProps) {
           ].join(' ')}
           width={100}
           height={100}
-          src={author.avatar_url ?? getDirectusMedia(author.avatar as any)}
+          src={getDirectusMedia(author.avatar)}
           alt=''
         />
       </div>

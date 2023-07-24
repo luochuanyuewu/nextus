@@ -29,12 +29,12 @@ export default function LogoCloudBlock({ data }: Props) {
     <BlockContainer className='mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8'>
       {data.title && <TypographyTitle>{data.title}</TypographyTitle>}
       {data.headline && <TypographyHeadline content={data.headline} />}
-      <div className='mt-8 flow-root lg:mt-10'>
+      <div className='mt-8  lg:mt-10'>
         <div className='grid gap-4 md:grid-cols-4 md:gap-8'>
           {data.logos.map(({ file }, fileIdx) => (
             <motion.div
               key={file.id}
-              className='flex items-center justify-center rounded-bl-3xl rounded-tr-3xl border-2 border-gray-200 p-8 dark:border-gray-700 dark:bg-gray-200'
+              className='flex items-center justify-center rounded-bl-3xl rounded-tr-3xl border-2 p-8 '
               initial={{
                 opacity: 0,
                 y: 100,

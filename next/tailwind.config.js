@@ -12,15 +12,15 @@ module.exports = {
   ],
 
   // Using a separate config file for typography to keep things clean and tidy
-  presets: [require('./tailwind.config.typography.js')],
+  // presets: [require('./tailwind.config.typography.js')],
 
   theme: {
     extend: {
       colors: {
         gray: colors.slate,
-        accent: {
-          DEFAULT: '#FF99DD',
-        },
+        // accent: {
+        //   DEFAULT: '#FF99DD',
+        // },
         red: colors.rose,
       },
       fontFamily: {
@@ -54,7 +54,7 @@ module.exports = {
     themes: true,
     base: true,
     utils: true,
-    logs: true,
+    logs: false,
     rtl: false,
     prefix: '',
     darkTheme: 'dark',
@@ -62,6 +62,7 @@ module.exports = {
 
   plugins: [
     require('@tailwindcss/forms'),
-    // require('daisyui'),
+    require('@tailwindcss/typography'),
+    require('daisyui'),
   ],
 }

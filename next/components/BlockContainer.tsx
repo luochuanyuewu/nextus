@@ -17,7 +17,7 @@ function BlockContainer(props: BlockContainerProps) {
         clsx({
           'max-w-7xl px-6 lg:px-8': !fullWidth,
         }),
-        'mx-auto py-12',
+        'container mx-auto py-12',
         props.className
       )}
     >

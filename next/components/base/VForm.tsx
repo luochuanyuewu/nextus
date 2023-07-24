@@ -7,10 +7,11 @@ import VAlert from '@/components/base/VAlert'
 import directusApi from '@/lib/utils/directus-api'
 import { createItem } from '@directus/sdk'
 import { useForm } from 'react-hook-form'
-import { twMerge } from 'tailwind-merge'
+import { ErrorMessage } from '@hookform/error-message'
 import DirectusFormBuilder from '@/components/form/DirectusFormBuilder'
-import VButton from '@/components/base/VButton'
 import { FormElement } from '@/lib/schemas'
+import { cn } from '@/lib/utils'
+import formTheme from '@/form.theme'
 
 interface FormProps {
   form: Forms
@@ -37,6 +38,7 @@ function transformSchema(schema: Array<FormElement>) {
       default:
         newItem.outerclass = 'md:col-span-6'
     }
+    newItem.validation
     return newItem
   })
 }
@@ -44,30 +46,34 @@ function transformSchema(schema: Array<FormElement>) {
 function VForm(props: FormProps) {
   const { form } = props
 
-  const query = useSearchParams()
   const router = useRouter()
 
-  const [formData, setFormData] = useState({ ...query })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(false)
 
   const schema = transformSchema(form.schema)
 
-  const hookForm = useForm()
+  const hookForm = useForm<any>()
 
-  async function submitForm() {
+  async function submitForm(data: any) {
     setLoading(true)
     try {
       await directusApi.request(
         createItem('inbox', {
-          data: formData,
+          data: { ...data },
+          form: props.form.id,
         })
       )
       setSuccess(true)
-      if (form.on_success === 'redirect') {
+      if (
+        form.on_success === 'redirect' &&
+        form.redirect_url &&
+        typeof form.redirect_url === 'string'
+      ) {
         return router.push(props.form.redirect_url as string)
       }
+      console.log('form redirect_url invali.')
     } catch (err) {
       setError(err as any)
     } finally {
@@ -78,7 +84,7 @@ function VForm(props: FormProps) {
   return (
     <div className={props.className}>
       <div className='mb-4'>
-        {error && <VAlert type='error'>Oops! {error}</VAlert>}
+        {error && <VAlert type='error'>{error}</VAlert>}
         {form.on_success === 'message' && success && (
           <VAlert
             type='success'
@@ -90,40 +96,40 @@ function VForm(props: FormProps) {
       </div>
 
       {!success && (
-        <form className='relative' onSubmit={hookForm.handleSubmit(submitForm)}>
+        <form
+          className={formTheme.formClass}
+          onSubmit={hookForm.handleSubmit(submitForm)}
+        >
           <div className='grid gap-6 md:grid-cols-6'>
-            {schema.map((res) => (
-              <div key={`fields-${res.name}`} className={res.outerclass}>
-                <label
-                  className='formkit-label mb-1 block font-mono text-sm font-bold text-gray-700 dark:text-gray-200'
-                  htmlFor={res.name}
-                >
-                  {res.label}
+            {schema.map((element) => (
+              <div
+                key={`fields-${element.name}`}
+                className={cn(element.outerclass, 'w-full')}
+              >
+                <label className='label' htmlFor={element.name}>
+                  <span className='label-text'>{element.label}</span>
                 </label>
-                <DirectusFormBuilder element={res} hookForm={hookForm} />
+                <DirectusFormBuilder element={element} hookForm={hookForm} />
+                <ErrorMessage
+                  errors={hookForm.formState.errors}
+                  name={element.name}
+                  render={({ message }) => (
+                    <VAlert type='error'>{message}</VAlert>
+                  )}
+                />
               </div>
             ))}
-            <div className='col-span-12 mx-auto'>
-              <VButton type='submit' loading={loading}>
-                {props.form.submit_label}
-              </VButton>
+          </div>
+          <div className='col-span-6 mx-auto'>
+            <div className='form-control mt-6'>
+              <button className='btn-primary btn'>
+                {loading && <span className='loading loading-spinner'></span>}
+                {!loading && props.form.submit_label}
+              </button>
             </div>
           </div>
         </form>
       )}
-
-      {/*{!success && (*/}
-      {/*  <FormKit*/}
-      {/*    type='form'*/}
-      {/*    value={formData}*/}
-      {/*    onSubmit={submitForm}*/}
-      {/*    submitLabel={form.submit_label}*/}
-      {/*  >*/}
-      {/*    <div className='grid gap-6 md:grid-cols-6'>*/}
-      {/*      <FormKitSchema schema={schema} />*/}
-      {/*    </div>*/}
-      {/*  </FormKit>*/}
-      {/*)}*/}
     </div>
   )
 }

@@ -130,38 +130,39 @@ export function ThemeSwitcher() {
   const dropdownClasses = ''
 
   return (
-    <div className='hidden lg:block'>
+    // <div className='hidden lg:block'>
+    <div className=''>
       <div
         title='Change Theme'
-        className={`dropdown dropdown-end ${dropdownClasses}`}
+        className={`dropdown-end dropdown ${dropdownClasses}`}
       >
         <div
           tabIndex={0}
           data-umami-event='nav-theme-switcher'
-          className='btn btn-ghost gap-1 normal-case'
+          className='btn-ghost btn gap-1 normal-case'
         >
-          <span className='hidden md:inline'>主题</span>
+          <span className='dark:text-white  md:inline'>主题</span>
           <svg
             width='12px'
             height='12px'
-            className='ml-1 hidden h-3 w-3 fill-current opacity-60 sm:inline-block'
+            className='ml-1 hidden h-3 w-3 fill-current opacity-60 dark:text-white sm:inline-block'
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 2048 2048'
           >
             <path d='M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z' />
           </svg>
         </div>
-        <div className='dropdown-content bg-base-200 text-base-content rounded-t-box rounded-b-box top-px z-10 mt-16 h-[70vh] max-h-96 w-52 overflow-y-auto shadow-2xl'>
+        <div className='dropdown-content rounded-t-box rounded-b-box top-px z-10 mt-16 h-[70vh] max-h-96 w-52 overflow-y-auto bg-base-200 text-base-content shadow-2xl'>
           <div className='grid grid-cols-1 gap-3 p-3' tabIndex={0}>
             {themes.map((theme) => (
               <button
                 key={theme.id}
-                className='outline-base-content overflow-hidden rounded-lg text-left'
+                className='overflow-hidden rounded-lg text-left outline-base-content'
                 data-set-theme={theme.id}
               >
                 <div
                   data-theme={theme.id}
-                  className='bg-base-100 text-base-content w-full cursor-pointer font-sans'
+                  className='w-full cursor-pointer bg-base-100 font-sans text-base-content'
                 >
                   <div className='grid grid-cols-5 grid-rows-3'>
                     <div className='col-span-5 row-span-3 row-start-1 flex items-center gap-2 px-4 py-3'>
@@ -169,10 +170,10 @@ export function ThemeSwitcher() {
                         {theme.id}
                       </div>
                       <div className='flex h-full flex-shrink-0 flex-wrap gap-1'>
-                        <div className='bg-primary w-2 rounded' />
-                        <div className='bg-secondary w-2 rounded' />
+                        <div className='w-2 rounded bg-primary' />
+                        <div className='w-2 rounded bg-secondary' />
                         <div className='w-2 rounded bg-accent' />
-                        <div className='bg-neutral w-2 rounded' />
+                        <div className='w-2 rounded bg-neutral' />
                       </div>
                     </div>
                   </div>

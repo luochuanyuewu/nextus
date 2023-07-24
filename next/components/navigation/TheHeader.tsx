@@ -5,6 +5,7 @@ import MenuItem from '@/components/navigation/MenuItem'
 import VButton from '@/components/base/VButton'
 import Link from 'next/link'
 import LogoV2 from '@/components/LogoV2'
+import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 
 export default async function TheHeader() {
   const results = await directusApi.request(
@@ -24,12 +25,11 @@ export default async function TheHeader() {
   )) as Globals
 
   return (
-    <div>
+    <div className='pt-1'>
       <header className='relative w-full space-y-4 md:flex md:items-center md:space-x-6 md:space-y-0'>
-        <div className='flex items-center rounded-br-xl rounded-tl-xl bg-gray-800 md:flex-1 md:justify-between'>
+        <div className='flex items-center rounded-br-xl rounded-tl-xl  md:flex-1 md:justify-between'>
           <Link href='/' className='px-4 py-4'>
-            {/* eslint-disable-next-line react/jsx-no-undef */}
-            <LogoV2 className='h-6 text-white' />
+            <LogoV2 className='h-6 ' />
             <span className='sr-only'>{global.title}</span>
           </Link>
           <nav
@@ -42,16 +42,9 @@ export default async function TheHeader() {
           </nav>
           <div className='flex flex-shrink-0 items-center justify-end space-x-2 p-3'>
             {/*<DarkModeToggle className='hidden text-gray-200 hover:text-gray-400 md:block' />*/}
+            <ThemeSwitcher></ThemeSwitcher>
           </div>
         </div>
-
-        <div className='hidden md:block'>
-          <VButton href='/contact-us' variant='primary' className='uppercase'>
-            {"Let's Talk"}
-          </VButton>
-        </div>
-
-        {/* <NavigationMobileMenu navigation={navigation} /> */}
       </header>
     </div>
   )

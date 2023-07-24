@@ -50,7 +50,7 @@
 }
 
 /* Using Tailwind @apply so we can easily re-use these styles for other 'button' based components like NuxtLink or VDropdown or within prose */
-.btn {
+/* .btn {
   @apply font-mono inline-flex font-bold text-white transition duration-150 odd:rounded-tr-lg odd:rounded-bl-lg even:rounded-tl-lg even:rounded-br-lg hover:scale-105 active:hover:scale-95 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed;
 }
 
@@ -89,4 +89,4 @@
 
 .input {
   @apply block w-full dark:bg-gray-800 dark:text-white text-lg md:text-base border-gray-300 dark:border-gray-700  shadow-sm focus:ring-accent focus:border-accent placeholder:text-gray-400 dark:placeholder:text-gray-600;
-}
+} */
