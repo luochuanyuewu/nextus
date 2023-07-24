@@ -1,28 +1,36 @@
 import directusApi from '@/lib/utils/directus-api'
 import { readItem, readSingleton } from '@directus/sdk'
-import { Globals, NavigationItems } from '@/lib/directus-collections'
+import {
+  Globals,
+  Navigation,
+  NavigationItems,
+} from '@/lib/directus-collections'
 import MenuItem from '@/components/navigation/MenuItem'
-import VButton from '@/components/base/VButton'
 import Link from 'next/link'
 import LogoV2 from '@/components/LogoV2'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 
 export default async function TheHeader() {
-  const results = await directusApi.request(
-    readItem('navigation', 'main', {
-      fields: [
-        {
-          items: ['*', { page: ['slug'] }, { children: ['*'] }],
-        },
-      ],
-    })
-  )
+  const fetchNavigation = async function () {
+    try {
+      const nav = (await directusApi.request(
+        readItem('navigation', 'main', {
+          fields: [
+            {
+              items: ['*', { page: ['slug'] }, { children: ['*'] }],
+            },
+          ],
+        })
+      )) as Navigation
+      return nav
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-  const { items } = results as any
+  const navigation = await fetchNavigation()
 
-  const global = (await directusApi.request(
-    readSingleton('globals')
-  )) as Globals
+  const global = await directusApi.request(readSingleton('globals'))
 
   return (
     <div className='pt-1'>
@@ -36,9 +44,10 @@ export default async function TheHeader() {
             className='hidden font-mono md:flex md:space-x-4 lg:space-x-6'
             aria-label='Global'
           >
-            {items.map((item: NavigationItems) => (
-              <MenuItem key={item.id} item={item} />
-            ))}
+            {navigation?.items &&
+              navigation.items.map((item: NavigationItems) => (
+                <MenuItem key={item.id} item={item} />
+              ))}
           </nav>
           <div className='flex flex-shrink-0 items-center justify-end space-x-2 p-3'>
             {/*<DarkModeToggle className='hidden text-gray-200 hover:text-gray-400 md:block' />*/}

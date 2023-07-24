@@ -1,7 +1,6 @@
 import React from 'react'
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { Pages } from '@/lib/directus-collections'
 import PageBuilder from '@/components/PageBuilder'
 
 type Props = {
@@ -55,9 +54,5 @@ export default async function PageRoute({ params }: Props) {
 
   if (pages.length === 0) return null
 
-  return (
-    <>
-      <PageBuilder page={pages[0]} />
-    </>
-  )
+  return <>{pages[0] && <PageBuilder page={pages[0]} />}</>
 }

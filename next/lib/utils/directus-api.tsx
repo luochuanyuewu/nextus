@@ -12,6 +12,9 @@ const directusApi = createDirectus<DirectusSchema>(getDirectusURL())
           next: { revalidate: 3 },
         }
       },
+      onResponse: (data: any) => {
+        return data
+      },
     })
   )
   .with(authentication('json', { autoRefresh: false }))

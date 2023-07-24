@@ -50,9 +50,5 @@ export default async function PageRoute() {
 
   if (pages.length === 0) return null
 
-  return (
-    <>
-      <PageBuilder page={pages[0]} />
-    </>
-  )
+  return <>{pages[0] && <PageBuilder page={pages[0]} />}</>
 }

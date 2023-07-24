@@ -8,6 +8,37 @@ import VIcon from '@/components/base/VIcon'
 import Link from 'next/link'
 import VForm from '@/components/base/VForm'
 
+async function fetchAsyncData() {
+  try {
+    const navigation = (await directusApi.request(
+      readItem('navigation', 'footer', {
+        fields: [
+          {
+            items: ['*', { page: ['slug'] }, { children: ['*'] }],
+          },
+        ],
+      })
+    )) as Navigation
+
+    const forms = await directusApi.request(
+      readItems('forms', {
+        filter: {
+          key: {
+            _eq: 'newsletter',
+          },
+        },
+        limit: 1,
+      })
+    )
+
+    const globals = await directusApi.request(readSingleton('globals'))
+
+    return { navigation, form: forms.length > 0 ? forms[0] : null, globals }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 async function TheFooter() {
   function getUrl(item: NavigationItems) {
     if (item.type === 'page' && typeof item.page !== 'string') {
@@ -17,15 +48,24 @@ async function TheFooter() {
     }
   }
 
-  const navigation = (await directusApi.request(
-    readItem('navigation', 'footer', {
-      fields: [
-        {
-          items: ['*', { page: ['slug'] }, { children: ['*'] }],
-        },
-      ],
-    })
-  )) as Navigation
+  const fetchNavigation = async function () {
+    try {
+      const nav = (await directusApi.request(
+        readItem('navigation', 'footer', {
+          fields: [
+            {
+              items: ['*', { page: ['slug'] }, { children: ['*'] }],
+            },
+          ],
+        })
+      )) as Navigation
+      return nav
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const navigation = await fetchNavigation()
 
   const forms = await directusApi.request(
     readItems('forms', {
@@ -38,11 +78,9 @@ async function TheFooter() {
     })
   )
 
-  const form = forms.length > 0 ? forms[0] : undefined
+  const form = forms && forms.length > 0 ? forms[0] : undefined
 
   const globals = await directusApi.request(readSingleton('globals'))
-
-  const { tagline, title, social_links } = globals
 
   return (
     <footer
@@ -56,7 +94,9 @@ async function TheFooter() {
             <a href='/'>
               <LogoV2 className='h-8 ' />
             </a>
-            <p className='mt-2 font-mono text-sm text-gray-500'>{tagline}</p>
+            <p className='mt-2 font-mono text-sm text-gray-500'>
+              {globals.tagline}
+            </p>
           </div>
           <div className='flex w-full items-center justify-end space-x-2'>
             {/* <DarkModeToggle className="hidden text-gray-600 md:block hover:text-gray-400" /> */}
@@ -99,8 +139,9 @@ async function TheFooter() {
       {/* Bottom */}
       <div className='mx-auto max-w-7xl border-t py-6 dark:border-t-gray-700 md:flex md:items-center md:justify-between lg:px-16'>
         <div className='flex items-center justify-center space-x-6 md:order-last md:mb-0'>
-          {social_links &&
-            social_links.map((link) => (
+          {globals &&
+            globals.social_links &&
+            globals.social_links.map((link) => (
               <a
                 key={link.service}
                 href={link.url}
@@ -125,7 +166,7 @@ async function TheFooter() {
               className='mx-2 hover:text-accent'
               rel='noopener noreferrer'
             >
-              {title}.
+              {globals?.title ?? 'site title'}.
             </a>
             All rights reserved.
           </span>
