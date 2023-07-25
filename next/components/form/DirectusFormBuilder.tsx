@@ -52,6 +52,7 @@ export default function DirectusFormBuilder(props: {
         <select
           className={formTheme.selectClass}
           required={element.required}
+          placeholder={element.placeholder}
           {...register(element.name!, validation)}
         >
           {element.placeholder && (
@@ -74,6 +75,7 @@ export default function DirectusFormBuilder(props: {
         <input
           className={formTheme.checkboxClass}
           type='checkbox'
+          placeholder={element.placeholder}
           required={element.required}
           {...register(element.name!, validation)}
         />
@@ -82,6 +84,7 @@ export default function DirectusFormBuilder(props: {
       return (
         <input
           type={element.type}
+          placeholder={element.placeholder}
           className={formTheme.inputClass}
           required={element.required}
           {...register(element.name!, validation)}

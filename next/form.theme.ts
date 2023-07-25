@@ -1,6 +1,6 @@
 const formTheme = {
   formClass: 'form-control relative',
-  inputClass: 'input w-full',
+  inputClass: 'input input-bordered  w-full',
   selectClass: 'select w-full',
   textAreaClass: 'textarea-bordered textarea w-full',
   checkboxClass: 'checkbox',

@@ -52,7 +52,7 @@ export default async function PageRoute({ params }: Props) {
     })
   )
 
-  if (pages.length === 0) return null
+  if (pages && pages.length === 0) return null
 
-  return <>{pages[0] && <PageBuilder page={pages[0]} />}</>
+  return <PageBuilder page={pages[0]} />
 }

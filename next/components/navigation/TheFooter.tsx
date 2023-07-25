@@ -124,7 +124,7 @@ async function TheFooter() {
           </div>
 
           <div className='relative overflow-hidden rounded-br-3xl rounded-tl-3xl border-2 border-accent p-6 md:grid md:grid-cols-1 lg:justify-end'>
-            <div className='absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-accent dark:from-gray-800 dark:via-gray-900 dark:to-gray-600' />
+            <div className='absolute inset-0 ' />
             <div className='grain-bg absolute inset-0 dark:opacity-10' />
             <div className='relative w-full md:mt-0'>
               <TypographyHeadline content='<p>Subscribe to our <em>newsletter</em></p>'>
@@ -137,7 +137,7 @@ async function TheFooter() {
       </div>
 
       {/* Bottom */}
-      <div className='mx-auto max-w-7xl border-t py-6 dark:border-t-gray-700 md:flex md:items-center md:justify-between lg:px-16'>
+      <div className='mx-auto max-w-7xl border-t py-6  md:flex md:items-center md:justify-between lg:px-16'>
         <div className='flex items-center justify-center space-x-6 md:order-last md:mb-0'>
           {globals &&
             globals.social_links &&
@@ -174,23 +174,23 @@ async function TheFooter() {
           <span className='mt-2 font-serif '>
             <VIcon icon='heroicons:bolt' className='h-4 w-4 text-accent' />
             Site powered by
-            <a
+            <Link
               href='https://www.directus.io?ref=agencyos_footer'
               target='_blank'
               rel='noopener noreferrer'
-              className='border-b hover:text-accent '
+              className=' border-b hover:text-accent'
             >
               Directus
-            </a>
+            </Link>
             and
-            <a
-              href='https://www.nuxt.com?ref=agencyos_footer'
+            <Link
+              href='https://nextjs.org/'
               target='_blank'
               rel='noopener noreferrer'
-              className='border-b hover:text-accent dark:border-b-gray-700'
+              className='border-b hover:text-accent'
             >
               NextJs
-            </a>
+            </Link>
             .
           </span>
         </div>

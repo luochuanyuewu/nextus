@@ -34,7 +34,7 @@ export default async function ArticlePage({
   const article = articles[0]
   return (
     <PageContainer>
-      <header className='border-b border-gray-300 pb-8 dark:border-gray-700'>
+      <header className='border-b  pb-8 '>
         <GlobalSearch
           placeholder='Search for articles'
           collections={['help_articles']}
@@ -90,7 +90,7 @@ export default async function ArticlePage({
                 </div>
               </div>
             </div>
-            <hr className='mt-12 dark:border-gray-700' />
+            <hr className='mt-12 dark:border-base-300' />
             {/* Feedback Widget */}
             {/*<HelpFeedback*/}
             {/*  className='mt-4'*/}

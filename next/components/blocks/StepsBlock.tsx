@@ -52,7 +52,7 @@ export default function StepsBlock({ data }: Props) {
               >
                 <div className='flex-shrink-0'>
                   <Image
-                    className={`h-32 w-full object-cover dark:brightness-90 md:h-full md:w-48 ${
+                    className={`h-32 w-full object-cover  md:h-full md:w-48 ${
                       isEven(stepIdx)
                         ? 'rounded-br-xl rounded-tl-xl'
                         : 'rounded-bl-xl rounded-tr-xl'
@@ -66,11 +66,11 @@ export default function StepsBlock({ data }: Props) {
 
                 <div className='mt-4 w-full text-left md:mt-0'>
                   {data.show_step_numbers && (
-                    <div className='text-primary font-mono text-sm font-bold uppercase tracking-wide'>
+                    <div className='font-mono text-sm font-bold uppercase tracking-wide text-primary'>
                       Step {stepIdx + 1}
                     </div>
                   )}
-                  <h3 className='mt-2 font-serif text-3xl font-bold dark:text-white'>
+                  <h3 className='mt-2 font-serif text-3xl font-bold '>
                     {step.title}
                   </h3>
                   <TypographyProse

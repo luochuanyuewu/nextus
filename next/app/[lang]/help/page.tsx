@@ -22,7 +22,7 @@ export default async function HelpCenterPage() {
 
   return (
     <PageContainer className='max-w-7xl'>
-      <header className='border-b border-gray-300 pb-8 dark:border-gray-700'>
+      <header className='border-b  pb-8 '>
         <TypographyTitle>Help Center</TypographyTitle>
         <TypographyHeadline content='<p>How can we <em>help</em> you?</p>' />
         <GlobalSearch
@@ -36,7 +36,7 @@ export default async function HelpCenterPage() {
           <Link
             key={collection.id}
             href={`/help/collections/${collection.slug}`}
-            className='flex overflow-hidden rounded-bl-xl rounded-tr-xl border bg-white no-underline transition duration-200 hover:border-accent dark:border-gray-600 dark:bg-gray-800 dark:hover:border-accent'
+            className='flex overflow-hidden rounded-bl-xl rounded-tr-xl border border-primary no-underline transition duration-200 hover:border-accent'
           >
             <div className='flex flex-col p-5 sm:p-6'>
               <div className='flex items-center'>
@@ -49,11 +49,11 @@ export default async function HelpCenterPage() {
               </div>
               <div>
                 <TypographyHeadline content={collection.title} size='sm' />
-                <p className='text-md line-clamp-3 font-mono text-gray-500 dark:text-gray-300 sm:line-clamp-3'>
+                <p className='text-md line-clamp-3 font-mono sm:line-clamp-3'>
                   {collection.description}
                 </p>
               </div>
-              <div className='mt-4 font-mono text-sm text-gray-500 dark:text-gray-300'>
+              <div className='mt-4 font-mono text-sm '>
                 {collection.articles ? collection.articles.length : 0} articles
               </div>
             </div>

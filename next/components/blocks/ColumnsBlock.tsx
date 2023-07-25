@@ -14,7 +14,7 @@ interface ColumnsBlockProps {
 
 function ColumnsBlock({ data }: ColumnsBlockProps) {
   return (
-    <BlockContainer className='relative mx-auto w-full max-w-7xl items-center bg-white px-5 py-24 dark:bg-gray-800 md:px-12 lg:px-16'>
+    <BlockContainer className='relative mx-auto w-full max-w-7xl items-center px-5 py-24  md:px-12 lg:px-16'>
       {data.title && <TypographyTitle>{data.title}</TypographyTitle>}
       {data.headline && <TypographyHeadline content={data.headline} />}
       {data.rows &&
@@ -43,7 +43,7 @@ function ColumnsBlock({ data }: ColumnsBlockProps) {
                 </div>
               </div>
               <div
-                className={`order-first mt-12 block aspect-square w-full border-2 border-gray-300 p-2 dark:border-gray-700 lg:mt-0 ${
+                className={`order-first mt-12 block aspect-square w-full border-2 border-accent p-2  lg:mt-0 ${
                   row.image_position === 'right'
                     ? 'rounded-bl-3xl rounded-tr-3xl lg:order-last'
                     : 'rounded-br-3xl rounded-tl-3xl lg:order-first'
@@ -61,7 +61,7 @@ function ColumnsBlock({ data }: ColumnsBlockProps) {
                       duration: 1,
                     },
                   }}
-                  className={`mx-auto h-full w-full bg-gray-100 object-cover object-center dark:brightness-90 lg:ml-auto ${
+                  className={`mx-auto h-full w-full bg-gray-100 object-cover object-center  lg:ml-auto ${
                     row.image_position === 'right'
                       ? 'rounded-bl-2xl rounded-tr-2xl'
                       : 'rounded-br-2xl rounded-tl-2xl'

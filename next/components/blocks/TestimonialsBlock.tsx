@@ -79,7 +79,7 @@ export default function TestimonialsBlock({ data }: TestimonialsBlockProps) {
   return (
     <BlockContainer className='relative overflow-hidden' fullWidth>
       <div className='absolute inset-0 ' />
-      <div className='grain-bg absolute inset-0 dark:opacity-20' />
+      <div className='grain-bg absolute inset-0 ' />
 
       <div className='relative space-y-4 pt-16 text-center'>
         <TypographyTitle>{data.title}</TypographyTitle>
@@ -96,9 +96,7 @@ export default function TestimonialsBlock({ data }: TestimonialsBlockProps) {
               <button
                 key={item.testimonial.id}
                 className={`flex h-3 w-12 items-center justify-center hover:opacity-75 disabled:cursor-not-allowed disabled:opacity-50 ${
-                  itemIdx === currentItemIdx
-                    ? 'bg-accent'
-                    : 'bg-gray-500 bg-opacity-50 dark:bg-gray-900'
+                  itemIdx === currentItemIdx ? 'bg-accent' : 'bg-base-200'
                 }`}
                 onClick={() => handleIndicatorButton(itemIdx)}
               />
@@ -135,7 +133,7 @@ export default function TestimonialsBlock({ data }: TestimonialsBlockProps) {
               className='md:w[450px] relative flex w-[350px] flex-shrink-0 snap-center flex-col justify-between overflow-hidden bg-base-200  p-8 shadow-md odd:rounded-br-3xl odd:rounded-tl-3xl even:rounded-bl-3xl even:rounded-tr-3xl  lg:w-[600px]'
             >
               <div
-                className='prose-sm prose relative font-mono dark:prose-invert md:prose-base'
+                className='prose-sm prose relative font-mono md:prose-base'
                 dangerouslySetInnerHTML={{ __html: testimonial.content }}
               />
 
@@ -151,15 +149,15 @@ export default function TestimonialsBlock({ data }: TestimonialsBlockProps) {
                 ) : (
                   <VIcon
                     icon='ic:baseline-account-circle'
-                    className='inline-block h-16 w-16 rounded-full border text-gray-300'
+                    className='inline-block h-16 w-16 rounded-full border '
                   />
                 )}
 
                 <div className='relative'>
-                  <p className='font-serif font-bold text-gray-900 dark:text-white lg:text-2xl'>
+                  <p className='font-serif font-bold  lg:text-2xl'>
                     {testimonial.title}
                   </p>
-                  <p className='font-mono text-sm text-gray-700 dark:text-gray-300 lg:text-lg'>
+                  <p className='font-mono text-sm lg:text-lg'>
                     {testimonial.subtitle} at {testimonial.company}
                   </p>
                 </div>

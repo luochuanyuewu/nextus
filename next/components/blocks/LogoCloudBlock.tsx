@@ -34,7 +34,7 @@ export default function LogoCloudBlock({ data }: Props) {
           {data.logos.map(({ file }, fileIdx) => (
             <motion.div
               key={file.id}
-              className='flex items-center justify-center rounded-bl-3xl rounded-tr-3xl border-2 p-8 '
+              className='flex items-center justify-center rounded-bl-3xl rounded-tr-3xl border-2 bg-white p-8'
               initial={{
                 opacity: 0,
                 y: 100,

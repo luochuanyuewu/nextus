@@ -56,7 +56,7 @@ function HeroBlock({ data }: HeroBlockProps) {
         {data.image && (
           <div className='rounded-tl-[64px] border-2 md:-mr-16 lg:relative lg:-mr-48 lg:h-full'>
             <Image
-              className='max-h-[700px] w-full overflow-hidden rounded-tl-[56px] object-cover dark:brightness-90'
+              className='max-h-[700px] w-full overflow-hidden rounded-tl-[56px] object-cover'
               width='500'
               height='500'
               src={getDirectusMedia(data.image) as any}

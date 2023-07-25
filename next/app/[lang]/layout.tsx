@@ -21,21 +21,21 @@ export async function generateMetadata({
 }: {
   params: { lang: string }
 }): Promise<Metadata> {
-  const global = (await directusApi.request(
+  const globals = (await directusApi.request(
     readSingleton('globals')
   )) as Globals
 
-  // const { url } = favicon.data.attributes;
-  // const url = new URL(favicon, `${getDirectusURL()}/assets/`)
+  console.log('favicon:' + globals.favicon)
+  const url = getDirectusMedia(globals.favicon)
   return {
     title: {
-      template: `%s | ${global.title}`,
-      default: global.title || FALLBACK_SEO.title,
+      template: `%s | ${globals.title}`,
+      default: globals.title || FALLBACK_SEO.title,
     },
-    description: global.description,
-    openGraph: { images: getDirectusMedia(global.og_image || '') },
+    description: globals.description,
+    openGraph: { images: getDirectusMedia(globals.og_image || '') },
     icons: {
-      // icon: [url],
+      icon: [url],
     },
   }
 }

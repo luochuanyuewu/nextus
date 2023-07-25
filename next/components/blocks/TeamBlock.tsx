@@ -104,11 +104,11 @@ export default function TeamBlock({ data }: TeamBlockProps) {
             )}
           </div>
           <div
-            className='relative grid h-[49rem] max-h-[60vh] grid-cols-1 items-start gap-8 overflow-hidden border-b-4 border-t-4 border-b-gray-500 border-t-accent px-4 md:grid-cols-2'
+            className='relative grid h-[49rem] max-h-[60vh] grid-cols-1 items-start gap-8 overflow-hidden border-b-4 border-t-4 border-b-base-300 border-t-accent px-4 md:grid-cols-2'
             ref={targetRef}
           >
-            <div className='absolute top-0 z-10 h-16 w-full bg-gradient-to-b from-white to-transparent dark:from-gray-800' />
-            <div className='absolute bottom-0 z-10 h-16 w-full bg-gradient-to-t from-white to-transparent dark:from-gray-800' />
+            <div className='absolute top-0 z-10 h-16 w-full bg-gradient-to-b from-base-300 to-transparent ' />
+            <div className='absolute bottom-0 z-10 h-16 w-full bg-gradient-to-t from-base-300 to-transparent ' />
             <div
               className={`${
                 isVisible ? 'animate-marquee' : ''

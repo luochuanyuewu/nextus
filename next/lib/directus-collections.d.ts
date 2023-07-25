@@ -621,6 +621,7 @@ export type Globals = {
   deployment: string;
   description?: string | null;
   email?: string | null;
+  favicon?: string | DirectusFiles | null;
   id: string;
   og_image?: string | DirectusFiles | null;
   phone?: string | null;

@@ -21,15 +21,13 @@ export function VAccordion({ title, children }: Props) {
           open ? 'border-gray-500' : 'border-transparent'
         }`}
       >
-        <div className='relative rounded-br-2xl rounded-tl-2xl bg-gray-100 px-6 py-4 dark:bg-gray-800'>
+        <div className='relative rounded-br-2xl rounded-tl-2xl  px-6 py-4 '>
           <dt className='text-lg leading-7'>
             <button
-              className='flex w-full items-start justify-between text-left font-mono text-gray-400 focus:text-gray-900 focus:outline-none dark:focus:text-accent'
+              className='flex w-full items-start justify-between text-left font-mono focus:outline-none dark:focus:text-accent'
               onClick={handleToggle}
             >
-              <span className='font-bold text-gray-900 dark:text-white'>
-                {title}
-              </span>
+              <span className='font-bold '>{title}</span>
               <span className='flex items-center'>
                 {!open && (
                   <VIcon
