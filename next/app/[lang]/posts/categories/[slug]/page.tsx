@@ -44,13 +44,13 @@ export default async function PageRoute({
 
   return (
     <PageContainer>
-      <header className='border-b-2 border-gray-300 pb-6 dark:border-gray-700'>
+      <header className='border-b-2 border-base-300 pb-6 '>
         <TypographyTitle>Agency Blog</TypographyTitle>
         <TypographyHeadline content='<p>Articles on <em>development</em>, marketing, and more.</p>' />
         <div></div>
       </header>
       <section className='relative w-full items-center space-y-12 py-12'>
-        <div className='relative grid gap-12 border-b-2 border-gray-300 pb-12 dark:border-gray-700 md:grid-cols-2 lg:grid-cols-4'>
+        <div className='relative grid gap-12 border-b-2 border-base-300 pb-12  md:grid-cols-2 lg:grid-cols-4'>
           <div>
             <TypographyTitle
               as='p'
@@ -78,7 +78,7 @@ export default async function PageRoute({
                   key={post.id}
                   post={post}
                   even={isEven(postIdx)}
-                  className='col-span-2 border-b border-gray-300 pb-6 dark:border-gray-700'
+                  className='col-span-2 border-b border-base-300 pb-6 '
                 />
               ))}
             </div>

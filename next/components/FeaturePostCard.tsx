@@ -34,10 +34,10 @@ const FeaturePostCard = ({ post }: { post: Posts }) => {
 
       <div className='group relative overflow-hidden rounded-tl-3xl rounded-tr-3xl px-8 transition duration-300'>
         <Link className='g relative block' href={`/posts/${post.slug}`}>
-          <p className='mt-5 font-serif text-3xl font-semibold text-gray-900 transition duration-300 group-hover:text-accent dark:text-white'>
+          <p className='mt-5 font-serif text-3xl font-semibold  transition duration-300 group-hover:text-accent '>
             {post.title}
           </p>
-          <p className='mt-3 font-mono text-sm text-gray-500 dark:text-gray-300'>
+          <p className='mt-3 font-mono text-sm '>
             {truncateString(post.summary as any, 150)}
           </p>
         </Link>

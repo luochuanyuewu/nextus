@@ -14,7 +14,7 @@ async function fetchData() {
   const posts = await directusApi.request(
     readItems('posts', {
       filter: {
-        // status: { _eq: 'published' },
+        status: { _eq: 'published' },
       },
       sort: ['date_published'],
 
@@ -34,7 +34,7 @@ export default async function PageRoute() {
 
   return (
     <PageContainer>
-      <header className='border-b border-gray-300 pb-6 dark:border-gray-700'>
+      <header className='border-b border-base-300 pb-6 '>
         <TypographyTitle>Agency Blog</TypographyTitle>
         <TypographyHeadline>
           <p>
@@ -43,7 +43,7 @@ export default async function PageRoute() {
         </TypographyHeadline>
       </header>
       <section className='relative w-full space-y-12 py-12'>
-        <div className='relative grid w-full gap-12 border-b-2 border-gray-300 pb-12 dark:border-gray-700 md:grid-cols-2 lg:grid-cols-4'>
+        <div className='relative grid w-full gap-12 border-b-2 border-base-300 pb-12  md:grid-cols-2 lg:grid-cols-4'>
           <div>
             <TypographyTitle className='text-gray-700 dark:text-gray-400'>
               Search
@@ -67,7 +67,7 @@ export default async function PageRoute() {
                 key={post.id}
                 post={post}
                 even={isEven(postIdx)}
-                className={`border-b border-gray-300 pb-6 dark:border-gray-700 ${
+                className={`border-b border-base-300 pb-6  ${
                   postIdx < 2 ? 'md:col-span-2' : 'md:col-span-1'
                 }`}
               />

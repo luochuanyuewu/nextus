@@ -43,7 +43,7 @@ export default function Post({ data }: { data: Article }) {
   )
 
   return (
-    <article className='card card-compact card-bordered space-y-8'>
+    <article className='card-bordered card card-compact space-y-8'>
       <div className='card-body'>
         <div className='space-y-6'>
           <h1 className='card-title text-4xl  '>{title}</h1>
@@ -55,7 +55,7 @@ export default function Post({ data }: { data: Article }) {
                   alt='article cover image'
                   width={400}
                   height={400}
-                  className='h-14 w-14 rounded-full border dark:border-gray-700 dark:bg-gray-500'
+                  className='h-14 w-14 rounded-full border  dark:bg-gray-500'
                 />
               )}
               <p className='text-md dark:text-violet-400'>

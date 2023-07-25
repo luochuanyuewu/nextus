@@ -40,7 +40,7 @@ export default function ArticleSelect({
 }) {
   return (
     <>
-      <div className='card card-compact bg-base-100 my-3 w-96 shadow-xl'>
+      <div className='card card-compact my-3 w-96 bg-base-100 shadow-xl'>
         <div className='card-body'>
           <h2 className='card-title'>分类浏览</h2>
           <div className='flex flex-wrap space-x-2 py-6'>
@@ -66,7 +66,7 @@ export default function ArticleSelect({
         </div>
       </div>
 
-      <div className='card card-compact bg-base-100 w-96 shadow-xl'>
+      <div className='card-compact card w-96 bg-base-100 shadow-xl'>
         <div className='card-body'>
           <h2 className='card-title'>相关内容</h2>
           <ul className='ml-4 list-disc space-y-1'>

@@ -23,7 +23,7 @@ function PostCard({ post, even, className }: PostCardProps) {
             even
               ? 'rounded-br-3xl rounded-tl-3xl'
               : 'rounded-bl-3xl rounded-tr-3xl',
-            'relative h-56 w-full overflow-hidden border-2 border-transparent p-2 transition duration-150 hover:border-gray-300 dark:hover:border-gray-700',
+            'relative h-56 w-full overflow-hidden border-2 border-transparent p-2 transition duration-150 hover:border-base-300 ',
           ].join(' ')}
         >
           <div
@@ -60,10 +60,10 @@ function PostCard({ post, even, className }: PostCardProps) {
 
       <Link className='h-full' href={`/posts/${post.slug}`}>
         {/* Icon */}
-        <p className='mt-5 font-serif text-xl font-semibold text-gray-900 group-hover:text-accent dark:text-white'>
+        <p className='mt-5 font-serif text-xl font-semibold group-hover:text-accent'>
           {post.title}
         </p>
-        <p className='mt-3 font-mono text-sm text-gray-500 dark:text-gray-300'>
+        <p className='mt-3 font-mono text-sm '>
           {truncateString(post?.summary ?? '', 150)}
         </p>
       </Link>

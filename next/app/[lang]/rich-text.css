@@ -29,7 +29,7 @@
 
 /* Horizontal rules */
 .rich-text hr {
-    @apply border-gray-300 my-8;
+    @apply border-base-300 my-8;
 }
 
 .rich-text a {
@@ -91,15 +91,15 @@
 
 /* Tables */
 .rich-text table {
-    @apply w-full border-collapse border-gray-300 my-6;
+    @apply w-full border-collapse border-base-300 my-6;
 }
 
 .rich-text th {
-    @apply bg-gray-900 text-left py-2 px-4 font-semibold border-b border-gray-300;
+    @apply bg-gray-900 text-left py-2 px-4 font-semibold border-b border-base-300;
 }
 
 .rich-text td {
-    @apply py-2 px-4 border-b border-gray-300;
+    @apply py-2 px-4 border-b border-base-300;
 }
 
 /* Images */

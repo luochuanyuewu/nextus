@@ -102,7 +102,7 @@ export default function GlobalSearch({
             />
           </button>
         )}
-        <Combobox.Options className='scrollbar-hide absolute z-10 mt-4 max-h-[300px] w-full overflow-auto rounded-bl-xl border border-gray-300 bg-gray-100 pt-2 shadow-md dark:border-gray-700 dark:bg-gray-900 sm:text-sm'>
+        <Combobox.Options className='scrollbar-hide absolute z-10 mt-4 max-h-[300px] w-full overflow-auto rounded-bl-xl border border-base-300 bg-gray-100 pt-2 shadow-md  dark:bg-gray-900 sm:text-sm'>
           <div className='relative space-y-2 px-2'>
             {loading && (
               <div className='flex h-12 w-full items-center justify-center'>

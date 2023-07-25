@@ -121,7 +121,7 @@ export default async function PageRoute({
 
           <div className='mt-6 block px-6 md:hidden'>
             {page.author && <VAvatar author={page.author as DirectusUsers} />}
-            <div className='mt-4 flex justify-between border-b pb-4 dark:border-gray-700'>
+            <div className='mt-4 flex justify-between border-b pb-4 '>
               <div className='space-y-2'>
                 <p className='flex font-mono text-gray-500 dark:text-gray-300'>
                   <VIcon icon='heroicons:clock' className='mr-2 h-6 w-6' />

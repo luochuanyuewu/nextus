@@ -64,7 +64,7 @@ export default async function PageRoute({ params }: { params: any }) {
             )}
           </main>
           <aside className=''>
-            <div className='flex-shrink-0 space-y-8 rounded-bl-2xl rounded-tr-2xl border-2 p-4 dark:border-gray-700 md:w-[300px]'>
+            <div className='flex-shrink-0 space-y-8 rounded-bl-2xl rounded-tr-2xl border-2 p-4  md:w-[300px]'>
               <div>
                 <TypographyTitle>Client</TypographyTitle>
                 <p className='font-mono font-bold dark:text-white'>

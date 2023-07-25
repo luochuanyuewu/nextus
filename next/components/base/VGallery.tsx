@@ -80,7 +80,7 @@ function VGallery({ items }: GalleryProps) {
                 itemIdx % 2 === 0
                   ? 'rounded-br-3xl rounded-tl-3xl'
                   : 'rounded-bl-3xl rounded-tr-3xl'
-              } group relative mb-6 block w-full overflow-hidden border-2 border-transparent p-2 transition duration-300 hover:border-gray-300 dark:hover:border-gray-600`}
+              } group relative mb-6 block w-full overflow-hidden border-2 border-transparent p-2 transition duration-300 hover:border-base-300 dark:hover:border-gray-600`}
             >
               <div
                 className={`${

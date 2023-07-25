@@ -27,7 +27,7 @@ export default async function PageRoute({ params }: Props) {
 
   return (
     <PageContainer>
-      <header className='border-b-2 border-gray-300 pb-6 dark:border-gray-700'>
+      <header className='border-b-2 border-base-300 pb-6 '>
         <TypographyTitle>Agency Projects</TypographyTitle>
         <TypographyHeadline content='<p>We kill it for you <em>(our clients)</em>.</p>' />
       </header>
@@ -42,7 +42,7 @@ export default async function PageRoute({ params }: Props) {
                 isEven(projectIdx)
                   ? 'rounded-br-3xl rounded-tl-3xl'
                   : 'rounded-bl-3xl rounded-tr-3xl',
-                'relative mb-6 block w-full overflow-hidden border-2 border-transparent p-2 transition duration-300 hover:border-gray-300 dark:hover:border-gray-600',
+                'relative mb-6 block w-full overflow-hidden border-2 border-transparent p-2 transition duration-300 hover:border-base-300 dark:hover:border-gray-600',
               ].join(' ')}
             >
               <div

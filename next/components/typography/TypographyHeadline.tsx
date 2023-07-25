@@ -33,14 +33,29 @@ function TypographyHeadline(props: HeadlineProps) {
   }
 
   return (
-    <div
-      className={twMerge(
-        getClassNames(),
-        'color-em font-serif font-bold leading-snug tracking-tight dark:text-white',
-        props.className
+    <>
+      {content && (
+        <div
+          className={twMerge(
+            getClassNames(),
+            'color-em font-serif font-bold leading-snug tracking-tight ',
+            props.className
+          )}
+          dangerouslySetInnerHTML={renderContent()}
+        ></div>
       )}
-      dangerouslySetInnerHTML={renderContent()}
-    />
+      {!content && (
+        <div
+          className={twMerge(
+            getClassNames(),
+            'color-em font-serif font-bold leading-snug tracking-tight ',
+            props.className
+          )}
+        >
+          {props.children}
+        </div>
+      )}
+    </>
   )
 }
 

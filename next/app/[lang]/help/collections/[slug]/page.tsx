@@ -32,7 +32,7 @@ export default async function CollectionPage({
 
   return (
     <PageContainer>
-      <header className='border-b border-gray-300 pb-8 dark:border-gray-700'>
+      <header className='border-b border-base-300 pb-8 '>
         <GlobalSearch
           placeholder='Search for articles'
           collections={['help_articles']}
