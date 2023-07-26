@@ -1,6 +1,9 @@
-import { Navigation, NavigationItems } from '@/lib/directus-collections'
-import directusApi from '@/lib/utils/directus-api'
-import { readItem, readItems, readSingleton } from '@directus/sdk'
+import { NavigationItems } from '@/lib/directus-collections'
+import {
+  fetchForm,
+  fetchGlobals,
+  fetchNavigationSafe,
+} from '@/lib/utils/directus-api'
 import LogoV2 from '@/components/LogoV2'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
@@ -8,38 +11,7 @@ import VIcon from '@/components/base/VIcon'
 import Link from 'next/link'
 import VForm from '@/components/base/VForm'
 
-async function fetchAsyncData() {
-  try {
-    const navigation = (await directusApi.request(
-      readItem('navigation', 'footer', {
-        fields: [
-          {
-            items: ['*', { page: ['slug'] }, { children: ['*'] }],
-          },
-        ],
-      })
-    )) as Navigation
-
-    const forms = await directusApi.request(
-      readItems('forms', {
-        filter: {
-          key: {
-            _eq: 'newsletter',
-          },
-        },
-        limit: 1,
-      })
-    )
-
-    const globals = await directusApi.request(readSingleton('globals'))
-
-    return { navigation, form: forms.length > 0 ? forms[0] : null, globals }
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-async function TheFooter() {
+async function TheFooter({ lang = 'zh' }: { lang?: string }) {
   function getUrl(item: NavigationItems) {
     if (item.type === 'page' && typeof item.page !== 'string') {
       return `/${item.page?.slug}`
@@ -48,39 +20,12 @@ async function TheFooter() {
     }
   }
 
-  const fetchNavigation = async function () {
-    try {
-      const nav = (await directusApi.request(
-        readItem('navigation', 'footer', {
-          fields: [
-            {
-              items: ['*', { page: ['slug'] }, { children: ['*'] }],
-            },
-          ],
-        })
-      )) as Navigation
-      return nav
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  const navigation = await fetchNavigation()
-
-  const forms = await directusApi.request(
-    readItems('forms', {
-      filter: {
-        key: {
-          _eq: 'newsletter',
-        },
-      },
-      limit: 1,
-    })
-  )
-
-  const form = forms && forms.length > 0 ? forms[0] : undefined
-
-  const globals = await directusApi.request(readSingleton('globals'))
+  const [globals, navigation, form] = await Promise.all([
+    fetchGlobals(lang),
+    fetchNavigationSafe('footer'),
+    fetchForm('newsletter'),
+  ])
+  const globalData = globals.translations && globals.translations[0]
 
   return (
     <footer
@@ -95,7 +40,7 @@ async function TheFooter() {
               <LogoV2 className='h-8 ' />
             </a>
             <p className='mt-2 font-mono text-sm text-gray-500'>
-              {globals.tagline}
+              {globalData?.tagline}
             </p>
           </div>
           <div className='flex w-full items-center justify-end space-x-2'>
@@ -139,9 +84,9 @@ async function TheFooter() {
       {/* Bottom */}
       <div className='mx-auto max-w-7xl border-t py-6  md:flex md:items-center md:justify-between lg:px-16'>
         <div className='flex items-center justify-center space-x-6 md:order-last md:mb-0'>
-          {globals &&
-            globals.social_links &&
-            globals.social_links.map((link) => (
+          {globalData &&
+            globalData.social_links &&
+            globalData.social_links.map((link) => (
               <a
                 key={link.service}
                 href={link.url}
@@ -166,7 +111,7 @@ async function TheFooter() {
               className='mx-2 hover:text-accent'
               rel='noopener noreferrer'
             >
-              {globals?.title ?? 'site title'}.
+              {globalData?.title ?? 'site title'}.
             </a>
             All rights reserved.
           </span>

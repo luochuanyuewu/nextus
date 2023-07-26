@@ -2,11 +2,11 @@
 
 import React, { useMemo } from 'react'
 import { FieldValues, UseFormReturn } from 'react-hook-form'
-import { FormElement } from '@/lib/schemas'
+import { FormSchema } from '@/lib/directus-collections'
 import formTheme from '@/form.theme'
 
 export default function DirectusFormBuilder(props: {
-  element: FormElement
+  element: FormSchema
   hookForm: UseFormReturn<FieldValues, any>
 }) {
   const { element, hookForm } = props

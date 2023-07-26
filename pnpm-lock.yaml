@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@directus/sdk':
-    specifier: 11.0.0-beta.5
-    version: registry.npmmirror.com/@directus/sdk@11.0.0-beta.5
+    specifier: 11.0.0
+    version: registry.npmmirror.com/@directus/sdk@11.0.0
   '@formatjs/intl-localematcher':
     specifier: ^0.4.0
     version: registry.npmmirror.com/@formatjs/intl-localematcher@0.4.0
@@ -173,10 +173,10 @@ packages:
       regenerator-runtime: registry.npmmirror.com/regenerator-runtime@0.13.11
     dev: false
 
-  registry.npmmirror.com/@directus/sdk@11.0.0-beta.5:
-    resolution: {integrity: sha512-jVoaKlbjY2dH8LTaEbzSvtjB1i8NonAG1yabK2zmKpwpgXoK2EJqPbiXpo5Bim2/DTUQeWLjwao/21UEZN8a3g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@directus/sdk/-/sdk-11.0.0-beta.5.tgz}
+  registry.npmmirror.com/@directus/sdk@11.0.0:
+    resolution: {integrity: sha512-cYqvidmPi9PjxeANW1sgzjE1P4mWqy9QZ90LIO+I6hS9dKH6558YExD/Ylopn46yWuoDn/rAUKGHuh04WXEqvg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@directus/sdk/-/sdk-11.0.0.tgz}
     name: '@directus/sdk'
-    version: 11.0.0-beta.5
+    version: 11.0.0
     engines: {node: '>=18.0.0'}
     dev: false
 

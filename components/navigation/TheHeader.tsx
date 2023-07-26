@@ -1,8 +1,6 @@
-import directusApi from '@/lib/utils/directus-api'
-import { readItem, readSingleton } from '@directus/sdk'
+import { fetchGlobals, fetchNavigationSafe } from '@/lib/utils/directus-api'
 import {
-  Globals,
-  Navigation,
+  GlobalsTranslations,
   NavigationItems,
 } from '@/lib/directus-collections'
 import MenuItem from '@/components/navigation/MenuItem'
@@ -10,27 +8,15 @@ import Link from 'next/link'
 import LogoV2 from '@/components/LogoV2'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 
-export default async function TheHeader() {
-  const fetchNavigation = async function () {
-    try {
-      const nav = (await directusApi.request(
-        readItem('navigation', 'main', {
-          fields: [
-            {
-              items: ['*', { page: ['slug'] }, { children: ['*'] }],
-            },
-          ],
-        })
-      )) as Navigation
-      return nav
-    } catch (error) {
-      console.log(error)
-    }
-  }
+export default async function TheHeader({ lang }: { lang: string }) {
+  const [globals, navigation] = await Promise.all([
+    fetchGlobals(lang),
+    fetchNavigationSafe('main'),
+  ])
 
-  const navigation = await fetchNavigation()
-
-  const global = await directusApi.request(readSingleton('globals'))
+  const globalData =
+    globals.translations && (globals.translations[0] as GlobalsTranslations)
+  const navigationItems = navigation.items as NavigationItems[]
 
   return (
     <div className='pt-1'>
@@ -38,14 +24,14 @@ export default async function TheHeader() {
         <div className='flex items-center rounded-br-xl rounded-tl-xl  md:flex-1 md:justify-between'>
           <Link href='/' className='px-4 py-4'>
             <LogoV2 className='h-6 ' />
-            <span className='sr-only'>{global.title}</span>
+            <span className='sr-only'>{globalData?.title}</span>
           </Link>
           <nav
             className='hidden font-mono md:flex md:space-x-4 lg:space-x-6'
             aria-label='Global'
           >
-            {navigation?.items &&
-              navigation.items.map((item: NavigationItems) => (
+            {navigationItems &&
+              navigationItems.map((item: NavigationItems) => (
                 <MenuItem key={item.id} item={item} />
               ))}
           </nav>

@@ -1,10 +1,7 @@
 import type { Metadata } from 'next'
 
 import './globals.css'
-import { i18n } from '@/i18n-config'
-import directusApi from '@/lib/utils/directus-api'
-import { readSingleton } from '@directus/sdk'
-import { Globals } from '@/lib/directus-collections'
+import { fetchGlobals } from '@/lib/utils/directus-api'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import TheHeader from '@/components/navigation/TheHeader'
 import TheFooter from '@/components/navigation/TheFooter'
@@ -21,19 +18,20 @@ export async function generateMetadata({
 }: {
   params: { lang: string }
 }): Promise<Metadata> {
-  const globals = (await directusApi.request(
-    readSingleton('globals')
-  )) as Globals
+  const globals = await fetchGlobals(params.lang)
 
-  console.log('favicon:' + globals.favicon)
-  const url = getDirectusMedia(globals.favicon)
+  if (!globals.translations || globals.translations.length <= 0)
+    return FALLBACK_SEO
+
+  const data = globals.translations[0]
+  const url = getDirectusMedia(data.favicon)
   return {
     title: {
-      template: `%s | ${globals.title}`,
-      default: globals.title || FALLBACK_SEO.title,
+      template: `%s | ${data.title}`,
+      default: data.title,
     },
-    description: globals.description,
-    openGraph: { images: getDirectusMedia(globals.og_image || '') },
+    description: data.description,
+    openGraph: { images: getDirectusMedia(data.og_image || '') },
     icons: {
       icon: [url],
     },
@@ -57,7 +55,7 @@ export default async function RootLayout({
             className='mouse-gradient absolute top-0 h-[200px] w-[200px] rounded-full transition-opacity'
             // style="opacity: 0"
           /> */}
-          <TheHeader />
+          <TheHeader lang={params.lang} />
           <div className=''>{children}</div>
           <TheFooter />
         </main>

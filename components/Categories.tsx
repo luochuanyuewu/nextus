@@ -1,13 +1,12 @@
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import { Categories } from '@/lib/directus-collections'
 import Link from 'next/link'
 import VBadge from '@/components/base/VBadge'
 
 async function fetchData() {
   const categories = await directusApi.request(readItems('categories'))
 
-  return categories as Array<Categories>
+  return categories
 }
 
 export default async function Categories() {

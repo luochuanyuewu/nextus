@@ -1,7 +1,7 @@
 'use client'
 
-import { Forms } from '@/lib/directus-collections'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { Forms, FormSchema } from '@/lib/directus-collections'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import VAlert from '@/components/base/VAlert'
 import directusApi from '@/lib/utils/directus-api'
@@ -9,7 +9,6 @@ import { createItem } from '@directus/sdk'
 import { useForm } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
 import DirectusFormBuilder from '@/components/form/DirectusFormBuilder'
-import { FormElement } from '@/lib/schemas'
 import { cn } from '@/lib/utils'
 import formTheme from '@/form.theme'
 
@@ -18,7 +17,7 @@ interface FormProps {
   className?: string
 }
 
-function transformSchema(schema: Array<FormElement>) {
+function transformSchema(schema: Array<FormSchema>) {
   return schema.map((item) => {
     const newItem = { ...item }
     // newItem.$formkit = newItem.type
@@ -66,11 +65,7 @@ function VForm(props: FormProps) {
         })
       )
       setSuccess(true)
-      if (
-        form.on_success === 'redirect' &&
-        form.redirect_url &&
-        typeof form.redirect_url === 'string'
-      ) {
+      if (form.on_success === 'redirect' && form.redirect_url) {
         return router.push(props.form.redirect_url as string)
       }
       console.log('form redirect_url invali.')

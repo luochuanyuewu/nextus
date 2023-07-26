@@ -5,19 +5,6 @@ import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import Image from 'next/image'
 import { BlockHero } from '@/lib/directus-collections'
 
-interface Hero {
-  id: string
-  headline: string
-  content: string
-  image: string
-  buttons?: Array<{
-    label: string
-    href: string
-    variant: string
-    open_in_new_window: boolean
-  }>
-}
-
 interface HeroBlockProps {
   data: BlockHero
 }

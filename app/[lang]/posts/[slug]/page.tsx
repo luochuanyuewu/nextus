@@ -41,7 +41,7 @@ export async function generateMetadata({
   const page = await getPostBySlug(params.slug)
   if (page == null) {
     return {
-      title: 'unknown post.',
+      title: 'a post',
     }
   }
   return {

@@ -41,7 +41,7 @@ export interface TeamBlockProps {
 }
 
 export default function TeamBlock({ data }: TeamBlockProps) {
-  const [teamMembers, setTeamMembers] = useState<Array<Team>>([])
+  const [teamMembers, setTeamMembers] = useState<Team[]>([])
 
   const [duration, setDuration] = useState<string>('3000 ms')
 
@@ -81,7 +81,7 @@ export default function TeamBlock({ data }: TeamBlockProps) {
   useEffect(() => {
     async function fetchData() {
       const team = await directusApi.request(readItems('team'))
-      setTeamMembers(team)
+      setTeamMembers(team as any)
     }
 
     fetchData()
