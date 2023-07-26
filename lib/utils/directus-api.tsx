@@ -16,6 +16,6 @@ const directusApi = createDirectus<DirectusSchema>(getDirectusURL())
   )
   .with(authentication('json', { autoRefresh: false }))
 
-directusApi.setToken(process.env.NEXT_PUBLIC_DIRECTUS_TOKEN || '')
+directusApi.setToken(process.env.DIRECTUS_ADMIN_TOKEN || '')
 
 export default directusApi
