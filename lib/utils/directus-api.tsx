@@ -9,7 +9,8 @@ import {
   rest,
   RestCommand,
 } from '@directus/sdk'
-import { DirectusSchema, Navigation } from '@/lib/directus-collections'
+import { Forms, Globals, Navigation } from '@/lib/directus-collections'
+import { DirectusSchema } from '@/lib/directus-schema'
 
 const withRequestCallback = function <Schema extends object, Output>(
   onRequest: RequestTransformer,
@@ -59,7 +60,7 @@ const directusApi = createDirectus<DirectusSchema>(getDirectusURL())
 directusApi.setToken(process.env.DIRECTUS_ADMIN_TOKEN || '')
 
 const fetchGlobals = async function name(lang: string) {
-  return await directusApi.request(
+  return (await directusApi.request(
     withRevalidate(
       readSingleton('globals', {
         deep: {
@@ -77,17 +78,15 @@ const fetchGlobals = async function name(lang: string) {
           {
             translations: [
               '*',
-              {
-                project_setting: ['*'],
-                blog_setting: ['*'],
-              },
+              { project_setting: ['*'] },
+              { blog_setting: ['*'] },
             ],
           },
         ],
       }),
       60
     )
-  )
+  )) as Globals
 }
 
 const fetchNavigation = async function name(id: string) {
@@ -104,7 +103,7 @@ const fetchNavigation = async function name(id: string) {
 }
 
 const fetchNavigationSafe = async function name(id: string) {
-  return await directusApi.request(
+  const nav = (await directusApi.request(
     withRevalidate(
       readItem('navigation', id, {
         fields: [
@@ -116,11 +115,12 @@ const fetchNavigationSafe = async function name(id: string) {
       }),
       60
     )
-  )
+  )) as Navigation
+  return nav
 }
 
 const fetchForm = async function (id: string, languages_code?: string) {
-  const forms = await directusApi.request(
+  const forms = (await directusApi.request(
     readItems('forms', {
       fields: ['*'],
       filter: {
@@ -130,11 +130,36 @@ const fetchForm = async function (id: string, languages_code?: string) {
       },
       limit: 1,
     })
-  )
+  )) as Forms[]
 
   return forms[0]
 }
 
+async function fetchHelpArticles(slug: string) {
+  const articles = await directusApi.request(
+    readItems('help_articles', {
+      filter: {
+        slug: {
+          _eq: slug,
+        },
+      },
+      limit: 1,
+      fields: [
+        '*',
+        { help_collection: ['slug', 'title', 'id'] },
+        { owner: ['first_name', 'last_name', 'avatar'] },
+      ],
+    })
+  )
+  return articles
+}
+
 export default directusApi
 
-export { fetchGlobals, fetchNavigationSafe, fetchForm }
+export {
+  fetchGlobals,
+  fetchNavigationSafe,
+  fetchForm,
+  fetchNavigation,
+  fetchHelpArticles,
+}

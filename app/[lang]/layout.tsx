@@ -7,6 +7,7 @@ import TheHeader from '@/components/navigation/TheHeader'
 import TheFooter from '@/components/navigation/TheFooter'
 import ScrollToTopButton from '@/components/ScrollToTopButton'
 import { Analytics } from '@/components/analytics'
+import { GlobalsTranslations } from '@/lib/directus-collections'
 
 const FALLBACK_SEO = {
   title: 'Directus Starter Next',
@@ -19,12 +20,11 @@ export async function generateMetadata({
   params: { lang: string }
 }): Promise<Metadata> {
   const globals = await fetchGlobals(params.lang)
-
+  // @ts-ignore
   if (!globals.translations || globals.translations.length <= 0)
     return FALLBACK_SEO
-
-  const data = globals.translations[0]
-  const url = getDirectusMedia(data.favicon)
+  const data = globals.translations[0] as GlobalsTranslations
+  const url = getDirectusMedia(globals.favicon)
   return {
     title: {
       template: `%s | ${data.title}`,

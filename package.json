@@ -11,7 +11,7 @@
     "format": "prettier '**/*.{json,yaml}' --write --ignore-path .gitignore"
   },
   "dependencies": {
-    "@directus/sdk": "11.0.0",
+    "@directus/sdk": "^11.0.0",
     "@formatjs/intl-localematcher": "^0.4.0",
     "@headlessui/react": "^1.7.15",
     "@hookform/error-message": "^2.0.1",
@@ -26,7 +26,7 @@
     "clsx": "^2.0.0",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.12",
-    "framer-motion": "^10.12.20",
+    "framer-motion": "^10.13.1",
     "micromark": "^4.0.0",
     "micromark-extension-gfm": "^3.0.0",
     "negotiator": "^0.6.3",
@@ -48,17 +48,17 @@
   },
   "devDependencies": {
     "@iconify/react": "^4.1.1",
-    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/forms": "^0.5.4",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "18.16.1",
     "@types/uuid": "^9.0.2",
     "autoprefixer": "^10.4.14",
-    "daisyui": "^3.3.1",
+    "daisyui": "^3.5.0",
     "eslint-config-prettier": "^8.8.0",
-    "postcss": "^8.4.25",
+    "postcss": "^8.4.27",
     "postcss-import": "^15.1.0",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.4.1",
-    "tailwindcss": "^3.3.2"
+    "tailwindcss": "^3.3.3"
   }
 }

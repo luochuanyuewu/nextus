@@ -1,5 +1,4 @@
-import directusApi from '@/lib/utils/directus-api'
-import { readItems } from '@directus/sdk'
+import { fetchHelpArticles } from '@/lib/utils/directus-api'
 import PageContainer from '@/components/PageContainer'
 import GlobalSearch from '@/components/GlobalSearch'
 import VBreadcrumbs from '@/components/base/VBreadcrumbs'
@@ -7,31 +6,18 @@ import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import VAvatar from '@/components/base/VAvatar'
 import TypographyProse from '@/components/typography/TypographyProse'
 import { markdownToHtml } from '@/lib/utils/markdown'
+import { HelpArticles } from '@/lib/directus-collections'
 
 export default async function ArticlePage({
   params,
 }: {
   params: { slug: string }
 }) {
-  const articles = await directusApi.request(
-    readItems('help_articles', {
-      filter: {
-        slug: {
-          _eq: params.slug,
-        },
-      },
-      limit: 1,
-      fields: [
-        '*',
-        { help_collection: ['slug', 'title', 'id'] },
-        { owner: ['first_name', 'last_name', 'avatar'] },
-      ],
-    })
-  )
+  const articles = await fetchHelpArticles(params.slug)
 
   if (articles.length === 0) return null
 
-  const article = articles[0]
+  const article = articles[0] as HelpArticles
   return (
     <PageContainer>
       <header className='border-b  pb-8 '>

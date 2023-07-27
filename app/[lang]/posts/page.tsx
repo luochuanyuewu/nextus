@@ -1,6 +1,6 @@
 import { readItems } from '@directus/sdk'
 import { Posts } from '@/lib/directus-collections'
-import directusApi from '@/lib/utils/directus-api'
+import directusApi, { fetchGlobals } from '@/lib/utils/directus-api'
 import PageContainer from '@/components/PageContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
@@ -29,18 +29,27 @@ async function fetchData() {
   return posts as Array<Posts>
 }
 
-export default async function PageRoute() {
+export default async function PageRoute({
+  params,
+}: {
+  params: { lang: string }
+}) {
   const posts = await fetchData()
+  const globals = await fetchGlobals(params.lang)
+
+  const globalData = globals.translations[0]
 
   return (
     <PageContainer>
       <header className='border-b border-base-300 pb-6 '>
-        <TypographyTitle>Agency Blog</TypographyTitle>
-        <TypographyHeadline>
-          <p>
-            Articles on <em>development</em>, marketing, and more.
-          </p>
-        </TypographyHeadline>
+        <TypographyTitle>
+          {globalData.blog_setting.title || 'Nextus blog'}
+        </TypographyTitle>
+        {globalData.blog_setting.headline && (
+          <TypographyHeadline
+            content={globalData.blog_setting.headline}
+          ></TypographyHeadline>
+        )}
       </header>
       <section className='relative w-full space-y-12 py-12'>
         <div className='relative grid w-full gap-12 border-b-2 border-base-300 pb-12  md:grid-cols-2 lg:grid-cols-4'>

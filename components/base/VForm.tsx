@@ -1,6 +1,6 @@
 'use client'
 
-import { Forms, FormSchema } from '@/lib/directus-collections'
+import { Forms } from '@/lib/directus-collections'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import VAlert from '@/components/base/VAlert'
@@ -11,6 +11,7 @@ import { ErrorMessage } from '@hookform/error-message'
 import DirectusFormBuilder from '@/components/form/DirectusFormBuilder'
 import { cn } from '@/lib/utils'
 import formTheme from '@/form.theme'
+import { FormSchema } from '@/lib/directus-schema'
 
 interface FormProps {
   form: Forms
@@ -117,7 +118,7 @@ function VForm(props: FormProps) {
           </div>
           <div className='col-span-6 mx-auto'>
             <div className='form-control mt-6'>
-              <button className='btn-primary btn'>
+              <button className='btn btn-primary'>
                 {loading && <span className='loading loading-spinner'></span>}
                 {!loading && props.form.submit_label}
               </button>

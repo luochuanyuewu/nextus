@@ -1,4 +1,7 @@
-export type BlockCardgroup = {
+import HeroBlock from '@/components/blocks/HeroBlock'
+import { FormSchema, SocialLink } from '@/lib/directus-schema'
+
+export interface BlockCardgroup {
   cards?: BlockCardgroupCards[]
   group_type?: string
   headline?: string
@@ -7,7 +10,7 @@ export type BlockCardgroup = {
   title?: string
 }
 
-export type BlockCardgroupCards = {
+export interface BlockCardgroupCards {
   block_cardgroup_id?: string | BlockCardgroup
   href?: string
   id: string
@@ -17,20 +20,20 @@ export type BlockCardgroupCards = {
   title?: string
 }
 
-export type BlockCardgroupPosts = {
+export interface BlockCardgroupPosts {
   block_cardgroup_id?: string | BlockCardgroup
   id: number
   posts_id?: string | Posts
 }
 
-export type BlockColumns = {
+export interface BlockColumns {
   headline?: string
   id: string
   rows?: BlockColumnsRows[]
   title?: string
 }
 
-export type BlockColumnsRows = {
+export interface BlockColumnsRows {
   block_columns?: string | BlockColumns
   content?: string
   headline?: string
@@ -40,7 +43,7 @@ export type BlockColumnsRows = {
   title?: string
 }
 
-export type BlockCta = {
+export interface BlockCta {
   buttons?: unknown
   content?: string
   headline?: string
@@ -48,67 +51,62 @@ export type BlockCta = {
   title?: string
 }
 
-export type BlockFaqs = {
+export interface BlockFaqs {
   faqs?: unknown
   headline?: string
   id: string
   title?: string
 }
 
-export type BlockForm = {
+export interface BlockForm {
   form?: string | Forms
   headline?: string
   id: string
   title?: string
 }
 
-export type BlockGallery = {
+export interface BlockGallery {
   gallery_items?: BlockGalleryFiles[]
   headline?: string
   id: string
   title?: string
 }
 
-export type BlockGalleryFiles = {
+export interface BlockGalleryFiles {
   block_gallery?: string | BlockGallery
   directus_files_id?: string | DirectusFiles
   id: number
   sort?: number
 }
 
-export type BlockHero = {
-  buttons?: Array<{
-    label: string
-    href: string
-    variant: string
-    open_in_new_window: boolean
-  }>
+export interface BlockHero {
+  buttons?: HeroBlock[]
   content?: string
   headline?: string
   id: string
   image?: string | DirectusFiles
 }
 
-export type BlockHtml = {
+export interface BlockHtml {
   id: string
   raw_html?: string
 }
 
-export type BlockLogocloud = {
+export interface BlockLogocloud {
   headline?: string
   id: string
   logos?: BlockLogocloudFiles[]
   title?: string
 }
 
-export type BlockLogocloudFiles = {
+export interface BlockLogocloudFiles {
   block_logocloud_id?: string | BlockLogocloud
   file?: string | DirectusFiles
   id: number
   sort?: number
 }
 
-export type BlockQuote = {
+export interface BlockQuote {
   background_color?: string
   content?: string
   headline?: string
@@ -118,14 +116,14 @@ export type BlockQuote = {
   title?: string
 }
 
-export type BlockRichtext = {
+export interface BlockRichtext {
   content?: string
   headline?: string
   id: string
   title?: string
 }
 
-export type BlockSteps = {
+export interface BlockSteps {
   alternate_image_position: boolean
   headline?: string
   id: string
@@ -134,7 +132,7 @@ export type BlockSteps = {
   title?: string
 }
 
-export type BlockStepsItems = {
+export interface BlockStepsItems {
   block_steps?: string | BlockSteps
   content?: string
   id: number
@@ -143,28 +141,28 @@ export type BlockStepsItems = {
   title?: string
 }
 
-export type BlockTeam = {
+export interface BlockTeam {
   content?: string
   headline?: string
   id: string
   title?: string
 }
 
-export type BlockTestimonials = {
+export interface BlockTestimonials {
   headline?: string
   id: string
   testimonials?: BlockTestimonialsItems[]
   title?: string
 }
 
-export type BlockTestimonialsItems = {
+export interface BlockTestimonialsItems {
   block_testimonials_id?: string | BlockTestimonials
   id: number
   sort?: number
   testimonial?: string | Testimonials
 }
 
-export type BlockVideo = {
+export interface BlockVideo {
   headline?: string
   id: string
   title?: string
@@ -173,26 +171,26 @@ export type BlockVideo = {
   video_url?: string
 }
 
-export type BlogSettings = {
+export interface BlogSettings {
   featured_post?: string | Posts
   headline?: string
   id: string
   posts_per_page?: number
-  seo?: string | Seo
+  seo?: Seo
   title?: string
 }
 
-export type Categories = {
+export interface Categories {
   color?: string
   content?: string
   id: string
-  seo?: string | Seo
+  seo?: Seo
   slug?: string
   sort?: number
   title?: string
 }
 
-export type ChatConfig = {
+export interface ChatConfig {
   enabled?: boolean
   hours?: unknown
   id: string
@@ -200,7 +198,7 @@ export type ChatConfig = {
   require_email?: string
 }
 
-export type Conversations = {
+export interface Conversations {
   date_created?: string
   date_updated?: string
   id: string
@@ -210,7 +208,7 @@ export type Conversations = {
   visitor_id?: string
 }
 
-export type DirectusActivity = {
+export interface DirectusActivity {
   action: string
   collection: string
   comment?: string
@@ -224,7 +222,7 @@ export type DirectusActivity = {
   user_agent?: string
 }
 
-export type DirectusCollections = {
+export interface DirectusCollections {
   accountability?: string
   archive_app_filter: boolean
   archive_field?: string
@@ -246,7 +244,7 @@ export type DirectusCollections = {
   unarchive_value?: string
 }
 
-export type DirectusDashboards = {
+export interface DirectusDashboards {
   color?: string
   date_created?: string
   icon: string
@@ -257,7 +255,7 @@ export type DirectusDashboards = {
   user_created?: string | DirectusUsers
 }
 
-export type DirectusFields = {
+export interface DirectusFields {
   collection?: string | DirectusCollections
   conditions?: unknown
   display?: string
@@ -279,7 +277,7 @@ export type DirectusFields = {
   width?: string
 }
 
-export type DirectusFiles = {
+export interface DirectusFiles {
   charset?: string
   description?: string
   duration?: number
@@ -303,7 +301,7 @@ export type DirectusFiles = {
   width?: number
 }
 
-export type DirectusFlows = {
+export interface DirectusFlows {
   accountability?: string
   color?: string
   date_created?: string
@@ -319,19 +317,19 @@ export type DirectusFlows = {
   user_created?: string | DirectusUsers
 }
 
-export type DirectusFolders = {
+export interface DirectusFolders {
   id: string
   name: string
   parent?: string | DirectusFolders
 }
 
-export type DirectusMigrations = {
+export interface DirectusMigrations {
   name: string
   timestamp?: string
   version: string
 }
 
-export type DirectusNotifications = {
+export interface DirectusNotifications {
   collection?: string
   id: number
   item?: string
@@ -343,7 +341,7 @@ export type DirectusNotifications = {
   timestamp?: string
 }
 
-export type DirectusOperations = {
+export interface DirectusOperations {
   date_created?: string
   flow?: string | DirectusFlows
   id: string
@@ -358,7 +356,7 @@ export type DirectusOperations = {
   user_created?: string | DirectusUsers
 }
 
-export type DirectusPanels = {
+export interface DirectusPanels {
   color?: string
   dashboard?: string | DirectusDashboards
   date_created?: string
@@ -376,7 +374,7 @@ export type DirectusPanels = {
   width: number
 }
 
-export type DirectusPermissions = {
+export interface DirectusPermissions {
   action: string
   collection: string
   fields?: unknown
@@ -387,7 +385,7 @@ export type DirectusPermissions = {
   validation?: unknown
 }
 
-export type DirectusPresets = {
+export interface DirectusPresets {
   bookmark?: string
   collection?: string
   color?: string
@@ -403,7 +401,7 @@ export type DirectusPresets = {
   user?: string | DirectusUsers
 }
 
-export type DirectusRelations = {
+export interface DirectusRelations {
   id: number
   junction_field?: string
   many_collection: string
@@ -416,7 +414,7 @@ export type DirectusRelations = {
   sort_field?: string
 }
 
-export type DirectusRevisions = {
+export interface DirectusRevisions {
   activity?: number | DirectusActivity
   collection: string
   data?: unknown
@@ -426,7 +424,7 @@ export type DirectusRevisions = {
   parent?: number | DirectusRevisions
 }
 
-export type DirectusRoles = {
+export interface DirectusRoles {
   admin_access: boolean
   app_access: boolean
   description?: string
@@ -438,7 +436,7 @@ export type DirectusRoles = {
   users?: DirectusUsers[]
 }
 
-export type DirectusSessions = {
+export interface DirectusSessions {
   expires: string
   ip?: string
   origin?: string
@@ -448,7 +446,7 @@ export type DirectusSessions = {
   user_agent?: string
 }
 
-export type DirectusSettings = {
+export interface DirectusSettings {
   ai_pack_config: string
   auth_login_attempts?: number
   auth_password_policy?: string
@@ -474,7 +472,7 @@ export type DirectusSettings = {
   storage_default_folder?: string | DirectusFolders
 }
 
-export type DirectusShares = {
+export interface DirectusShares {
   collection?: string | DirectusCollections
   date_created?: string
   date_end?: string
@@ -489,14 +487,14 @@ export type DirectusShares = {
   user_created?: string | DirectusUsers
 }
 
-export type DirectusTranslations = {
+export interface DirectusTranslations {
   id: string
   key: string
   language: string
   value: string
 }
 
-export type DirectusUsers = {
+export interface DirectusUsers {
   auth_data?: unknown
   avatar?: string | DirectusFiles
   description?: string
@@ -521,7 +519,7 @@ export type DirectusUsers = {
   token?: string
 }
 
-export type DirectusWebhooks = {
+export interface DirectusWebhooks {
   actions: unknown
   collections: unknown
   data: boolean
@@ -533,7 +531,7 @@ export type DirectusWebhooks = {
   url: string
 }
 
-export type Events = {
+export interface Events {
   id: string
   key?: string
   metadata?: unknown
@@ -543,20 +541,7 @@ export type Events = {
   user?: string
 }
 
-export type FormSchema = {
-  name: string
-  required: boolean
-  type: string
-  label: string
-  placeholder: string
-  help: string
-  validation: string
-  width: string | number
-  choices?: { label: string; value: any }[]
-  outerclass?: string //not coming from backend.
-}
-
-export type Forms = {
+export interface Forms {
   date_created?: string
   date_updated?: string
   id: string
@@ -573,54 +558,57 @@ export type Forms = {
   user_updated?: string | DirectusUsers
 }
 
-export type Globals = {
+export interface Globals {
+  favicon?: DirectusFiles
   id: string
-  favicon?: string | DirectusFiles
   translations: GlobalsTranslations[]
   url?: string
 }
 
-export type GlobalsTranslations = {
-  globals_id?: string | Globals
-  id: number
-  languages_code?: string
-  // social: string
-  og_image?: string | DirectusFiles
-  social_links?: Array<{ service: string; url: string }>
-  // seo: string
-  title?: string
-  tagline?: string
-  description?: string
-  // contact: string
+export interface GlobalsTranslations {
   address_country?: string
   address_locality?: string
   address_region?: string
-  email?: string
-  // setting: string
-  project_setting: ProjectsSettings
   blog_setting: BlogSettings
-  // deployment: string
   build_hook_url?: string
+  contact: string
+  deployment: string
+  email?: string
+  globals_id?: string | Globals
+  id: number
+  languages_code?: string | Languages
+  og_image?: string | DirectusFiles
+  phone?: string
+  postal_code?: string
+  project_setting: ProjectsSettings
   routes?: unknown
+  seo: string
+  setting: string
+  social: string
+  social_links?: SocialLink[]
+  street_address?: string
+  tagline?: string
+  description: string
+  title: string
 }
 
-export type HelpArticles = {
+export interface HelpArticles {
   content?: string
   date_created?: string
   date_updated?: string
   help_collection?: HelpCollections
   id: string
-  owner?: string | DirectusUsers
+  owner?: DirectusUsers
   slug?: string
   sort?: number
   status: string
   summary?: string
   title?: string
-  user_created?: string | DirectusUsers
-  user_updated?: string | DirectusUsers
+  user_created?: DirectusUsers
+  user_updated?: DirectusUsers
 }
 
-export type HelpCollections = {
+export interface HelpCollections {
   articles?: HelpArticles[]
   description?: string
   icon?: string
@@ -630,7 +618,7 @@ export type HelpCollections = {
   title?: string
 }
 
-export type HelpFeedback = {
+export interface HelpFeedback {
   comments?: string
   date_created?: string
   date_updated?: string
@@ -643,7 +631,7 @@ export type HelpFeedback = {
   visitor_id?: string
 }
 
-export type Inbox = {
+export interface Inbox {
   data?: unknown
   date_created?: string
   date_updated?: string
@@ -655,13 +643,13 @@ export type Inbox = {
   user_updated?: string | DirectusUsers
 }
 
-export type Languages = {
+export interface Languages {
   code: string
   name?: string
   sort?: number
 }
 
-export type Messages = {
+export interface Messages {
   conversation?: string | Conversations
   date_created?: string
   date_updated?: string
@@ -672,7 +660,7 @@ export type Messages = {
   visitor_id?: string
 }
 
-export type Metrics = {
+export interface Metrics {
   id: string
   key?: string
   metadata?: unknown
@@ -681,7 +669,7 @@ export type Metrics = {
   value?: number
 }
 
-export type Navigation = {
+export interface Navigation {
   date_created?: string
   date_updated?: string
   id: string
@@ -692,7 +680,7 @@ export type Navigation = {
   user_updated?: string | DirectusUsers
 }
 
-export type NavigationItems = {
+export interface NavigationItems {
   children?: NavigationItems[]
   display_details: string
   has_children?: boolean
@@ -702,19 +690,19 @@ export type NavigationItems = {
   navigation?: string | Navigation
   open_in_new_tab?: boolean
   page?: string | Pages
-  parent?: NavigationItems
+  parent?: string | NavigationItems
   sort?: number
   title?: string
   type?: string
   url?: string
 }
 
-export type Pages = {
+export interface Pages {
   blocks?: PagesBlocks[]
   date_created?: string
   date_updated?: string
   id: string
-  seo?: string | Seo
+  seo?: Seo
   slug?: string
   sort?: number
   status: string
@@ -723,7 +711,7 @@ export type Pages = {
   user_updated?: string
 }
 
-export type PagesBlocks = {
+export interface PagesBlocks {
   collection?: string
   id: number
   item?: string | any
@@ -731,16 +719,16 @@ export type PagesBlocks = {
   sort?: number
 }
 
-export type Posts = {
+export interface Posts {
   author?: string | DirectusUsers
-  category?: string | Categories
+  category?: Categories
   content?: string
   date_created?: string
   date_published?: string
   date_updated?: string
   id: string
   image?: string | DirectusFiles
-  seo?: string | Seo
+  seo?: Seo
   slug?: string
   sort?: number
   status: string
@@ -750,8 +738,8 @@ export type Posts = {
   user_updated?: string
 }
 
-export type Projects = {
-  built_with?: Array<string>
+export interface Projects {
+  built_with?: string[]
   client?: string
   content?: string
   cost?: string
@@ -759,10 +747,9 @@ export type Projects = {
   date_updated?: string
   details: string
   gallery?: ProjectsFiles[]
-  // gallery?: ProjectsFiles[];
   id: string
   image?: string | DirectusFiles
-  seo?: string | Seo
+  seo?: Seo
   slug?: string
   sort?: number
   status: string
@@ -772,21 +759,21 @@ export type Projects = {
   user_updated?: string | DirectusUsers
 }
 
-export type ProjectsFiles = {
+export interface ProjectsFiles {
   directus_files_id?: string | DirectusFiles
   id: number
   project?: string | Projects
   sort?: number
 }
 
-export type ProjectsSettings = {
+export interface ProjectsSettings {
   headline?: string
   id: string
-  seo?: string | Seo
+  seo?: Seo
   title?: string
 }
 
-export type Redirects = {
+export interface Redirects {
   date_created?: string
   date_updated?: string
   id: string
@@ -797,7 +784,7 @@ export type Redirects = {
   user_updated?: string | DirectusUsers
 }
 
-export type Seo = {
+export interface Seo {
   canonical_url?: string
   id: string
   meta_description?: string
@@ -809,7 +796,7 @@ export type Seo = {
   title?: string
 }
 
-export type Team = {
+export interface Team {
   bio?: string
   date_created?: string
   date_updated?: string
@@ -817,14 +804,14 @@ export type Team = {
   image?: string | DirectusFiles
   job_title?: string
   name?: string
-  social_media?: Array<{ service: string; url: string }>
+  social_media?: SocialLink[]
   sort?: number
   status: string
   user_created?: string | DirectusUsers
   user_updated?: string | DirectusUsers
 }
 
-export type Testimonials = {
+export interface Testimonials {
   company?: string
   company_info: string
   company_logo?: string | DirectusFiles
@@ -842,55 +829,76 @@ export type Testimonials = {
   user_updated?: string | DirectusUsers
 }
 
-// as directus sdk root definition
-export interface DirectusSchema {
-  block_cardgroup: BlockCardgroup[]
-  block_cardgroup_cards: BlockCardgroupCards[]
-  block_cardgroup_posts: BlockCardgroupPosts[]
-  block_columns: BlockColumns[]
-  block_columns_rows: BlockColumnsRows[]
-  block_cta: BlockCta[]
-  block_faqs: BlockFaqs[]
-  block_form: BlockForm[]
-  block_gallery: BlockGallery[]
-  block_gallery_files: BlockGalleryFiles[]
-  block_hero: BlockHero[]
-  block_html: BlockHtml[]
-  block_logocloud: BlockLogocloud[]
-  block_logocloud_files: BlockLogocloudFiles[]
-  block_quote: BlockQuote[]
-  block_richtext: BlockRichtext[]
-  block_steps: BlockSteps[]
-  block_steps_items: BlockStepsItems[]
-  block_team: BlockTeam[]
-  block_testimonials: BlockTestimonials[]
-  block_testimonials_items: BlockTestimonialsItems[]
-  block_video: BlockVideo[]
-  blog_settings: BlogSettings[]
-  pages_blocks: PagesBlocks[]
-  categories: Categories[]
+export interface CustomDirectusTypes {
+  block_cardgroup: BlockCardgroup
+  block_cardgroup_cards: BlockCardgroupCards
+  block_cardgroup_posts: BlockCardgroupPosts
+  block_columns: BlockColumns
+  block_columns_rows: BlockColumnsRows
+  block_cta: BlockCta
+  block_faqs: BlockFaqs
+  block_form: BlockForm
+  block_gallery: BlockGallery
+  block_gallery_files: BlockGalleryFiles
+  block_hero: BlockHero
+  block_html: BlockHtml
+  block_logocloud: BlockLogocloud
+  block_logocloud_files: BlockLogocloudFiles
+  block_quote: BlockQuote
+  block_richtext: BlockRichtext
+  block_steps: BlockSteps
+  block_steps_items: BlockStepsItems
+  block_team: BlockTeam
+  block_testimonials: BlockTestimonials
+  block_testimonials_items: BlockTestimonialsItems
+  block_video: BlockVideo
+  blog_settings: BlogSettings
+  categories: Categories
   chat_config: ChatConfig
-  conversations: Conversations[]
-  events: Events[]
-  forms: Forms[]
+  conversations: Conversations
+  directus_activity: DirectusActivity
+  directus_collections: DirectusCollections
+  directus_dashboards: DirectusDashboards
+  directus_fields: DirectusFields
+  directus_files: DirectusFiles
+  directus_flows: DirectusFlows
+  directus_folders: DirectusFolders
+  directus_migrations: DirectusMigrations
+  directus_notifications: DirectusNotifications
+  directus_operations: DirectusOperations
+  directus_panels: DirectusPanels
+  directus_permissions: DirectusPermissions
+  directus_presets: DirectusPresets
+  directus_relations: DirectusRelations
+  directus_revisions: DirectusRevisions
+  directus_roles: DirectusRoles
+  directus_sessions: DirectusSessions
+  directus_settings: DirectusSettings
+  directus_shares: DirectusShares
+  directus_translations: DirectusTranslations
+  directus_users: DirectusUsers
+  directus_webhooks: DirectusWebhooks
+  events: Events
+  forms: Forms
   globals: Globals
-  globals_translations: GlobalsTranslations[]
-  help_articles: HelpArticles[]
-  help_collections: HelpCollections[]
-  help_feedback: HelpFeedback[]
-  inbox: Inbox[]
-  messages: Messages[]
-  metrics: Metrics[]
-  navigation: Navigation[]
-  navigation_items: NavigationItems[]
-  pages: Pages[]
-  posts: Posts[]
-  projects: Projects[]
-  projects_files: ProjectsFiles[]
-  projects_settings: ProjectsSettings[]
-  redirects: Redirects[]
-  seo: Seo[]
-  team: Team[]
-  testimonials: Testimonials[]
-  directus_files: DirectusFiles[]
+  globals_translations: GlobalsTranslations
+  help_articles: HelpArticles
+  help_collections: HelpCollections
+  help_feedback: HelpFeedback
+  inbox: Inbox
+  languages: Languages
+  messages: Messages
+  metrics: Metrics
+  navigation: Navigation
+  navigation_items: NavigationItems
+  pages: Pages
+  pages_blocks: PagesBlocks
+  posts: Posts
+  projects: Projects
+  projects_files: ProjectsFiles
+  projects_settings: ProjectsSettings
+  redirects: Redirects
+  seo: Seo
+  team: Team
+  testimonials: Testimonials
 }

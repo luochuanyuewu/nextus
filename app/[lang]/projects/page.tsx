@@ -1,4 +1,4 @@
-import directusApi from '@/lib/utils/directus-api'
+import directusApi, { fetchGlobals } from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
 import PageContainer from '@/components/PageContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
@@ -25,11 +25,19 @@ export default async function PageRoute({ params }: Props) {
     })
   )
 
+  const globals = await fetchGlobals(params.lang)
+
+  const globalData = globals.translations[0]
+
   return (
     <PageContainer>
       <header className='border-b-2 border-base-300 pb-6 '>
-        <TypographyTitle>Agency Projects</TypographyTitle>
-        <TypographyHeadline content='<p>We kill it for you <em>(our clients)</em>.</p>' />
+        <TypographyTitle>
+          {globalData.project_setting.title || 'Nextus Projects'}
+        </TypographyTitle>
+        {globalData.project_setting.headline && (
+          <TypographyHeadline content={globalData.project_setting.headline} />
+        )}
       </header>
       <section className='relative w-full items-center py-12'>
         <TypographyTitle>Latest Projects</TypographyTitle>

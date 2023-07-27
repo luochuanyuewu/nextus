@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { DirectusUsers } from '@/lib/directus-collections'
+import { DirectusUsers, Posts } from '@/lib/directus-collections'
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
 import { Metadata } from 'next'
@@ -27,10 +27,9 @@ async function getPostBySlug(slug: string) {
       ],
     })
   )
-
   if (posts.length === 0) return null
 
-  return posts[0]
+  return posts[0] as Posts
 }
 
 export async function generateMetadata({
@@ -38,15 +37,15 @@ export async function generateMetadata({
 }: {
   params: { slug: string }
 }): Promise<Metadata> {
-  const page = await getPostBySlug(params.slug)
-  if (page == null) {
+  const post = await getPostBySlug(params.slug)
+  if (post == null) {
     return {
       title: 'a post',
     }
   }
   return {
-    title: page.seo?.title,
-    description: page.seo?.meta_description,
+    title: post.seo?.title,
+    description: post.seo?.meta_description,
   }
 }
 
@@ -55,9 +54,9 @@ export default async function PageRoute({
 }: {
   params: { slug: string }
 }) {
-  const page = await getPostBySlug(params.slug)
+  const post = await getPostBySlug(params.slug)
 
-  if (page == null) return null
+  if (post == null) return null
 
   return (
     <div>
@@ -69,7 +68,7 @@ export default async function PageRoute({
             <div className='relative w-full max-w-3xl pt-6 md:px-6'>
               <div className='relative mx-auto h-[300px] w-full overflow-hidden rounded-bl-3xl bg-cover dark:outline-gray-800 md:h-[450px]'>
                 <Image
-                  src={getDirectusMedia(page.image)}
+                  src={getDirectusMedia(post.image)}
                   width={500}
                   height={500}
                   className='h-full w-full object-cover saturate-0 dark:brightness-90'
@@ -80,25 +79,25 @@ export default async function PageRoute({
             </div>
             {/* Post Meta */}
             <div className='mt-12 hidden space-y-6 p-8 md:block'>
-              {page.category && typeof page.category !== 'string' && (
+              {post.category && (
                 <Link
-                  href={`/posts/categories/${page.category.slug}`}
+                  href={`/posts/categories/${post.category.slug}`}
                   className='inline-block hover:opacity-90'
                 >
-                  <VBadge size='lg' color={page.category.color ?? ''}>
-                    {page.category.title}
+                  <VBadge size='lg' color={post.category.color ?? ''}>
+                    {post.category.title}
                   </VBadge>
                 </Link>
               )}
-              {page.author && <VAvatar author={page.author as DirectusUsers} />}
+              {post.author && <VAvatar author={post.author as DirectusUsers} />}
               <div className='space-y-2'>
                 <p className='flex font-mono text-gray-500 dark:text-gray-300'>
                   <VIcon icon='heroicons:clock' className='mr-2 h-6 w-6' />
-                  {page.content && calculateReadTime(page.content)}
+                  {post.content && calculateReadTime(post.content)}
                 </p>
                 <p className='flex font-mono text-gray-500 dark:text-gray-300'>
                   <VIcon icon='heroicons:calendar' className='mr-2 h-6 w-6' />
-                  {page.date_published && getRelativeTime(page.date_published)}
+                  {post.date_published && getRelativeTime(post.date_published)}
                 </p>
               </div>
             </div>
@@ -110,35 +109,35 @@ export default async function PageRoute({
               <div className='grain-bg absolute inset-0 dark:opacity-20' />
               <div className='relative'>
                 <div className='flex justify-between'></div>
-                <TypographyHeadline content={page.title} size='lg' />
+                <TypographyHeadline content={post.title} size='lg' />
 
                 <p className='font-display mt-4 font-mono font-semibold dark:text-gray-200 md:text-lg'>
-                  {page.summary}
+                  {post.summary}
                 </p>
               </div>
             </div>
           </div>
 
           <div className='mt-6 block px-6 md:hidden'>
-            {page.author && <VAvatar author={page.author as DirectusUsers} />}
+            {post.author && <VAvatar author={post.author as DirectusUsers} />}
             <div className='mt-4 flex justify-between border-b pb-4 '>
               <div className='space-y-2'>
                 <p className='flex font-mono text-gray-500 dark:text-gray-300'>
                   <VIcon icon='heroicons:clock' className='mr-2 h-6 w-6' />
-                  {calculateReadTime(page?.content ?? '')}
+                  {calculateReadTime(post?.content ?? '')}
                 </p>
                 <p className='flex font-mono text-gray-500 dark:text-gray-300'>
                   <VIcon icon='heroicons:calendar' className='mr-2 h-6 w-6' />
-                  {getRelativeTime(page?.date_published ?? '')}
+                  {getRelativeTime(post?.date_published ?? '')}
                 </p>
               </div>
-              {page.category && typeof page.category !== 'string' && (
+              {post.category && typeof post.category !== 'string' && (
                 <Link
-                  href={`/posts/categories/${page.category.slug}`}
+                  href={`/posts/categories/${post.category.slug}`}
                   className='inline-block hover:opacity-90'
                 >
-                  <VBadge size='lg' color={page.category?.color ?? ''}>
-                    {page.category.title}
+                  <VBadge size='lg' color={post.category?.color ?? ''}>
+                    {post.category.title}
                   </VBadge>
                 </Link>
               )}
@@ -149,7 +148,7 @@ export default async function PageRoute({
         <PageContainer>
           <main className='mx-auto w-full max-w-4xl'>
             {/* Main */}
-            <TypographyProse content={page.content} />
+            <TypographyProse content={post.content} />
           </main>
           <aside>{/* <TableOfContents toc={tableOfContents.toc} /> */}</aside>
         </PageContainer>
