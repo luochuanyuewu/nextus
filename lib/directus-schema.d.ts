@@ -61,7 +61,6 @@ import {
   Navigation,
   NavigationItems,
   Pages,
-  PagesBlocks,
   Posts,
   Projects,
   ProjectsFiles,
@@ -162,7 +161,8 @@ export interface DirectusSchema {
   navigation: Navigation[]
   navigation_items: NavigationItems[]
   pages: Pages[]
-  pages_blocks: PagesBlocks[]
+  pages_translations: PagesTranslations[]
+  pages_translations_blocks: PagesTranslationsBlocks[]
   posts: Posts[]
   projects: Projects[]
   projects_files: ProjectsFiles[]

@@ -9,10 +9,9 @@ interface HeroBlockProps {
   data: BlockHero
 }
 
-function HeroBlock({ data }: HeroBlockProps) {
+export default function HeroBlock({ data }: HeroBlockProps) {
   return (
     <BlockContainer className='relative grid gap-6 md:grid-cols-3'>
-      {/* Content */}
       <div className=' md:col-span-2 md:pt-12'>
         <h1
           className='xs:text-5xl color-em font-serif text-4xl font-extrabold leading-9  sm:text-7xl lg:text-8xl'
@@ -38,22 +37,17 @@ function HeroBlock({ data }: HeroBlockProps) {
             ))}
         </div>
       </div>
-      {/* Image */}
-      <div className=''>
-        {data.image && (
-          <div className='rounded-tl-[64px] border-2 border-primary p-2  md:-mr-16 lg:relative lg:-mr-48 lg:h-full'>
-            <Image
-              className='max-h-[700px] w-full overflow-hidden rounded-tl-[56px] object-cover'
-              width='500'
-              height='500'
-              src={getDirectusMedia(data.image) as any}
-              alt=''
-            />
-          </div>
-        )}
-      </div>
+      {data.image && (
+        <div className='rounded-tl-[64px] border-2 border-primary p-2  md:-mr-16 lg:relative lg:-mr-48 lg:h-full'>
+          <Image
+            className='max-h-[700px] w-full overflow-hidden rounded-tl-[56px] object-cover'
+            width='500'
+            height='500'
+            src={getDirectusMedia(data.image) as any}
+            alt=''
+          />
+        </div>
+      )}
     </BlockContainer>
   )
 }
-
-export default HeroBlock

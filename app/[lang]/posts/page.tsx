@@ -26,6 +26,7 @@ async function fetchData() {
     })
   )
 
+  //@ts-ignore
   return posts as Array<Posts>
 }
 

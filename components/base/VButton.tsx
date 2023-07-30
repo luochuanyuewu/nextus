@@ -1,3 +1,4 @@
+'use client'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import React, { MouseEventHandler } from 'react'
@@ -53,7 +54,7 @@ function VButton(props: ButtonProps) {
   )
 
   return (
-    <>
+    <div>
       {href && (
         <Link
           href={href as any}
@@ -74,7 +75,7 @@ function VButton(props: ButtonProps) {
           {children}
         </button>
       )}
-    </>
+    </div>
   )
 }
 

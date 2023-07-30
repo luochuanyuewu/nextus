@@ -21,7 +21,8 @@ export default function FormLogin() {
 
       const { access_token, refresh_token } = await directusApi.login(
         email,
-        password
+        password,
+        {}
       )
 
       //   const res: any = await fetch(getStrapiURL() + '/api/auth/local', {
@@ -41,7 +42,7 @@ export default function FormLogin() {
   }
 
   return (
-    <div className='card-bordered card bg-base-100 mx-auto w-full max-w-sm flex-shrink-0 shadow-2xl'>
+    <div className='card card-bordered mx-auto w-full max-w-sm flex-shrink-0 bg-base-100 shadow-2xl'>
       <div className='card-body'>
         <h2 className='card-title mx-auto'>登录</h2>
         <div className='divider'></div>
@@ -52,7 +53,7 @@ export default function FormLogin() {
           <input
             type='text'
             placeholder='email'
-            className='input-bordered input'
+            className='input input-bordered'
             onChange={(e) => setEmail(e.target.value)}
             value={email}
           />
@@ -64,18 +65,18 @@ export default function FormLogin() {
           <input
             type='password'
             placeholder='password'
-            className='input-bordered input'
+            className='input input-bordered'
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
           <label className='label'>
-            <a href='#' className='link-hover label-text-alt link'>
+            <a href='#' className='link-hover link label-text-alt'>
               忘记密码?
             </a>
           </label>
         </div>
         <div className='form-control mt-6'>
-          <button className='btn-primary btn' onClick={handleLogin}>
+          <button className='btn btn-primary' onClick={handleLogin}>
             邮箱登录
           </button>
         </div>

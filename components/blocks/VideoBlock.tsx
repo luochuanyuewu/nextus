@@ -1,9 +1,10 @@
-import React from 'react'
+'use client'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import BlockContainer from '@/components/BlockContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import VVideo from '@/components/base/VVideo'
+import { useMemo } from 'react'
 
 interface Video {
   id: string
@@ -19,7 +20,7 @@ interface VideoBlockProps {
 }
 
 export default function VideoBlock({ data }: VideoBlockProps) {
-  const url = React.useMemo(() => {
+  const url = useMemo(() => {
     if (data.type === 'file' && data.video_file) {
       return getDirectusMedia(data.video_file)
     }

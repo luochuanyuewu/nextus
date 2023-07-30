@@ -51,7 +51,7 @@ async function TheFooter({ lang = 'zh' }: { lang?: string }) {
         {/* Navigation + Form */}
         <nav className='mt-8 grid gap-8 md:grid-cols-2 xl:col-span-2 xl:mt-0'>
           <div>
-            <TypographyTitle>Menu</TypographyTitle>
+            <TypographyTitle>{navigation.title}</TypographyTitle>
             <ul role='list' className='mt-4 grid grid-flow-col md:grid-cols-2'>
               {navigation &&
                 navigation.items &&

@@ -9,7 +9,7 @@ import {
   rest,
   RestCommand,
 } from '@directus/sdk'
-import { Forms, Globals, Navigation } from '@/lib/directus-collections'
+import { Forms, Globals, Navigation, Pages } from '@/lib/directus-collections'
 import { DirectusSchema } from '@/lib/directus-schema'
 
 const withRequestCallback = function <Schema extends object, Output>(
@@ -90,7 +90,7 @@ const fetchGlobals = async function name(lang: string) {
 }
 
 const fetchNavigation = async function name(id: string) {
-  const nav = (await directusApi.request(
+  const nav = await directusApi.request(
     readItem('navigation', id, {
       fields: [
         {
@@ -98,7 +98,7 @@ const fetchNavigation = async function name(id: string) {
         },
       ],
     })
-  )) as Navigation
+  )
   return nav
 }
 
@@ -154,6 +154,69 @@ async function fetchHelpArticles(slug: string) {
   return articles
 }
 
+async function fetchPage(slug: string, lang: string) {
+  const pages = await directusApi.request(
+    readItems('pages', {
+      filter: {
+        slug: { _eq: slug },
+      },
+      deep: {
+        // @ts-ignore
+        translations: {
+          _filter: {
+            languages_code: {
+              _eq: lang,
+            },
+          },
+        },
+      },
+      fields: [
+        '*',
+        { seo: ['*'] },
+        {
+          translations: [
+            '*',
+            {
+              blocks: [
+                'collection',
+                {
+                  item: {
+                    block_hero: ['*'],
+                    block_faqs: ['*'],
+                    block_quote: ['*'],
+                    block_columns: ['*', { rows: ['*'] }],
+                    block_form: ['*', { form: ['*'] }],
+                    block_testimonials: [
+                      '*',
+                      { testimonials: ['*', { testimonial: ['*'] }] },
+                    ],
+                    block_logocloud: ['*', { logos: [{ file: ['*'] }] }],
+                    block_team: ['*'],
+                    block_cta: ['*'],
+                    block_richtext: ['*'],
+                    block_steps: ['*', { steps: ['*'] }],
+                    block_gallery: [
+                      '*',
+                      { gallery_items: ['*', { directus_files_id: ['*'] }] },
+                    ],
+                    block_cardgroup: ['*', { posts: [{ posts_id: ['*'] }] }],
+                    block_html: ['*'],
+                    block_video: ['*'],
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      limit: 1,
+    })
+  )
+
+  // @ts-ignore
+  return pages[0] as Pages
+}
+
 export default directusApi
 
 export {
@@ -162,4 +225,5 @@ export {
   fetchForm,
   fetchNavigation,
   fetchHelpArticles,
+  fetchPage,
 }

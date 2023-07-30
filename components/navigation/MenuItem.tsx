@@ -23,7 +23,7 @@ export default function MenuItem({ item }: MenuItemProps) {
       {!item.has_children && (
         <Link
           href={getUrl(item)}
-          className='inline-flex items-center rounded-br-xl rounded-tl-xl px-3 py-2 font-bold uppercase  transition duration-150 hover:bg-base-300 hover:text-accent'
+          className='inline-flex items-center rounded-br-xl rounded-tl-xl px-3 py-2 font-bold uppercase  transition duration-150 hover:bg-base-300'
           target={item.open_in_new_tab ? '_blank' : '_self'}
         >
           {item.title}
@@ -35,7 +35,7 @@ export default function MenuItem({ item }: MenuItemProps) {
           <Popover.Trigger
             asChild
             className={[
-              'hover:bg-base-300 hover:text-accent',
+              'hover:bg-base-300',
               'inline-flex items-center rounded-br-xl rounded-tl-xl px-3 py-2 font-bold uppercase outline-none ring-accent ring-offset-2 ring-offset-gray-800 focus:ring-1',
             ].join(' ')}
           >

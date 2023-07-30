@@ -49,7 +49,7 @@ export default function Navbar({
 
   return (
     <header>
-      <div className='navbar bg-base-100 mx-auto max-w-7xl'>
+      <div className='navbar mx-auto max-w-7xl bg-base-100'>
         <div className='navbar-start'>
           <div className='dropdown'>
             <label tabIndex={0} className='btn btn-ghost lg:hidden'>
@@ -72,7 +72,7 @@ export default function Navbar({
             <ul
               tabIndex={0}
               onClick={handleClick}
-              className='menu menu-compact dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow'
+              className='menu-compact menu dropdown-content rounded-box z-10 mt-3 w-52 bg-base-100 p-2 shadow'
             >
               {links.map((item: NavLink, index: number) => (
                 <NavLink key={index} {...item} />
@@ -94,7 +94,7 @@ export default function Navbar({
         <div className='navbar-end'>
           <ThemeSwitcher />
           <div className='dropdown dropdown-end'>
-            <label tabIndex={0} className='btn btn-ghost btn-circle'>
+            <label tabIndex={0} className='btn btn-circle btn-ghost'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='24'
@@ -114,7 +114,7 @@ export default function Navbar({
             <ul
               tabIndex={0}
               onClick={handleClick}
-              className='menu menu-compact dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow'
+              className='menu-compact menu dropdown-content rounded-box z-10 mt-3 w-52 bg-base-100 p-2 shadow'
             >
               {buttons &&
                 buttons.map((item: NavLink, index: number) => (

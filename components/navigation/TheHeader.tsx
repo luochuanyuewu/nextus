@@ -22,8 +22,12 @@ export default async function TheHeader({ lang }: { lang: string }) {
     <div className='pt-1'>
       <header className='relative w-full space-y-4 md:flex md:items-center md:space-x-6 md:space-y-0'>
         <div className='flex items-center rounded-br-xl rounded-tl-xl  md:flex-1 md:justify-between'>
-          <Link href='/' className='px-4 py-4'>
-            <LogoV2 className='h-6 ' />
+          <Link
+            href='/'
+            className='inline-flex items-center rounded-lg px-3 py-2 font-bold uppercase  transition duration-150 hover:bg-base-300'
+          >
+            {/* <LogoV2 className='h-6 ' /> */}
+            {globalData.title}
             <span className='sr-only'>{globalData?.title}</span>
           </Link>
           <nav

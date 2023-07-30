@@ -30,6 +30,7 @@ async function getPostsByCategory(categorySlug: string) {
     })
   )
 
+  // @ts-ignore
   return posts as Array<Posts>
 }
 

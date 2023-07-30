@@ -698,7 +698,6 @@ export interface NavigationItems {
 }
 
 export interface Pages {
-  blocks?: PagesBlocks[]
   date_created?: string
   date_updated?: string
   id: string
@@ -707,15 +706,24 @@ export interface Pages {
   sort?: number
   status: string
   title?: string
+  translations?: PagesTranslations[]
   user_created?: string
   user_updated?: string
 }
 
-export interface PagesBlocks {
+export interface PagesTranslations {
+  blocks: PagesTranslationsBlocks[]
+  id: number
+  languages_code: string | Languages
+  pages_id?: string | Pages
+  title?: string
+}
+
+export interface PagesTranslationsBlocks {
   collection?: string
   id: number
   item?: string | any
-  pages_id?: string | Pages
+  pages_translations_id?: number | PagesTranslations
   sort?: number
 }
 
@@ -892,7 +900,8 @@ export interface CustomDirectusTypes {
   navigation: Navigation
   navigation_items: NavigationItems
   pages: Pages
-  pages_blocks: PagesBlocks
+  pages_translations: PagesTranslations
+  pages_translations_blocks: PagesTranslationsBlocks
   posts: Posts
   projects: Projects
   projects_files: ProjectsFiles
