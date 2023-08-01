@@ -55,13 +55,9 @@ export default async function PageRoute({
       <section className='relative w-full space-y-12 py-12'>
         <div className='relative grid w-full gap-12 border-b-2 border-base-300 pb-12  md:grid-cols-2 lg:grid-cols-4'>
           <div>
-            <TypographyTitle className='text-gray-700 dark:text-gray-400'>
-              Search
-            </TypographyTitle>
+            <TypographyTitle>Search</TypographyTitle>
             <GlobalSearch collections={['posts']} className='flex' />
-            <TypographyTitle className='mt-8 text-gray-700 dark:text-gray-400'>
-              Categories
-            </TypographyTitle>
+            <TypographyTitle className='mt-8'>Categories</TypographyTitle>
             <Categories />
           </div>
           <div className='space-y-4 lg:col-span-3'>

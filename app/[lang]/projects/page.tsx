@@ -50,7 +50,7 @@ export default async function PageRoute({ params }: Props) {
                 isEven(projectIdx)
                   ? 'rounded-br-3xl rounded-tl-3xl'
                   : 'rounded-bl-3xl rounded-tr-3xl',
-                'relative mb-6 block w-full overflow-hidden border-2 border-transparent p-2 transition duration-300 hover:border-base-300 dark:hover:border-gray-600',
+                'relative mb-6 block w-full overflow-hidden border-2 border-transparent p-2 transition duration-300 hover:border-base-300',
               ].join(' ')}
             >
               <div
@@ -68,7 +68,7 @@ export default async function PageRoute({ params }: Props) {
                   alt=''
                   className='object-cover transition duration-300 group-hover:scale-110'
                 />
-                <div className='absolute inset-0 flex items-center justify-center bg-white bg-opacity-75 opacity-0 transition-opacity duration-300 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75'>
+                <div className='justify-centerbg-opacity-75 absolute inset-0 flex items-center opacity-0 transition-opacity duration-300 hover:opacity-100 '>
                   <div className='p-8'>
                     <TypographyTitle>{project.client}</TypographyTitle>
                     <TypographyHeadline content={project.title} />
@@ -79,7 +79,9 @@ export default async function PageRoute({ params }: Props) {
                           className='mb-2 mr-2'
                           size='lg'
                           color='#0f172a'
-                        ></VBadge>
+                        >
+                          {item}
+                        </VBadge>
                       ))}
                     </div>
                   </div>

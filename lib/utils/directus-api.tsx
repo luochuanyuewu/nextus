@@ -89,34 +89,34 @@ const fetchGlobals = async function name(lang: string) {
   )) as Globals
 }
 
-const fetchNavigation = async function name(id: string) {
-  const nav = await directusApi.request(
-    readItem('navigation', id, {
-      fields: [
-        {
-          items: ['*', { page: ['slug'] }, { children: ['*'] }],
-        },
-      ],
-    })
-  )
-  return nav
-}
-
-const fetchNavigationSafe = async function name(id: string) {
-  const nav = (await directusApi.request(
+const fetchNavigationSafe = async function name(slug: string, lang: string) {
+  const navigations = await directusApi.request(
     withRevalidate(
-      readItem('navigation', id, {
+      readItems('navigation', {
+        limit: 1,
+        filter: {
+          language: {
+            code: {
+              _eq: lang,
+            },
+          },
+          slug: {
+            _eq: slug,
+          },
+        },
         fields: [
           '*',
           {
             items: ['*', { page: ['slug'] }, { children: ['*'] }],
+            language: ['code'],
           },
+          {},
         ],
       }),
       60
     )
-  )) as Navigation
-  return nav
+  )
+  return navigations[0] as Navigation
 }
 
 const fetchForm = async function (id: string, languages_code?: string) {
@@ -223,7 +223,6 @@ export {
   fetchGlobals,
   fetchNavigationSafe,
   fetchForm,
-  fetchNavigation,
   fetchHelpArticles,
   fetchPage,
 }

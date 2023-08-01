@@ -673,9 +673,11 @@ export interface Navigation {
   date_created?: string
   date_updated?: string
   id: string
-  items?: NavigationItems[]
+  items: NavigationItems[]
+  language?: string | Languages
+  slug: string
   status: string
-  title?: string
+  title: string
   user_created?: string | DirectusUsers
   user_updated?: string | DirectusUsers
 }

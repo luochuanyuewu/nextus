@@ -22,7 +22,7 @@ async function TheFooter({ lang = 'zh' }: { lang?: string }) {
 
   const [globals, navigation, form] = await Promise.all([
     fetchGlobals(lang),
-    fetchNavigationSafe('footer'),
+    fetchNavigationSafe('footer', lang),
     fetchForm('newsletter'),
   ])
   const globalData = globals.translations && globals.translations[0]

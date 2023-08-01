@@ -38,7 +38,7 @@ function TypographyHeadline(props: HeadlineProps) {
         <div
           className={twMerge(
             getClassNames(),
-            'color-em font-serif font-bold leading-snug tracking-tight ',
+            'font-serif font-bold leading-snug tracking-tight ',
             props.className
           )}
           dangerouslySetInnerHTML={renderContent()}
@@ -48,7 +48,7 @@ function TypographyHeadline(props: HeadlineProps) {
         <div
           className={twMerge(
             getClassNames(),
-            'color-em font-serif font-bold leading-snug tracking-tight ',
+            'font-serif font-bold leading-snug tracking-tight ',
             props.className
           )}
         >

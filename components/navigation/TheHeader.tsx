@@ -5,18 +5,16 @@ import {
 } from '@/lib/directus-collections'
 import MenuItem from '@/components/navigation/MenuItem'
 import Link from 'next/link'
-import LogoV2 from '@/components/LogoV2'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 
 export default async function TheHeader({ lang }: { lang: string }) {
   const [globals, navigation] = await Promise.all([
     fetchGlobals(lang),
-    fetchNavigationSafe('main'),
+    fetchNavigationSafe('main', lang),
   ])
 
   const globalData =
     globals.translations && (globals.translations[0] as GlobalsTranslations)
-  const navigationItems = navigation.items as NavigationItems[]
 
   return (
     <div className='pt-1'>
@@ -34,8 +32,9 @@ export default async function TheHeader({ lang }: { lang: string }) {
             className='hidden font-mono md:flex md:space-x-4 lg:space-x-6'
             aria-label='Global'
           >
-            {navigationItems &&
-              navigationItems.map((item: NavigationItems) => (
+            {navigation &&
+              navigation.items &&
+              navigation.items.map((item: NavigationItems) => (
                 <MenuItem key={item.id} item={item} />
               ))}
           </nav>
