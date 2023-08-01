@@ -23,13 +23,16 @@
 
 # Introduction
 
-Spin up a beautiful site for your agency or freelancing business in minutes. Or use Agency OS as the foundation for your next client project.
+Spin up a beautiful site in minutes. Or use Nextus as the foundation for your next awesome project.
 
-[**-> View The Demo Site(查看Demo网站)**](https://nextus.vercel.app/)
+在几分钟内建立一个漂亮的网站。或者使用Nextus作为您下一个出色项目的基础。
+
+[**-> View The Demo Site(Demo网站)**](https://nextus.vercel.app/)
 
 **Features(已支持特性)**
 
 - Complete NextJs 13 website example(完整的NextJs 13 网站案例)
+- Multi languages support, currenly en/zh. you can add more.(多语言支持，目前支持中文和英文，你可以自行添加更多。)
 - Built-in Directus - Headless CMS support(内置Directus - 无头CMS支持)
 - Tailwind CSS and Daisyui (使用Tailwind CSS 和 Daisyui完成主题开发)
 - Dynamic Page Builder (M2A Interface) within Directus(在Directus中使用ManyToAny界面动态构建网页)
@@ -95,7 +98,6 @@ Start adding your own content in Nextus and experience the charm of headless CMS
 
 # Tech Stack
 
-
 ## Next
 
 Build your next Next.js application with confidence using Next. An open source framework under MIT license that makes web development simple and powerful. The leading React framework that handles routing, server side rendering, and more.
@@ -120,19 +122,19 @@ For a smooth experience, the [Directus SDK](https://docs.directus.io/guides/sdk
 - [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework that allows you to rapidly build sites and maintain consistency across team members. There are several Tailwind Plugins installed and ready to use as well – [Typography](https://tailwindcss.com/docs/typography-plugin) and [Forms](https://tailwindcss.com/docs/plugins#forms).
 - [Daisyui](https://daisyui.com/) – The most popular component library for Tailwind CSS.
 - [React Hook Form](https://react-hook-form.com/) – Form library for React that saves you hours of time by simplifying form creation.
-- [Iconify for React](https://github.com/iconify) - Adds `<Icon>` component that allows you use tons of icons. 
+- [Iconify for React](https://github.com/iconify) - Modern unified SVG framework. One syntax for many icon sets: FontAwesome, Material Design Icons, Dashicons and many others. Over 150,000 icons, very easy to use
 
 ## Utilities
 
-- [React-Use](https://vueuse.org/) – Collection of Vue Composition Utilities. Already installed and configured so you can just import any of the composables in their library straight away.
-- [Famer-Motion](https://motion.vueuse.org/) – Composables putting your components in motion. Makes it easy to provide tasteful animations with less effort.
+- [React-Use](https://github.com/streamich/react-use) – React Hooks — 👍
+- [Framer-Motion](https://www.framer.com/motion/) – Framer Motion is a simple yet powerful motion library for React.
 
 <br />
 
 # Other Resources
 
 - **[Directus Discord](https://discord.com/invite/directus)** – Join 10k+ developers and community members to ask questions and live discussion around Directus.
-- **[Nuxt Discord](https://discord.com/invite/ps2h6QT)**
+- **[Next Discord](https://discord.com/invite/bUG2bvbtHy)**
 
 <br />
 
