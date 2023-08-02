@@ -73,12 +73,11 @@ import {
 
 export interface FormSchema {
   name: string
-  required: boolean
   type: string
   label: string
   placeholder: string
   help: string
-  validation: string
+  validation: any
   width: string | number
   choices?: { label: string; value: any }[]
   outerclass?: string //not coming from backend.

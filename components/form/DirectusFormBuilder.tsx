@@ -16,16 +16,20 @@ export default function DirectusFormBuilder(props: {
   const validation = useMemo(() => {
     if (element.validation) {
       try {
-        const temp = JSON.parse(element.validation)
-        if (temp.pattern && temp.pattern.value) {
-          temp.pattern.value = new RegExp(temp.pattern.value)
+        if (element.validation.pattern && element.validation.pattern.value) {
+          element.validation.pattern.value = new RegExp(
+            element.validation.pattern.value
+          )
         }
 
-        if (temp.pattern && typeof temp.pattern === 'string') {
-          temp.pattern = new RegExp(temp.pattern)
+        if (
+          element.validation.pattern &&
+          typeof element.validation.pattern === 'string'
+        ) {
+          element.validation.pattern = new RegExp(element.validation.pattern)
         }
 
-        return temp
+        return element.validation
       } catch (error) {
         console.log(
           'ivalid validation format, plz check:https://react-hook-form.com/docs/useform/register ,especially Options.'
@@ -33,15 +37,14 @@ export default function DirectusFormBuilder(props: {
       }
     }
 
-    return { required: element.required }
-  }, [element.validation, element.required])
+    return { required: false }
+  }, [element.validation])
 
   switch (element.type) {
     case 'textarea':
       return (
         <textarea
           className={formTheme.textAreaClass}
-          required={element.required}
           key={element.name}
           placeholder={element.placeholder}
           {...register(element.name!, validation)}
@@ -51,7 +54,6 @@ export default function DirectusFormBuilder(props: {
       return (
         <select
           className={formTheme.selectClass}
-          required={element.required}
           placeholder={element.placeholder}
           {...register(element.name!, validation)}
         >
@@ -76,7 +78,6 @@ export default function DirectusFormBuilder(props: {
           className={formTheme.checkboxClass}
           type='checkbox'
           placeholder={element.placeholder}
-          required={element.required}
           {...register(element.name!, validation)}
         />
       )
@@ -86,7 +87,6 @@ export default function DirectusFormBuilder(props: {
           type={element.type}
           placeholder={element.placeholder}
           className={formTheme.inputClass}
-          required={element.required}
           {...register(element.name!, validation)}
         />
       )

@@ -3106,8 +3106,8 @@
       "meta": {
         "collection": "block_form",
         "conditions": null,
-        "display": null,
-        "display_options": null,
+        "display": "related-values",
+        "display_options": { "template": "{{title}}" },
         "field": "form",
         "group": null,
         "hidden": false,
@@ -5982,8 +5982,8 @@
       "meta": {
         "collection": "blog_settings",
         "conditions": null,
-        "display": null,
-        "display_options": null,
+        "display": "related-values",
+        "display_options": { "template": "{{title}}" },
         "field": "featured_post",
         "group": null,
         "hidden": false,
@@ -7850,14 +7850,18 @@
             {
               "field": "validation",
               "name": "validation",
-              "type": "string",
+              "type": "json",
               "meta": {
                 "field": "validation",
-                "width": "half",
-                "type": "string",
-                "interface": "input",
-                "options": { "placeholder": "required" },
-                "note": "Use string syntax as outlined here https://formkit.com/essentials/validation#string-syntax"
+                "width": "full",
+                "type": "json",
+                "interface": "input-code",
+                "options": {
+                  "placeholder": "{}",
+                  "language": "JSON",
+                  "template": "{\n  \"required\": \"error message\",\n  \"maxLength\": {\n    \"value\": 2,\n    \"message\": \"error message\"\n  },\n  \"minLength\": {\n    \"value\": 1,\n    \"message\": \"error message\"\n  },\n  \"pattern\": {\n    \"value\": \"/[A-Za-z]{3}/\",\n    \"message\": \"error message\"\n  }\n}"
+                },
+                "note": "Use string syntax as outlined here https://react-hook-form.com/get-started#Applyvalidation"
               }
             },
             {
@@ -7876,24 +7880,6 @@
                     { "text": "50%", "value": "50" },
                     { "text": "33%", "value": "33" }
                   ]
-                }
-              }
-            },
-            {
-              "field": "validator",
-              "name": "validator",
-              "type": "json",
-              "meta": {
-                "field": "validator",
-                "width": "full",
-                "type": "json",
-                "interface": "input-code",
-                "note": "react-hook-form validation rules.(validate function are not supported.)",
-                "required": true,
-                "options": {
-                  "language": "JSON",
-                  "lineWrapping": true,
-                  "template": ""
                 }
               }
             }
@@ -7916,7 +7902,7 @@
         "max_length": null,
         "numeric_precision": null,
         "numeric_scale": null,
-        "is_nullable": false,
+        "is_nullable": true,
         "is_unique": false,
         "is_primary_key": false,
         "is_generated": false,
@@ -7996,8 +7982,7 @@
               "foreground": "#FFFFFF",
               "background": "var(--warning)"
             }
-          ],
-          "showAsDot": true
+          ]
         },
         "field": "status",
         "group": null,
@@ -12362,9 +12347,9 @@
         "field": "display_details",
         "group": null,
         "hidden": false,
-        "interface": "group-accordion",
+        "interface": "group-detail",
         "note": "Control the icon and label displayed on the website.",
-        "options": null,
+        "options": { "start": "closed" },
         "readonly": false,
         "required": false,
         "sort": 5,
@@ -13204,8 +13189,7 @@
               "foreground": "#FFFFFF",
               "background": "var(--warning)"
             }
-          ],
-          "showAsDot": true
+          ]
         },
         "field": "status",
         "group": null,

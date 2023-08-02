@@ -2849,8 +2849,9 @@ fields:
     meta:
       collection: block_form
       conditions: null
-      display: null
-      display_options: null
+      display: related-values
+      display_options:
+        template: '{{title}}'
       field: form
       group: null
       hidden: false
@@ -5500,8 +5501,9 @@ fields:
     meta:
       collection: blog_settings
       conditions: null
-      display: null
-      display_options: null
+      display: related-values
+      display_options:
+        template: '{{title}}'
       field: featured_post
       group: null
       hidden: false
@@ -7233,17 +7235,34 @@ fields:
                 the input.
           - field: validation
             name: validation
-            type: string
+            type: json
             meta:
               field: validation
-              width: half
-              type: string
-              interface: input
+              width: full
+              type: json
+              interface: input-code
               options:
-                placeholder: required
+                placeholder: '{}'
+                language: JSON
+                template: |-
+                  {
+                    "required": "error message",
+                    "maxLength": {
+                      "value": 2,
+                      "message": "error message"
+                    },
+                    "minLength": {
+                      "value": 1,
+                      "message": "error message"
+                    },
+                    "pattern": {
+                      "value": "/[A-Za-z]{3}/",
+                      "message": "error message"
+                    }
+                  }
               note: >-
                 Use string syntax as outlined here
-                https://formkit.com/essentials/validation#string-syntax
+                https://react-hook-form.com/get-started#Applyvalidation
           - field: width
             name: width
             type: string
@@ -7262,22 +7281,6 @@ fields:
                     value: '50'
                   - text: 33%
                     value: '33'
-          - field: validator
-            name: validator
-            type: json
-            meta:
-              field: validator
-              width: full
-              type: json
-              interface: input-code
-              note: >-
-                react-hook-form validation rules.(validate function are not
-                supported.)
-              required: true
-              options:
-                language: JSON
-                lineWrapping: true
-                template: ''
       readonly: false
       required: true
       sort: null
@@ -7295,7 +7298,7 @@ fields:
       max_length: null
       numeric_precision: null
       numeric_scale: null
-      is_nullable: false
+      is_nullable: true
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -7362,7 +7365,6 @@ fields:
             value: archived
             foreground: '#FFFFFF'
             background: var(--warning)
-        showAsDot: true
       field: status
       group: null
       hidden: false
@@ -11396,9 +11398,10 @@ fields:
       field: display_details
       group: null
       hidden: false
-      interface: group-accordion
+      interface: group-detail
       note: Control the icon and label displayed on the website.
-      options: null
+      options:
+        start: closed
       readonly: false
       required: false
       sort: 5
@@ -12177,7 +12180,6 @@ fields:
             value: archived
             foreground: '#FFFFFF'
             background: var(--warning)
-        showAsDot: true
       field: status
       group: null
       hidden: false

@@ -39,7 +39,7 @@ async function TheFooter({ lang = 'zh' }: { lang?: string }) {
             <a href='/'>
               <LogoV2 className='h-8 ' />
             </a>
-            <p className='mt-2 font-mono text-sm text-gray-500'>
+            <p className='mt-2 font-mono text-sm text-base-200'>
               {globalData?.tagline}
             </p>
           </div>
@@ -72,9 +72,7 @@ async function TheFooter({ lang = 'zh' }: { lang?: string }) {
             <div className='absolute inset-0 ' />
             <div className='grain-bg absolute inset-0 dark:opacity-10' />
             <div className='relative w-full md:mt-0'>
-              <TypographyHeadline content='<p>Subscribe to our <em>newsletter</em></p>'>
-                Subscribe to our newsletter
-              </TypographyHeadline>
+              <TypographyHeadline content={form.title}></TypographyHeadline>
               {form && <VForm className='mt-4' form={form} />}
             </div>
           </div>
