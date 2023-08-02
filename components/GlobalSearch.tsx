@@ -86,7 +86,7 @@ export default function GlobalSearch({
       <div className={`relative mt-2 w-full ${className}`}>
         <Combobox.Input
           placeholder={placeholder}
-          className='input-bordered input w-full pr-10'
+          className='input input-bordered w-full pr-10'
           onChange={(event) => setQuery(event.target.value)}
           value={query}
         />
@@ -97,13 +97,13 @@ export default function GlobalSearch({
           >
             <VIcon
               icon='heroicons:x-mark'
-              className='h-5 w-5 text-gray-400'
+              className='h-5 w-5'
               aria-hidden='true'
             />
           </button>
         )}
-        <Combobox.Options className='scrollbar-hide absolute z-10 mt-4 max-h-[300px] w-full overflow-auto rounded-bl-xl border border-base-300 bg-gray-100 pt-2 shadow-md  dark:bg-gray-900 sm:text-sm'>
-          <div className='relative space-y-2 px-2'>
+        <Combobox.Options className='scrollbar-hide absolute z-50 mt-10 max-h-[300px] w-full overflow-auto rounded-bl-xl border border-base-300  bg-base-300 pt-2 shadow-md  sm:text-sm'>
+          <div className='relative space-y-2  px-2'>
             {loading && (
               <div className='flex h-12 w-full items-center justify-center'>
                 {/* <VLoading
@@ -117,7 +117,7 @@ export default function GlobalSearch({
                 {({ active, selected }) => (
                   <li
                     className={`${
-                      active ? 'bg-accent' : 'bg-white dark:bg-gray-800'
+                      active ? 'bg-accent' : ''
                     } relative flex w-full cursor-pointer items-start space-x-3 overflow-hidden rounded-bl rounded-tr p-2 text-left`}
                   >
                     {hit.image ? (
@@ -127,20 +127,20 @@ export default function GlobalSearch({
                         alt=''
                       />
                     ) : (
-                      <div className='h-10 w-10 rounded-bl rounded-tr bg-gray-200 dark:bg-gray-900' />
+                      <div className='h-10 w-10 rounded-bl rounded-tr ' />
                     )}
-                    <p className='font-mono text-sm font-semibold text-gray-900 group-hover:text-accent dark:text-white'>
+                    <p className='font-mono text-sm font-semibold  group-hover:text-accent '>
                       {truncateString(hit.title, 50)}
                     </p>
                   </li>
                 )}
               </Combobox.Option>
             ))}
-            <div className='w-full border-t py-2 text-center font-mono text-gray-500 dark:border-t-gray-700'>
+            <div className='t w-full border-t py-2 text-center font-mono'>
               {results.length > 0 ? 'End of results' : 'No results'}
             </div>
           </div>
-          <div className='sticky bottom-0 flex h-12 w-full items-center justify-center bg-gradient-to-t from-white font-mono dark:from-gray-900' />
+          <div className='justify-centerfont-mono sticky bottom-0 flex h-12 w-full items-center' />
         </Combobox.Options>
       </div>
     </Combobox>
