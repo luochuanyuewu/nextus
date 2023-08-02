@@ -4,7 +4,6 @@ import {
   fetchGlobals,
   fetchNavigationSafe,
 } from '@/lib/utils/directus-api'
-import LogoV2 from '@/components/LogoV2'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import VIcon from '@/components/base/VIcon'
@@ -36,9 +35,6 @@ async function TheFooter({ lang = 'zh' }: { lang?: string }) {
         {/* Header */}
         <div className='flex justify-between'>
           <div className='w-full'>
-            <a href='/'>
-              <LogoV2 className='h-8 ' />
-            </a>
             <p className='mt-2 font-mono text-sm text-base-200'>
               {globalData?.tagline}
             </p>

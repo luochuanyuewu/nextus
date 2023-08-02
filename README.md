@@ -14,6 +14,7 @@
   <!-- <a href="#deployment"><strong>🚢 部署/Deployment</strong></a> · -->
   <!-- <a href="#features"><strong>⭐ 特性/Features</strong></a> · -->
   <a href="#tech-stack"><strong>🧰 技术栈/Tech Stack</strong></a> ·
+  <a href="#roadmap"><strong>💼 开发计划/Roadmap</strong></a> ·
   <a href="#other-resources"><strong>💼 其他资源/Other Resources</strong></a> ·
   <a href="#contributors"><strong>👥 贡献者/Contributors</strong></a>
 </p>
@@ -131,6 +132,21 @@ For a smooth experience, the [Directus SDK](https://docs.directus.io/guides/sdk
 
 <br />
 
+# Roadmap
+
+- Fully multiple language supports for form, artilce, page and projects.
+- Dedicated documentation site.
+- Auth module.
+- Fetching frontend translations via backend(directus translation)
+- Page width controlled by backend.
+- Content management for documentation.
+- Analysis support(Google,Baidu,Umami)
+- Payment module(pay to watch article,page)
+- Token based access control for file download.
+- AI powered content writing and image producing(All resisted within directus)
+
+<br />
+
 # Other Resources
 
 - **[Directus Discord](https://discord.com/invite/directus)** – Join 10k+ developers and community members to ask questions and live discussion around Directus.
@@ -141,3 +157,11 @@ For a smooth experience, the [Directus SDK](https://docs.directus.io/guides/sdk
 # Contributors
 
 - 罗传月武 ([@luochuanyuewu](https://twitter.com/luochuanyuewu))
+
+# Credits
+
+- Bryant Gillespie ([@bryantgillespie](https://twitter.com/bryantgillespie))
+
+Nextus originally based on [AgencyOS Template](https://github.com/directus-community/agency-os) created by Bryant Gillespie. Now nextus has it's own direction(see roadmap).
+
+
