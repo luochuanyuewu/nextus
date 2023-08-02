@@ -1,4 +1,4 @@
-import directusApi from '@/lib/utils/directus-api'
+import directusApi, { fetchGlobals } from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
 import { Posts } from '@/lib/directus-collections'
 import PageContainer from '@/components/PageContainer'
@@ -38,32 +38,34 @@ export default async function PageRoute({
   params,
 }: {
   params: {
+    lang: string
     slug: string
   }
 }) {
   const posts = await getPostsByCategory(params.slug)
 
+  const globals = await fetchGlobals(params.lang)
+
+  const globalData = globals.translations[0]
+
   return (
     <PageContainer>
-      <header className='border-b-2 border-base-300 pb-6 '>
-        <TypographyTitle>Agency Blog</TypographyTitle>
-        <TypographyHeadline content='<p>Articles on <em>development</em>, marketing, and more.</p>' />
-        <div></div>
+      <header className='border-b border-base-300 pb-6 '>
+        <TypographyTitle>
+          {globalData.blog_setting.title || 'Nextus blog'}
+        </TypographyTitle>
+        {globalData.blog_setting.headline && (
+          <TypographyHeadline
+            content={globalData.blog_setting.headline}
+          ></TypographyHeadline>
+        )}
       </header>
       <section className='relative w-full items-center space-y-12 py-12'>
         <div className='relative grid gap-12 border-b-2 border-base-300 pb-12  md:grid-cols-2 lg:grid-cols-4'>
           <div>
-            <TypographyTitle
-              as='p'
-              className='text-gray-700 dark:text-gray-400'
-            >
-              Search
-            </TypographyTitle>
+            <TypographyTitle as='p'>Search</TypographyTitle>
             <GlobalSearch collections={['posts']} className='flex' />
-            <TypographyTitle
-              as='p'
-              className='mt-8 text-gray-700 dark:text-gray-400'
-            >
+            <TypographyTitle as='p' className='mt-8'>
               Categories
             </TypographyTitle>
             <Categories />
@@ -72,7 +74,6 @@ export default async function PageRoute({
             <TypographyTitle as='p'>
               Articles for Category: {deslugify(params.slug)}
             </TypographyTitle>
-            <span>{}</span>
             <div className='relative grid grid-cols-2 gap-6 md:grid-cols-2 lg:grid-cols-4'>
               {posts.map((post: Posts, postIdx: number) => (
                 <PostCard

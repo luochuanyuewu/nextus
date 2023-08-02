@@ -18,8 +18,8 @@ export default async function Categories() {
         return (
           <Link
             key={category.id}
-            href={`/posts/categories/${category.id}`}
-            className='font-mono hover:opacity-80 dark:text-gray-200'
+            href={`/posts/categories/${category.slug}`}
+            className='font-mono hover:opacity-80'
           >
             <VBadge color={category.color as any} size='lg'>
               {category.title}

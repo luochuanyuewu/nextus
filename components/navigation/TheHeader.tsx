@@ -6,6 +6,7 @@ import {
 import MenuItem from '@/components/navigation/MenuItem'
 import Link from 'next/link'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
+import Navbar from './Navbar'
 
 export default async function TheHeader({ lang }: { lang: string }) {
   const [globals, navigation] = await Promise.all([
@@ -15,6 +16,12 @@ export default async function TheHeader({ lang }: { lang: string }) {
 
   const globalData =
     globals.translations && (globals.translations[0] as GlobalsTranslations)
+
+  return (
+    <div>
+      <Navbar globalData={globalData} navigation={navigation}></Navbar>
+    </div>
+  )
 
   return (
     <div className='pt-1'>
@@ -43,6 +50,7 @@ export default async function TheHeader({ lang }: { lang: string }) {
             <ThemeSwitcher></ThemeSwitcher>
           </div>
         </div>
+        {/* <MobileMenu navigation={navigation} tagline={globalData.tagline} /> */}
       </header>
     </div>
   )

@@ -134,12 +134,12 @@ export function ThemeSwitcher() {
     <div className=''>
       <div
         title='Change Theme'
-        className={`dropdown-end dropdown ${dropdownClasses}`}
+        className={`dropdown dropdown-end ${dropdownClasses}`}
       >
         <div
           tabIndex={0}
           data-umami-event='nav-theme-switcher'
-          className='btn-ghost btn gap-1 normal-case'
+          className='btn btn-ghost gap-1 normal-case'
         >
           <span className='dark:text-white  md:inline'>主题</span>
           <svg
@@ -184,25 +184,5 @@ export function ThemeSwitcher() {
         </div>
       </div>
     </div>
-  )
-
-  return (
-    <>
-      <select
-        data-umami-event='nav-theme-switcher'
-        aria-label='选择主题'
-        data-choose-theme
-        className='select max-w-xs'
-      >
-        <option disabled>主题</option>
-        <option value=''>Default</option>
-        <option value='dark'>Dark</option>
-        <option value='cupcake'>Cupcake</option>
-        <option value='bumblebee'>Bumblebee</option>
-        <option value='emerald'>Emerald</option>
-        <option value='corporate'>Corporate</option>
-        <option value='night'>Night</option>
-      </select>
-    </>
   )
 }

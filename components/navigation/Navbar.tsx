@@ -3,6 +3,9 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
+import { GlobalsTranslations, Navigation } from '@/lib/directus-collections'
+import NavigationItem from './NavigationItem'
+import VIcon from '../base/VIcon'
 
 interface NavLink {
   id: number
@@ -32,11 +35,15 @@ export default function Navbar({
   buttons,
   logoUrl,
   logoText,
+  globalData,
+  navigation,
 }: {
-  links: Array<NavLink>
+  links?: Array<NavLink>
   buttons?: Array<NavLink>
-  logoUrl: string | null
-  logoText: string | null
+  logoUrl?: string | null
+  logoText?: string | null
+  globalData: GlobalsTranslations
+  navigation: Navigation
 }) {
   // https://reacthustle.com/blog/how-to-close-daisyui-dropdown-with-one-click
   const handleClick = () => {
@@ -74,54 +81,49 @@ export default function Navbar({
               onClick={handleClick}
               className='menu-compact menu dropdown-content rounded-box z-10 mt-3 w-52 bg-base-100 p-2 shadow'
             >
-              {links.map((item: NavLink, index: number) => (
-                <NavLink key={index} {...item} />
+              {navigation.items.map((item, index: number) => (
+                <li key={index}>
+                  <Link
+                    href='/'
+                    // data-umami-event={`nav-${link.href.replace('/', '')}`}
+                  >
+                    <span>{item.title}</span>
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
           <Link href='/' className='btn btn-ghost text-xl normal-case'>
-            {logoText}
+            {globalData.title}
           </Link>
         </div>
         <div className='navbar-center hidden lg:flex'>
           <ul className='menu menu-horizontal px-1'>
-            {links.map((item: NavLink, index: number) => (
-              <NavLink key={index} {...item} />
+            {navigation.items.map((item, index) => (
+              <NavigationItem key={index} item={item}></NavigationItem>
             ))}
           </ul>
         </div>
 
         <div className='navbar-end'>
           <ThemeSwitcher />
-          <div className='dropdown dropdown-end'>
-            <label tabIndex={0} className='btn btn-circle btn-ghost'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='#000000'
-                strokeWidth='2'
-                strokeLinecap='round'
-                strokeLinejoin='round'
+
+          {buttons && (
+            <div className='dropdown dropdown-end'>
+              <label tabIndex={0} className='btn btn-circle btn-ghost'>
+                <VIcon icon='mdi:account-outline'></VIcon>
+              </label>
+              <ul
+                tabIndex={0}
+                onClick={handleClick}
+                className='menu-compact menu dropdown-content rounded-box z-10 mt-3 w-52 bg-base-100 p-2 shadow'
               >
-                <circle cx='12' cy='12' r='1'></circle>
-                <circle cx='19' cy='12' r='1'></circle>
-                <circle cx='5' cy='12' r='1'></circle>
-              </svg>
-            </label>
-            <ul
-              tabIndex={0}
-              onClick={handleClick}
-              className='menu-compact menu dropdown-content rounded-box z-10 mt-3 w-52 bg-base-100 p-2 shadow'
-            >
-              {buttons &&
-                buttons.map((item: NavLink, index: number) => (
+                {buttons.map((item: NavLink, index: number) => (
                   <NavLink key={index} {...item} />
                 ))}
-            </ul>
-          </div>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </header>
