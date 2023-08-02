@@ -35,13 +35,9 @@ async function TheFooter({ lang = 'zh' }: { lang?: string }) {
         {/* Header */}
         <div className='flex justify-between'>
           <div className='w-full'>
-            <p className='mt-2 font-mono text-sm text-base-200'>
-              {globalData?.tagline}
-            </p>
+            <p className='mt-2 font-mono text-sm'>{globalData?.tagline}</p>
           </div>
-          <div className='flex w-full items-center justify-end space-x-2'>
-            {/* <DarkModeToggle className="hidden text-gray-600 md:block hover:text-gray-400" /> */}
-          </div>
+          <div className='flex w-full items-center justify-end space-x-2'></div>
         </div>
 
         {/* Navigation + Form */}
