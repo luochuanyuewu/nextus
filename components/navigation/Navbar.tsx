@@ -43,7 +43,7 @@ export default async function Navbar({
   const t = await getTranslator(lang, 'global')
 
   return (
-    <header>
+    <header className='z-50'>
       <div className='navbar mx-auto max-w-7xl bg-base-100'>
         <div className='navbar-start'>
           <div className='dropdown'>
