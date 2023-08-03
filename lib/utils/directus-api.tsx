@@ -107,7 +107,11 @@ const fetchNavigationSafe = async function name(slug: string, lang: string) {
         fields: [
           '*',
           {
-            items: ['*', { page: ['slug'] }, { children: ['*'] }],
+            items: [
+              '*',
+              { page: ['slug'] },
+              { children: ['*', { page: ['slug'] }] },
+            ],
             language: ['code'],
           },
           {},
