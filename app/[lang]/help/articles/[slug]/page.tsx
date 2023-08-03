@@ -7,17 +7,21 @@ import VAvatar from '@/components/base/VAvatar'
 import TypographyProse from '@/components/typography/TypographyProse'
 import { markdownToHtml } from '@/lib/utils/markdown'
 import { HelpArticles } from '@/lib/directus-collections'
+import { getTranslator } from 'next-intl/server'
 
 export default async function ArticlePage({
   params,
 }: {
-  params: { slug: string }
+  params: { lang: string; slug: string }
 }) {
   const articles = await fetchHelpArticles(params.slug)
 
   if (articles.length === 0) return null
 
   const article = articles[0] as HelpArticles
+
+  const t = await getTranslator(params.lang)
+
   return (
     <PageContainer>
       <header className='border-b  pb-8 '>

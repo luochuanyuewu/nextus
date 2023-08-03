@@ -3,7 +3,9 @@
     "theme": "Theme",
     "search": {
       "no": "No Results",
-      "end": "End of results"
+      "end": "End of results",
+      "for_posts": "Search for articles",
+      "for_help_articles": "Search for help articles"
     },
     "locale_switcher": {
       "label": "Language",

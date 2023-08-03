@@ -3,7 +3,9 @@
     "theme": "主题",
     "search": {
       "no": "没有结果",
-      "end": "没有更多结果了"
+      "end": "没有更多结果了",
+      "for_posts": "搜索文章",
+      "for_help_articles": "搜索帮助文档"
     },
     "locale_switcher": {
       "label": "语言",

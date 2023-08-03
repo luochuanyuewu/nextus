@@ -25,15 +25,15 @@ export default async function HelpCenterPage({
     })
   )) as Array<HelpCollections>
 
-  const t = await getTranslator(params.lang, 'help')
+  const t = await getTranslator(params.lang)
 
   return (
     <PageContainer className='max-w-7xl'>
       <header className='border-b  pb-8 '>
-        <TypographyTitle>{t('title')}</TypographyTitle>
-        <TypographyHeadline content={t.raw('headline')} />
+        <TypographyTitle>{t('help.title')}</TypographyTitle>
+        <TypographyHeadline content={t.raw('help.headline')} />
         <GlobalSearch
-          placeholder='Search for articles'
+          placeholder={t('global.search.for_help_articles')}
           collections={['help_articles']}
           className='flex'
         />

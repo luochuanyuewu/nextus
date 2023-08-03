@@ -41,7 +41,7 @@ export default async function PageRoute({
 
   const globalData = globals.translations[0]
 
-  const t = await getTranslator(params.lang, 'posts')
+  const t = await getTranslator(params.lang)
 
   return (
     <PageContainer>
@@ -58,20 +58,24 @@ export default async function PageRoute({
       <section className='relative w-full space-y-12 py-12'>
         <div className='relative grid w-full gap-12 border-b-2 border-base-300 pb-12  md:grid-cols-2 lg:grid-cols-4'>
           <div>
-            <TypographyTitle>{t('search')}</TypographyTitle>
-            <GlobalSearch collections={['posts']} className='flex' />
+            <TypographyTitle>{t('posts.search')}</TypographyTitle>
+            <GlobalSearch
+              placeholder={t('global.search.for_posts')}
+              collections={['posts']}
+              className='flex'
+            />
             <TypographyTitle className='mt-8'>
-              {t('categories')}
+              {t('posts.categories')}
             </TypographyTitle>
             <Categories />
           </div>
           <div className='space-y-4 lg:col-span-3'>
-            <TypographyTitle>{t('featured')}</TypographyTitle>
+            <TypographyTitle>{t('posts.featured')}</TypographyTitle>
             <FeaturePostCard post={posts[0]} />
           </div>
         </div>
         <div className='space-y-4'>
-          <TypographyTitle>{t('latest')}</TypographyTitle>
+          <TypographyTitle>{t('posts.latest')}</TypographyTitle>
           <div className='relative grid gap-8 md:grid-cols-2 lg:grid-cols-4'>
             {posts.map((post, postIdx) => (
               <PostCard

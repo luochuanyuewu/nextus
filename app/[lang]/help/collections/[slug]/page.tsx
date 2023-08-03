@@ -8,11 +8,12 @@ import { convertIconName } from '@/lib/utils/strings'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import Link from 'next/link'
 import { HelpArticles } from '@/lib/directus-collections'
+import { getTranslator } from 'next-intl/server'
 
 export default async function CollectionPage({
   params,
 }: {
-  params: { slug: string }
+  params: { lang: string; slug: string }
 }) {
   const collections = await directusApi.request(
     readItems('help_collections', {
@@ -30,11 +31,13 @@ export default async function CollectionPage({
 
   const collection = collections[0]
 
+  const t = await getTranslator(params.lang)
+
   return (
     <PageContainer>
       <header className='border-b border-base-300 pb-8 '>
         <GlobalSearch
-          placeholder='Search for articles'
+          placeholder={t('global.search.for_help_articles')}
           collections={['help_articles']}
           className='flex'
         />
@@ -62,34 +65,31 @@ export default async function CollectionPage({
             <div className='flex flex-col'>
               <TypographyHeadline content={collection.title} />
 
-              <div className='text-md font-mono text-gray-500'>
+              <div className='text-md font-mono '>
                 <p>{collection.description}</p>
               </div>
             </div>
-            <div className='mt-5 font-mono text-gray-500'>
+            <div className='mt-5 font-mono '>
               {collection.articles && (collection.articles as any).length}{' '}
               articles
             </div>
           </div>
-          <div className='flex flex-col gap-5 rounded-br-xl rounded-tl-xl border-2 p-2 dark:border-gray-600'>
+          <div className='flex flex-col gap-5 rounded-br-xl rounded-tl-xl border-2 p-2 '>
             {collection.articles &&
               (collection.articles as any).map((article: HelpArticles) => (
                 <Link
                   key={article.id}
                   href={`/help/articles/${article.slug}`}
-                  className='flex flex-col rounded-br-lg rounded-tl-lg p-3 transition duration-150 hover:bg-accent/30 dark:hover:bg-gray-900'
+                  className='flex flex-col rounded-br-lg rounded-tl-lg p-3 transition duration-150 hover:bg-accent/30 '
                 >
                   <div className='flex items-center justify-between'>
                     <div>
                       <TypographyHeadline content={article.title} size='sm' />
-                      <p className='mt-2 font-mono text-sm text-gray-500'>
+                      <p className='mt-2 font-mono text-sm '>
                         {article.summary}
                       </p>
                     </div>
-                    <VIcon
-                      icon='heroicons:arrow-right'
-                      className='h-6 w-6 dark:text-gray-300'
-                    />
+                    <VIcon icon='heroicons:arrow-right' className='h-6 w-6 ' />
                   </div>
                 </Link>
               ))}
