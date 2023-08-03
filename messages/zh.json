@@ -1,0 +1,12 @@
+{
+  "global": {
+    "theme": "主题"
+  },
+  "projects": {
+    "latest": "最新项目"
+  },
+  "help": {
+    "title": "帮助中心",
+    "headline": "<p>你需要什么<em>帮助</em>？</p>"
+  }
+}

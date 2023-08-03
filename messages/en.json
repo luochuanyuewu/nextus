@@ -1,0 +1,12 @@
+{
+  "global": {
+    "theme": "Theme"
+  },
+  "projects": {
+    "latest": "Latest Projects"
+  },
+  "help": {
+    "title": "Help Center",
+    "headline": "<p>How can we <em>help</em> you?</p>"
+  }
+}

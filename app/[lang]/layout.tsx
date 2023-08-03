@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { useLocale } from 'next-intl'
+import { notFound } from 'next/navigation'
 
 import './globals.css'
 import { fetchGlobals } from '@/lib/utils/directus-api'
@@ -45,30 +47,26 @@ export default async function RootLayout({
   children: React.ReactNode
   params: { lang: string }
 }) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const locale = useLocale()
+
+  // Show a 404 error if the user requests an unknown locale
+  if (params.lang !== locale) {
+    notFound()
+  }
+
   return (
     <html lang={params.lang}>
       <head></head>
       <body>
         <main className='flex min-h-screen flex-col overflow-hidden bg-base-100 antialiased transition duration-150'>
-          {/* <div
-            id='mouseLight'
-            className='mouse-gradient absolute top-0 h-[200px] w-[200px] rounded-full transition-opacity'
-            // style="opacity: 0"
-          /> */}
           <TheHeader lang={params.lang} />
           <div className=''>{children}</div>
           <TheFooter />
         </main>
-
-        {/* {notificationBanner && <Banner data={notificationBanner} />} */}
-
         <ScrollToTopButton></ScrollToTopButton>
         <Analytics />
       </body>
     </html>
   )
 }
-
-// export async function generateStaticParams() {
-//   return i18n.locales.map((locale) => ({ lang: locale }))
-// }

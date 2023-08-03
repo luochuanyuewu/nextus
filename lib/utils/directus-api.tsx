@@ -40,10 +40,12 @@ const directusApi = createDirectus<DirectusSchema>(getDirectusURL())
   .with(
     rest({
       onRequest: (currentOptions: RequestInit) => {
-        const defaultRevalidate = process.env.API_CACHE_DISABLED ? 0 : 10
-        const shouldOverrideRevalidate = process.env.API_CACHE_DISABLED
-          ? true
-          : !currentOptions.next || !currentOptions.next.revalidate
+        const defaultRevalidate =
+          process.env.API_CACHE_DISABLED === 'true' ? 0 : 10
+        const shouldOverrideRevalidate =
+          process.env.API_CACHE_DISABLED === 'true'
+            ? true
+            : !currentOptions.next || !currentOptions.next.revalidate
 
         if (shouldOverrideRevalidate) {
           return {

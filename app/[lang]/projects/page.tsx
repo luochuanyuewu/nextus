@@ -9,6 +9,8 @@ import { isEven } from '@/lib/utils/math'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import VBadge from '@/components/base/VBadge'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import { getTranslator } from 'next-intl/server'
 
 type Props = {
   params: { slug: string; lang: string }
@@ -29,6 +31,8 @@ export default async function PageRoute({ params }: Props) {
 
   const globalData = globals.translations[0]
 
+  const t = await getTranslator(params.lang, 'projects')
+
   return (
     <PageContainer>
       <header className='border-b-2 border-base-300 pb-6 '>
@@ -40,7 +44,7 @@ export default async function PageRoute({ params }: Props) {
         )}
       </header>
       <section className='relative w-full items-center py-12'>
-        <TypographyTitle>Latest Projects</TypographyTitle>
+        <TypographyTitle>{t('latest')}</TypographyTitle>
         <div className='mt-4 grid gap-6 md:grid-cols-3'>
           {(projects as any).map((project: Projects, projectIdx: number) => (
             <Link

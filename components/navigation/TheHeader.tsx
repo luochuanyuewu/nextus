@@ -13,7 +13,11 @@ export default async function TheHeader({ lang }: { lang: string }) {
 
   return (
     <>
-      <Navbar globalData={globalData} navigation={navigation}></Navbar>
+      <Navbar
+        lang={lang}
+        globalData={globalData}
+        navigation={navigation}
+      ></Navbar>
     </>
   )
 }

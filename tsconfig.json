@@ -32,13 +32,14 @@
   },
   "include": [
     "next-env.d.ts",
+    "global.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
     "lib/**/*.ts",
     "middleware.ts",
     "@directus/sdk/*",
-    "./i18n-config.ts"
+    "./i18n.ts"
   ],
   "exclude": [
     "node_modules"

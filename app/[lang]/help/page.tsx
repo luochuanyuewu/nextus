@@ -8,8 +8,13 @@ import GlobalSearch from '@/components/GlobalSearch'
 import Link from 'next/link'
 import VIcon from '@/components/base/VIcon'
 import { convertIconName } from '@/lib/utils/strings'
+import { getTranslator } from 'next-intl/server'
 
-export default async function HelpCenterPage() {
+export default async function HelpCenterPage({
+  params,
+}: {
+  params: { lang: string }
+}) {
   const collections = (await directusApi.request(
     readItems('help_collections', {
       filter: {
@@ -20,11 +25,13 @@ export default async function HelpCenterPage() {
     })
   )) as Array<HelpCollections>
 
+  const t = await getTranslator(params.lang, 'help')
+
   return (
     <PageContainer className='max-w-7xl'>
       <header className='border-b  pb-8 '>
-        <TypographyTitle>Help Center</TypographyTitle>
-        <TypographyHeadline content='<p>How can we <em>help</em> you?</p>' />
+        <TypographyTitle>{t('title')}</TypographyTitle>
+        <TypographyHeadline content={t.raw('headline')} />
         <GlobalSearch
           placeholder='Search for articles'
           collections={['help_articles']}

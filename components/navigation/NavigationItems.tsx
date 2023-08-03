@@ -12,20 +12,26 @@ function getUrl(item: NavigationItems) {
   }
 }
 
-function NavigationChildrenItems({ items }: { items: NavigationItems[] }) {
+function NavigationChildrenItems({
+  items,
+  detail = true,
+}: {
+  items: NavigationItems[]
+  detail?: boolean
+}) {
   return (
     <>
       {items.map((childItem, index) => (
         <li key={index}>
           <Link href={getUrl(childItem)}>
-            {childItem.icon && (
+            {detail && childItem.icon && (
               <VIcon
                 icon={convertIconName(childItem.icon)}
                 className='h-10 w-10'
               />
             )}
             <div className='whitespace-nowrap font-bold'>{childItem.title}</div>
-            {childItem.label && (
+            {detail && childItem.label && (
               <p className='mt-1 text-sm leading-tight'>{childItem.label}</p>
             )}
           </Link>
@@ -37,11 +43,12 @@ function NavigationChildrenItems({ items }: { items: NavigationItems[] }) {
 
 function NavigationItem({
   item,
-  mobile,
+  mobile = false,
 }: {
   item: NavigationItems
   mobile?: boolean
 }) {
+  // https://reacthustle.com/blog/how-to-close-daisyui-dropdown-with-one-click
   const handleClick = () => {
     const elem = document.activeElement
     if (elem) {
@@ -58,7 +65,9 @@ function NavigationItem({
             href={getUrl(item)}
             target={item.open_in_new_tab ? '_blank' : '_self'}
           >
-            {item.icon && <VIcon icon={convertIconName(item.icon)} />}
+            {!mobile && item.icon && (
+              <VIcon icon={convertIconName(item.icon)} />
+            )}
             {item.title}
           </Link>
         </li>
@@ -69,6 +78,7 @@ function NavigationItem({
             <summary>{item.title}</summary>
             <ul className='z-10 p-2'>
               <NavigationChildrenItems
+                detail={true}
                 items={item.children}
               ></NavigationChildrenItems>
             </ul>
@@ -80,6 +90,7 @@ function NavigationItem({
           <a>{item.title}</a>
           <ul className='z-10 p-2'>
             <NavigationChildrenItems
+              detail={false}
               items={item.children}
             ></NavigationChildrenItems>
           </ul>

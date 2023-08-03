@@ -1,4 +1,3 @@
-'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
@@ -6,6 +5,7 @@ import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 import { GlobalsTranslations, Navigation } from '@/lib/directus-collections'
 import VIcon from '@/components/base/VIcon'
 import NavigationItems from './NavigationItems'
+import { getTranslator } from 'next-intl/server'
 
 interface NavLink {
   id: number
@@ -26,25 +26,20 @@ function NavLink({ href, text }: NavLink) {
   )
 }
 
-export default function Navbar({
+export default async function Navbar({
   buttons,
   globalData,
   navigation,
+  lang,
 }: {
   buttons?: Array<NavLink>
   logoUrl?: string | null
   logoText?: string | null
   globalData: GlobalsTranslations
   navigation: Navigation
+  lang: string
 }) {
-  // https://reacthustle.com/blog/how-to-close-daisyui-dropdown-with-one-click
-  const handleClick = () => {
-    const elem = document.activeElement
-    if (elem) {
-      // @ts-ignore
-      elem?.blur()
-    }
-  }
+  const t = await getTranslator(lang, 'global')
 
   return (
     <header>
@@ -76,7 +71,7 @@ export default function Navbar({
         </div>
 
         <div className='navbar-end'>
-          <ThemeSwitcher />
+          <ThemeSwitcher title={t('theme')} />
 
           {buttons && (
             <div className='dropdown dropdown-end'>
