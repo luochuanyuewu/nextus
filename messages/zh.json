@@ -1,6 +1,10 @@
 {
   "global": {
-    "theme": "主题"
+    "theme": "主题",
+    "search": {
+      "no": "没有结果",
+      "end": "没有更多结果了"
+    }
   },
   "projects": {
     "latest": "最新项目"
@@ -8,5 +12,12 @@
   "help": {
     "title": "帮助中心",
     "headline": "<p>你需要什么<em>帮助</em>？</p>"
+  },
+  "posts": {
+    "search": "搜索文章",
+    "categories": "文章分类",
+    "featured": "焦点文章",
+    "latest": "最新文章",
+    "category_for": "分类文章: "
   }
 }

@@ -1,6 +1,10 @@
 {
   "global": {
-    "theme": "Theme"
+    "theme": "Theme",
+    "search": {
+      "no": "No Results",
+      "end": "End of results"
+    }
   },
   "projects": {
     "latest": "Latest Projects"
@@ -8,5 +12,12 @@
   "help": {
     "title": "Help Center",
     "headline": "<p>How can we <em>help</em> you?</p>"
+  },
+  "posts": {
+    "search": "Search",
+    "categories": "Categories",
+    "featured": "Featured Article",
+    "latest": "Latest & Greatest",
+    "category_for": "Articles For Category: "
   }
 }

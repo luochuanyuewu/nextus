@@ -29,7 +29,7 @@ export default function CtaBlock({ data }: CtaBlockProps) {
       <div className='relative overflow-hidden rounded-br-3xl rounded-tl-3xl border-4 border-primary bg-transparent  p-2 '>
         <div className='relative overflow-hidden rounded-br-2xl rounded-tl-2xl px-6 py-8'>
           <div className='absolute inset-0 ' />
-          <div className='grain-bg absolute inset-0 ' />
+          <div className='absolute inset-0 ' />
           <div className='relative md:flex md:items-center md:justify-between md:space-x-4'>
             <div>
               {data.title && <TypographyTitle>{data.title}</TypographyTitle>}

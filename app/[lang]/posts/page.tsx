@@ -9,6 +9,7 @@ import Categories from '@/components/Categories'
 import FeaturePostCard from '@/components/FeaturePostCard'
 import PostCard from '@/components/PostCard'
 import { isEven } from '@/lib/utils/math'
+import { getTranslator } from 'next-intl/server'
 
 async function fetchData() {
   const posts = await directusApi.request(
@@ -40,6 +41,8 @@ export default async function PageRoute({
 
   const globalData = globals.translations[0]
 
+  const t = await getTranslator(params.lang, 'posts')
+
   return (
     <PageContainer>
       <header className='border-b border-base-300 pb-6 '>
@@ -55,18 +58,20 @@ export default async function PageRoute({
       <section className='relative w-full space-y-12 py-12'>
         <div className='relative grid w-full gap-12 border-b-2 border-base-300 pb-12  md:grid-cols-2 lg:grid-cols-4'>
           <div>
-            <TypographyTitle>Search</TypographyTitle>
+            <TypographyTitle>{t('search')}</TypographyTitle>
             <GlobalSearch collections={['posts']} className='flex' />
-            <TypographyTitle className='mt-8'>Categories</TypographyTitle>
+            <TypographyTitle className='mt-8'>
+              {t('categories')}
+            </TypographyTitle>
             <Categories />
           </div>
           <div className='space-y-4 lg:col-span-3'>
-            <TypographyTitle>Featured Article</TypographyTitle>
+            <TypographyTitle>{t('featured')}</TypographyTitle>
             <FeaturePostCard post={posts[0]} />
           </div>
         </div>
         <div className='space-y-4'>
-          <TypographyTitle>Latest & Greatest</TypographyTitle>
+          <TypographyTitle>{t('latest')}</TypographyTitle>
           <div className='relative grid gap-8 md:grid-cols-2 lg:grid-cols-4'>
             {posts.map((post, postIdx) => (
               <PostCard

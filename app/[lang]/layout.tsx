@@ -10,6 +10,7 @@ import TheFooter from '@/components/navigation/TheFooter'
 import ScrollToTopButton from '@/components/ScrollToTopButton'
 import { Analytics } from '@/components/analytics'
 import { GlobalsTranslations } from '@/lib/directus-collections'
+import { createTranslator, NextIntlClientProvider } from 'next-intl'
 
 const FALLBACK_SEO = {
   title: 'Directus Starter Next',
@@ -40,6 +41,14 @@ export async function generateMetadata({
   }
 }
 
+async function getMessages(locale: string) {
+  try {
+    return (await import(`@/messages/${locale}.json`)).default
+  } catch (error) {
+    notFound()
+  }
+}
+
 export default async function RootLayout({
   children,
   params,
@@ -55,17 +64,21 @@ export default async function RootLayout({
     notFound()
   }
 
+  const messages = await getMessages(locale)
+
   return (
     <html lang={params.lang}>
       <head></head>
       <body>
-        <main className='flex min-h-screen flex-col overflow-hidden bg-base-100 antialiased transition duration-150'>
-          <TheHeader lang={params.lang} />
-          <div className=''>{children}</div>
-          <TheFooter />
-        </main>
-        <ScrollToTopButton></ScrollToTopButton>
-        <Analytics />
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <main className='flex min-h-screen flex-col overflow-hidden bg-base-100 antialiased transition duration-150'>
+            <TheHeader lang={params.lang} />
+            {children}
+            <TheFooter />
+          </main>
+          <ScrollToTopButton></ScrollToTopButton>
+          <Analytics />
+        </NextIntlClientProvider>
       </body>
     </html>
   )

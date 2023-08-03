@@ -1,5 +1,4 @@
 'use client'
-/* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from 'react'
 import { useDebounce } from 'react-use'
 import { Combobox } from '@headlessui/react'
@@ -8,6 +7,8 @@ import VIcon from './base/VIcon'
 import { useRouter } from 'next/navigation'
 import qs from 'qs'
 import { truncateString } from '@/lib/utils/strings'
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 
 type CollectionType =
   | 'posts'
@@ -32,6 +33,8 @@ export default function GlobalSearch({
   const [selected, setSelected] = useState<any>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const router = useRouter()
+
+  const t = useTranslations('global.search')
 
   const [, cancelSearch] = useDebounce(
     () => {
@@ -69,17 +72,11 @@ export default function GlobalSearch({
     setLoading(false)
   }
 
-  //   useEffect(() => {
-  //     searchDebounced()
-  //   }, [query])
-
   useEffect(() => {
     if (selected) {
       router.push(selected.url)
     }
   }, [selected, router])
-
-  //   return <div></div>
 
   return (
     <Combobox value={selected} onChange={setSelected}>
@@ -106,10 +103,7 @@ export default function GlobalSearch({
           <div className='relative space-y-2  px-2'>
             {loading && (
               <div className='flex h-12 w-full items-center justify-center'>
-                {/* <VLoading
-                  name='heroicons:refresh'
-                  className='h-8 w-8 text-gray-700 dark:text-white'
-                /> */}
+                <span className='loading loading-spinner text-warning'></span>
               </div>
             )}
             {results.map((hit) => (
@@ -121,11 +115,13 @@ export default function GlobalSearch({
                     } relative flex w-full cursor-pointer items-start space-x-3 overflow-hidden rounded-bl rounded-tr p-2 text-left`}
                   >
                     {hit.image ? (
-                      <img
+                      <Image
+                        width={40}
+                        height={40}
                         className='h-10 w-10 flex-shrink-0 rounded-bl rounded-tr object-cover saturate-0 duration-300'
                         src={getDirectusMedia(hit.image)}
                         alt=''
-                      />
+                      ></Image>
                     ) : (
                       <div className='h-10 w-10 rounded-bl rounded-tr ' />
                     )}
@@ -137,7 +133,7 @@ export default function GlobalSearch({
               </Combobox.Option>
             ))}
             <div className='t w-full border-t py-2 text-center font-mono'>
-              {results.length > 0 ? 'End of results' : 'No results'}
+              {results.length > 0 ? t('end') : t('no')}
             </div>
           </div>
           <div className='justify-centerfont-mono sticky bottom-0 flex h-12 w-full items-center' />

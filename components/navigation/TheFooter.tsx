@@ -61,8 +61,8 @@ async function TheFooter({ lang = 'zh' }: { lang?: string }) {
           </div>
 
           <div className='relative overflow-hidden rounded-br-3xl rounded-tl-3xl border-2 border-accent p-6 md:grid md:grid-cols-1 lg:justify-end'>
-            <div className='absolute inset-0 ' />
-            <div className='grain-bg absolute inset-0 dark:opacity-10' />
+            <div className='absolute inset-0' />
+            <div className='absolute inset-0' />
             <div className='relative w-full md:mt-0'>
               <TypographyHeadline content={form.title}></TypographyHeadline>
               {form && <VForm className='mt-4' form={form} />}
