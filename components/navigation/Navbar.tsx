@@ -4,8 +4,8 @@ import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 import { GlobalsTranslations, Navigation } from '@/lib/directus-collections'
-import NavigationItem from './NavigationItem'
-import VIcon from '../base/VIcon'
+import VIcon from '@/components/base/VIcon'
+import NavigationItems from './NavigationItems'
 
 interface NavLink {
   id: number
@@ -19,11 +19,7 @@ function NavLink({ href, text }: NavLink) {
   let className = clsx('', path === href ? 'btn-activate' : '')
   return (
     <li>
-      <Link
-        key={text}
-        href={href}
-        // data-umami-event={`nav-${link.href.replace('/', '')}`}
-      >
+      <Link key={text} href={href}>
         <span className={className}>{text}</span>
       </Link>
     </li>
@@ -31,14 +27,10 @@ function NavLink({ href, text }: NavLink) {
 }
 
 export default function Navbar({
-  links,
   buttons,
-  logoUrl,
-  logoText,
   globalData,
   navigation,
 }: {
-  links?: Array<NavLink>
   buttons?: Array<NavLink>
   logoUrl?: string | null
   logoText?: string | null
@@ -60,49 +52,27 @@ export default function Navbar({
         <div className='navbar-start'>
           <div className='dropdown'>
             <label tabIndex={0} className='btn btn-ghost lg:hidden'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='#000000'
-                strokeWidth='2'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              >
-                <line x1='3' y1='12' x2='21' y2='12'></line>
-                <line x1='3' y1='6' x2='21' y2='6'></line>
-                <line x1='3' y1='18' x2='21' y2='18'></line>
-              </svg>
+              <VIcon
+                className='h-6 w-6'
+                icon='fluent:navigation-16-filled'
+              ></VIcon>
             </label>
-            <ul
+            <NavigationItems
               tabIndex={0}
-              onClick={handleClick}
-              className='menu-compact menu dropdown-content rounded-box z-10 mt-3 w-52 bg-base-100 p-2 shadow'
-            >
-              {navigation.items.map((item, index: number) => (
-                <li key={index}>
-                  <Link
-                    href='/'
-                    // data-umami-event={`nav-${link.href.replace('/', '')}`}
-                  >
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+              className='menu dropdown-content rounded-box menu-sm z-[1] mt-3 w-52 bg-base-100 p-2 shadow'
+              mobile
+              items={navigation.items}
+            />
           </div>
           <Link href='/' className='btn btn-ghost text-xl normal-case'>
             {globalData.title}
           </Link>
         </div>
         <div className='navbar-center hidden lg:flex'>
-          <ul className='menu menu-horizontal px-1'>
-            {navigation.items.map((item, index) => (
-              <NavigationItem key={index} item={item}></NavigationItem>
-            ))}
-          </ul>
+          <NavigationItems
+            className='menu menu-horizontal px-1'
+            items={navigation.items}
+          />
         </div>
 
         <div className='navbar-end'>
@@ -115,7 +85,6 @@ export default function Navbar({
               </label>
               <ul
                 tabIndex={0}
-                onClick={handleClick}
                 className='menu-compact menu dropdown-content rounded-box z-10 mt-3 w-52 bg-base-100 p-2 shadow'
               >
                 {buttons.map((item: NavLink, index: number) => (
