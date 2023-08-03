@@ -120,7 +120,7 @@ export default function TestimonialsBlock({ data }: TestimonialsBlockProps) {
           </div>
         </div>
         <div
-          className='scrollbar-hide flex w-full snap-x space-x-6 overflow-x-auto scroll-smooth px-4 py-6 pb-24 md:px-6 md:pt-8 lg:px-8'
+          className='scrollbar-hide flex w-full snap-x space-x-6 overflow-x-auto scroll-smooth px-4 py-6 md:px-6 md:pt-8 lg:px-8'
           ref={testimonialContainer}
           onScroll={handleScroll}
         >

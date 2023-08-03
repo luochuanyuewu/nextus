@@ -71,7 +71,7 @@ export default async function RootLayout({
       <head></head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <main className='flex min-h-screen flex-col overflow-hidden bg-base-100 antialiased transition duration-150'>
+          <main className='min-h-screen overflow-hidden bg-base-100 antialiased'>
             <TheHeader lang={params.lang} />
             {children}
             <TheFooter />
