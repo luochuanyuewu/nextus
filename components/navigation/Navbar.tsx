@@ -43,7 +43,7 @@ export default async function Navbar({
   const t = await getTranslator(lang, 'global')
 
   return (
-    <header className='z-50'>
+    <header>
       <div className='navbar mx-auto max-w-7xl bg-base-100'>
         <div className='navbar-start'>
           <div className='dropdown'>
@@ -55,7 +55,7 @@ export default async function Navbar({
             </label>
             <NavigationItems
               tabIndex={0}
-              className='menu dropdown-content rounded-box menu-sm z-[1] mt-3 w-52 bg-base-100 p-2 shadow'
+              className='menu dropdown-content rounded-box menu-sm z-50 mt-3 w-52 bg-base-100 p-2 shadow'
               mobile
               items={navigation.items}
             />
@@ -81,7 +81,7 @@ export default async function Navbar({
               </label>
               <ul
                 tabIndex={0}
-                className='menu-compact menu dropdown-content rounded-box z-10 mt-3 w-52 bg-base-100 p-2 shadow'
+                className='menu-compact menu dropdown-content rounded-box z-50 mt-3 w-52 bg-base-100 p-2 shadow'
               >
                 {buttons.map((item: NavLink, index: number) => (
                   <NavLink key={index} {...item} />

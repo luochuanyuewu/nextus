@@ -20,12 +20,12 @@ export default function LocaleSwitcher() {
   }
 
   return (
-    <div title='Change Language' className='dropdown dropdown-end'>
+    <div title='Change Language' className='dropdown-end dropdown'>
       <div tabIndex={0} className='btn btn-ghost normal-case'>
         <span className='hidden font-normal md:inline'>{t('label')}</span>
         <VIcon className='h-6 w-6' icon='mdi:language'></VIcon>
       </div>
-      <div className='dropdown-content rounded-box top-px mt-16 w-56 overflow-y-auto bg-base-200 text-base-content shadow'>
+      <div className='dropdown-content rounded-box top-px z-50 mt-16 w-56 overflow-y-auto bg-base-200 text-base-content shadow'>
         <ul className='menu menu-sm gap-1' tabIndex={0}>
           {['zh', 'en'].map((cur) => (
             <li key={cur}>

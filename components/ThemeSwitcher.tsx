@@ -138,7 +138,7 @@ export function ThemeSwitcher({ title = 'theme' }: { title?: string }) {
         <span className='hidden font-normal md:inline'>{title}</span>
         <VIcon className='h-6 w-6' icon='mdi:theme-light-dark'></VIcon>
       </div>
-      <div className='dropdown-content rounded-t-box rounded-b-box top-px z-10 mt-16 h-[70vh] max-h-96 w-52 overflow-y-auto bg-base-200 text-base-content shadow-2xl'>
+      <div className='dropdown-content rounded-t-box rounded-b-box top-px z-50 mt-16 h-[70vh] max-h-96 w-52 overflow-y-auto bg-base-200 text-base-content shadow-2xl'>
         <div className='grid grid-cols-1 gap-3 p-3' tabIndex={0}>
           {themes.map((theme) => (
             <button
