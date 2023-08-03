@@ -135,7 +135,7 @@ export function ThemeSwitcher({ title = 'theme' }: { title?: string }) {
         data-umami-event='nav-theme-switcher'
         className='btn btn-ghost gap-1 normal-case'
       >
-        <span className='md:inline'>{title}</span>
+        <span className='hidden font-normal md:inline'>{title}</span>
         <VIcon className='h-6 w-6' icon='mdi:theme-light-dark'></VIcon>
       </div>
       <div className='dropdown-content rounded-t-box rounded-b-box top-px z-10 mt-16 h-[70vh] max-h-96 w-52 overflow-y-auto bg-base-200 text-base-content shadow-2xl'>

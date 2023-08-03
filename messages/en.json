@@ -4,6 +4,10 @@
     "search": {
       "no": "No Results",
       "end": "End of results"
+    },
+    "locale_switcher": {
+      "label": "Language",
+      "locale": "{locale, select, zh {中文} en {English} other {Unknown}}"
     }
   },
   "projects": {

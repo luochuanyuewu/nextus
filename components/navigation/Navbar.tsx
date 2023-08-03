@@ -6,6 +6,7 @@ import { GlobalsTranslations, Navigation } from '@/lib/directus-collections'
 import VIcon from '@/components/base/VIcon'
 import NavigationItems from './NavigationItems'
 import { getTranslator } from 'next-intl/server'
+import LocaleSwitcher from '../LocaleSwitcher'
 
 interface NavLink {
   id: number
@@ -72,7 +73,7 @@ export default async function Navbar({
 
         <div className='navbar-end'>
           <ThemeSwitcher title={t('theme')} />
-
+          <LocaleSwitcher></LocaleSwitcher>
           {buttons && (
             <div className='dropdown dropdown-end'>
               <label tabIndex={0} className='btn btn-circle btn-ghost'>
