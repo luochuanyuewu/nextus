@@ -26,7 +26,7 @@ export default async function ArticlePage({
     <PageContainer>
       <header className='border-b  pb-8 '>
         <GlobalSearch
-          placeholder='Search for articles'
+          placeholder={t('global.search.for_help_articles')}
           collections={['help_articles']}
           className='flex'
         />
