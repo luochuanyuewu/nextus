@@ -7,7 +7,7 @@ import {
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import VIcon from '@/components/base/VIcon'
-import Link from 'next/link'
+import Link from 'next-intl/link'
 import VForm from '@/components/base/VForm'
 
 async function TheFooter({ lang = 'zh' }: { lang?: string }) {

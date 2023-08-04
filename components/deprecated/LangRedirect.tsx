@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from 'next-intl/link'
 import Image from 'next/image'
 import { renderButtonStyle } from '@/lib/utils/render-button-style'
 import HighlightedText from './HighlightedText'

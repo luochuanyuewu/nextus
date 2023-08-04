@@ -13,7 +13,10 @@
     }
   },
   "projects": {
-    "latest": "最新项目"
+    "latest": "最新项目",
+    "build_with": "技术栈",
+    "client": "客户",
+    "cost": "成本"
   },
   "help": {
     "title": "帮助中心",

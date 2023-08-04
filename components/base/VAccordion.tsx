@@ -46,9 +46,7 @@ export function VAccordion({ title, children }: Props) {
           </dt>
           {open && (
             <dd className='mt-2'>
-              <div className='prose text-left font-serif dark:prose-invert'>
-                {children}
-              </div>
+              <div className='prose text-left font-serif '>{children}</div>
             </dd>
           )}
         </div>

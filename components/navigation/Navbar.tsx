@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from 'next-intl/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'

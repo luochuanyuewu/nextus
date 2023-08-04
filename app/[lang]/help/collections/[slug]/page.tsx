@@ -6,7 +6,7 @@ import VBreadcrumbs from '@/components/base/VBreadcrumbs'
 import VIcon from '@/components/base/VIcon'
 import { convertIconName } from '@/lib/utils/strings'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
-import Link from 'next/link'
+import Link from 'next-intl/link'
 import { HelpArticles } from '@/lib/directus-collections'
 import { getTranslator } from 'next-intl/server'
 

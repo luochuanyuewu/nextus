@@ -18,8 +18,7 @@ function Alert(props: AlertProps) {
   const { type = 'info' } = props
 
   const getClassNames = () => {
-    let classNames =
-      'p-4 dark:brightness-90 border-2 rounded-tr-xl rounded-bl-xl '
+    let classNames = 'p-4  border-2 rounded-tr-xl rounded-bl-xl '
     if (type === 'warning') {
       classNames += 'border-amber-500 text-amber-800 dark:text-amber-200'
     } else if (type === 'error') {

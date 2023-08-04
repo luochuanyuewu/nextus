@@ -10,7 +10,6 @@ interface ProseProps {
 
 function Prose({ content, className }: ProseProps) {
   const contentEl = useRef<HTMLDivElement | null>(null)
-  //   const config = useRuntimeConfig(); // Assuming `useRuntimeConfig` is a custom hook
 
   const router = useRouter()
   const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000'
@@ -41,7 +40,7 @@ function Prose({ content, className }: ProseProps) {
     <div
       ref={contentEl}
       className={twMerge(
-        'prose prose-sm dark:prose-invert md:prose-base lg:prose-lg prose-headings:font-serif prose-p:font-mono prose-img:rounded-br-3xl prose-img:rounded-tl-3xl prose-img:border-2 prose-img:border-gray-500',
+        'prose prose-sm md:prose-base lg:prose-lg prose-headings:font-serif prose-p:font-mono prose-img:rounded-br-3xl prose-img:rounded-tl-3xl prose-img:border-2 prose-img:border-accent',
         className
       )}
       dangerouslySetInnerHTML={{ __html: content ? content : '' }}

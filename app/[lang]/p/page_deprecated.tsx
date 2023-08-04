@@ -5,7 +5,7 @@ import { fetchAPI } from '@/lib/utils/fetch-api'
 import Loader from '../../../components/Loader'
 import BlogList from '@/components/deprecated/views/blog-list'
 import PageHeader from '../../../components/deprecated/PageHeader'
-import Link from 'next/link'
+import Link from 'next-intl/link'
 
 interface Meta {
   pagination: {
@@ -91,7 +91,7 @@ export default function BlogHomePage() {
           </div>
 
           <aside className='sticky top-0 h-screen'>
-            <div className='card card-compact bg-base-100 mb-4 shadow-xl'>
+            <div className='card-compact card mb-4 bg-base-100 shadow-xl'>
               <div className='card-body'>
                 <h2 className='card-title'>用户中心</h2>
                 <p>需要登录才能进入用户中心</p>
@@ -103,7 +103,7 @@ export default function BlogHomePage() {
                 </div>
               </div>
             </div>
-            <div className='card card-compact bg-base-100 mb-4 shadow-xl'>
+            <div className='card-compact card mb-4 bg-base-100 shadow-xl'>
               <div className='card-body'>
                 <h2 className='card-title'>网站公告</h2>
                 <p>本网站还在积极开发中，如果发现有什么奇怪的，请别见怪哦</p>

@@ -1,6 +1,6 @@
 'use client'
 import { cn } from '@/lib/utils'
-import Link from 'next/link'
+import Link from 'next-intl/link'
 import React, { MouseEventHandler } from 'react'
 
 interface ButtonProps {

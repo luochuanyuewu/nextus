@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from 'next-intl/link'
 import Image from 'next/image'
 import HighlightedText from '../HighlightedText'
 import { getStrapiMedia } from '@/lib/utils/api-helpers'
@@ -37,7 +37,7 @@ export default function Hero({ data }: HeroProps) {
   const imgUrl = getStrapiMedia(data.picture.data.attributes.url)
 
   return (
-    <div className='hero bg-base-200 min-h-fit'>
+    <div className='hero min-h-fit bg-base-200'>
       <div className='hero-content flex-col lg:flex-row-reverse'>
         <Image
           src={imgUrl as any}

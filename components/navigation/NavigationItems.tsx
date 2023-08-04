@@ -1,6 +1,6 @@
 'use client'
 import { NavigationItems } from '@/lib/directus-collections'
-import Link from 'next/link'
+import Link from 'next-intl/link'
 import VIcon from '../base/VIcon'
 import { convertIconName } from '@/lib/utils/strings'
 

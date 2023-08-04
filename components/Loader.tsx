@@ -1,10 +1,10 @@
 export default function Loader() {
   return (
-    <div className='absolute inset-0 z-50 flex items-center justify-center  bg-gray-500 bg-opacity-40'>
+    <div className='absolute inset-0 z-50 flex items-center justify-center   bg-opacity-40'>
       <div role='status'>
         <svg
           aria-hidden='true'
-          className='mr-2 inline h-8 w-8 animate-spin fill-purple-400 text-gray-200 dark:text-gray-600'
+          className='mr-2 inline h-8 w-8 animate-spin fill-purple-400'
           viewBox='0 0 100 101'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'

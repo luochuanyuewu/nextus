@@ -23,13 +23,13 @@ const ScrollToTopButton = () => {
             >
               <VIcon
                 icon='heroicons:arrow-up-20-solid'
-                className='h-4 w-4 text-accent/75 hover:text-gray-500'
+                className='h-4 w-4 text-accent/75 hover:text-accent'
               />
             </button>
           )}
         </div>
         {progress >= 0.95 && (
-          <span className='rounded-br-lg rounded-tl-lg bg-gray-300 bg-opacity-50 p-1 font-mono text-gray-700 dark:bg-gray-700 dark:text-gray-200'>
+          <span className='rounded-br-lg rounded-tl-lg  bg-opacity-50 p-1 font-mono '>
             go top
           </span>
         )}

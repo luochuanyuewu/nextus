@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
+import Link from 'next-intl/link'
 import { formatDate, getStrapiMedia } from '@/lib/utils/api-helpers'
 
 interface Course {

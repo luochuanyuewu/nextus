@@ -1,6 +1,6 @@
 import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
-import Link from 'next/link'
+import Link from 'next-intl/link'
 import VBadge from '@/components/base/VBadge'
 
 async function fetchData() {

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
+import Link from 'next-intl/link'
 import { formatDate, getStrapiMedia } from '@/lib/utils/api-helpers'
 
 interface Article {
@@ -81,7 +81,7 @@ export default function PostList({
 
             return (
               <li key={article.id} className=''>
-                <article className='card card-compact mb-2 shadow-md'>
+                <article className='card-compact card mb-2 shadow-md'>
                   <div className='card-body'>
                     <div className='grid grid-cols-1 flex-row items-center md:grid-cols-4'>
                       <Link

@@ -13,7 +13,10 @@
     }
   },
   "projects": {
-    "latest": "Latest Projects"
+    "latest": "Latest Projects",
+    "build_with": "Build With",
+    "client": "Client",
+    "cost": "Cost"
   },
   "help": {
     "title": "Help Center",

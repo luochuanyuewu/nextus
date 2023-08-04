@@ -67,7 +67,7 @@ function VForm(props: FormProps) {
       )
       setSuccess(true)
       if (form.on_success === 'redirect' && form.redirect_url) {
-        return router.push(props.form.redirect_url as string)
+        return router.push(form.redirect_url)
       }
       console.log('form redirect_url invali.')
     } catch (err) {

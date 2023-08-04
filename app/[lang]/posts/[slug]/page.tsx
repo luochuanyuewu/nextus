@@ -4,7 +4,7 @@ import directusApi from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
 import { Metadata } from 'next'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
-import Link from 'next/link'
+import Link from 'next-intl/link'
 import VBadge from '@/components/base/VBadge'
 import VAvatar from '@/components/base/VAvatar'
 import VIcon from '@/components/base/VIcon'
@@ -71,7 +71,7 @@ export default async function PageRoute({
                   src={getDirectusMedia(post.image)}
                   width={500}
                   height={500}
-                  className='h-full w-full object-cover saturate-0 dark:brightness-90'
+                  className='h-full w-full object-cover saturate-0 '
                   alt=''
                 />
                 <div className='absolute inset-0' />

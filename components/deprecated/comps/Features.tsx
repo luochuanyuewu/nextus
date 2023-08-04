@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from 'next-intl/link'
 
 interface FeaturesProps {
   data: {
@@ -40,7 +40,7 @@ function Feature({ title, description, showLink, newTab, url, text }: Feature) {
       {showLink && url && text && (
         <div>
           <Link href={url} target={newTab ? '_blank' : '_self'} className=''>
-            <button className='btn btn-info btn-accent btn-outline'>
+            <button className='btn btn-accent btn-info btn-outline'>
               {text}
             </button>
           </Link>

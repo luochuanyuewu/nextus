@@ -8,6 +8,8 @@ import GalleryBlock from '@/components/blocks/GalleryBlock'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import Image from 'next/image'
 import { Projects } from '@/lib/directus-collections'
+import VBadge from '@/components/base/VBadge'
+import { getTranslator } from 'next-intl/server'
 
 export default async function PageRoute({ params }: { params: any }) {
   const projects = await directusApi.request(
@@ -22,24 +24,22 @@ export default async function PageRoute({ params }: { params: any }) {
 
   const project = projects[0] as Projects
 
+  const t = await getTranslator(params.lang, 'projects')
+
   return (
     <div className='py-12'>
       <div className='relative flex h-[400px] items-center justify-center overflow-hidden rounded-bl-[48px] rounded-tr-[48px]'>
         <Image
-          width={500}
-          height={500}
+          width={2000}
+          height={2000}
           alt=''
-          className='absolute inset-0 h-full w-full object-cover'
+          className='absolute inset-0 h-full w-full  object-cover'
           src={getDirectusMedia(project.image) || ''}
         />
-        <div className='absolute inset-0 bg-gray-900 opacity-75' />
-        <div className='relative mx-auto max-w-3xl overflow-hidden rounded-bl-3xl rounded-tr-3xl bg-gray-900 bg-opacity-50 p-8'>
-          <TypographyHeadline
-            content={project.title}
-            className='text-white'
-            size='xl'
-          />
-          <p className='font-display mt-4 font-mono font-semibold text-gray-300 md:text-lg'>
+        <div className='absolute inset-0 opacity-75' />
+        <div className='relative mx-auto max-w-3xl overflow-hidden rounded-bl-3xl rounded-tr-3xl bg-base-300 bg-opacity-50 p-8'>
+          <TypographyHeadline content={project.title} size='xl' />
+          <p className='font-display mt-4 font-mono font-semibold md:text-lg'>
             {project.summary}
           </p>
         </div>
@@ -54,7 +54,7 @@ export default async function PageRoute({ params }: { params: any }) {
 
             {project.gallery && project.gallery.length > 0 && (
               <GalleryBlock
-                className='mt-8 overflow-hidden rounded-bl-3xl rounded-tr-3xl bg-white dark:bg-gray-800'
+                className='mt-8 overflow-hidden rounded-bl-3xl rounded-tr-3xl '
                 data={{
                   id: project.id,
                   title: 'Gallery',
@@ -66,27 +66,21 @@ export default async function PageRoute({ params }: { params: any }) {
           <aside className=''>
             <div className='flex-shrink-0 space-y-8 rounded-bl-2xl rounded-tr-2xl border-2 p-4  md:w-[300px]'>
               <div>
-                <TypographyTitle>Client</TypographyTitle>
-                <p className='font-mono font-bold dark:text-white'>
-                  {project.client}
-                </p>
+                <TypographyTitle>{t('client')}</TypographyTitle>
+                <p className='font-mono font-bold '>{project.client}</p>
               </div>
               <div>
-                <TypographyTitle>Built With</TypographyTitle>
+                <TypographyTitle>{t('build_with')}</TypographyTitle>
                 {project.built_with &&
                   project.built_with.map((item, itemIdx) => (
                     <div className='mt-2' key={itemIdx}>
-                      {/*<VBadge size="lg" color="#0f172a">*/}
-                      {/*    {item}*/}
-                      {/*</VBadge>*/}
+                      <div className='badge badge-neutral'>{item}</div>
                     </div>
                   ))}
               </div>
               <div>
-                <TypographyTitle>Cost</TypographyTitle>
-                <p className='font-mono font-bold dark:text-white'>
-                  {project.cost}
-                </p>
+                <TypographyTitle>{t('cost')}</TypographyTitle>
+                <p className='font-mono font-bold '>{project.cost}</p>
               </div>
             </div>
           </aside>
