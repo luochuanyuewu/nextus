@@ -8,7 +8,6 @@ import GalleryBlock from '@/components/blocks/GalleryBlock'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import Image from 'next/image'
 import { Projects } from '@/lib/directus-collections'
-import VBadge from '@/components/base/VBadge'
 import { getTranslator } from 'next-intl/server'
 
 export default async function PageRoute({ params }: { params: any }) {
@@ -33,13 +32,12 @@ export default async function PageRoute({ params }: { params: any }) {
           width={2000}
           height={2000}
           alt=''
-          className='absolute inset-0 h-full w-full  object-cover'
+          className='absolute inset-0 h-full w-full object-cover'
           src={getDirectusMedia(project.image) || ''}
         />
-        <div className='absolute inset-0 opacity-75' />
-        <div className='relative mx-auto max-w-3xl overflow-hidden rounded-bl-3xl rounded-tr-3xl bg-base-300 bg-opacity-50 p-8'>
+        <div className='relative mx-auto max-w-3xl overflow-hidden rounded-bl-3xl rounded-tr-3xl bg-base-100 bg-opacity-50 p-8'>
           <TypographyHeadline content={project.title} size='xl' />
-          <p className='font-display mt-4 font-mono font-semibold md:text-lg'>
+          <p className='mt-4 font-mono font-semibold md:text-lg'>
             {project.summary}
           </p>
         </div>
@@ -57,7 +55,7 @@ export default async function PageRoute({ params }: { params: any }) {
                 className='mt-8 overflow-hidden rounded-bl-3xl rounded-tr-3xl '
                 data={{
                   id: project.id,
-                  title: 'Gallery',
+                  title: t('gallery'),
                   gallery_items: project.gallery as any,
                 }}
               />

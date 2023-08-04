@@ -11,9 +11,7 @@ interface AvatarProps {
 
 function VAvatar({ author, size = 'md', className }: AvatarProps) {
   return (
-    <div
-      className={`group flex flex-none items-center dark:text-gray-100 ${className}`}
-    >
+    <div className={`group flex flex-none items-center ${className}`}>
       <div className='mr-3'>
         <Image
           className={[

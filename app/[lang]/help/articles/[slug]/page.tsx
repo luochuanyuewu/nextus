@@ -40,7 +40,7 @@ export default async function ArticlePage({
             <div className='lg:max-w-160 flex pb-6 max-md:pb-2'>
               <VBreadcrumbs
                 items={[
-                  { title: 'All Collections', href: '/help' },
+                  { title: t('help.all_collections'), href: '/help' },
                   {
                     title: article.help_collection?.title || 'undefined',
                     href: `/help/collections/${

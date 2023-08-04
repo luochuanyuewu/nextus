@@ -54,7 +54,7 @@ export default async function PageRoute({ params }: Props) {
                 isEven(projectIdx)
                   ? 'rounded-br-3xl rounded-tl-3xl'
                   : 'rounded-bl-3xl rounded-tr-3xl',
-                'relative mb-6 block w-full overflow-hidden border-2 border-transparent p-2 transition duration-300 hover:border-base-300',
+                'relative mb-6 block w-full overflow-hidden border-2 border-transparent p-2 transition duration-300 hover:border-accent-focus',
               ].join(' ')}
             >
               <div
@@ -72,20 +72,19 @@ export default async function PageRoute({ params }: Props) {
                   alt=''
                   className='object-cover transition duration-300 group-hover:scale-110'
                 />
-                <div className='justify-centerbg-opacity-75 absolute inset-0 flex items-center opacity-0 transition-opacity duration-300 hover:opacity-100 '>
+                <div className='absolute inset-0 flex items-center justify-center bg-base-100 bg-opacity-75 opacity-0 transition-opacity duration-300 hover:opacity-100 '>
                   <div className='p-8'>
                     <TypographyTitle>{project.client}</TypographyTitle>
-                    <TypographyHeadline content={project.title} />
-                    <div className='mt-2'>
+                    <TypographyHeadline className='text-primary'>
+                      {project.title}
+                    </TypographyHeadline>
+                    <div className='mt-2 flex flex-auto'>
                       {project.built_with?.map((item, itemIdx) => (
-                        <VBadge
-                          key={itemIdx}
-                          className='mb-2 mr-2'
-                          size='lg'
-                          color='#0f172a'
-                        >
-                          {item}
-                        </VBadge>
+                        <div className='mt-2' key={itemIdx}>
+                          <div className='badge badge-neutral mb-2 mr-2 items-center  font-serif font-medium'>
+                            {item}
+                          </div>
+                        </div>
                       ))}
                     </div>
                   </div>

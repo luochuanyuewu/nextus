@@ -111,22 +111,28 @@ This way, your Nextus backend will be fully prepared.
 ### 2 Setup required Content/Environment
 
 After setting up the Directus instance, you need to prepare the following necessary content for the frontend to function properly.
+
 Content-related:
 
-Add the languages you need to the Languages model,
-Add a page with the slug "home",
-Add a top navigation with the slug "main" and a footer navigation with the slug "footer"
+- Add the languages you need to the Languages model,
+- Add a page with the slug "home",
+- Add a top navigation with the slug "main" and a footer navigation with the slug "footer"
+
 Environment variables:
 
-Refer to .env.example
+- Refer to .env.example
 
 在搭建好Directus实例后，你需要准备如下必要的内容，这样前端才能正常运转。
+
 内容相关：
-添加你需要的语言到Languages模型，
-添加slug为"home"的页面，
-添加slug为"main"的顶部导航和slug为"footer"的底部导航
+
+- 添加你需要的语言到Languages模型，
+- 添加slug为"home"的页面，
+- 添加slug为"main"的顶部导航和slug为"footer"的底部导航
+
 环境变量：
-参考.env.example
+
+- 参考.env.example
 
 ---
 
@@ -151,8 +157,6 @@ Start adding your own content in Nextus and experience the charm of headless CMS
 开始开始在Nextus中添加属于你自己的内容并感受无头CMS和现代化前端网站带来的魅力吧！
 
 <br />
-
-
 
 
 # Roadmap

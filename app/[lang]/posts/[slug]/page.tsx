@@ -110,10 +110,7 @@ export default async function PageRoute({
               <div className='relative'>
                 <div className='flex justify-between'></div>
                 <TypographyHeadline content={post.title} size='lg' />
-
-                <p className='font-display mt-4 font-mono font-semibold  md:text-lg'>
-                  {post.summary}
-                </p>
+                <p className='mt-4 md:text-lg'>{post.summary}</p>
               </div>
             </div>
           </div>

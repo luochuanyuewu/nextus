@@ -45,7 +45,7 @@ export default async function CollectionPage({
       <section className='mt-8 max-w-full'>
         <VBreadcrumbs
           items={[
-            { title: 'All Collections', href: '/help' },
+            { title: t('help.all_collections'), href: '/help' },
             {
               title: collection.title || '',
               href: `/help/collections/${collection.slug}`,

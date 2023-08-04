@@ -16,11 +16,13 @@
     "latest": "Latest Projects",
     "build_with": "Build With",
     "client": "Client",
-    "cost": "Cost"
+    "cost": "Cost",
+    "gallery": "Gallery"
   },
   "help": {
     "title": "Help Center",
-    "headline": "<p>How can we <em>help</em> you?</p>"
+    "headline": "<p>How can we <em>help</em> you?</p>",
+    "all_collections": "All Collections"
   },
   "posts": {
     "search": "Search",

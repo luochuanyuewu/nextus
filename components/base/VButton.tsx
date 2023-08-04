@@ -30,23 +30,6 @@ function VButton(props: ButtonProps) {
     children,
   } = props
 
-  // const buttonClasses = [
-  //   'btn',
-  //   variant === 'default' && '',
-  //   // variant === 'default' && 'btn-default',
-  //   variant === 'primary' && 'btn-primary',
-  //   variant === 'outline' && 'btn-outline',
-  //   variant === 'danger' && 'btn-danger',
-  //   size === 'xs' && 'btn-xs',
-  //   size === 'sm' && 'btn-sm',
-  //   size === 'md' && 'btn-md',
-  //   size === 'lg' && 'btn-lg',
-  //   size === 'xl' && 'btn-xl',
-  //   block && 'btn-block',
-  // ]
-  //   .filter(Boolean)
-  //   .join(' ')
-
   const buttonClasses = cn(
     'btn',
     variant ? `btn-${variant}` : '',
