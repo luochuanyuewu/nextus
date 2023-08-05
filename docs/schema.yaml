@@ -7881,8 +7881,7 @@ fields:
       hidden: false
       interface: input
       note: Needed if you are self-hosting umami.
-      options:
-        slug: true
+      options: {}
       readonly: false
       required: false
       sort: 2
