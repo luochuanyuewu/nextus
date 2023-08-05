@@ -3,7 +3,7 @@ import { getContrastColor } from '@/lib/utils/color'
 import clsx from 'clsx'
 
 interface BadgeProps {
-  color: string
+  color?: string
   size: string
   className?: string
   children?: React.ReactNode

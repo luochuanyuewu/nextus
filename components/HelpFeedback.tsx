@@ -114,9 +114,9 @@ export default function HelpFeedbackForm(props: any) {
         {/* Ask For Comments */}
         {feedback.rating && !success && (
           <div className='space-y-4'>
-            <p className='font-mono dark:text-gray-200'>This article is:</p>
+            <p className='font-mono '>This article is:</p>
             <div className='space-x-4'>
-              <span className='font-mono text-xl font-bold dark:text-white'>
+              <span className='font-mono text-xl font-bold '>
                 {getRatingOption(feedback.rating)?.label}
               </span>
               <VButton

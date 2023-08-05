@@ -14,12 +14,10 @@ export default function useScroll() {
   }, 100)
 
   function scrollToTop() {
-    if (typeof window !== 'undefined') {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      })
-    }
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
   }
 
   useEffect(() => {

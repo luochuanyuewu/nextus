@@ -293,7 +293,7 @@ export interface DirectusFiles {
   modified_by?: string | DirectusUsers
   modified_on: string
   storage: string
-  tags?: unknown
+  tags?: string[]
   title?: string
   type?: string
   uploaded_by?: string | DirectusUsers

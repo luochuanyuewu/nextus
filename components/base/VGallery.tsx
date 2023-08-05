@@ -2,18 +2,19 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import BlockContainer from '../BlockContainer'
-import VIcon from './VIcon'
+import VIcon from '@/components/base/VIcon'
 import Image from 'next/image'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
+import VBadge from '@/components/base/VBadge'
 
 interface GalleryProps {
   items: Array<{
     id?: string
     title?: string
     description?: string
-    tags?: string
+    tags?: string[]
   }>
 }
 
@@ -21,7 +22,9 @@ function VGallery({ items }: GalleryProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [currentItemIdx, setCurrentItemIdx] = useState(0)
 
-  const currentItem = items[currentItemIdx].id
+  const currentItem = useMemo(() => {
+    return items[currentItemIdx]
+  }, [items, currentItemIdx])
 
   const next = () => {
     setCurrentItemIdx((prevIdx) =>
@@ -36,7 +39,7 @@ function VGallery({ items }: GalleryProps) {
   }
 
   const toggle = () => {
-    setIsOpen((prevIsOpen) => !prevIsOpen)
+    setIsOpen(!isOpen)
   }
 
   const onKeydown = (e: KeyboardEvent) => {
@@ -59,11 +62,6 @@ function VGallery({ items }: GalleryProps) {
     }
   }, [])
 
-  const fileUrl = (itemId: string | undefined) => {
-    // Implement your fileUrl function here
-    return ''
-  }
-
   return (
     <>
       <BlockContainer>
@@ -80,7 +78,7 @@ function VGallery({ items }: GalleryProps) {
                 itemIdx % 2 === 0
                   ? 'rounded-br-3xl rounded-tl-3xl'
                   : 'rounded-bl-3xl rounded-tr-3xl'
-              } group relative mb-6 block w-full overflow-hidden border-2 border-transparent p-2 transition duration-300 hover:border-base-300 dark:hover:border-gray-600`}
+              } group relative mb-6 block w-full overflow-hidden border-2 border-transparent p-2 transition duration-300 hover:border-accent-focus`}
             >
               <div
                 className={`${
@@ -96,10 +94,10 @@ function VGallery({ items }: GalleryProps) {
                   alt=''
                   className='w-full object-cover transition duration-300 group-hover:scale-110'
                 />
-                <div className='absolute inset-0 flex items-center justify-center bg-white bg-opacity-75 opacity-0 transition-opacity duration-300 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75'>
+                <div className='absolute inset-0 flex items-center justify-center bg-neutral bg-opacity-75 opacity-0 transition-opacity duration-300 hover:opacity-100'>
                   <VIcon
                     icon='heroicons:magnifying-glass-plus'
-                    className='h-12 w-12 text-gray-500 dark:text-white'
+                    className='h-12 w-12 text-accent-focus'
                   />
                 </div>
               </div>
@@ -118,11 +116,13 @@ function VGallery({ items }: GalleryProps) {
             </div>
           </div>
           <div className='absolute bottom-4 right-4 z-50 font-mono text-white'>
-            {/* {items[currentItemIdx].tags.map((tag, tagIdx) => (
-              <VBadge key={tagIdx} size="lg" className="rounded-br-xl">
-                {tag}
-              </VBadge>
-            ))} */}
+            {currentItem &&
+              currentItem.tags &&
+              currentItem.tags.map((tag, tagIdx) => (
+                <VBadge key={tagIdx} size='lg' className='rounded-br-xl'>
+                  {tag}
+                </VBadge>
+              ))}
           </div>
           <div className='relative flex h-full w-full max-w-7xl flex-col items-center justify-center'>
             <button
@@ -155,11 +155,11 @@ function VGallery({ items }: GalleryProps) {
                   {/* Metadata */}
                   <div className='flex'>
                     <p className='track inline-block rounded-tl-3xl bg-gray-900 px-6 py-2 font-serif font-bold text-white'>
-                      {items[currentItemIdx].title}
+                      {currentItem.title}
                     </p>
-                    {items[currentItemIdx].description && (
+                    {currentItem.description && (
                       <p className='hidden flex-1 bg-gray-700 px-6 py-2 font-mono text-white md:inline-block'>
-                        {items[currentItemIdx].description}
+                        {currentItem.description}
                       </p>
                     )}
                   </div>

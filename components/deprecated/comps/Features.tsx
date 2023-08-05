@@ -55,7 +55,7 @@ export default function Features({ data }: FeaturesProps) {
     <section className='m:py-12 dark:bg-black dark:text-gray-100 lg:py-24'>
       <div className='container mx-auto space-y-2 py-4 text-center'>
         <h2 className='text-5xl font-bold'>{data.heading}</h2>
-        <p className='dark:text-gray-400'>{data.description}</p>
+        <p>{data.description}</p>
       </div>
       <div className='container mx-auto my-6 grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3'>
         {data.feature.map((feature: Feature, index: number) => (

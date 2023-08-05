@@ -35,6 +35,7 @@ export default async function PageRoute({ params }: { params: any }) {
           className='absolute inset-0 h-full w-full object-cover'
           src={getDirectusMedia(project.image) || ''}
         />
+        <div className='absolute inset-0 bg-base-300 opacity-50' />
         <div className='relative mx-auto max-w-3xl overflow-hidden rounded-bl-3xl rounded-tr-3xl bg-base-100 bg-opacity-50 p-8'>
           <TypographyHeadline content={project.title} size='xl' />
           <p className='mt-4 font-mono font-semibold md:text-lg'>
@@ -62,7 +63,7 @@ export default async function PageRoute({ params }: { params: any }) {
             )}
           </main>
           <aside className=''>
-            <div className='flex-shrink-0 space-y-8 rounded-bl-2xl rounded-tr-2xl border-2 p-4  md:w-[300px]'>
+            <div className='flex-shrink-0 space-y-8 rounded-bl-2xl rounded-tr-2xl border-2 border-accent p-4 md:w-[300px]'>
               <div>
                 <TypographyTitle>{t('client')}</TypographyTitle>
                 <p className='font-mono font-bold '>{project.client}</p>
