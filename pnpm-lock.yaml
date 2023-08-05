@@ -53,6 +53,9 @@ dependencies:
   framer-motion:
     specifier: ^10.15.0
     version: registry.npmmirror.com/framer-motion@10.15.0(react-dom@18.2.0)(react@18.2.0)
+  lodash.throttle:
+    specifier: ^4.1.1
+    version: registry.npmmirror.com/lodash.throttle@4.1.1
   micromark:
     specifier: ^4.0.0
     version: registry.npmmirror.com/micromark@4.0.0
@@ -3531,6 +3534,12 @@ packages:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash.merge/-/lodash.merge-4.6.2.tgz}
     name: lodash.merge
     version: 4.6.2
+
+  registry.npmmirror.com/lodash.throttle@4.1.1:
+    resolution: {integrity: sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz}
+    name: lodash.throttle
+    version: 4.1.1
+    dev: false
 
   registry.npmmirror.com/longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/longest-streak/-/longest-streak-3.1.0.tgz}

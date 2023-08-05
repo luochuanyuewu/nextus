@@ -28,6 +28,7 @@
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.12",
     "framer-motion": "^10.15.0",
+    "lodash.throttle": "^4.1.1",
     "micromark": "^4.0.0",
     "micromark-extension-gfm": "^3.0.0",
     "negotiator": "^0.6.3",
