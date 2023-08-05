@@ -77,7 +77,7 @@ export default async function RootLayout({
             <TheFooter />
           </main>
           <ScrollToTopButton></ScrollToTopButton>
-          <Analytics />
+          <Analytics lang={params.lang} />
         </NextIntlClientProvider>
       </body>
     </html>

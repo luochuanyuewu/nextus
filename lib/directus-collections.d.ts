@@ -563,6 +563,10 @@ export interface Globals {
   id: string
   translations: GlobalsTranslations[]
   url?: string
+  umami_analytics_id?: string
+  umami_script_url?: string
+  google_analytics_id?: string
+  baidu_analytics_id?: string
 }
 
 export interface GlobalsTranslations {
