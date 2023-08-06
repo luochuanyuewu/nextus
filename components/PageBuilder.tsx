@@ -11,10 +11,10 @@ import StepsBlock from '@/components/blocks/StepsBlock'
 import FaqsBlock from '@/components/blocks/FaqsBlock'
 import CtaBlock from '@/components/blocks/CtaBlock'
 import RawHtmlBlock from '@/components/blocks/RawHtmlBlock'
-import TeamBlock from '@/components/blocks/TeamBlock'
 import ColumnsBlock from '@/components/blocks/ColumnsBlock'
 import CardGroupBlock from '@/components/blocks/CardGroupBlock'
 import FormBlock from './blocks/FormBlock'
+import TeamBlock from './blocks/TeamBlockServer'
 
 function PageBuilder({ page }: { page: Pages }) {
   return (

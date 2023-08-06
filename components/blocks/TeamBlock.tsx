@@ -36,11 +36,13 @@ function animationDelay() {
   ]
 }
 
-export interface TeamBlockProps {
+export default function TeamBlockClient({
+  data,
+  teams,
+}: {
   data: BlockTeam
-}
-
-export default function TeamBlock({ data }: TeamBlockProps) {
+  teams: Team[]
+}) {
   const [teamMembers, setTeamMembers] = useState<Team[]>([])
 
   const [duration, setDuration] = useState<string>('3000 ms')
@@ -79,13 +81,8 @@ export default function TeamBlock({ data }: TeamBlockProps) {
   const isVisible = intersection ? intersection.isIntersecting : false
 
   useEffect(() => {
-    async function fetchData() {
-      const team = await directusApi.request(readItems('team'))
-      setTeamMembers(team as any)
-    }
-
-    fetchData()
-  }, [])
+    setTeamMembers(teams)
+  }, [teams])
 
   return (
     <section>
