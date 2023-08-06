@@ -4,21 +4,11 @@ const nextConfig = {
     dangerouslyAllowSVG: true, // allow <Image> to show svg.
     remotePatterns: [
       {
-        hostname: 'localhost',
-      },
-      {
-        hostname: '127.0.0.1',
-      },
-      {
-        hostname: '*.yuewu.dev',
-      },
-      {
-        hostname: '*.aliyuncs.com',
+        protocol: 'https',
+        hostname: '**',
       },
     ],
   },
-  // transpilePackages: ['react-daisyui'],
-  // reactStrictMode: true,
   experimental: {
     appDir: true,
   },
