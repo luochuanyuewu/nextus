@@ -13,8 +13,8 @@ import { GlobalsTranslations } from '@/lib/directus-collections'
 import { createTranslator, NextIntlClientProvider } from 'next-intl'
 
 const FALLBACK_SEO = {
-  title: 'Directus Starter Next',
-  description: 'Directus Starter Next',
+  title: 'Nextus',
+  description: 'Nextus is awesome!',
 }
 
 export async function generateMetadata({
@@ -23,15 +23,14 @@ export async function generateMetadata({
   params: { lang: string }
 }): Promise<Metadata> {
   const globals = await fetchGlobals(params.lang)
-  // @ts-ignore
   if (!globals.translations || globals.translations.length <= 0)
     return FALLBACK_SEO
   const data = globals.translations[0] as GlobalsTranslations
   const url = getDirectusMedia(globals.favicon)
   return {
     title: {
-      template: `%s | ${data.title}`,
-      default: data.title,
+      template: `%s | ${data?.title ?? 'Nextus'}`,
+      default: data.title || 'Nextus',
     },
     description: data.description,
     openGraph: { images: getDirectusMedia(data.og_image || '') },

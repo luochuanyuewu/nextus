@@ -31,6 +31,18 @@ async function fetchData() {
   return posts as Array<Posts>
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: string }
+}) {
+  const t = await getTranslator(params.lang)
+
+  return {
+    title: t('posts.page_title'),
+  }
+}
+
 export default async function PageRoute({
   params,
 }: {

@@ -10,6 +10,18 @@ import VIcon from '@/components/base/VIcon'
 import { convertIconName } from '@/lib/utils/strings'
 import { getTranslator } from 'next-intl/server'
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: string }
+}) {
+  const t = await getTranslator(params.lang)
+
+  return {
+    title: t('help.page_title'),
+  }
+}
+
 export default async function HelpCenterPage({
   params,
 }: {

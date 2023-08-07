@@ -1,5 +1,6 @@
 {
   "global": {
+    "home_title": "主页",
     "theme": "主题",
     "search": {
       "no": "没有结果",
@@ -13,6 +14,7 @@
     }
   },
   "projects": {
+    "page_title": "所有项目",
     "latest": "最新项目",
     "build_with": "技术栈",
     "client": "客户",
@@ -20,11 +22,13 @@
     "gallery": "项目图集"
   },
   "help": {
+    "page_title": "帮助",
     "title": "帮助中心",
     "headline": "<p>你需要什么<em>帮助</em>？</p>",
     "all_collections": "所有集合"
   },
   "posts": {
+    "page_title": "所有文章",
     "search": "搜索文章",
     "categories": "文章分类",
     "featured": "焦点文章",

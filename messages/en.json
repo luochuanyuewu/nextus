@@ -1,5 +1,6 @@
 {
   "global": {
+    "home_title": "Home",
     "theme": "Theme",
     "search": {
       "no": "No Results",
@@ -13,6 +14,7 @@
     }
   },
   "projects": {
+    "page_title": "All Projects",
     "latest": "Latest Projects",
     "build_with": "Build With",
     "client": "Client",
@@ -20,11 +22,13 @@
     "gallery": "Gallery"
   },
   "help": {
+    "page_title": "Help",
     "title": "Help Center",
     "headline": "<p>How can we <em>help</em> you?</p>",
     "all_collections": "All Collections"
   },
   "posts": {
+    "page_title": "All Posts",
     "search": "Search",
     "categories": "Categories",
     "featured": "Featured Article",

@@ -7,9 +7,7 @@ import { Projects } from '@/lib/directus-collections'
 import Link from 'next-intl/link'
 import { isEven } from '@/lib/utils/math'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
-import VBadge from '@/components/base/VBadge'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
 import { getTranslator } from 'next-intl/server'
 
 type Props = {
@@ -17,11 +15,23 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: string }
+}) {
+  const t = await getTranslator(params.lang)
+
+  return {
+    title: t('projects.page_title'),
+  }
+}
+
 export default async function PageRoute({ params }: Props) {
   const projects = await directusApi.request(
     readItems('projects', {
       filter: {
-        // status: { _eq: 'published' },
+        status: { _eq: 'published' },
       },
       fields: ['*'],
     })
