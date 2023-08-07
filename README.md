@@ -44,7 +44,6 @@ Spin up a beautiful site in minutes. Or use Nextus as the foundation for your ne
 - Dynamic social image generation(动态社交图片生成)
 - SEO support(支持SEO)
 - Global search component and API route (全局搜索组件和NextJs Api路由)
-- Redirects module(重定向模块)
 - Ready to use common components like modals, dropdowns, and file upload input(预制通用UI组件)
 - Common utilities so you don't need to include yet another package (常用函数所以你不用包含其他额外第三方包)
 - Easy SVG Icons using Iconify Icon(通过Iconfy Icon库方便使用各种SVG图标)
@@ -96,15 +95,19 @@ For a smooth experience, the [Directus SDK](https://docs.directus.io/guides/sdk
 
 ### 1 Setup Directus
 
-Use [Directus Cloud](https://directus.cloud/register) or follow the [Self-Hosting](https://docs.directus.io/self-hosted/quickstart.html) guide provided by Directus to quickly set up your own instance of Directus.
+Use [Directus Cloud](https://directus.cloud/register)/[Self-Hosting](https://docs.directus.io/self-hosted/quickstart.html) to quickly set up your own instance of directus.
 
-Then, apply the [Json Schema](./docs/schema.json)/[Yaml Schema](./docs/schema.yaml) provided by Nextus using the Schema feature.
+Then, apply the [Schema Snapshot](https://github.com/luochuanyuewu/nextus-docker/blob/main/snapshots/schema.yml) provided by Nextus using the [Schema Migration](https://docs.directus.io/guides/migration/hoppscotch.html) feature.
+
+Or, using [Nextus-Docker](https://github.com/luochuanyuewu/nextus-docker) to quickly setup Nextus backend with automaic schema applying.
 
 This way, your Nextus backend will be fully prepared.
 
 使用[Directus Cloud](https://directus.cloud/register)或者根据Directus提供的[自行托管](https://docs.directus.io/self-hosted/quickstart.html)教程，快速搭建属于自己的Directus实例。
 
-然后使用Schema功能应用Nextus所提供的[Json Schema](./docs/schema.json)或者[Yaml Schema](./docs/schema.yaml)。
+然后使用[Schema迁移](https://docs.directus.io/guides/migration/hoppscotch.html)功能，将Nextus所提供的[Schema](https://github.com/luochuanyuewu/nextus-docker/blob/main/snapshots/schema.yml)应用到你的directus实例。
+
+或者，使用[Nextus-Docker](https://github.com/luochuanyuewu/nextus-docker) 快速设置 Nextus 后端，并在启动时自动应用模式。
 
 这样，你的Nextus后端就完全准备好了。
 
@@ -160,17 +163,17 @@ Start adding your own content in Nextus and experience the charm of headless CMS
 
 
 # Roadmap
-
-- Fully multiple language supports for form, artilce, page and projects.
-- Dedicated documentation site.
-- Auth module.
-- Fetching frontend translations via backend(directus translation)
-- Page width controlled by backend.
-- Content management for documentation.
-- Analysis support(Google,Baidu,Umami)
-- Payment module(pay to watch article,page)
-- Token based access control for file download.
-- AI powered content writing and image producing(All resisted within directus)
+- [ ]Analysis support(Google,Baidu,Umami)
+- [x]Fully multiple language supports for form, artilce, page and projects.
+- [x]Dedicated documentation site.
+- [x]Auth module.
+- [x]Redirects module(重定向模块)
+- [x]Fetching frontend translations via backend(directus translation)
+- [x]age width controlled by backend.
+- [x]Content management for documentation.
+- [x]Payment module(pay to watch article,page)
+- [x]Token based access control for file download.
+- [x]AI powered content writing and image producing(All resisted within directus)
 
 <br />
 
