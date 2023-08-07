@@ -14,7 +14,7 @@ const FeaturePostCard = ({ post }: { post: Posts }) => {
           <Image
             width={500}
             height={500}
-            className='h-full w-full object-cover saturate-0 transition-opacity duration-300 group-hover:opacity-75'
+            className='h-full w-full object-cover transition-opacity duration-300 hover:opacity-75'
             src={getDirectusMedia(post.image)}
             alt=''
           />

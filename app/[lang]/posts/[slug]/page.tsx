@@ -66,12 +66,12 @@ export default async function PageRoute({
           <div className='md:flex'>
             {/* Post Image */}
             <div className='relative w-full max-w-3xl pt-6 md:px-6'>
-              <div className='relative mx-auto h-[300px] w-full overflow-hidden rounded-bl-3xl bg-cover  md:h-[450px]'>
+              <div className='relative mx-auto h-[300px] w-full overflow-hidden rounded-bl-3xl bg-cover md:h-[450px]'>
                 <Image
                   src={getDirectusMedia(post.image)}
                   width={500}
                   height={500}
-                  className='h-full w-full object-cover saturate-0 '
+                  className='h-full w-full object-cover'
                   alt=''
                 />
                 <div className='absolute inset-0' />

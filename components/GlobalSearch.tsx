@@ -118,7 +118,7 @@ export default function GlobalSearch({
                       <Image
                         width={40}
                         height={40}
-                        className='h-10 w-10 flex-shrink-0 rounded-bl rounded-tr object-cover saturate-0 duration-300'
+                        className='h-10 w-10 flex-shrink-0 rounded-bl rounded-tr object-cover duration-300'
                         src={getDirectusMedia(hit.image)}
                         alt=''
                       ></Image>

@@ -80,7 +80,7 @@ export default async function ArticlePage({
                 </div>
               </div>
             </div>
-            <hr className='mt-12 dark:border-base-300' />
+            <hr className='mt-12' />
             {/* Feedback Widget */}
             {/*<HelpFeedback*/}
             {/*  className='mt-4'*/}

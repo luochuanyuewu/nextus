@@ -23,7 +23,7 @@ function PostCard({ post, even, className }: PostCardProps) {
             even
               ? 'rounded-br-3xl rounded-tl-3xl'
               : 'rounded-bl-3xl rounded-tr-3xl',
-            'relative h-56 w-full overflow-hidden border-2 border-transparent p-2 transition duration-150 hover:border-base-300 ',
+            'relative h-56 w-full overflow-hidden border-2 border-transparent p-2 transition duration-150 hover:border-accent-focus',
           ].join(' ')}
         >
           <div
@@ -35,7 +35,7 @@ function PostCard({ post, even, className }: PostCardProps) {
             ].join(' ')}
           >
             <Image
-              className='h-full w-full object-cover saturate-0 transition-opacity duration-300 group-hover:opacity-75'
+              className='h-full w-full object-cover transition-opacity duration-300 hover:opacity-75'
               width={500}
               height={500}
               src={getDirectusMedia(post.image)}
