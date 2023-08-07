@@ -43,7 +43,7 @@ export default async function HelpCenterPage({
           <Link
             key={collection.id}
             href={`/help/collections/${collection.slug}`}
-            className='flex overflow-hidden rounded-bl-xl rounded-tr-xl border border-primary no-underline transition duration-200 hover:border-accent'
+            className='flex overflow-hidden rounded-bl-xl rounded-tr-xl border border-primary no-underline transition duration-200 hover:border-accent-focus'
           >
             <div className='flex flex-col p-5 sm:p-6'>
               <div className='flex items-center'>
