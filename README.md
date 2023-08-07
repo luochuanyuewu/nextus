@@ -19,6 +19,7 @@
   <a href="#roadmap"><strong>💼 开发计划/Roadmap</strong></a> ·
   <a href="#other-resources"><strong>💼 其他资源/Other Resources</strong></a> ·
   <a href="#contributors"><strong>👥 贡献者/Contributors</strong></a>
+  <a href="#contributing"><strong>👥 参与贡献/contributing</strong></a>
 </p>
 
 <br />
@@ -194,6 +195,11 @@ Start adding your own content in Nextus and experience the charm of headless CMS
 
 Nextus originally based on [AgencyOS Template](https://github.com/directus-community/agency-os) created by Bryant Gillespie. Now nextus has it's own direction(see roadmap).
 
+# Contributing
+
+Contributions welcome! Read the [contribution guidelines](contributing.md) first.
+
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 
 # Statement
 
