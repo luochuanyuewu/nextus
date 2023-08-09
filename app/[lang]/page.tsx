@@ -19,7 +19,7 @@ export async function generateMetadata({
   const t = await getTranslator(params.lang)
 
   return {
-    title: `${t('global.home_title')} | ${data.title} `,
+    title: `${t('global.home_title')} | ${data.title} ${data.tagline} `,
   }
 }
 

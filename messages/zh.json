@@ -11,7 +11,8 @@
     "locale_switcher": {
       "label": "语言",
       "locale": "{locale, select, zh {中文} en {English} other {Unknown}}"
-    }
+    },
+    "go_top": "回到顶部"
   },
   "projects": {
     "page_title": "所有项目",

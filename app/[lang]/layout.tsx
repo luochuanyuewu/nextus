@@ -10,7 +10,7 @@ import TheFooter from '@/components/navigation/TheFooter'
 import ScrollToTopButton from '@/components/ScrollToTopButton'
 import { Analytics } from '@/components/analytics'
 import { GlobalsTranslations } from '@/lib/directus-collections'
-import { createTranslator, NextIntlClientProvider } from 'next-intl'
+import { NextIntlClientProvider } from 'next-intl'
 
 const FALLBACK_SEO = {
   title: 'Nextus',
@@ -57,11 +57,6 @@ export default async function RootLayout({
 }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const locale = useLocale()
-
-  // Show a 404 error if the user requests an unknown locale
-  if (params.lang !== locale) {
-    notFound()
-  }
 
   const messages = await getMessages(locale)
 

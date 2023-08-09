@@ -11,7 +11,8 @@
     "locale_switcher": {
       "label": "Language",
       "locale": "{locale, select, zh {中文} en {English} other {Unknown}}"
-    }
+    },
+    "go_top": "go top"
   },
   "projects": {
     "page_title": "All Projects",

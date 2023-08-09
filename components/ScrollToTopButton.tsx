@@ -1,10 +1,13 @@
 'use client'
 import RadialProgress from './RadialProgress'
-import VIcon from './base/VIcon'
+import VIcon from '@/components/base/VIcon'
 import useScroll from '@/lib/hooks/useScroll'
+import { useTranslations } from 'next-intl'
 
 const ScrollToTopButton = () => {
   const { progress, scrollToTop } = useScroll()
+
+  const t = useTranslations()
 
   return (
     <div className='fixed bottom-4 left-4 z-10'>
@@ -16,7 +19,7 @@ const ScrollToTopButton = () => {
             stroke={5}
             className='text-accent/75'
           />
-          {progress >= 0.95 && (
+          {progress >= 0.5 && (
             <button
               onClick={scrollToTop}
               className='absolute inset-0 flex items-center justify-center'
@@ -30,7 +33,7 @@ const ScrollToTopButton = () => {
         </div>
         {progress >= 0.95 && (
           <span className='rounded-br-lg rounded-tl-lg  bg-opacity-50 p-1 font-mono '>
-            go top
+            {t('global.go_top') || 'go top'}
           </span>
         )}
       </div>
