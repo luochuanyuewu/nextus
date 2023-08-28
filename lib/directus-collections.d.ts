@@ -736,10 +736,6 @@ export interface PagesTranslationsBlocks {
 export interface Posts {
   author?: string | DirectusUsers
   category?: Categories
-  /**
-   * @deprecated Use translations[0].content
-   */
-  content?: string
   date_created?: string
   date_published?: string
   date_updated?: string
@@ -749,14 +745,6 @@ export interface Posts {
   slug?: string
   sort?: number
   status: string
-  /**
-   * @deprecated Use translations[0].summary
-   */
-  summary?: string
-  /**
-   * @deprecated Use translations[0].title
-   */
-  title?: string
   translations?: PostsTranslations[]
   user_created?: string
   user_updated?: string

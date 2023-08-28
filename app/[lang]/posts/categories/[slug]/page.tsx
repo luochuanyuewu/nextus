@@ -18,7 +18,7 @@ async function getPostsByCategory(categorySlug: string, lang: string) {
         translations: {
           _filter: {
             languages_code: {
-              _eq: lang,
+              _starts_with: lang,
             },
           },
         },
@@ -53,7 +53,7 @@ export default async function PageRoute({
     slug: string
   }
 }) {
-  const posts = await getPostsByCategory(params.slug)
+  const posts = await getPostsByCategory(params.slug, params.lang)
 
   const globals = await fetchGlobals(params.lang)
 
