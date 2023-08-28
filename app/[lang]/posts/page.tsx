@@ -23,6 +23,7 @@ async function fetchData() {
         '*',
         { author: ['*'] },
         { category: ['title', 'slug', 'color'] },
+        { translations: ['title', 'summary'] },
       ],
     })
   )
