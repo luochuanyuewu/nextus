@@ -28,6 +28,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   //     },
   //   ]
 
+  const injectLangCode = (lang: string | undefined): string => {
+    const isDefaultLocale =
+      lang !== '' &&
+      typeof lang !== 'undefined' &&
+      lang === process.env.NEXT_PUBLIC_LOCALE_DEFAULT
+    return isDefaultLocale ? '' : `/${lang}`
+  }
+
   const fetchPages = async function () {
     return await directusApi.request(
       readItems('pages', {
@@ -39,7 +47,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const fetchPosts = async function () {
     return await directusApi.request(
       readItems('posts', {
-        fields: ['slug', 'date_updated'],
+        fields: ['slug', 'date_updated', { translations: ['languages_code'] }],
       })
     )
   }
@@ -56,9 +64,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // common pages.
 
-  const allRootPages: MetadataRoute.Sitemap = [
-    { url: baseUrl, lastModified: new Date() },
-  ]
+  const allRootPages: MetadataRoute.Sitemap = []
 
   const locales = ['zh', 'en']
   const routes = ['/', '/projects', '/posts', '/help']
@@ -66,7 +72,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   locales.forEach((locale) => {
     routes.forEach((route) => {
       allRootPages.push({
-        url: `${baseUrl}/${locale}${route}`,
+        url: `${baseUrl}${injectLangCode(locale)}${route}`,
         //@ts-ignore
         lastModified: new Date(),
       })
@@ -79,12 +85,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     fetchProjects(),
   ])
 
-  const allPosts: MetadataRoute.Sitemap = posts.map((post) => {
-    return {
-      url: `${baseUrl}/posts/${post.slug}`,
-      //@ts-ignore
-      lastModified: new Date(post.date_updated),
-    }
+  const allPosts: MetadataRoute.Sitemap = []
+
+  posts.forEach((post) => {
+    post.translations?.forEach((translation) => {
+      allPosts.push({
+        url: `${baseUrl}${injectLangCode(translation.languages_code)}/posts/${
+          post.slug
+        }`,
+        //@ts-ignore
+        lastModified: new Date(post.date_updated),
+      })
+    })
   })
 
   const allPages: MetadataRoute.Sitemap = []
@@ -92,7 +104,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   pages.forEach((page) => {
     page.translations?.forEach((translation) => {
       allPages.push({
-        url: `${baseUrl}/${translation.languages_code}/${page.slug}`,
+        url: `${baseUrl}${injectLangCode(translation.languages_code)}/${
+          page.slug
+        }`,
         //@ts-ignore
         lastModified: new Date(page.date_updated),
       })
