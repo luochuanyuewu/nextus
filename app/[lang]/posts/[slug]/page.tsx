@@ -124,7 +124,9 @@ export default async function PageRoute({
                   content={post.translations[0].title}
                   size='lg'
                 />
-                <p className='mt-4 md:text-lg'>{post.summary}</p>
+                <p className='mt-4 md:text-lg'>
+                  {post.translations[0].summary}
+                </p>
               </div>
             </div>
           </div>

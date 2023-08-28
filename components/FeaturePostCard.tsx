@@ -40,7 +40,7 @@ const FeaturePostCard = ({ post }: { post: Posts }) => {
             {post.translations[0].title}
           </p>
           <p className='mt-3 font-mono text-sm '>
-            {truncateString(post.summary as any, 150)}
+            {truncateString(post.translations[0].summary, 150)}
           </p>
         </Link>
         {post.author && (
