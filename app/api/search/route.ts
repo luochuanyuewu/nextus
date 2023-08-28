@@ -2,7 +2,9 @@ import directusApi from '@/lib/utils/directus-api'
 import { NextRequest, NextResponse } from 'next/server'
 import { getQuery } from 'ufo'
 import { readItems } from '@directus/sdk'
-
+/**
+ * @todo fix translation fields.
+ * */
 function mapEntity({
   entity,
   type,

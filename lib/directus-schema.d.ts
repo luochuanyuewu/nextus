@@ -60,8 +60,8 @@ import {
   Metrics,
   Navigation,
   NavigationItems,
-  Pages,
-  Posts,
+  Pages, PagesTranslations, PagesTranslationsBlocks,
+  Posts, PostsTranslations,
   Projects,
   ProjectsFiles,
   ProjectsSettings,
@@ -163,6 +163,7 @@ export interface DirectusSchema {
   pages_translations: PagesTranslations[]
   pages_translations_blocks: PagesTranslationsBlocks[]
   posts: Posts[]
+  posts_translations: PostsTranslations[];
   projects: Projects[]
   projects_files: ProjectsFiles[]
   projects_settings: ProjectsSettings[]

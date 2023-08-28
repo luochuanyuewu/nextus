@@ -14,9 +14,18 @@ import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import PageContainer from '@/components/PageContainer'
 import TypographyProse from '@/components/typography/TypographyProse'
 
-async function getPostBySlug(slug: string) {
+async function getPostBySlug(slug: string, lang: string) {
   const posts = await directusApi.request(
     readItems('posts', {
+      deep: {
+        translations: {
+          _filter: {
+            languages_code: {
+              _eq: lang,
+            },
+          },
+        },
+      },
       filter: { slug: { _eq: slug } },
       limit: 1,
       fields: [
@@ -24,6 +33,7 @@ async function getPostBySlug(slug: string) {
         { seo: ['*'] },
         { author: ['*'] },
         { category: ['title', 'slug', 'color'] },
+        { translations: ['*'] },
       ],
     })
   )
@@ -35,9 +45,9 @@ async function getPostBySlug(slug: string) {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string }
+  params: { slug: string; lang: string }
 }): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug)
+  const post = await getPostBySlug(params.slug, params.lang)
   if (post == null) {
     return {
       title: 'a post',
@@ -52,11 +62,11 @@ export async function generateMetadata({
 export default async function PageRoute({
   params,
 }: {
-  params: { slug: string }
+  params: { slug: string; lang: string }
 }) {
-  const post = await getPostBySlug(params.slug)
+  const post = await getPostBySlug(params.slug, params.lang)
 
-  if (post == null) return null
+  if (post == null || !post.translations || !post.translations[0]) return null
 
   return (
     <div>
@@ -93,7 +103,8 @@ export default async function PageRoute({
               <div className='space-y-2'>
                 <p className='flex font-mono '>
                   <VIcon icon='heroicons:clock' className='mr-2 h-6 w-6' />
-                  {post.content && calculateReadTime(post.content)}
+                  {post.translations[0].content &&
+                    calculateReadTime(post.translations[0].content)}
                 </p>
                 <p className='flex font-mono '>
                   <VIcon icon='heroicons:calendar' className='mr-2 h-6 w-6' />
@@ -109,7 +120,10 @@ export default async function PageRoute({
               <div className='absolute inset-0 ' />
               <div className='relative'>
                 <div className='flex justify-between'></div>
-                <TypographyHeadline content={post.title} size='lg' />
+                <TypographyHeadline
+                  content={post.translations[0].title}
+                  size='lg'
+                />
                 <p className='mt-4 md:text-lg'>{post.summary}</p>
               </div>
             </div>
@@ -121,14 +135,14 @@ export default async function PageRoute({
               <div className='space-y-2'>
                 <p className='flex font-mono '>
                   <VIcon icon='heroicons:clock' className='mr-2 h-6 w-6' />
-                  {calculateReadTime(post?.content ?? '')}
+                  {calculateReadTime(post.translations[0].content ?? '')}
                 </p>
                 <p className='flex font-mono'>
                   <VIcon icon='heroicons:calendar' className='mr-2 h-6 w-6' />
                   {getRelativeTime(post?.date_published ?? '')}
                 </p>
               </div>
-              {post.category && typeof post.category !== 'string' && (
+              {post.category && (
                 <Link
                   href={`/posts/categories/${post.category.slug}`}
                   className='inline-block hover:opacity-90'
@@ -145,7 +159,7 @@ export default async function PageRoute({
         <PageContainer>
           <main className='mx-auto w-full max-w-4xl'>
             {/* Main */}
-            <TypographyProse content={post.content} />
+            <TypographyProse content={post.translations[0].content} />
           </main>
           <aside>{/* <TableOfContents toc={tableOfContents.toc} /> */}</aside>
         </PageContainer>

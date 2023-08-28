@@ -736,6 +736,9 @@ export interface PagesTranslationsBlocks {
 export interface Posts {
   author?: string | DirectusUsers
   category?: Categories
+  /**
+   * @deprecated Use translations[0].content
+   */
   content?: string
   date_created?: string
   date_published?: string
@@ -746,10 +749,26 @@ export interface Posts {
   slug?: string
   sort?: number
   status: string
+  /**
+   * @deprecated Use translations[0].summary
+   */
   summary?: string
+  /**
+   * @deprecated Use translations[0].title
+   */
   title?: string
+  translations?: PostsTranslations[]
   user_created?: string
   user_updated?: string
+}
+
+export interface PostsTranslations {
+  content?: string
+  id: number
+  languages_code?: string | Languages
+  posts_id?: string | Posts
+  summary?: string
+  title?: string
 }
 
 export interface Projects {
@@ -909,6 +928,7 @@ export interface CustomDirectusTypes {
   pages_translations: PagesTranslations
   pages_translations_blocks: PagesTranslationsBlocks
   posts: Posts
+  posts_translations: PostsTranslations
   projects: Projects
   projects_files: ProjectsFiles
   projects_settings: ProjectsSettings

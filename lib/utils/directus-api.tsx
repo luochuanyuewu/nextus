@@ -205,7 +205,10 @@ async function fetchPage(slug: string, lang: string) {
                       '*',
                       { gallery_items: ['*', { directus_files_id: ['*'] }] },
                     ],
-                    block_cardgroup: ['*', { posts: [{ posts_id: ['*'] }] }],
+                    block_cardgroup: [
+                      '*',
+                      { posts: [{ posts_id: ['*', { translations: ['*'] }] }] },
+                    ],
                     block_html: ['*'],
                     block_video: ['*'],
                   },

@@ -7,6 +7,8 @@ import { truncateString } from '@/lib/utils/strings'
 import VAvatar from '@/components/base/VAvatar'
 
 const FeaturePostCard = ({ post }: { post: Posts }) => {
+  if (!post.translations || post.translations.length === 0) return null
+
   return (
     <figure className='relative space-x-2 rounded-bl-3xl rounded-tr-3xl border-2 border-accent p-2 md:flex'>
       <Link className='group' href={`/posts/${post.slug}`}>
@@ -20,7 +22,7 @@ const FeaturePostCard = ({ post }: { post: Posts }) => {
           />
           <div className='absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
 
-          {post.category && typeof post.category != 'string' && (
+          {post.category && (
             <VBadge
               size='lg'
               color={post.category?.color ?? ''}
@@ -35,7 +37,7 @@ const FeaturePostCard = ({ post }: { post: Posts }) => {
       <div className='group relative overflow-hidden rounded-tl-3xl rounded-tr-3xl px-8 transition duration-300'>
         <Link className='g relative block' href={`/posts/${post.slug}`}>
           <p className='mt-5 font-serif text-3xl font-semibold  transition duration-300 group-hover:text-accent '>
-            {post.title}
+            {post.translations[0].title}
           </p>
           <p className='mt-3 font-mono text-sm '>
             {truncateString(post.summary as any, 150)}

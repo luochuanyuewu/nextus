@@ -15,6 +15,8 @@ interface PostCardProps {
 }
 
 function PostCard({ post, even, className }: PostCardProps) {
+  if (!post.translations || post.translations.length === 0) return null
+
   return (
     <figure className={`group flex flex-col ${className}`}>
       <Link href={`/posts/${post.slug}`}>
@@ -42,7 +44,7 @@ function PostCard({ post, even, className }: PostCardProps) {
               alt=''
             />
             <div className='absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
-            {post.category && typeof post.category !== 'string' && (
+            {post.category && (
               <VBadge
                 size='lg'
                 color={post.category?.color ?? ''}
@@ -61,7 +63,7 @@ function PostCard({ post, even, className }: PostCardProps) {
       <Link className='h-full' href={`/posts/${post.slug}`}>
         {/* Icon */}
         <p className='mt-5 font-serif text-xl font-semibold group-hover:text-accent'>
-          {post.title}
+          {post.translations[0].title}
         </p>
         <p className='mt-3 font-mono text-sm '>
           {truncateString(post?.summary ?? '', 150)}

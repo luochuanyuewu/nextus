@@ -11,9 +11,18 @@ import PostCard from '@/components/PostCard'
 import { isEven } from '@/lib/utils/math'
 import { getTranslator } from 'next-intl/server'
 
-async function getPostsByCategory(categorySlug: string) {
+async function getPostsByCategory(categorySlug: string, lang: string) {
   const posts = await directusApi.request(
     readItems('posts', {
+      deep: {
+        translations: {
+          _filter: {
+            languages_code: {
+              _eq: lang,
+            },
+          },
+        },
+      },
       filter: {
         category: {
           slug: {
@@ -27,6 +36,7 @@ async function getPostsByCategory(categorySlug: string) {
         '*',
         { author: ['*'] },
         { category: ['title', 'slug', 'color'] },
+        { translations: ['*'] },
       ],
     })
   )
