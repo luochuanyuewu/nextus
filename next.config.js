@@ -13,9 +13,6 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    appDir: true,
-  },
 }
 
 const withNextIntl = require('next-intl/plugin')(

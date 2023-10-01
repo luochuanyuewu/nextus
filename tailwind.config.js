@@ -11,16 +11,10 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
 
-  // Using a separate config file for typography to keep things clean and tidy
-  // presets: [require('./tailwind.config.typography.js')],
-
   theme: {
     extend: {
       colors: {
         gray: colors.slate,
-        // accent: {
-        //   DEFAULT: '#FF99DD',
-        // },
         red: colors.rose,
       },
       fontFamily: {
@@ -51,7 +45,7 @@ module.exports = {
   // daisyUI config (optional) //https://daisyui.com/docs/config/
   daisyui: {
     styled: true,
-    themes: true,
+    themes: JSON.parse(process.env.NEXT_PUBLIC_DAISYUI_THEMES || 'false'),
     base: true,
     utils: true,
     logs: false,
