@@ -6,9 +6,8 @@ export const locales = ['en', 'zh']
 export default createMiddleware({
   // A list of all locales that are supported
   locales: locales,
-
   // If this locale is matched, pathnames work without a prefix (e.g. `/about`)
-  defaultLocale: process.env.NEXT_PUBLIC_LOCALE_DEFAULT || 'zh',
+  defaultLocale: process.env.NEXT_PUBLIC_LOCALE_DEFAULT || 'en',
 })
 
 export const config = {

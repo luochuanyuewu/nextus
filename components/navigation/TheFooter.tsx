@@ -10,7 +10,7 @@ import VIcon from '@/components/base/VIcon'
 import Link from 'next-intl/link'
 import VForm from '@/components/base/VForm'
 
-async function TheFooter({ lang = 'zh' }: { lang?: string }) {
+async function TheFooter({ lang }: { lang: string }) {
   function getUrl(item: NavigationItems) {
     if (item.type === 'page' && typeof item.page !== 'string') {
       return `/${item.page?.slug}`
@@ -59,15 +59,16 @@ async function TheFooter({ lang = 'zh' }: { lang?: string }) {
                 ))}
             </ul>
           </div>
-
-          <div className='relative overflow-hidden rounded-br-3xl rounded-tl-3xl border-2 border-accent p-6 md:grid md:grid-cols-1 lg:justify-end'>
-            <div className='absolute inset-0' />
-            <div className='absolute inset-0' />
-            <div className='relative w-full md:mt-0'>
-              <TypographyHeadline content={form.title}></TypographyHeadline>
-              {form && <VForm className='mt-4' form={form} />}
+          {form && (
+            <div className='relative overflow-hidden rounded-br-3xl rounded-tl-3xl border-2 border-accent p-6 md:grid md:grid-cols-1 lg:justify-end'>
+              <div className='absolute inset-0' />
+              <div className='absolute inset-0' />
+              <div className='relative w-full md:mt-0'>
+                <TypographyHeadline content={form.title}></TypographyHeadline>
+                <VForm className='mt-4' form={form} />
+              </div>
             </div>
-          </div>
+          )}
         </nav>
       </div>
 

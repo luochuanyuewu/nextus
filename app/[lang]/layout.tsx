@@ -68,7 +68,7 @@ export default async function RootLayout({
           <main className='min-h-screen overflow-hidden bg-base-100 antialiased'>
             <TheHeader lang={params.lang} />
             {children}
-            <TheFooter />
+            <TheFooter lang={params.lang} />
           </main>
           <ScrollToTopButton></ScrollToTopButton>
           <Analytics lang={params.lang} />
