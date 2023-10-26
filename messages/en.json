@@ -12,6 +12,10 @@
       "label": "Language",
       "locale": "{locale, select, zh {中文} en {English} other {Unknown}}"
     },
+    "lang_redirect": {
+      "heading": "There is no content available in your language.",
+      "note": "Try Switch to different language."
+    },
     "go_top": "go top"
   },
   "projects": {
@@ -23,10 +27,12 @@
     "gallery": "Gallery"
   },
   "help": {
-    "page_title": "Help",
-    "title": "Help Center",
+    "page_title": "Documentations",
+    "article_name": "Documents",
+    "view": "View",
+    "title": "Documentation Center",
     "headline": "<p>How can we <em>help</em> you?</p>",
-    "all_collections": "All Collections"
+    "all_collections": "All Documentations"
   },
   "posts": {
     "page_title": "All Posts",

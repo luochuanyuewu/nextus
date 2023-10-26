@@ -1,47 +1,12 @@
 import Image from 'next/image'
 import Link from 'next-intl/link'
-import { formatDate, getStrapiMedia } from '@/lib/utils/api-helpers'
-
-interface Article {
-  id: 4
-  attributes: {
-    title: string
-    description: string
-    slug: string
-    createdAt: string
-    updatedAt: string
-    publishedAt: string
-    cover: {
-      data: {
-        attributes: {
-          url: string
-        }
-      }
-    }
-    category: {
-      data: {
-        attributes: {
-          name: string
-          slug: string
-        }
-      }
-    }
-    authorsBio: {
-      data: {
-        attributes: {
-          name: string
-          avatar: {
-            data: {
-              attributes: {
-                url: string
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+import {
+  formatDate,
+  getDirectusMedia,
+  getStrapiMedia,
+} from '@/lib/utils/api-helpers'
+import { DirectusUsers, Posts } from '@/lib/directus-collections'
+import { getRelativeTime } from '@/lib/utils/time'
 
 const createExcerpt = (
   content: string,
@@ -57,36 +22,32 @@ const createExcerpt = (
 }
 
 export default function PostList({
-  data: articles,
+  data: posts,
   children,
 }: {
-  data: Article[]
+  data: Posts[]
   children?: React.ReactNode
 }) {
   return (
     <div>
       <section>
         <ul>
-          {articles.map((article) => {
-            const imageUrl = getStrapiMedia(
-              article.attributes.cover.data?.attributes.url
-            )
+          {posts.map((post) => {
+            const imageUrl = getDirectusMedia(post.image)
 
-            const category = article.attributes.category.data?.attributes
-            const authorsBio = article.attributes.authorsBio.data?.attributes
+            const category = post.category
+            const authorsBio = post.author as DirectusUsers
 
-            const avatarUrl = getStrapiMedia(
-              authorsBio?.avatar?.data?.attributes?.url
-            )
+            const avatarUrl = getDirectusMedia(authorsBio.avatar)
 
             return (
-              <li key={article.id} className=''>
-                <article className='card-compact card mb-2 shadow-md'>
+              <li key={post.id} className=''>
+                <article className='card card-compact mb-2 shadow-md'>
                   <div className='card-body'>
                     <div className='grid grid-cols-1 flex-row items-center md:grid-cols-4'>
                       <Link
                         className='hidden md:inline '
-                        href={`p/${category?.slug}/${article.attributes.slug}`}
+                        href={`p/${category?.slug}/${post.slug}`}
                       >
                         {imageUrl && (
                           <Image
@@ -101,20 +62,20 @@ export default function PostList({
                       <div className='col-span-3 mx-1 flex flex-grow flex-col'>
                         <div className='mt-3 flex flex-col'>
                           <h1 className='text-2xl font-bold'>
-                            <Link
-                              href={`p/${category?.slug}/${article.attributes.slug}`}
-                            >
+                            <Link href={`p/${category?.slug}/${post.slug}`}>
                               <span className='badge badge-secondary mx-1'>
-                                {
-                                  article.attributes.category.data.attributes
-                                    .name
-                                }
+                                {post.category?.title || 'category_title'}
                               </span>
-                              {article.attributes.title}
+                              {post.translations &&
+                                post.translations[0] &&
+                                post.translations[0].title}
                             </Link>
                           </h1>
                           <p className='prose mx-2 mt-2'>
-                            {article.attributes.description}
+                            {(post.translations &&
+                              post.translations[0] &&
+                              post.translations[0].summary) ??
+                              'summary'}
                           </p>
                         </div>
                         <div className='mt-4 flex items-center justify-end gap-2'>
@@ -128,10 +89,11 @@ export default function PostList({
                                 className='h-10 w-10 rounded-full object-cover'
                               />
                             )}
-                            {authorsBio && <span>{authorsBio.name}</span>}
+                            {authorsBio && <span>{authorsBio.first_name}</span>}
                           </div>
-                          <span className='text-sm dark:text-gray-400'>
-                            {formatDate(article.attributes.publishedAt)}
+                          <span className='text-sm'>
+                            {post.date_published &&
+                              getRelativeTime(post.date_published)}
                           </span>
                         </div>
                       </div>

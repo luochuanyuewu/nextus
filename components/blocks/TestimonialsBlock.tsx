@@ -85,7 +85,7 @@ export default function TestimonialsBlock({ data }: TestimonialsBlockProps) {
         <TypographyTitle>{data.title}</TypographyTitle>
         <TypographyHeadline content={data.headline as string} size='xl' />
 
-        <p className='mx-auto max-w-3xl text-center leading-7'>
+        <p className='mx-auto max-w-4xl text-center leading-7'>
           {data.subtitle}
         </p>
       </div>

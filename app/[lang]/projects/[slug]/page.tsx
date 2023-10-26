@@ -36,18 +36,15 @@ export default async function PageRoute({ params }: { params: any }) {
           src={getDirectusMedia(project.image) || ''}
         />
         <div className='absolute inset-0 bg-base-300 opacity-50' />
-        <div className='relative mx-auto max-w-3xl overflow-hidden rounded-bl-3xl rounded-tr-3xl bg-base-100 bg-opacity-50 p-8'>
+        <div className='relative mx-auto max-w-4xl overflow-hidden rounded-bl-3xl rounded-tr-3xl bg-base-100 bg-opacity-50 p-8'>
           <TypographyHeadline content={project.title} size='xl' />
-          <p className='mt-4 font-mono font-semibold md:text-lg'>
-            {project.summary}
-          </p>
+          <p className='mt-4 font-mono md:text-lg'>{project.summary}</p>
         </div>
       </div>
       <main className='relative'>
-        <PageContainer className='mx-auto max-w-6xl md:flex'>
+        <PageContainer>
           <main className='p-4'>
-            <article className='w-full'>
-              {/* Main */}
+            <article className='mx-auto w-full max-w-4xl'>
               <TypographyProse content={project.content} />
             </article>
 
@@ -64,23 +61,30 @@ export default async function PageRoute({ params }: { params: any }) {
           </main>
           <aside className=''>
             <div className='flex-shrink-0 space-y-8 rounded-bl-2xl rounded-tr-2xl border-2 border-accent p-4 md:w-[300px]'>
-              <div>
-                <TypographyTitle>{t('client')}</TypographyTitle>
-                <p className='font-mono font-bold '>{project.client}</p>
-              </div>
-              <div>
-                <TypographyTitle>{t('build_with')}</TypographyTitle>
-                {project.built_with &&
-                  project.built_with.map((item, itemIdx) => (
+              {project.client && (
+                <div>
+                  <TypographyTitle>{t('client')}</TypographyTitle>
+                  <p className='font-mono font-bold '>{project.client}</p>
+                </div>
+              )}
+
+              {project.built_with && (
+                <div>
+                  <TypographyTitle>{t('build_with')}</TypographyTitle>
+                  {project.built_with.map((item, itemIdx) => (
                     <div className='mt-2' key={itemIdx}>
                       <div className='badge badge-neutral'>{item}</div>
                     </div>
                   ))}
-              </div>
-              <div>
-                <TypographyTitle>{t('cost')}</TypographyTitle>
-                <p className='font-mono font-bold '>{project.cost}</p>
-              </div>
+                </div>
+              )}
+
+              {project.cost && (
+                <div>
+                  <TypographyTitle>{t('cost')}</TypographyTitle>
+                  <p className='font-mono font-bold '>{project.cost}</p>
+                </div>
+              )}
             </div>
           </aside>
         </PageContainer>

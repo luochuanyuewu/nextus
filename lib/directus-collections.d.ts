@@ -58,6 +58,21 @@ export interface BlockFaqs {
   title?: string
 }
 
+export interface BlockFeatures {
+  description?: string
+  features?: Array<{
+    id: string
+    title: string
+    description: string
+    show_link: boolean
+    new_tab: boolean
+    url: string
+    text: string
+  }>
+  id: string
+  title?: string
+}
+
 export interface BlockForm {
   form?: string | Forms
   headline?: string
@@ -597,28 +612,43 @@ export interface GlobalsTranslations {
 }
 
 export interface HelpArticles {
-  content?: string
   date_created?: string
   date_updated?: string
-  help_collection?: HelpCollections
+  help_collection: HelpCollections
   id: string
   owner?: DirectusUsers
   slug?: string
   sort?: number
   status: string
+  translations: HelpArticlesTranslations[]
+  type?: 'group' | 'article'
+  user_created?: string | DirectusUsers
+  user_updated?: string | DirectusUsers
+}
+
+export interface HelpArticlesTranslations {
+  content?: string
+  help_articles_id?: string | HelpArticles
+  id: number
+  languages_code?: string | Languages
   summary?: string
   title?: string
-  user_created?: DirectusUsers
-  user_updated?: DirectusUsers
 }
 
 export interface HelpCollections {
   articles?: HelpArticles[]
-  description?: string
-  icon?: string
+  cover?: string | DirectusFiles
   id: string
   slug?: string
   sort?: number
+  translations: HelpCollectionsTranslations[]
+}
+
+export type HelpCollectionsTranslations = {
+  description?: string
+  help_collections_id?: string | HelpCollections
+  id: number
+  languages_code?: string | Languages
   title?: string
 }
 
@@ -751,7 +781,7 @@ export interface Posts {
 }
 
 export interface PostsTranslations {
-  content?: string
+  content: string
   id: number
   languages_code?: string | Languages
   posts_id?: string | Posts
@@ -858,6 +888,7 @@ export interface CustomDirectusTypes {
   block_columns_rows: BlockColumnsRows
   block_cta: BlockCta
   block_faqs: BlockFaqs
+  block_features: BlockFeatures
   block_form: BlockForm
   block_gallery: BlockGallery
   block_gallery_files: BlockGalleryFiles
@@ -904,7 +935,9 @@ export interface CustomDirectusTypes {
   globals: Globals
   globals_translations: GlobalsTranslations
   help_articles: HelpArticles
+  help_articles_translations: HelpArticlesTranslations
   help_collections: HelpCollections
+  help_collections_translations: HelpCollectionsTranslations
   help_feedback: HelpFeedback
   inbox: Inbox
   languages: Languages

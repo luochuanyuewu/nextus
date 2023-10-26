@@ -60,8 +60,11 @@ import {
   Metrics,
   Navigation,
   NavigationItems,
-  Pages, PagesTranslations, PagesTranslationsBlocks,
-  Posts, PostsTranslations,
+  Pages,
+  PagesTranslations,
+  PagesTranslationsBlocks,
+  Posts,
+  PostsTranslations,
   Projects,
   ProjectsFiles,
   ProjectsSettings,
@@ -105,6 +108,7 @@ export interface DirectusSchema {
   block_columns_rows: BlockColumnsRows[]
   block_cta: BlockCta[]
   block_faqs: BlockFaqs[]
+  block_features: BlockFeatures[]
   block_form: BlockForm[]
   block_gallery: BlockGallery[]
   block_gallery_files: BlockGalleryFiles[]
@@ -151,7 +155,9 @@ export interface DirectusSchema {
   globals: Globals
   globals_translations: GlobalsTranslations[]
   help_articles: HelpArticles[]
+  help_articles_translations: HelpArticlesTranslations[]
   help_collections: HelpCollections[]
+  help_collections_translations: HelpCollectionsTranslations[]
   help_feedback: HelpFeedback[]
   inbox: Inbox[]
   languages: Languages[]
@@ -163,7 +169,7 @@ export interface DirectusSchema {
   pages_translations: PagesTranslations[]
   pages_translations_blocks: PagesTranslationsBlocks[]
   posts: Posts[]
-  posts_translations: PostsTranslations[];
+  posts_translations: PostsTranslations[]
   projects: Projects[]
   projects_files: ProjectsFiles[]
   projects_settings: ProjectsSettings[]

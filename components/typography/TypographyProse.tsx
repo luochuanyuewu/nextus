@@ -40,7 +40,7 @@ function Prose({ content, className }: ProseProps) {
     <div
       ref={contentEl}
       className={twMerge(
-        'prose prose-sm md:prose-base lg:prose-lg prose-headings:font-serif prose-p:font-mono prose-img:rounded-br-3xl prose-img:rounded-tl-3xl prose-img:border-2 prose-img:border-accent',
+        'prose prose-sm max-w-none md:prose-base lg:prose-lg prose-headings:font-serif prose-p:font-mono prose-img:rounded-br-3xl prose-img:rounded-tl-3xl prose-img:border-2 prose-img:border-accent',
         className
       )}
       dangerouslySetInnerHTML={{ __html: content ? content : '' }}

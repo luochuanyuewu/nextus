@@ -9,7 +9,15 @@ import {
   rest,
   RestCommand,
 } from '@directus/sdk'
-import { Forms, Globals, Navigation, Pages } from '@/lib/directus-collections'
+import {
+  Forms,
+  Globals,
+  HelpArticles,
+  HelpCollections,
+  Navigation,
+  Pages,
+  Posts,
+} from '@/lib/directus-collections'
 import { DirectusSchema } from '@/lib/directus-schema'
 
 const withRequestCallback = function <Schema extends object, Output>(
@@ -66,7 +74,6 @@ const fetchGlobals = async function name(lang: string) {
     withRevalidate(
       readSingleton('globals', {
         deep: {
-          // @ts-ignore
           translations: {
             _filter: {
               languages_code: {
@@ -122,6 +129,7 @@ const fetchNavigationSafe = async function name(slug: string, lang: string) {
       60
     )
   )
+  //@ts-ignore
   return navigations[0] as Navigation
 }
 
@@ -141,23 +149,148 @@ const fetchForm = async function (id: string, languages_code?: string) {
   return forms[0]
 }
 
-async function fetchHelpArticles(slug: string) {
+async function fetchHelpCollections(lang: string) {
+  const collections = await directusApi.request(
+    readItems('help_collections', {
+      filter: {},
+      deep: {
+        translations: {
+          _filter: {
+            languages_code: {
+              _eq: lang,
+            },
+          },
+        },
+      },
+      fields: ['cover', 'slug', { translations: ['title', 'description'] }],
+    })
+  )
+
+  // @ts-ignore
+  return collections as HelpCollections[]
+}
+
+async function fetchHelpCollection(slug: string, lang: string) {
+  const collections = await directusApi.request(
+    readItems('help_collections', {
+      filter: {
+        _and: [
+          {
+            slug: {
+              _eq: slug,
+            },
+          },
+        ],
+      },
+      deep: {
+        translations: {
+          _filter: {
+            languages_code: {
+              _eq: lang,
+            },
+          },
+        },
+      },
+      limit: 1,
+      fields: [
+        '*',
+        {
+          articles: ['slug', 'id', { translations: ['title', 'summary'] }],
+        },
+        { translations: ['title', 'description'] },
+      ],
+    })
+  )
+
+  if (collections.length === 0) return null
+
+  return collections[0] as HelpCollections
+}
+
+async function fetchHelpArticle(slug: string, lang: string) {
   const articles = await directusApi.request(
     readItems('help_articles', {
       filter: {
         slug: {
           _eq: slug,
         },
+        status: {
+          _eq: 'published',
+        },
+        translations: {
+          _nnull: true,
+        },
+      },
+      deep: {
+        help_collection: {
+          _filter: {
+            translations: {
+              _nnull: true,
+            },
+          },
+          translations: {
+            _filter: {
+              _and: [
+                {
+                  languages_code: {
+                    _eq: lang,
+                  },
+                },
+              ],
+            },
+            _limit: 1,
+          },
+        },
+        translations: {
+          _filter: {
+            languages_code: {
+              _eq: lang,
+            },
+          },
+        },
       },
       limit: 1,
       fields: [
         '*',
-        { help_collection: ['slug', 'title', 'id'] },
+        {
+          help_collection: ['slug', 'id', { translations: ['title'] }],
+        },
         { owner: ['first_name', 'last_name', 'avatar'] },
+        { translations: ['content', 'languages_code', 'summary', 'title'] },
       ],
     })
   )
-  return articles
+  // @ts-ignore
+  return articles[0] as HelpArticles
+}
+
+async function fetchPost(slug: string, lang: string) {
+  const posts = await directusApi.request(
+    readItems('posts', {
+      deep: {
+        translations: {
+          _filter: {
+            languages_code: {
+              _eq: lang,
+            },
+          },
+        },
+      },
+      filter: { slug: { _eq: slug } },
+      limit: 1,
+      fields: [
+        '*',
+        { seo: ['*'] },
+        { author: ['avatar', 'first_name', 'last_name'] },
+        { category: ['title', 'slug', 'color'] },
+        { translations: ['*'] },
+      ],
+    })
+  )
+
+  if (posts.length === 0) return null
+
+  return posts[0] as Posts
 }
 
 async function fetchPage(slug: string, lang: string) {
@@ -167,7 +300,6 @@ async function fetchPage(slug: string, lang: string) {
         slug: { _eq: slug },
       },
       deep: {
-        // @ts-ignore
         translations: {
           _filter: {
             languages_code: {
@@ -189,6 +321,7 @@ async function fetchPage(slug: string, lang: string) {
                   item: {
                     block_hero: ['*'],
                     block_faqs: ['*'],
+                    block_features: ['*'],
                     block_quote: ['*'],
                     block_columns: ['*', { rows: ['*'] }],
                     block_form: ['*', { form: ['*'] }],
@@ -232,6 +365,9 @@ export {
   fetchGlobals,
   fetchNavigationSafe,
   fetchForm,
-  fetchHelpArticles,
+  fetchHelpArticle,
+  fetchHelpCollection,
+  fetchHelpCollections,
   fetchPage,
+  fetchPost,
 }

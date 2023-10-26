@@ -15,6 +15,7 @@ import ColumnsBlock from '@/components/blocks/ColumnsBlock'
 import CardGroupBlock from '@/components/blocks/CardGroupBlock'
 import FormBlock from './blocks/FormBlock'
 import TeamBlock from './blocks/TeamBlockServer'
+import FeaturesBlock from './blocks/FeaturesBlock'
 
 function PageBuilder({ page }: { page: Pages }) {
   return (
@@ -23,6 +24,10 @@ function PageBuilder({ page }: { page: Pages }) {
         page.translations[0] &&
         page.translations[0].blocks.map((block) => {
           switch (block.collection) {
+            case 'block_features':
+              return (
+                <FeaturesBlock key={block.id} data={block.item}></FeaturesBlock>
+              )
             case 'block_richtext':
               return (
                 <RichTextBlock key={block.id} data={block.item}></RichTextBlock>

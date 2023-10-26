@@ -1,7 +1,6 @@
 import React from 'react'
 
 interface PageContainerProps {
-  className?: string
   children?: React.ReactNode
 }
 

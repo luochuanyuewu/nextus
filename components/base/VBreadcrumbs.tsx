@@ -1,6 +1,5 @@
 import Link from 'next-intl/link'
 import React from 'react'
-import VIcon from './VIcon'
 
 interface BreadcrumbItem {
   title: string

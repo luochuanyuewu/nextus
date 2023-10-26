@@ -55,7 +55,7 @@ export default async function PageRoute({ params }: Props) {
       </header>
       <section className='relative w-full items-center py-12'>
         <TypographyTitle>{t('latest')}</TypographyTitle>
-        <div className='mt-4 grid gap-6 md:grid-cols-3'>
+        <div className='mt-4 grid gap-6 md:grid-cols-2'>
           {(projects as any).map((project: Projects, projectIdx: number) => (
             <Link
               key={project.id}

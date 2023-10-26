@@ -3,6 +3,7 @@ import { fetchGlobals, fetchPage } from '@/lib/utils/directus-api'
 import PageBuilder from '@/components/PageBuilder'
 import { getTranslator } from 'next-intl/server'
 import { GlobalsTranslations } from '@/lib/directus-collections'
+import LangRedirect from '@/components/navigation/LangRedirect'
 
 export async function generateMetadata({
   params,
@@ -30,7 +31,10 @@ export default async function PageRoute({
 }) {
   const page = await fetchPage('home', params.lang)
 
-  if (!page || !page.translations || page.translations.length === 0) return null
+  if (!page) return null
+
+  if (!page.translations || page.translations.length === 0)
+    return <LangRedirect lang={params.lang}></LangRedirect>
 
   return (
     <>

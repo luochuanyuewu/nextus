@@ -18,7 +18,6 @@ async function fetchData() {
         status: { _eq: 'published' },
       },
       sort: ['date_published'],
-
       fields: [
         '*',
         { author: ['*'] },

@@ -1,24 +1,23 @@
-import { fetchHelpArticles } from '@/lib/utils/directus-api'
+import { fetchHelpArticle } from '@/lib/utils/directus-api'
 import PageContainer from '@/components/PageContainer'
 import GlobalSearch from '@/components/GlobalSearch'
 import VBreadcrumbs from '@/components/base/VBreadcrumbs'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import VAvatar from '@/components/base/VAvatar'
 import TypographyProse from '@/components/typography/TypographyProse'
-import { markdownToHtml } from '@/lib/utils/markdown'
-import { HelpArticles } from '@/lib/directus-collections'
 import { getTranslator } from 'next-intl/server'
+import LangRedirect from '@/components/navigation/LangRedirect'
 
 export default async function ArticlePage({
   params,
 }: {
   params: { lang: string; slug: string }
 }) {
-  const articles = await fetchHelpArticles(params.slug)
+  const article = await fetchHelpArticle(params.slug, params.lang)
 
-  if (articles.length === 0) return null
-
-  const article = articles[0] as HelpArticles
+  if (!article.translations || article.translations.length === 0) {
+    return <LangRedirect lang={params.lang}></LangRedirect>
+  }
 
   const t = await getTranslator(params.lang)
 
@@ -42,12 +41,14 @@ export default async function ArticlePage({
                 items={[
                   { title: t('help.all_collections'), href: '/help' },
                   {
-                    title: article.help_collection?.title || 'undefined',
+                    title:
+                      article.help_collection.translations[0].title ||
+                      'undefined',
                     href: `/help/collections/${
-                      article.help_collection?.slug || 'undefined'
+                      article.help_collection.slug || 'undefined'
                     }`,
                   },
-                  { title: article.title || 'undefined' },
+                  { title: article.translations[0].title || 'undefined' },
                 ]}
               />
             </div>
@@ -56,11 +57,15 @@ export default async function ArticlePage({
                 <div className='mb-10 max-lg:mb-6'>
                   <div className='flex flex-col gap-4'>
                     <div className='flex flex-col'>
-                      {article.title && (
-                        <TypographyHeadline content={article.title} />
+                      {article.translations[0].title && (
+                        <TypographyHeadline
+                          content={article.translations[0].title}
+                        />
                       )}
-                      {article.summary && (
-                        <p className='font-mono'>{article.summary}</p>
+                      {article.translations[0].summary && (
+                        <p className='font-mono'>
+                          {article.translations[0].summary}
+                        </p>
                       )}
                     </div>
                     {article.owner && <VAvatar author={article.owner} />}
@@ -71,9 +76,9 @@ export default async function ArticlePage({
                     {/* Table of Contents */}
                   </div>
                   <article>
-                    {article.content && (
+                    {article.translations[0].content && (
                       <TypographyProse
-                        content={markdownToHtml(article.content)}
+                        content={article.translations[0].content}
                       />
                     )}
                   </article>
