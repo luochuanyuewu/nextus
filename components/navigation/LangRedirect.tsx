@@ -1,10 +1,10 @@
 import { Link } from '@/lib/navigation'
 import Image from 'next/image'
 import HighlightedText from './HighlightedText'
-import { getTranslations} from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 
 export default async function LangRedirect({ lang }: { lang: string }) {
-  const t = await getTranslator(lang, 'global')
+  const t = await getTranslations({ locale: lang, namespace: 'global' })
 
   return (
     <section>

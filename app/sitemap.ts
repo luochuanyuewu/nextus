@@ -1,4 +1,4 @@
-import { locales } from '@/lib/utils/constant'
+import { locales } from '@/lib/navigation'
 import directusApi, { fetchGlobals } from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
 import { MetadataRoute } from 'next'
