@@ -12,7 +12,7 @@
     "format": "prettier '**/*.{ts,tsx}' --write --ignore-path .gitignore"
   },
   "dependencies": {
-    "@directus/sdk": "12.0.1",
+    "@directus/sdk": "13.0.2",
     "@formatjs/intl-localematcher": "^0.4.2",
     "@headlessui/react": "^1.7.17",
     "@hookform/error-message": "^2.0.1",

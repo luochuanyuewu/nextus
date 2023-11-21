@@ -737,6 +737,9 @@ export interface Pages {
   date_created?: string
   date_updated?: string
   id: string
+  /**
+   * @deprecated No longer used.
+   */
   seo?: Seo
   slug?: string
   sort?: number

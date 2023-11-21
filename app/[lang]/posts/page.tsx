@@ -9,11 +9,20 @@ import Categories from '@/components/Categories'
 import FeaturePostCard from '@/components/FeaturePostCard'
 import PostCard from '@/components/PostCard'
 import { isEven } from '@/lib/utils/math'
-import { getTranslations} from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 
-async function fetchData() {
+async function fetchData(lang: string) {
   const posts = await directusApi.request(
     readItems('posts', {
+      deep: {
+        translations: {
+          _filter: {
+            languages_code: {
+              _starts_with: lang,
+            },
+          },
+        },
+      },
       filter: {
         status: { _eq: 'published' },
       },
@@ -36,7 +45,7 @@ export async function generateMetadata({
 }: {
   params: { lang: string }
 }) {
-  const t = await getTranslations({locale:params.lang})
+  const t = await getTranslations({ locale: params.lang })
 
   return {
     title: t('posts.page_title'),
@@ -48,12 +57,12 @@ export default async function PageRoute({
 }: {
   params: { lang: string }
 }) {
-  const posts = await fetchData()
+  const posts = await fetchData(params.lang)
   const globals = await fetchGlobals(params.lang)
 
   const globalData = globals.translations[0]
 
-  const t = await getTranslations({locale:params.lang})
+  const t = await getTranslations({ locale: params.lang })
 
   return (
     <PageContainer>
