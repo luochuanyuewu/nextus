@@ -11,15 +11,15 @@ import LangRedirect from '@/components/navigation/LangRedirect'
 export default async function ArticlePage({
   params,
 }: {
-  params: { lang: string; slug: string }
+  params: { lang: string; articleSlug: string }
 }) {
-  const article = await fetchHelpArticle(params.slug, params.lang)
+  const article = await fetchHelpArticle(params.articleSlug, params.lang)
 
   if (!article.translations || article.translations.length === 0) {
     return <LangRedirect lang={params.lang}></LangRedirect>
   }
 
-  const t = await getTranslations({locale:params.lang})
+  const t = await getTranslations({ locale: params.lang })
 
   return (
     <PageContainer>
@@ -44,7 +44,7 @@ export default async function ArticlePage({
                     title:
                       article.help_collection.translations[0].title ||
                       'undefined',
-                    href: `/help/collections/${
+                    href: `/help/${
                       article.help_collection.slug || 'undefined'
                     }`,
                   },
@@ -90,7 +90,7 @@ export default async function ArticlePage({
             {/*<HelpFeedback*/}
             {/*  className='mt-4'*/}
             {/*  title={article.title}*/}
-            {/*  url={`/help/articles/${article.slug}`}*/}
+            {/*  url={`/help/${article.help_collection.slug}/${article.slug}`}*/}
             {/*/>*/}
           </div>
         </div>

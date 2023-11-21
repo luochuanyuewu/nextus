@@ -29,7 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   //     },
   //   ]
 
-  const injectLangCode = (lang: string | undefined): string => {
+  const injectLangCode = (lang: string | any): string => {
     const isDefaultLocale =
       lang !== '' &&
       typeof lang !== 'undefined' &&

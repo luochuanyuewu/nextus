@@ -6,7 +6,7 @@ import VIcon from '@/components/base/VIcon'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import { Link } from '@/lib/navigation'
 import { HelpArticles } from '@/lib/directus-collections'
-import { getTranslations} from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import LangRedirect from '@/components/navigation/LangRedirect'
@@ -14,16 +14,19 @@ import LangRedirect from '@/components/navigation/LangRedirect'
 export default async function CollectionPage({
   params,
 }: {
-  params: { lang: string; slug: string }
+  params: { lang: string; collectionSlug: string }
 }) {
-  const collection = await fetchHelpCollection(params.slug, params.lang)
+  const collection = await fetchHelpCollection(
+    params.collectionSlug,
+    params.lang
+  )
 
   if (!collection) return null
 
   if (!collection.translations || collection.translations.length == 0)
     return <LangRedirect lang={params.lang}></LangRedirect>
 
-  const t = await getTranslations({locale:params.lang})
+  const t = await getTranslations({ locale: params.lang })
 
   return (
     <PageContainer>
@@ -40,7 +43,7 @@ export default async function CollectionPage({
             { title: t('help.all_collections'), href: '/help' },
             {
               title: collection.translations[0].title || '',
-              href: `/help/collections/${collection.slug}`,
+              href: `/help/${collection.slug}`,
             },
           ]}
         />
@@ -77,7 +80,7 @@ export default async function CollectionPage({
                   article.translations[0] && (
                     <div key={article.id}>
                       <Link
-                        href={`/help/articles/${article.slug}`}
+                        href={`/help/${collection.slug}/${article.slug}`}
                         className='flex flex-col rounded-br-lg rounded-tl-lg p-3 transition duration-150 hover:bg-accent/30 '
                       >
                         <div className='flex items-center justify-between'>

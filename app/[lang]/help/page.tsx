@@ -13,7 +13,7 @@ export async function generateMetadata({
 }: {
   params: { lang: string }
 }) {
-  const t = await getTranslations({locale:params.lang})
+  const t = await getTranslations({ locale: params.lang })
 
   return {
     title: t('help.page_title'),
@@ -27,7 +27,7 @@ export default async function HelpCenterPage({
 }) {
   const collections = await fetchHelpCollections(params.lang)
 
-  const t = await getTranslations({locale:params.lang})
+  const t = await getTranslations({ locale: params.lang })
 
   return (
     <PageContainer>
@@ -46,7 +46,7 @@ export default async function HelpCenterPage({
             collection.translations &&
             collection.translations[0] && (
               <div key={collection.id}>
-                <div className='card bg-base-200 no-underline transition duration-200 hover:border-accent-focus'>
+                <div className='hover:border-accent-focus card bg-base-200 no-underline transition duration-200'>
                   <figure>
                     {collection.cover && (
                       <Image
@@ -65,7 +65,7 @@ export default async function HelpCenterPage({
                     <p> {collection.translations[0].description}</p>
                     <div className='card-actions justify-end'>
                       <button className='btn-l btn btn-primary'>
-                        <Link href={`/help/collections/${collection.slug}`}>
+                        <Link href={`/help/${collection.slug}`}>
                           {t('help.view')}
                         </Link>
                       </button>
@@ -97,8 +97,8 @@ export default async function HelpCenterPage({
             collection.translations[0] && (
               <Link
                 key={collection.id}
-                href={`/help/collections/${collection.slug}`}
-                className='flex overflow-hidden rounded-bl-xl rounded-tr-xl border border-primary no-underline transition duration-200 hover:border-accent-focus'
+                href={`/help/${collection.slug}`}
+                className='hover:border-accent-focus flex overflow-hidden rounded-bl-xl rounded-tr-xl border border-primary no-underline transition duration-200'
               >
                 <div className='flex flex-col p-5 sm:p-6'>
                   <div className='flex items-center'>
