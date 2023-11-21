@@ -1,9 +1,9 @@
 import React from 'react'
 import { fetchGlobals, fetchPage } from '@/lib/utils/directus-api'
-import PageBuilder from '@/components/PageBuilder'
-import { getTranslator } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 import { GlobalsTranslations } from '@/lib/directus-collections'
 import LangRedirect from '@/components/navigation/LangRedirect'
+import PageBuilder from '@/components/PageBuilder'
 
 export async function generateMetadata({
   params,
@@ -17,8 +17,7 @@ export async function generateMetadata({
     }
   const data = globals.translations[0] as GlobalsTranslations
 
-  const t = await getTranslator(params.lang)
-
+  const t =  await getTranslations({locale:params.lang});
   return {
     title: `${t('global.home_title')} | ${data.title} ${data.tagline} `,
   }

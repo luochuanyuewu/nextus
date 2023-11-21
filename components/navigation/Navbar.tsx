@@ -1,11 +1,11 @@
-import Link from 'next-intl/link'
+import { Link } from '@/lib/navigation'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 import { GlobalsTranslations, Navigation } from '@/lib/directus-collections'
 import VIcon from '@/components/base/VIcon'
 import NavigationItems from './NavigationItems'
-import { getTranslator } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 import LocaleSwitcher from '../LocaleSwitcher'
 
 interface NavLink {
@@ -40,7 +40,10 @@ export default async function Navbar({
   navigation: Navigation
   lang: string
 }) {
-  const t = await getTranslator(lang, 'global')
+  const t = await getTranslations({
+    locale: lang,
+    namespace: 'global',
+  })
 
   return (
     <header>
@@ -55,7 +58,7 @@ export default async function Navbar({
             </label>
             <NavigationItems
               tabIndex={0}
-              className='menu dropdown-content rounded-box menu-sm z-50 mt-3 w-52 bg-base-100 p-2 shadow'
+              className='menu dropdown-content menu-sm z-50 mt-3 w-52 rounded-box bg-base-100 p-2 shadow'
               mobile
               items={navigation.items}
             />
@@ -81,7 +84,7 @@ export default async function Navbar({
               </label>
               <ul
                 tabIndex={0}
-                className='menu-compact menu dropdown-content rounded-box z-50 mt-3 w-52 bg-base-100 p-2 shadow'
+                className='menu-compact menu dropdown-content z-50 mt-3 w-52 rounded-box bg-base-100 p-2 shadow'
               >
                 {buttons.map((item: NavLink, index: number) => (
                   <NavLink key={index} {...item} />

@@ -5,7 +5,7 @@ import VBreadcrumbs from '@/components/base/VBreadcrumbs'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import VAvatar from '@/components/base/VAvatar'
 import TypographyProse from '@/components/typography/TypographyProse'
-import { getTranslator } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 import LangRedirect from '@/components/navigation/LangRedirect'
 
 export default async function ArticlePage({
@@ -19,7 +19,7 @@ export default async function ArticlePage({
     return <LangRedirect lang={params.lang}></LangRedirect>
   }
 
-  const t = await getTranslator(params.lang)
+  const t = await getTranslations({locale:params.lang})
 
   return (
     <PageContainer>

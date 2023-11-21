@@ -2,18 +2,18 @@ import PageContainer from '@/components/PageContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import GlobalSearch from '@/components/GlobalSearch'
-import Link from 'next-intl/link'
-import { getTranslator } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import { fetchHelpCollections } from '@/lib/utils/directus-api'
+import { Link } from '@/lib/navigation'
 
 export async function generateMetadata({
   params,
 }: {
   params: { lang: string }
 }) {
-  const t = await getTranslator(params.lang)
+  const t = await getTranslations({locale:params.lang})
 
   return {
     title: t('help.page_title'),
@@ -27,7 +27,7 @@ export default async function HelpCenterPage({
 }) {
   const collections = await fetchHelpCollections(params.lang)
 
-  const t = await getTranslator(params.lang)
+  const t = await getTranslations({locale:params.lang})
 
   return (
     <PageContainer>

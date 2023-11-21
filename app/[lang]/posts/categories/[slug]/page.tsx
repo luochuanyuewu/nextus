@@ -9,7 +9,7 @@ import Categories from '@/components/Categories'
 import { deslugify } from '@/lib/utils/strings'
 import PostCard from '@/components/PostCard'
 import { isEven } from '@/lib/utils/math'
-import { getTranslator } from 'next-intl/server'
+import { getTranslations} from 'next-intl/server'
 
 async function getPostsByCategory(categorySlug: string, lang: string) {
   const posts = await directusApi.request(
@@ -59,7 +59,7 @@ export default async function PageRoute({
 
   const globalData = globals.translations[0]
 
-  const t = await getTranslator(params.lang)
+  const t = await getTranslations({locale:params.lang})
 
   return (
     <PageContainer>

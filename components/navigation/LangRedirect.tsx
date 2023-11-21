@@ -1,7 +1,7 @@
-import Link from 'next-intl/link'
+import { Link } from '@/lib/navigation'
 import Image from 'next/image'
 import HighlightedText from './HighlightedText'
-import { getTranslator } from 'next-intl/server'
+import { getTranslations} from 'next-intl/server'
 
 export default async function LangRedirect({ lang }: { lang: string }) {
   const t = await getTranslator(lang, 'global')

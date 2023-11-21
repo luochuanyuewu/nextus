@@ -1,10 +1,9 @@
 'use client'
 
-import clsx from 'clsx'
 import { useLocale, useTranslations } from 'next-intl'
-import { usePathname, useRouter } from 'next-intl/client'
-import { ChangeEvent, useTransition } from 'react'
+import { useTransition } from 'react'
 import VIcon from './base/VIcon'
+import { useRouter,usePathname } from 'next/navigation'
 
 export default function LocaleSwitcher() {
   const t = useTranslations('global.locale_switcher')

@@ -4,11 +4,11 @@ import PageContainer from '@/components/PageContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import { Projects } from '@/lib/directus-collections'
-import Link from 'next-intl/link'
+import { Link } from '@/lib/navigation'
 import { isEven } from '@/lib/utils/math'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import Image from 'next/image'
-import { getTranslator } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 
 type Props = {
   params: { slug: string; lang: string }
@@ -20,7 +20,7 @@ export async function generateMetadata({
 }: {
   params: { lang: string }
 }) {
-  const t = await getTranslator(params.lang)
+  const t = await getTranslations({ locale: params.lang })
 
   return {
     title: t('projects.page_title'),
@@ -41,7 +41,10 @@ export default async function PageRoute({ params }: Props) {
 
   const globalData = globals.translations[0]
 
-  const t = await getTranslator(params.lang, 'projects')
+  const t = await getTranslations({
+    locale: params.lang,
+    namespace: 'projects',
+  })
 
   return (
     <PageContainer>
@@ -64,7 +67,7 @@ export default async function PageRoute({ params }: Props) {
                 isEven(projectIdx)
                   ? 'rounded-br-3xl rounded-tl-3xl'
                   : 'rounded-bl-3xl rounded-tr-3xl',
-                'relative mb-6 block w-full overflow-hidden border-2 border-transparent p-2 transition duration-300 hover:border-accent-focus',
+                'hover:border-accent-focus relative mb-6 block w-full overflow-hidden border-2 border-transparent p-2 transition duration-300',
               ].join(' ')}
             >
               <div

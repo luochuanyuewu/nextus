@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next-intl/link'
+import { Link } from '@/lib/navigation'
 
 interface Category {
   id: number

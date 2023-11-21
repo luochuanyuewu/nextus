@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { Team } from '@/lib/directus-collections'
 import { CSSProperties, useState } from 'react'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
-import Link from 'next-intl/link'
+import { Link } from '@/lib/navigation'
 import VIcon from '@/components/base/VIcon'
 
 interface TeamCardProps {

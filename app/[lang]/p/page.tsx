@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import Loader from '../../../components/Loader'
 import BlogList from '@/components/deprecated/views/blog-list'
 import PageHeader from '../../../components/deprecated/PageHeader'
-import Link from 'next-intl/link'
+import { Link } from '@/lib/navigation'
 import directusApi from '@/lib/utils/directus-api'
 import { aggregate, readItems, withToken } from '@directus/sdk'
 

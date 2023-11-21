@@ -1,5 +1,5 @@
 import { DirectusUsers, Posts } from '@/lib/directus-collections'
-import Link from 'next-intl/link'
+import { Link } from '@/lib/navigation'
 import Image from 'next/image'
 
 import { getDirectusMedia } from '@/lib/utils/api-helpers'

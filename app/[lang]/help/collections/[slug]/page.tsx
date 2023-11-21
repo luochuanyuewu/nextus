@@ -4,9 +4,9 @@ import GlobalSearch from '@/components/GlobalSearch'
 import VBreadcrumbs from '@/components/base/VBreadcrumbs'
 import VIcon from '@/components/base/VIcon'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
-import Link from 'next-intl/link'
+import { Link } from '@/lib/navigation'
 import { HelpArticles } from '@/lib/directus-collections'
-import { getTranslator } from 'next-intl/server'
+import { getTranslations} from 'next-intl/server'
 import Image from 'next/image'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import LangRedirect from '@/components/navigation/LangRedirect'
@@ -23,7 +23,7 @@ export default async function CollectionPage({
   if (!collection.translations || collection.translations.length == 0)
     return <LangRedirect lang={params.lang}></LangRedirect>
 
-  const t = await getTranslator(params.lang)
+  const t = await getTranslations({locale:params.lang})
 
   return (
     <PageContainer>

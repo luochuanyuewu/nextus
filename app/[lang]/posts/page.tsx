@@ -9,7 +9,7 @@ import Categories from '@/components/Categories'
 import FeaturePostCard from '@/components/FeaturePostCard'
 import PostCard from '@/components/PostCard'
 import { isEven } from '@/lib/utils/math'
-import { getTranslator } from 'next-intl/server'
+import { getTranslations} from 'next-intl/server'
 
 async function fetchData() {
   const posts = await directusApi.request(
@@ -36,7 +36,7 @@ export async function generateMetadata({
 }: {
   params: { lang: string }
 }) {
-  const t = await getTranslator(params.lang)
+  const t = await getTranslations({locale:params.lang})
 
   return {
     title: t('posts.page_title'),
@@ -53,7 +53,7 @@ export default async function PageRoute({
 
   const globalData = globals.translations[0]
 
-  const t = await getTranslator(params.lang)
+  const t = await getTranslations({locale:params.lang})
 
   return (
     <PageContainer>

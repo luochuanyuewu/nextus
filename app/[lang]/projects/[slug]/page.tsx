@@ -8,7 +8,7 @@ import GalleryBlock from '@/components/blocks/GalleryBlock'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import Image from 'next/image'
 import { Projects } from '@/lib/directus-collections'
-import { getTranslator } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 
 export default async function PageRoute({ params }: { params: any }) {
   const projects = await directusApi.request(
@@ -23,7 +23,10 @@ export default async function PageRoute({ params }: { params: any }) {
 
   const project = projects[0] as Projects
 
-  const t = await getTranslator(params.lang, 'projects')
+  const t = await getTranslations({
+    locale: params.lang,
+    namespace: 'projects',
+  })
 
   return (
     <div className='py-12'>

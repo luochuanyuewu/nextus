@@ -1,3 +1,4 @@
+import { locales } from '@/lib/utils/constant'
 import directusApi, { fetchGlobals } from '@/lib/utils/directus-api'
 import { readItems } from '@directus/sdk'
 import { MetadataRoute } from 'next'
@@ -66,7 +67,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const allRootPages: MetadataRoute.Sitemap = []
 
-  const locales = ['zh', 'en']
   const routes = ['/', '/projects', '/posts', '/help']
 
   locales.forEach((locale) => {

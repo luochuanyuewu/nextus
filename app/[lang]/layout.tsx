@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { useLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 
 import './globals.css'
@@ -55,16 +54,19 @@ export default async function RootLayout({
   children: React.ReactNode
   params: { lang: string }
 }) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const locale = useLocale()
 
-  const messages = await getMessages(locale)
+  let messages;
+  try {
+    messages = (await import(`../../messages/${params.lang}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
 
   return (
     <html lang={params.lang}>
       <head></head>
       <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider  messages={messages}>
           <main className='min-h-screen overflow-hidden bg-base-100 antialiased'>
             <TheHeader lang={params.lang} />
             {children}

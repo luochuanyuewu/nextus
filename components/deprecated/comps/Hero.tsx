@@ -1,4 +1,4 @@
-import Link from 'next-intl/link'
+import { Link } from '@/lib/navigation'
 import Image from 'next/image'
 import HighlightedText from '../../navigation/HighlightedText'
 import { getStrapiMedia } from '@/lib/utils/api-helpers'

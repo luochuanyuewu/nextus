@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { DirectusUsers, Posts } from '@/lib/directus-collections'
-import Link from 'next-intl/link'
+import { Link } from '@/lib/navigation'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import VBadge from '@/components/base/VBadge'
 import { truncateString } from '@/lib/utils/strings'
