@@ -4,11 +4,11 @@ import { useDebounce } from 'react-use'
 import { Combobox } from '@headlessui/react'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import VIcon from './base/VIcon'
-import { useRouter } from 'next/navigation'
 import qs from 'qs'
 import { truncateString } from '@/lib/utils/strings'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { useRouter } from '@/lib/navigation'
 
 type CollectionType =
   | 'posts'

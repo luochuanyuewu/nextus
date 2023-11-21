@@ -1,7 +1,6 @@
 'use client'
 
 import { Forms } from '@/lib/directus-collections'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import VAlert from '@/components/base/VAlert'
 import directusApi from '@/lib/utils/directus-api'
@@ -12,6 +11,7 @@ import DirectusFormBuilder from '@/components/form/DirectusFormBuilder'
 import { cn } from '@/lib/utils'
 import formTheme from '@/form.theme'
 import { FormSchema } from '@/lib/directus-schema'
+import { useRouter } from '@/lib/navigation'
 
 interface FormProps {
   form: Forms

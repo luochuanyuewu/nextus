@@ -1,5 +1,4 @@
-import { Link } from '@/lib/navigation'
-import { usePathname } from 'next/navigation'
+import { Link, usePathname } from '@/lib/navigation'
 import clsx from 'clsx'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 import { GlobalsTranslations, Navigation } from '@/lib/directus-collections'

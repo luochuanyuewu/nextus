@@ -1,5 +1,5 @@
 'use client'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/lib/navigation'
 import React, { useEffect, useRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
