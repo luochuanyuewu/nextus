@@ -80,11 +80,11 @@ export default async function PageRoute({
         <div className='relative grid w-full gap-12 border-b-2 border-base-300 pb-12  md:grid-cols-2 lg:grid-cols-4'>
           <div>
             <TypographyTitle>{t('posts.search')}</TypographyTitle>
-            <GlobalSearch
+            {/* <GlobalSearch
               placeholder={t('global.search.for_posts')}
               collections={['posts']}
               className='flex'
-            />
+            /> */}
             <TypographyTitle className='mt-8'>
               {t('posts.categories')}
             </TypographyTitle>

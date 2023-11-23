@@ -23,13 +23,13 @@ export default async function ArticlePage({
 
   return (
     <PageContainer>
-      <header className='border-b  pb-8 '>
+      {/* <header className='border-b  pb-8 '>
         <GlobalSearch
           placeholder={t('global.search.for_help_articles')}
           collections={['help_articles']}
           className='flex'
         />
-      </header>
+      </header> */}
       <section className='mt-8 max-w-full'>
         <div className='flex flex-row-reverse justify-between'>
           <div className='sticky mt-16 self-start max-lg:hidden'>

@@ -9,7 +9,7 @@ import Categories from '@/components/Categories'
 import { deslugify } from '@/lib/utils/strings'
 import PostCard from '@/components/PostCard'
 import { isEven } from '@/lib/utils/math'
-import { getTranslations} from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 
 async function getPostsByCategory(categorySlug: string, lang: string) {
   const posts = await directusApi.request(
@@ -59,7 +59,7 @@ export default async function PageRoute({
 
   const globalData = globals.translations[0]
 
-  const t = await getTranslations({locale:params.lang})
+  const t = await getTranslations({ locale: params.lang })
 
   return (
     <PageContainer>
@@ -77,11 +77,11 @@ export default async function PageRoute({
         <div className='relative grid gap-12 border-b-2 border-base-300 pb-12  md:grid-cols-2 lg:grid-cols-4'>
           <div>
             <TypographyTitle as='p'>{t('posts.search')}</TypographyTitle>
-            <GlobalSearch
+            {/* <GlobalSearch
               placeholder={t('global.search.for_posts')}
               collections={['posts']}
               className='flex'
-            />
+            /> */}
             <TypographyTitle as='p' className='mt-8'>
               {t('posts.categories')}
             </TypographyTitle>

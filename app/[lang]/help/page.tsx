@@ -34,11 +34,11 @@ export default async function HelpCenterPage({
       <header className='border-b pb-8 '>
         <TypographyTitle>{t('help.title')}</TypographyTitle>
         <TypographyHeadline content={t.raw('help.headline')} />
-        <GlobalSearch
+        {/* <GlobalSearch
           placeholder={t('global.search.for_help_articles')}
           collections={['help_articles']}
           className='flex'
-        />
+        /> */}
       </header>
       <div className='mt-8 grid gap-x-4 gap-y-4 sm:gap-x-6 sm:gap-y-6 md:grid-cols-2 lg:grid-cols-3'>
         {collections.map(
