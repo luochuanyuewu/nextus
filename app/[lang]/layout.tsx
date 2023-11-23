@@ -31,19 +31,14 @@ export async function generateMetadata({
       template: `%s | ${data?.title ?? 'Nextus'}`,
       default: data.title || 'Nextus',
     },
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+    ),
     description: data.description,
     openGraph: { images: getDirectusMedia(data.og_image || '') },
     icons: {
       icon: [url],
     },
-  }
-}
-
-async function getMessages(locale: string) {
-  try {
-    return (await import(`@/messages/${locale}.json`)).default
-  } catch (error) {
-    notFound()
   }
 }
 
@@ -54,19 +49,18 @@ export default async function RootLayout({
   children: React.ReactNode
   params: { lang: string }
 }) {
-
-  let messages;
+  let messages
   try {
-    messages = (await import(`../../messages/${params.lang}.json`)).default;
+    messages = (await import(`../../messages/${params.lang}.json`)).default
   } catch (error) {
-    notFound();
+    notFound()
   }
 
   return (
     <html lang={params.lang}>
       <head></head>
       <body>
-        <NextIntlClientProvider  messages={messages}>
+        <NextIntlClientProvider messages={messages}>
           <main className='min-h-screen overflow-hidden bg-base-100 antialiased'>
             <TheHeader lang={params.lang} />
             {children}
