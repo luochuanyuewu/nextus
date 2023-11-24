@@ -13,7 +13,9 @@ import {
   Forms,
   Globals,
   HelpArticles,
+  HelpArticlesTranslations,
   HelpCollections,
+  HelpCollectionsTranslations,
   Navigation,
   Pages,
   Posts,
@@ -192,19 +194,41 @@ async function fetchHelpCollection(slug: string, lang: string) {
         },
       },
       limit: 1,
-      fields: [
-        '*',
-        {
-          articles: ['slug', 'id', { translations: ['title', 'summary'] }],
-        },
-        { translations: ['title', 'description'] },
-      ],
+      fields: ['slug', 'cover', { translations: ['title', 'description'] }],
     })
   )
 
   if (collections.length === 0) return null
 
   return collections[0] as HelpCollections
+}
+
+export async function fetchHelpArticles(collectionSlug: string, lang: string) {
+  const articles = await directusApi.request(
+    readItems('help_articles', {
+      deep: {
+        translations: {
+          _filter: {
+            languages_code: {
+              _eq: lang,
+            },
+          },
+        },
+      },
+      filter: {
+        help_collection: {
+          slug: {
+            _eq: collectionSlug,
+          },
+        },
+      },
+      fields: ['id', 'slug', { translations: ['title', 'summary'] }],
+    })
+  )
+
+  if (articles.length === 0) return null
+
+  return articles
 }
 
 async function fetchHelpArticle(

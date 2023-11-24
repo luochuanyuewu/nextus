@@ -1,7 +1,6 @@
 import PageContainer from '@/components/PageContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
-import GlobalSearch from '@/components/GlobalSearch'
 import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import { getDirectusMedia } from '@/lib/utils/api-helpers'
@@ -45,7 +44,7 @@ export default async function HelpCenterPage({
           (collection) =>
             collection.translations &&
             collection.translations[0] && (
-              <div key={collection.id}>
+              <div key={collection.slug}>
                 <div className='hover:border-accent-focus card bg-base-200 no-underline transition duration-200'>
                   <figure>
                     {collection.cover && (
@@ -73,59 +72,6 @@ export default async function HelpCenterPage({
                   </div>
                 </div>
               </div>
-            )
-        )}
-      </div>
-    </PageContainer>
-  )
-
-  return (
-    <PageContainer>
-      <header className='border-b pb-8 '>
-        <TypographyTitle>{t('help.title')}</TypographyTitle>
-        <TypographyHeadline content={t.raw('help.headline')} />
-        <GlobalSearch
-          placeholder={t('global.search.for_help_articles')}
-          collections={['help_articles']}
-          className='flex'
-        />
-      </header>
-      <div className='mt-8 grid gap-x-4 gap-y-4 sm:gap-x-6 sm:gap-y-6 md:grid-cols-3'>
-        {collections.map(
-          (collection) =>
-            collection.translations &&
-            collection.translations[0] && (
-              <Link
-                key={collection.id}
-                href={`/help/${collection.slug}`}
-                className='hover:border-accent-focus flex overflow-hidden rounded-bl-xl rounded-tr-xl border border-primary no-underline transition duration-200'
-              >
-                <div className='flex flex-col p-5 sm:p-6'>
-                  <div className='flex items-center'>
-                    {collection.cover && (
-                      <Image
-                        src={getDirectusMedia(collection.cover)}
-                        alt='cover'
-                        height={500}
-                        width={500}
-                      ></Image>
-                    )}
-                  </div>
-                  <div>
-                    <TypographyHeadline
-                      content={collection.translations[0].title}
-                      size='sm'
-                    />
-                    <p className='text-md line-clamp-3 font-mono sm:line-clamp-3'>
-                      {collection.translations[0].description}
-                    </p>
-                  </div>
-                  <div className='mt-4 font-mono text-sm '>
-                    {collection.articles ? collection.articles.length : 0}{' '}
-                    {t('help.article_name')}
-                  </div>
-                </div>
-              </Link>
             )
         )}
       </div>

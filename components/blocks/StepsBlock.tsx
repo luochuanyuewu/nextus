@@ -57,8 +57,8 @@ export default function StepsBlock({ data }: Props) {
                         ? 'rounded-br-xl rounded-tl-xl'
                         : 'rounded-bl-xl rounded-tr-xl'
                     }`}
-                    width={200}
-                    height={200}
+                    width={500}
+                    height={500}
                     alt=''
                     src={getDirectusMedia(step.image)}
                   />

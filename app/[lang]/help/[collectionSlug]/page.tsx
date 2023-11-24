@@ -1,4 +1,7 @@
-import { fetchHelpCollection } from '@/lib/utils/directus-api'
+import {
+  fetchHelpArticles,
+  fetchHelpCollection,
+} from '@/lib/utils/directus-api'
 import PageContainer from '@/components/PageContainer'
 import GlobalSearch from '@/components/GlobalSearch'
 import VBreadcrumbs from '@/components/base/VBreadcrumbs'
@@ -16,17 +19,32 @@ export default async function CollectionPage({
 }: {
   params: { lang: string; collectionSlug: string }
 }) {
-  const collection = await fetchHelpCollection(
-    params.collectionSlug,
-    params.lang
-  )
+  const collectionData = fetchHelpCollection(params.collectionSlug, params.lang)
+  const articlesData = fetchHelpArticles(params.collectionSlug, params.lang)
+
+  let [collection, articles] = await Promise.all([collectionData, articlesData])
 
   if (!collection) return null
 
-  if (!collection.translations || collection.translations.length == 0)
+  if (
+    !collection.translations ||
+    collection.translations.length == 0 ||
+    !collection.translations[0]
+  )
     return <LangRedirect lang={params.lang}></LangRedirect>
 
   const t = await getTranslations({ locale: params.lang })
+
+  let count = 0
+  articles?.forEach((article) => {
+    if (
+      article.translations &&
+      article.translations?.length > 0 &&
+      article.translations[0]
+    ) {
+      count++
+    }
+  })
 
   return (
     <PageContainer>
@@ -68,19 +86,19 @@ export default async function CollectionPage({
               </div>
             </div>
             <div className='mt-5 font-mono'>
-              {collection.articles && (collection.articles as any).length}{' '}
-              {t('help.article_name')}
+              {count} {t('help.article_name')}
             </div>
           </div>
           <div className='flex flex-col gap-5 rounded-br-xl rounded-tl-xl border-2 p-2 '>
-            {collection.articles &&
-              (collection.articles as any).map(
+            {articles &&
+              (articles as any).map(
                 (article: HelpArticles) =>
                   article.translations &&
                   article.translations[0] && (
                     <div key={article.id}>
                       <Link
-                        href={`/help/${collection.slug}/${article.slug}`}
+                        prefetch={false}
+                        href={`/help/${collection?.slug}/${article.slug}`}
                         className='flex flex-col rounded-br-lg rounded-tl-lg p-3 transition duration-150 hover:bg-accent/30 '
                       >
                         <div className='flex items-center justify-between'>
