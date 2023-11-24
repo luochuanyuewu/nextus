@@ -137,15 +137,18 @@ const fetchNavigationSafe = async function name(slug: string, lang: string) {
 
 const fetchForm = async function (id: string, languages_code?: string) {
   const forms = (await directusApi.request(
-    readItems('forms', {
-      fields: ['*'],
-      filter: {
-        key: {
-          _eq: id,
+    withRevalidate(
+      readItems('forms', {
+        fields: ['*'],
+        filter: {
+          key: {
+            _eq: id,
+          },
         },
-      },
-      limit: 1,
-    })
+        limit: 1,
+      }),
+      120
+    )
   )) as Forms[]
 
   return forms[0]
@@ -174,28 +177,31 @@ async function fetchHelpCollections(lang: string) {
 
 async function fetchHelpCollection(slug: string, lang: string) {
   const collections = await directusApi.request(
-    readItems('help_collections', {
-      filter: {
-        _and: [
-          {
-            slug: {
-              _eq: slug,
+    withRevalidate(
+      readItems('help_collections', {
+        filter: {
+          _and: [
+            {
+              slug: {
+                _eq: slug,
+              },
             },
-          },
-        ],
-      },
-      deep: {
-        translations: {
-          _filter: {
-            languages_code: {
-              _eq: lang,
+          ],
+        },
+        deep: {
+          translations: {
+            _filter: {
+              languages_code: {
+                _eq: lang,
+              },
             },
           },
         },
-      },
-      limit: 1,
-      fields: ['slug', 'cover', { translations: ['title', 'description'] }],
-    })
+        limit: 1,
+        fields: ['slug', 'cover', { translations: ['title', 'description'] }],
+      }),
+      60
+    )
   )
 
   if (collections.length === 0) return null
@@ -205,25 +211,28 @@ async function fetchHelpCollection(slug: string, lang: string) {
 
 export async function fetchHelpArticles(collectionSlug: string, lang: string) {
   const articles = await directusApi.request(
-    readItems('help_articles', {
-      deep: {
-        translations: {
-          _filter: {
-            languages_code: {
-              _eq: lang,
+    withRevalidate(
+      readItems('help_articles', {
+        deep: {
+          translations: {
+            _filter: {
+              languages_code: {
+                _eq: lang,
+              },
             },
           },
         },
-      },
-      filter: {
-        help_collection: {
-          slug: {
-            _eq: collectionSlug,
+        filter: {
+          help_collection: {
+            slug: {
+              _eq: collectionSlug,
+            },
           },
         },
-      },
-      fields: ['id', 'slug', { translations: ['title', 'summary'] }],
-    })
+        fields: ['id', 'slug', { translations: ['title', 'summary'] }],
+      }),
+      60
+    )
   )
 
   if (articles.length === 0) return null
