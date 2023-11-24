@@ -48,13 +48,7 @@ export default function LogoCloudBlock({ data }: Props) {
                 delay: 0.25 + 0.1 * fileIdx,
               }}
             >
-              <Image
-                width={200}
-                height={200}
-                className='h-12'
-                src={getDirectusMedia(file.id)}
-                alt=''
-              />
+              <img className='h-12' src={getDirectusMedia(file.id)} alt='' />
             </motion.div>
           ))}
         </div>

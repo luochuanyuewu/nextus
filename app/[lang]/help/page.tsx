@@ -49,6 +49,7 @@ export default async function HelpCenterPage({
                   <figure>
                     {collection.cover && (
                       <Image
+                        priority
                         src={getDirectusMedia(collection.cover)}
                         alt='cover'
                         height={500}
