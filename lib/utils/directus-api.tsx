@@ -207,7 +207,11 @@ async function fetchHelpCollection(slug: string, lang: string) {
   return collections[0] as HelpCollections
 }
 
-async function fetchHelpArticle(slug: string, lang: string) {
+async function fetchHelpArticle(
+  collectionSlug: string,
+  slug: string,
+  lang: string
+) {
   const articles = await directusApi.request(
     readItems('help_articles', {
       filter: {
@@ -219,6 +223,11 @@ async function fetchHelpArticle(slug: string, lang: string) {
         },
         translations: {
           _nnull: true,
+        },
+        help_collection: {
+          slug: {
+            _eq: collectionSlug,
+          },
         },
       },
       deep: {

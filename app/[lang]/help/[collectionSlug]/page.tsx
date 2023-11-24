@@ -30,13 +30,13 @@ export default async function CollectionPage({
 
   return (
     <PageContainer>
-      <header className='border-b border-base-300 pb-8 '>
+      {/* <header className='border-b border-base-300 pb-8 '>
         <GlobalSearch
           placeholder={t('global.search.for_help_articles')}
           collections={['help_articles']}
           className='flex'
         />
-      </header>
+      </header> */}
       <section className='mt-8 max-w-full'>
         <VBreadcrumbs
           items={[

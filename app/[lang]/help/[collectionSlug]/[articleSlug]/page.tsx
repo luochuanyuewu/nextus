@@ -11,9 +11,13 @@ import LangRedirect from '@/components/navigation/LangRedirect'
 export default async function ArticlePage({
   params,
 }: {
-  params: { lang: string; articleSlug: string }
+  params: { lang: string; collectionSlug: string; articleSlug: string }
 }) {
-  const article = await fetchHelpArticle(params.articleSlug, params.lang)
+  const article = await fetchHelpArticle(
+    params.collectionSlug,
+    params.articleSlug,
+    params.lang
+  )
 
   if (!article.translations || article.translations.length === 0) {
     return <LangRedirect lang={params.lang}></LangRedirect>
