@@ -136,17 +136,17 @@ Start adding your own content in Nextus and experience the charm of headless CMS
 
 
 # Roadmap
-- [ ]Analysis support(Google,Baidu,Umami)
-- [x]Fully multiple language supports for form, artilce, page and projects.
-- [x]Dedicated documentation site.
-- [x]Auth module.
-- [x]Redirects module(重定向模块)
-- [x]Fetching frontend translations via backend(directus translation)
-- [x]age width controlled by backend.
-- [x]Content management for documentation.
-- [x]Payment module(pay to watch article,page)
-- [x]Token based access control for file download.
-- [x]AI powered content writing and image producing(All resisted within directus)
+- [ ] Analysis support(Google,Baidu,Umami)
+- [x] Fully multiple language supports for form, artilce, page and projects.
+- [x] Dedicated documentation site.
+- [x] Auth module.
+- [x] Redirects module(重定向模块)
+- [x] Fetching frontend translations via backend(directus translation)
+- [x] Page width controlled by backend.
+- [x] Content management for documentation.
+- [x] Payment module(pay to watch article,page)
+- [x] Token based access control for file download.
+- [x] AI powered content writing and image producing(All resisted within directus)
 
 <br />
 
