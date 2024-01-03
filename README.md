@@ -138,7 +138,7 @@ Start adding your own content in Nextus and experience the charm of headless CMS
 - [x] Auth module
 - [x] Redirects module (重定向模块)
 - [x] Fetching frontend translations via backend (Directus translation)
-- [x] age width controlled by backend
+- [x] Page width controlled by backend
 - [x] Content management for documentation
 - [x] Payment module (pay to watch article, page)
 - [x] Token based access control for file download
