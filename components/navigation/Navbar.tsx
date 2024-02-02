@@ -55,12 +55,14 @@ export default async function Navbar({
                 icon='fluent:navigation-16-filled'
               ></VIcon>
             </label>
-            <NavigationItems
-              tabIndex={0}
-              className='menu dropdown-content menu-sm z-50 mt-3 w-52 rounded-box bg-base-100 p-2 shadow'
-              mobile
-              items={navigation.items}
-            />
+            {navigation.items && navigation.items.length > 0 && (
+              <NavigationItems
+                tabIndex={0}
+                className='menu dropdown-content menu-sm z-50 mt-3 w-52 rounded-box bg-base-100 p-2 shadow'
+                mobile
+                items={navigation.items}
+              />
+            )}
           </div>
           <Link href='/' className='btn btn-ghost text-xl normal-case'>
             {globalData.title}
