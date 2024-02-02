@@ -15,7 +15,7 @@ export default async function TheHeader({ lang }: { lang: string }) {
     globals.translations && (globals.translations[0] as GlobalsTranslations)
 
   if (!navigation)
-    return <p>Please setup navigation with 'main' slug in backend. </p>
+    return <p>Please setup navigation with main slug in backend. </p>
 
   return (
     <>

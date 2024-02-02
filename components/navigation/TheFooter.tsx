@@ -29,7 +29,7 @@ async function TheFooter({ lang }: { lang: string }) {
     return <p>Please setup valia global data in backend.</p>
 
   if (!navigation)
-    return <p>Please setup navigation with 'footer' slug in backend. </p>
+    return <p>Please setup navigation with footer slug in backend. </p>
 
   const globalData = globals.translations && globals.translations[0]
 
