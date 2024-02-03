@@ -16,33 +16,33 @@ const FALLBACK_SEO = {
   description: 'Nextus is awesome!',
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lang: string }
-}): Promise<Metadata> {
-  try {
-    const globals = await fetchGlobals(params.lang)
-    if (!globals.translations || globals.translations.length <= 0)
-      return FALLBACK_SEO
-    const data = globals.translations[0] as GlobalsTranslations
-    const url = getDirectusMedia(globals.favicon)
-    return {
-      title: {
-        template: `%s | ${data?.title ?? 'Nextus'}`,
-        default: data.title || 'Nextus',
-      },
-      metadataBase: new URL(
-        process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-      ),
-      description: data.description,
-      openGraph: { images: getDirectusMedia(data.og_image || '') },
-      icons: url || null,
-    }
-  } catch (error) {
-    return FALLBACK_SEO
-  }
-}
+// export async function generateMetadata({
+//   params,
+// }: {
+//   params: { lang: string }
+// }): Promise<Metadata> {
+//   try {
+//     const globals = await fetchGlobals(params.lang)
+//     if (!globals.translations || globals.translations.length <= 0)
+//       return FALLBACK_SEO
+//     const data = globals.translations[0] as GlobalsTranslations
+//     const url = getDirectusMedia(globals.favicon)
+//     return {
+//       title: {
+//         template: `%s | ${data?.title ?? 'Nextus'}`,
+//         default: data.title || 'Nextus',
+//       },
+//       metadataBase: new URL(
+//         process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+//       ),
+//       description: data.description,
+//       openGraph: { images: getDirectusMedia(data.og_image || '') },
+//       icons: url || null,
+//     }
+//   } catch (error) {
+//     return FALLBACK_SEO
+//   }
+// }
 
 export default async function RootLayout({
   children,

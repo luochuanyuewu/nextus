@@ -9,13 +9,13 @@ export default async function TheHeader({ lang }: { lang: string }) {
   ])
 
   if (!globals || !globals.translations || !globals.translations[0])
-    return <p>Please setup valia global data in backend.</p>
+    return <div>Please setup valia global data in backend.</div>
 
   const globalData =
     globals.translations && (globals.translations[0] as GlobalsTranslations)
 
   if (!navigation)
-    return <p>Please setup navigation with main slug in backend. </p>
+    return <div>Please setup navigation with main slug in backend. </div>
 
   return (
     <>
