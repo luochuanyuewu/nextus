@@ -2,10 +2,7 @@
   <h1 align="center">Nextus</h1>
 </a>
 
-# Notice
-
-<p align="center">Welcome to Nextus, Nextus is a comprehensive, versatile and modern website template based on Nextjs and Directus technologies. It helps you build various types of websites more quickly.</p>
-
+<p align="center">Welcome to Nextus! Nextus is a comprehensive, versatile and modern website template based on Next.js and Directus technologies. It helps you build various types of web projects more quickly.</p>
 
 <p align="center">
   <a href="#introduction"><strong>Introduction</strong></a> ·
@@ -25,13 +22,12 @@
 
 Spin up a beautiful site in minutes. Or use Nextus as the foundation for your next awesome project.
 
-
 [**-> View The Demo Site**](https://nextus.vercel.app/)
 
 **Features**
 
-- Complete NextJs 13 website example
-- Multi languages support, currenly en/zh. you can add more.
+- Complete Next.js 13 website example
+- Multi languages support, currenly en/zh. You can add more.
 - Built-in Directus - Headless CMS support
 - Tailwind CSS and Daisyui
 - Dynamic Page Builder (M2A Interface) within Directus
@@ -47,17 +43,17 @@ Spin up a beautiful site in minutes. Or use Nextus as the foundation for your ne
 - Google Fonts support
 - ESLint and Prettier already configured
 - Many theme provided by Daisyui
-- Written in Typescript and New Directus TS SDK
+- Written in Typescript and new Directus TS SDK
 
 <br />
 
 # Tech Stack
 
-## Next
+## Next.js
 
-Build your next Next.js application with confidence using Next. An open source framework under MIT license that makes web development simple and powerful. The leading React framework that handles routing, server side rendering, and more.
+Build your next web application with confidence using Next.js. An open source framework under MIT license that makes web development simple and powerful. The leading React framework that handles routing, server side rendering, and more.
 
-[Learn more about Next](https://nextjs.org)
+[Learn more about Next.js](https://nextjs.org)
 
 ---
 
@@ -77,7 +73,7 @@ For a smooth experience, the [Directus SDK](https://docs.directus.io/guides/sdk
 - [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework that allows you to rapidly build sites and maintain consistency across team members. There are several Tailwind Plugins installed and ready to use as well – [Typography](https://tailwindcss.com/docs/typography-plugin) and [Forms](https://tailwindcss.com/docs/plugins#forms).
 - [Daisyui](https://daisyui.com/) – The most popular component library for Tailwind CSS.
 - [React Hook Form](https://react-hook-form.com/) – Form library for React that saves you hours of time by simplifying form creation.
-- [Iconify for React](https://github.com/iconify) - Modern unified SVG framework. One syntax for many icon sets: FontAwesome, Material Design Icons, Dashicons and many others. Over 150,000 icons, very easy to use
+- [Iconify for React](https://github.com/iconify) - Modern unified SVG framework. One syntax for many icon sets: FontAwesome, Material Design Icons, Dashicons and many others. Over 150,000 icons, very easy to use.
 
 ## Utilities
 
@@ -92,7 +88,7 @@ For a smooth experience, the [Directus SDK](https://docs.directus.io/guides/sdk
 
 ### 1 Setup Directus
 
-Use [Directus Cloud](https://directus.cloud/register)/[Self-Hosting](https://docs.directus.io/self-hosted/quickstart.html) to quickly set up your own instance of directus.
+Use [Directus Cloud](https://directus.cloud/register)/[Self-Hosting](https://docs.directus.io/self-hosted/quickstart.html) to quickly set up your own instance of Directus.
 
 Then, apply the [Schema Snapshot](https://github.com/luochuanyuewu/nextus-docker/blob/main/snapshots/schema.yml) provided by Nextus using the [Schema Migration](https://docs.directus.io/guides/migration/hoppscotch.html) feature.
 
@@ -106,10 +102,10 @@ After setting up the Directus instance, you need to prepare the following necess
 
 Content-related:
 
-- Add the languages you need to the Languages model (Though you can add as many as you want, but currently only 'en' and 'zh' supported.)
-- Add a page with the slug "home",
+- Add the languages you need to the Languages model (though you can add as many as you want, but currently only 'en' and 'zh' supported)
+- Add a page with the slug "home"
 - Add a top navigation with the slug "main" and a footer navigation with the slug "footer"
-- Add other required data in "global" seciton.
+- Add other required data in "global" seciton
 
 ![Language setup](docs/language_setup.png)
 ![Navigation setup](docs/navigation_setup.png)
@@ -120,40 +116,40 @@ Environment variables:
 
 ---
 
-## Nextus - Frontend(前端)
+## Nextus - Frontend (前端)
 
-Nextus is built using Next.js 13 on the front-end. All you need to do is fork a copy to your own Github account, connect it with Vercel, set up a few environment variables (for connecting with Directus), and your Nextus will be live.
+Nextus is built using Next.js 13 on the front-end. All you need to do is fork a copy to your own GitHub account, connect it with Vercel, set up a few environment variables (for connecting with Directus), and your Nextus will be live.
 
 Of course, you can also clone the repository locally and customize it according to your own needs.
 
 ## Enjoy!
 
-Now, you have a Nextus backend (built with Directus) and a Nextus frontend (built with Nextjs).
+Now, you have a Nextus backend (built with Directus) and a Nextus frontend (built with Next.js).
 
 Start adding your own content in Nextus and experience the charm of headless CMS and modern frontend websites!
 
 <br />
 
-
 # Roadmap
-- [ ]Analysis support(Google,Baidu,Umami)
-- [x]Fully multiple language supports for form, artilce, page and projects.
-- [x]Dedicated documentation site.
-- [x]Auth module.
-- [x]Redirects module(重定向模块)
-- [x]Fetching frontend translations via backend(directus translation)
-- [x]age width controlled by backend.
-- [x]Content management for documentation.
-- [x]Payment module(pay to watch article,page)
-- [x]Token based access control for file download.
-- [x]AI powered content writing and image producing(All resisted within directus)
+
+- [ ] Analysis support (Google,Baidu,Umami)
+- [x] Fully multiple language supports for form, artilce, page and projects
+- [x] Dedicated documentation site
+- [x] Auth module
+- [x] Redirects module (重定向模块)
+- [x] Fetching frontend translations via backend (Directus translation)
+- [x] Page width controlled by backend
+- [x] Content management for documentation
+- [x] Payment module (pay to watch article, page)
+- [x] Token based access control for file download
+- [x] AI powered content writing and image producing, all resisted within Directus
 
 <br />
 
 # Other Resources
 
 - **[Directus Discord](https://discord.com/invite/directus)** – Join 10k+ developers and community members to ask questions and live discussion around Directus.
-- **[Next Discord](https://discord.com/invite/bUG2bvbtHy)**
+- **[Next.js Discord](https://discord.com/invite/bUG2bvbtHy)**
 
 <br />
 
@@ -165,7 +161,7 @@ Start adding your own content in Nextus and experience the charm of headless CMS
 
 - Bryant Gillespie ([@bryantgillespie](https://twitter.com/bryantgillespie))
 
-Nextus originally based on [AgencyOS Template](https://github.com/directus-community/agency-os) created by Bryant Gillespie. Now nextus has it's own direction(see roadmap).
+Nextus originally based on [AgencyOS Template](https://github.com/directus-community/agency-os) created by Bryant Gillespie. Now Nextus has it's own direction (see [Roadmap](#roadmap)).
 
 # Contributing
 
