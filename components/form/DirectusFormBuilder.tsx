@@ -54,7 +54,7 @@ export default function DirectusFormBuilder(props: {
       return (
         <select
           className={formTheme.selectClass}
-          placeholder={element.placeholder}
+          // placeholder={element.placeholder}
           {...register(element.name!, validation)}
         >
           {element.placeholder && (
