@@ -65,7 +65,7 @@ export default async function HelpCenterPage({
                     <p> {collection.translations[0].description}</p>
                     <div className='card-actions justify-end'>
                       <button className='btn-l btn btn-primary'>
-                        <Link href={`/help/${collection.slug}`}>
+                        <Link target='_blank' href={`/help/${collection.slug}`}>
                           {t('help.view')}
                         </Link>
                       </button>
