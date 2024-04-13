@@ -6,7 +6,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import BlockContainer from '../BlockContainer'
 import VIcon from '@/components/base/VIcon'
 import Image from 'next/image'
-import { getDirectusMedia } from '@/lib/utils/api-helpers'
+import { getDirectusMedia } from '@/lib/utils/directus-helpers'
 import VBadge from '@/components/base/VBadge'
 
 interface GalleryProps {
@@ -78,7 +78,7 @@ function VGallery({ items }: GalleryProps) {
                 itemIdx % 2 === 0
                   ? 'rounded-br-3xl rounded-tl-3xl'
                   : 'rounded-bl-3xl rounded-tr-3xl'
-              } group relative mb-6 block w-full overflow-hidden border-2 border-transparent p-2 transition duration-300 hover:border-accent-focus`}
+              } hover:border-accent-focus group relative mb-6 block w-full overflow-hidden border-2 border-transparent p-2 transition duration-300`}
             >
               <div
                 className={`${
@@ -97,7 +97,7 @@ function VGallery({ items }: GalleryProps) {
                 <div className='absolute inset-0 flex items-center justify-center bg-neutral bg-opacity-75 opacity-0 transition-opacity duration-300 hover:opacity-100'>
                   <VIcon
                     icon='heroicons:magnifying-glass-plus'
-                    className='h-12 w-12 text-accent-focus'
+                    className='text-accent-focus h-12 w-12'
                   />
                 </div>
               </div>

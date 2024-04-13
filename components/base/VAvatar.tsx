@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import { DirectusUsers } from '@/lib/directus-collections'
-import { getDirectusMedia } from '@/lib/utils/api-helpers'
-import { userName } from '@/lib/utils/user-name'
+import { DirectusUsers } from '@/data/directus-collections'
+import { getDirectusMedia } from '@/lib/utils/directus-helpers'
+import { userName } from '@/lib/utils/directus-helpers'
 
 interface AvatarProps {
   author: Partial<DirectusUsers>

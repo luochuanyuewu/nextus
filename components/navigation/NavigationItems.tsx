@@ -1,10 +1,10 @@
 'use client'
-import { NavigationItems } from '@/lib/directus-collections'
+import { NavigationItems as NavItems } from '@/data/directus-collections'
 import { Link } from '@/lib/navigation'
 import VIcon from '../base/VIcon'
 import { convertIconName } from '@/lib/utils/strings'
 
-function getUrl(item: NavigationItems) {
+function getUrl(item: NavItems) {
   if (item.type === 'page' && typeof item.page !== 'string') {
     return `/${item.page?.slug}`
   } else {
@@ -16,7 +16,7 @@ function NavigationChildrenItems({
   items,
   detail = true,
 }: {
-  items: NavigationItems[]
+  items: NavItems[]
   detail?: boolean
 }) {
   return (
@@ -45,7 +45,7 @@ function NavigationItem({
   item,
   mobile = false,
 }: {
-  item: NavigationItems
+  item: NavItems
   mobile?: boolean
 }) {
   // https://reacthustle.com/blog/how-to-close-daisyui-dropdown-with-one-click
@@ -106,7 +106,7 @@ export default function NavigationItems({
   className,
   tabIndex,
 }: {
-  items: NavigationItems[]
+  items: NavItems[]
   mobile?: boolean
   className?: string
   tabIndex?: number

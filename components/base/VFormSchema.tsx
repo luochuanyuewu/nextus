@@ -15,10 +15,17 @@ export default function FormSchema({ schema }: FormSchemaProps) {
     <div>
       {schema.map((item) => {
         if (item.type === 'text')
-          return <input name={item.name} placeholder={item.placeholder}></input>
+          return (
+            <input
+              key={item.name}
+              name={item.name}
+              placeholder={item.placeholder}
+            ></input>
+          )
         if (item.type === 'textarea')
           return (
             <textarea
+              key={item.name}
               name={item.name}
               placeholder={item.placeholder}
             ></textarea>

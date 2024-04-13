@@ -2,11 +2,11 @@
 import { useEffect, useState } from 'react'
 import { useDebounce } from 'react-use'
 import { Combobox } from '@headlessui/react'
-import { getDirectusMedia } from '@/lib/utils/api-helpers'
+import { getDirectusMedia } from '@/lib/utils/directus-helpers'
 import VIcon from './base/VIcon'
 import qs from 'qs'
 import { truncateString } from '@/lib/utils/strings'
-import { useTranslations } from 'next-intl'
+import { useTranslation } from 'react-i18next'
 import Image from 'next/image'
 import { useRouter } from '@/lib/navigation'
 
@@ -34,7 +34,7 @@ export default function GlobalSearch({
   const [loading, setLoading] = useState<boolean>(false)
   const router = useRouter()
 
-  const t = useTranslations('global.search')
+  const { t } = useTranslation()
 
   const [, cancelSearch] = useDebounce(
     () => {
@@ -133,7 +133,9 @@ export default function GlobalSearch({
               </Combobox.Option>
             ))}
             <div className='t w-full border-t py-2 text-center font-mono'>
-              {results.length > 0 ? t('end') : t('no')}
+              {results.length > 0
+                ? t('global.search.end')
+                : t('global.search.no')}
             </div>
           </div>
           <div className='justify-centerfont-mono sticky bottom-0 flex h-12 w-full items-center' />

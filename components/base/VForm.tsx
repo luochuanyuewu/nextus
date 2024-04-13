@@ -1,16 +1,16 @@
 'use client'
 
-import { Forms } from '@/lib/directus-collections'
+import { Forms } from '@/data/directus-collections'
 import { useState } from 'react'
 import VAlert from '@/components/base/VAlert'
-import directusApi from '@/lib/utils/directus-api'
+import directusApi from '@/data/directus-api'
 import { createItem } from '@directus/sdk'
 import { useForm } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
 import DirectusFormBuilder from '@/components/form/DirectusFormBuilder'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils/tw'
 import formTheme from '@/form.theme'
-import { FormSchema } from '@/lib/directus-schema'
+import { FormSchema } from '@/data/directus-schema'
 import { useRouter } from '@/lib/navigation'
 
 interface FormProps {

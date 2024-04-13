@@ -1,6 +1,4 @@
-import { createSharedPathnamesNavigation } from 'next-intl/navigation'
+import Link from 'next/link'
+import { usePathname, useRouter, redirect } from 'next/navigation'
 
-export const locales = ['zh', 'en']
-
-export const { Link, redirect, usePathname, useRouter } =
-  createSharedPathnamesNavigation({ locales })
+export { redirect, usePathname, useRouter, Link }

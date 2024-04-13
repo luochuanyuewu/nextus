@@ -1,25 +1,20 @@
 import React from 'react'
-import { fetchGlobals, fetchPage } from '@/lib/utils/directus-api'
-import { getTranslations } from 'next-intl/server'
-import { GlobalsTranslations } from '@/lib/directus-collections'
+import { fetchPage } from '@/data/directus-api'
+import { getTranslations } from '@/i18n/i18n'
 import LangRedirect from '@/components/navigation/LangRedirect'
 import PageBuilder from '@/components/PageBuilder'
+import { fetchGlobalData } from '@/data/fetch-globals'
 
 export async function generateMetadata({
   params,
 }: {
   params: { lang: string }
 }) {
-  const globals = await fetchGlobals(params.lang)
-  if (!globals.translations || globals.translations.length <= 0)
-    return {
-      title: 'Home | Nextus',
-    }
-  const data = globals.translations[0] as GlobalsTranslations
+  const { globalData } = await fetchGlobalData({ locale: params.lang })
 
-  const t =  await getTranslations({locale:params.lang});
+  const { t } = await getTranslations({ locale: params.lang })
   return {
-    title: `${t('global.home_title')} | ${data.title} ${data.tagline} `,
+    title: `${t('global.home_title')} | ${globalData.tagline} `,
   }
 }
 

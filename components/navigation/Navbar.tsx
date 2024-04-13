@@ -1,20 +1,21 @@
 import { Link, usePathname } from '@/lib/navigation'
 import clsx from 'clsx'
-import { ThemeSwitcher } from '@/components/ThemeSwitcher'
-import { GlobalsTranslations, Navigation } from '@/lib/directus-collections'
+import { ThemeSwitcher } from '@/components/global/ThemeSwitcher'
+import { GlobalsTranslations, Navigation } from '@/data/directus-collections'
 import VIcon from '@/components/base/VIcon'
 import NavigationItems from './NavigationItems'
-import { getTranslations } from 'next-intl/server'
-import LocaleSwitcher from '../LocaleSwitcher'
+import { getTranslations } from '@/i18n/i18n'
+import LocaleSwitcher from '../global/LocaleSwitcher'
+import { ComponentProps } from 'react'
 
-interface NavLink {
+type NavLinkProps = {
   id: number
   href: string
   new_tab: boolean
   text: string
 }
 
-function NavLink({ href, text }: NavLink) {
+function NavLink({ href, text }: NavLinkProps) {
   const path = usePathname()
   let className = clsx('', path === href ? 'btn-activate' : '')
   return (
@@ -26,23 +27,22 @@ function NavLink({ href, text }: NavLink) {
   )
 }
 
-export default async function Navbar({
-  buttons,
-  globalData,
-  navigation,
-  lang,
-}: {
-  buttons?: Array<NavLink>
+type NavBarProps = {
+  buttons?: Array<NavLinkProps>
   logoUrl?: string | null
   logoText?: string | null
-  globalData: GlobalsTranslations
+  title: string
   navigation: Navigation
-  lang: string
-}) {
-  const t = await getTranslations({
-    locale: lang,
-    namespace: 'global',
-  })
+  locale: string
+}
+
+export default async function Navbar({
+  buttons,
+  title,
+  navigation,
+  locale: lang,
+}: NavBarProps) {
+  const { t } = await getTranslations({ locale: lang })
 
   return (
     <header>
@@ -65,7 +65,7 @@ export default async function Navbar({
             )}
           </div>
           <Link href='/' className='btn btn-ghost text-xl normal-case'>
-            {globalData.title}
+            {title}
           </Link>
         </div>
         <div className='navbar-center hidden lg:flex'>
@@ -76,7 +76,7 @@ export default async function Navbar({
         </div>
 
         <div className='navbar-end'>
-          <ThemeSwitcher title={t('theme')} />
+          <ThemeSwitcher title={t('global.theme')} />
           <LocaleSwitcher></LocaleSwitcher>
           {buttons && (
             <div className='dropdown dropdown-end'>
@@ -87,7 +87,7 @@ export default async function Navbar({
                 tabIndex={0}
                 className='menu-compact menu dropdown-content z-50 mt-3 w-52 rounded-box bg-base-100 p-2 shadow'
               >
-                {buttons.map((item: NavLink, index: number) => (
+                {buttons.map((item: NavLinkProps, index: number) => (
                   <NavLink key={index} {...item} />
                 ))}
               </ul>

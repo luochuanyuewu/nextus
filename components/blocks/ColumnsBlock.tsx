@@ -4,9 +4,9 @@ import TypographyHeadline from '../typography/TypographyHeadline'
 import TypographyProse from '../typography/TypographyProse'
 import TypographyTitle from '../typography/TypographyTitle'
 import BlockContainer from '../BlockContainer'
-import { getDirectusMedia } from '@/lib/utils/api-helpers'
+import { getDirectusMedia } from '@/lib/utils/directus-helpers'
 import { motion } from 'framer-motion'
-import { BlockColumns } from '@/lib/directus-collections'
+import { BlockColumns } from '@/data/directus-collections'
 
 interface ColumnsBlockProps {
   data: BlockColumns

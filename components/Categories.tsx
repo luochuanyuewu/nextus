@@ -1,4 +1,4 @@
-import directusApi from '@/lib/utils/directus-api'
+import directusApi from '@/data/directus-api'
 import { readItems } from '@directus/sdk'
 import { Link } from '@/lib/navigation'
 import VBadge from '@/components/base/VBadge'

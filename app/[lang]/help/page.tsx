@@ -1,10 +1,10 @@
 import PageContainer from '@/components/PageContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations } from '@/i18n/i18n'
 import Image from 'next/image'
-import { getDirectusMedia } from '@/lib/utils/api-helpers'
-import { fetchHelpCollections } from '@/lib/utils/directus-api'
+import { getDirectusMedia } from '@/lib/utils/directus-helpers'
+import { fetchHelpCollections } from '@/data/directus-api'
 import { Link } from '@/lib/navigation'
 
 export async function generateMetadata({
@@ -12,7 +12,7 @@ export async function generateMetadata({
 }: {
   params: { lang: string }
 }) {
-  const t = await getTranslations({ locale: params.lang })
+  const { t } = await getTranslations({ locale: params.lang })
 
   return {
     title: t('help.page_title'),
@@ -26,13 +26,13 @@ export default async function HelpCenterPage({
 }) {
   const collections = await fetchHelpCollections(params.lang)
 
-  const t = await getTranslations({ locale: params.lang })
+  const { t } = await getTranslations({ locale: params.lang })
 
   return (
     <PageContainer>
       <header className='border-b pb-8 '>
         <TypographyTitle>{t('help.title')}</TypographyTitle>
-        <TypographyHeadline content={t.raw('help.headline')} />
+        <TypographyHeadline content={t('help.headline')} />
         {/* <GlobalSearch
           placeholder={t('global.search.for_help_articles')}
           collections={['help_articles']}

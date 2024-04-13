@@ -5,11 +5,11 @@ import BlockContainer from '@/components/BlockContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import TypographyProse from '@/components/typography/TypographyProse'
-import { getDirectusMedia } from '@/lib/utils/api-helpers'
+import { getDirectusMedia } from '@/lib/utils/directus-helpers'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { isEven } from '@/lib/utils/math'
-import { BlockSteps } from '@/lib/directus-collections'
+import { BlockSteps } from '@/data/directus-collections'
 
 interface Props {
   data: BlockSteps

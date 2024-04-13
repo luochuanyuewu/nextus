@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useCookie } from 'react-use'
-import { HelpFeedback } from '@/lib/directus-collections'
+import { HelpFeedback } from '@/data/directus-collections'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import VButton from '@/components/base/VButton'
 import VIcon from '@/components/base/VIcon'

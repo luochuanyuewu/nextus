@@ -2,11 +2,7 @@
   "compilerOptions": {
     "sourceMap": true,
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -25,23 +21,19 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     }
   },
   "include": [
+    "data/**/*.ts",
     "next-env.d.ts",
-    "global.d.ts",
+    "i18n/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
     "lib/**/*.ts",
     "middleware.ts",
-    "@directus/sdk/*",
-    "./i18n.ts"
+    "@directus/sdk/*"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

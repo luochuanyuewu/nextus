@@ -1,5 +1,5 @@
 'use client'
-import { getDirectusMedia } from '@/lib/utils/api-helpers'
+import { getDirectusMedia } from '@/lib/utils/directus-helpers'
 import BlockContainer from '@/components/BlockContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'

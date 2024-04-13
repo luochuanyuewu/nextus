@@ -25,7 +25,7 @@ export default function useScroll() {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [handleScroll])
 
   return { progress, scrollToTop }
 }

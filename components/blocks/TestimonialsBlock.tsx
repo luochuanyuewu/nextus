@@ -4,7 +4,7 @@ import VIcon from '@/components/base/VIcon'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import BlockContainer from '@/components/BlockContainer'
-import { getDirectusMedia } from '@/lib/utils/api-helpers'
+import { getDirectusMedia } from '@/lib/utils/directus-helpers'
 import Image from 'next/image'
 
 interface Testimonial {

@@ -1,6 +1,6 @@
 'use client'
 import { FormEvent, useState } from 'react'
-import directusApi from '@/lib/utils/directus-api'
+import directusApi from '@/data/directus-api'
 
 export default function FormLogin() {
   const [email, setEmail] = useState('')

@@ -1,8 +1,8 @@
-import { DirectusUsers, Posts } from '@/lib/directus-collections'
+import { DirectusUsers, Posts } from '@/data/directus-collections'
 import { Link } from '@/lib/navigation'
 import Image from 'next/image'
 
-import { getDirectusMedia } from '@/lib/utils/api-helpers'
+import { getDirectusMedia } from '@/lib/utils/directus-helpers'
 import VBadge from '@/components/base/VBadge'
 import { truncateString } from '@/lib/utils/strings'
 import { isObject } from '@/lib/utils/objects'
@@ -25,7 +25,7 @@ function PostCard({ post, even, className }: PostCardProps) {
             even
               ? 'rounded-br-3xl rounded-tl-3xl'
               : 'rounded-bl-3xl rounded-tr-3xl',
-            'relative h-56 w-full overflow-hidden border-2 border-transparent p-2 transition duration-150 hover:border-accent-focus',
+            'hover:border-accent-focus relative h-56 w-full overflow-hidden border-2 border-transparent p-2 transition duration-150',
           ].join(' ')}
         >
           <div

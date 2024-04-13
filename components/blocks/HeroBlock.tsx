@@ -1,9 +1,9 @@
 import React from 'react'
 import VButton from '../base/VButton'
 import BlockContainer from '../BlockContainer'
-import { getDirectusMedia } from '@/lib/utils/api-helpers'
+import { getDirectusMedia } from '@/lib/utils/directus-helpers'
 import Image from 'next/image'
-import { BlockHero } from '@/lib/directus-collections'
+import { BlockHero } from '@/data/directus-collections'
 
 interface HeroBlockProps {
   data: BlockHero

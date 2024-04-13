@@ -1,0 +1,45 @@
+{
+  "global": {
+    "home_title": "主页",
+    "theme": "主题",
+    "search": {
+      "no": "没有结果",
+      "end": "没有更多结果了",
+      "for_posts": "搜索文章",
+      "for_help_articles": "搜索帮助文档"
+    },
+    "locale_switcher": {
+      "label": "语言",
+      "locale": "中文"
+    },
+    "lang_redirect": {
+      "heading": "在您的语言中没有可用的内容。",
+      "note": "尝试切换到其他语言。"
+    },
+    "go_top": "回到顶部"
+  },
+  "projects": {
+    "page_title": "所有项目",
+    "latest": "最新项目",
+    "build_with": "技术栈",
+    "client": "客户",
+    "cost": "成本",
+    "gallery": "项目图集"
+  },
+  "help": {
+    "page_title": "文档",
+    "article_name": "文档",
+    "view": "查看",
+    "title": "文档中心",
+    "headline": "<p>你需要什么<em>帮助</em>？</p>",
+    "all_collections": "所有文档"
+  },
+  "posts": {
+    "page_title": "所有文章",
+    "search": "搜索文章",
+    "categories": "文章分类",
+    "featured": "焦点文章",
+    "latest": "最新文章",
+    "category_for": "分类文章: "
+  }
+}

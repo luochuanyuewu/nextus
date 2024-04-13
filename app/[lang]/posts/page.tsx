@@ -1,15 +1,15 @@
 import { readItems } from '@directus/sdk'
-import { Posts } from '@/lib/directus-collections'
-import directusApi, { fetchGlobals } from '@/lib/utils/directus-api'
+import { Posts } from '@/data/directus-collections'
+import directusApi from '@/data/directus-api'
 import PageContainer from '@/components/PageContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
-import GlobalSearch from '@/components/GlobalSearch'
 import Categories from '@/components/Categories'
 import FeaturePostCard from '@/components/FeaturePostCard'
 import PostCard from '@/components/PostCard'
 import { isEven } from '@/lib/utils/math'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations } from '@/i18n/i18n'
+import { fetchGlobalData } from '@/data/fetch-globals'
 
 async function fetchData(lang: string) {
   const posts = await directusApi.request(
@@ -45,7 +45,7 @@ export async function generateMetadata({
 }: {
   params: { lang: string }
 }) {
-  const t = await getTranslations({ locale: params.lang })
+  const { t } = await getTranslations({ locale: params.lang })
 
   return {
     title: t('posts.page_title'),
@@ -57,12 +57,12 @@ export default async function PageRoute({
 }: {
   params: { lang: string }
 }) {
-  const posts = await fetchData(params.lang)
-  const globals = await fetchGlobals(params.lang)
+  const [posts, { globalData }] = await Promise.all([
+    fetchData(params.lang),
+    fetchGlobalData({ locale: params.lang }),
+  ])
 
-  const globalData = globals.translations[0]
-
-  const t = await getTranslations({ locale: params.lang })
+  const { t } = await getTranslations({ locale: params.lang })
 
   return (
     <PageContainer>

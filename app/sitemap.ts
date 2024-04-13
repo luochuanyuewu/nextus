@@ -1,5 +1,5 @@
-import { locales } from '@/lib/navigation'
-import directusApi, { fetchGlobals } from '@/lib/utils/directus-api'
+import i18nConfig from '@/i18n/i18nConfig'
+import directusApi from '@/data/directus-api'
 import { readItems } from '@directus/sdk'
 import { MetadataRoute } from 'next'
 
@@ -69,7 +69,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const routes = ['/', '/projects', '/posts', '/help']
 
-  locales.forEach((locale) => {
+  i18nConfig.locales.forEach((locale) => {
     routes.forEach((route) => {
       allRootPages.push({
         url: `${baseUrl}${injectLangCode(locale)}${route}`,

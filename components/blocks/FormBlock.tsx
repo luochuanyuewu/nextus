@@ -1,5 +1,5 @@
 import VForm from '@/components/base/VForm'
-import { Forms } from '@/lib/directus-collections'
+import { Forms } from '@/data/directus-collections'
 import BlockContainer from '@/components/BlockContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'

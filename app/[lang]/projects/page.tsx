@@ -1,14 +1,16 @@
-import directusApi, { fetchGlobals } from '@/lib/utils/directus-api'
+import directusApi from '@/data/directus-api'
 import { readItems } from '@directus/sdk'
 import PageContainer from '@/components/PageContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
-import { Projects } from '@/lib/directus-collections'
+import { Projects } from '@/data/directus-collections'
 import { Link } from '@/lib/navigation'
 import { isEven } from '@/lib/utils/math'
-import { getDirectusMedia } from '@/lib/utils/api-helpers'
+import { getDirectusMedia } from '@/lib/utils/directus-helpers'
 import Image from 'next/image'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations } from '@/i18n/i18n'
+import { fetchProjectsData } from '@/data/fetch-projects'
+import { fetchGlobalData } from '@/data/fetch-globals'
 
 type Props = {
   params: { slug: string; lang: string }
@@ -20,7 +22,7 @@ export async function generateMetadata({
 }: {
   params: { lang: string }
 }) {
-  const t = await getTranslations({ locale: params.lang })
+  const { t } = await getTranslations({ locale: params.lang })
 
   return {
     title: t('projects.page_title'),
@@ -28,24 +30,12 @@ export async function generateMetadata({
 }
 
 export default async function PageRoute({ params }: Props) {
-  const projects = await directusApi.request(
-    readItems('projects', {
-      filter: {
-        status: { _eq: 'published' },
-      },
-      fields: ['*'],
-    })
-  )
+  const [projectsData, { globalData }] = await Promise.all([
+    fetchProjectsData({ locale: params.lang }),
+    fetchGlobalData({ locale: params.lang }),
+  ])
 
-  const globals = await fetchGlobals(params.lang)
-
-  const globalData = globals.translations[0]
-
-  const t = await getTranslations({
-    locale: params.lang,
-    namespace: 'projects',
-  })
-
+  const { t } = await getTranslations({ locale: params.lang })
   return (
     <PageContainer>
       <header className='border-b-2 border-base-300 pb-6 '>
@@ -57,9 +47,9 @@ export default async function PageRoute({ params }: Props) {
         )}
       </header>
       <section className='relative w-full items-center py-12'>
-        <TypographyTitle>{t('latest')}</TypographyTitle>
+        <TypographyTitle>{t('projects.latest')}</TypographyTitle>
         <div className='mt-4 grid gap-6 md:grid-cols-2'>
-          {(projects as any).map((project: Projects, projectIdx: number) => (
+          {projectsData.map((project, projectIdx: number) => (
             <Link
               key={project.id}
               href={`/projects/${project.slug}`}

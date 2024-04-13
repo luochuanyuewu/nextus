@@ -3,14 +3,14 @@ import './TeamBlock.css'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import useResizeObserver from '@/lib/hooks/useResizeObserver'
 import { useIntersection } from 'react-use'
-import directusApi from '@/lib/utils/directus-api'
+import directusApi from '@/data/directus-api'
 import { readItems } from '@directus/sdk'
 import BlockContainer from '@/components/BlockContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import TypographyProse from '@/components/typography/TypographyProse'
 import TeamCard from '@/components/TeamCard'
-import { BlockTeam, Team } from '@/lib/directus-collections'
+import { BlockTeam, Team } from '@/data/directus-collections'
 
 function splitArray(array: Team[], numParts: number): Team[][] {
   if (numParts <= 0) {

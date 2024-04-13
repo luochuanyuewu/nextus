@@ -1,11 +1,11 @@
-import { fetchHelpArticle } from '@/lib/utils/directus-api'
+import { fetchHelpArticle } from '@/data/directus-api'
 import PageContainer from '@/components/PageContainer'
 import GlobalSearch from '@/components/GlobalSearch'
 import VBreadcrumbs from '@/components/base/VBreadcrumbs'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import VAvatar from '@/components/base/VAvatar'
 import TypographyProse from '@/components/typography/TypographyProse'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations } from '@/i18n/i18n'
 import LangRedirect from '@/components/navigation/LangRedirect'
 
 export default async function ArticlePage({
@@ -23,7 +23,7 @@ export default async function ArticlePage({
     return <LangRedirect lang={params.lang}></LangRedirect>
   }
 
-  const t = await getTranslations({ locale: params.lang })
+  const { t } = await getTranslations({ locale: params.lang })
 
   return (
     <PageContainer>

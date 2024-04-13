@@ -1,7 +1,7 @@
-import directusApi from '@/lib/utils/directus-api'
+import directusApi from '@/data/directus-api'
 import TeamBlockClient from './TeamBlock'
 import { readItems } from '@directus/sdk'
-import { BlockTeam } from '@/lib/directus-collections'
+import { BlockTeam } from '@/data/directus-collections'
 
 export default async function TeamBlock({ data }: { data: BlockTeam }) {
   const teams = await directusApi.request(readItems('team'))

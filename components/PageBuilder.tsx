@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pages } from '@/lib/directus-collections'
+import { Pages } from '@/data/directus-collections'
 import RichTextBlock from '@/components/blocks/RichTextBlock'
 import HeroBlock from '@/components/blocks/HeroBlock'
 import GalleryBlock from '@/components/blocks/GalleryBlock'

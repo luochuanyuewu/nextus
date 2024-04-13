@@ -1,6 +1,6 @@
-import directusApi, { fetchGlobals } from '@/lib/utils/directus-api'
+import directusApi, { fetchGlobals } from '@/data/directus-api'
 import { readItems } from '@directus/sdk'
-import { Posts } from '@/lib/directus-collections'
+import { Posts } from '@/data/directus-collections'
 import PageContainer from '@/components/PageContainer'
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
@@ -9,7 +9,7 @@ import Categories from '@/components/Categories'
 import { deslugify } from '@/lib/utils/strings'
 import PostCard from '@/components/PostCard'
 import { isEven } from '@/lib/utils/math'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations } from '@/i18n/i18n'
 
 async function getPostsByCategory(categorySlug: string, lang: string) {
   const posts = await directusApi.request(
@@ -59,7 +59,7 @@ export default async function PageRoute({
 
   const globalData = globals.translations[0]
 
-  const t = await getTranslations({ locale: params.lang })
+  const { t } = await getTranslations({ locale: params.lang })
 
   return (
     <PageContainer>

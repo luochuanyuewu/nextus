@@ -1,17 +1,14 @@
-import {
-  fetchHelpArticles,
-  fetchHelpCollection,
-} from '@/lib/utils/directus-api'
+import { fetchHelpArticles, fetchHelpCollection } from '@/data/directus-api'
 import PageContainer from '@/components/PageContainer'
 import GlobalSearch from '@/components/GlobalSearch'
 import VBreadcrumbs from '@/components/base/VBreadcrumbs'
 import VIcon from '@/components/base/VIcon'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import { Link } from '@/lib/navigation'
-import { HelpArticles } from '@/lib/directus-collections'
-import { getTranslations } from 'next-intl/server'
+import { HelpArticles } from '@/data/directus-collections'
+import { getTranslations } from '@/i18n/i18n'
 import Image from 'next/image'
-import { getDirectusMedia } from '@/lib/utils/api-helpers'
+import { getDirectusMedia } from '@/lib/utils/directus-helpers'
 import LangRedirect from '@/components/navigation/LangRedirect'
 
 export default async function CollectionPage({
@@ -33,7 +30,7 @@ export default async function CollectionPage({
   )
     return <LangRedirect lang={params.lang}></LangRedirect>
 
-  const t = await getTranslations({ locale: params.lang })
+  const { t } = await getTranslations({ locale: params.lang })
 
   let count = 0
   articles?.forEach((article) => {

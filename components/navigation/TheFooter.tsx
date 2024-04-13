@@ -1,9 +1,6 @@
-import { NavigationItems } from '@/lib/directus-collections'
-import {
-  fetchForm,
-  fetchGlobals,
-  fetchNavigationSafe,
-} from '@/lib/utils/directus-api'
+import { NavigationItems } from '@/data/directus-collections'
+import { fetchGlobalData } from '@/data/fetch-globals'
+
 import TypographyTitle from '@/components/typography/TypographyTitle'
 import TypographyHeadline from '@/components/typography/TypographyHeadline'
 import VIcon from '@/components/base/VIcon'
@@ -19,19 +16,7 @@ async function TheFooter({ lang }: { lang: string }) {
     }
   }
 
-  const [globals, navigation, form] = await Promise.all([
-    fetchGlobals(lang),
-    fetchNavigationSafe('footer', lang),
-    fetchForm('newsletter'),
-  ])
-
-  if (!globals || !globals.translations || !globals.translations[0])
-    return <div>Please setup valia global data in backend.</div>
-
-  if (!navigation)
-    return <div>Please setup navigation with footer slug in backend. </div>
-
-  const globalData = globals.translations && globals.translations[0]
+  const data = await fetchGlobalData({ locale: lang })
 
   return (
     <footer
@@ -42,7 +27,7 @@ async function TheFooter({ lang }: { lang: string }) {
         {/* Header */}
         <div className='flex justify-between'>
           <div className='w-full'>
-            <p className='mt-2 font-mono text-sm'>{globalData?.tagline}</p>
+            <p className='mt-2 font-mono text-sm'>{data.globalData.tagline}</p>
           </div>
           <div className='flex w-full items-center justify-end space-x-2'></div>
         </div>
@@ -50,11 +35,10 @@ async function TheFooter({ lang }: { lang: string }) {
         {/* Navigation + Form */}
         <nav className='mt-8 grid gap-8 md:grid-cols-2 xl:col-span-2 xl:mt-0'>
           <div>
-            <TypographyTitle>{navigation.title}</TypographyTitle>
+            <TypographyTitle>{data.footerNavData.title}</TypographyTitle>
             <ul role='list' className='mt-4 grid grid-flow-col md:grid-cols-2'>
-              {navigation &&
-                navigation.items &&
-                navigation.items.map((item) => (
+              {data.footerNavData.items &&
+                data.footerNavData.items.map((item) => (
                   <li key={item.id}>
                     <Link
                       href={getUrl(item)}
@@ -66,13 +50,15 @@ async function TheFooter({ lang }: { lang: string }) {
                 ))}
             </ul>
           </div>
-          {form && (
+          {data.newsLetter && (
             <div className='relative overflow-hidden rounded-br-3xl rounded-tl-3xl border-2 border-accent p-6 md:grid md:grid-cols-1 lg:justify-end'>
               <div className='absolute inset-0' />
               <div className='absolute inset-0' />
               <div className='relative w-full md:mt-0'>
-                <TypographyHeadline content={form.title}></TypographyHeadline>
-                <VForm className='mt-4' form={form} />
+                <TypographyHeadline
+                  content={data.newsLetter.title}
+                ></TypographyHeadline>
+                <VForm className='mt-4' form={data.newsLetter} />
               </div>
             </div>
           )}
@@ -82,9 +68,9 @@ async function TheFooter({ lang }: { lang: string }) {
       {/* Bottom */}
       <div className='mx-auto max-w-7xl border-t py-6  md:flex md:items-center md:justify-between lg:px-16'>
         <div className='flex items-center justify-center space-x-6 md:order-last md:mb-0'>
-          {globalData &&
-            globalData.social_links &&
-            globalData.social_links.map((link) => (
+          {data.globalData &&
+            data.globalData.social_links &&
+            data.globalData.social_links.map((link) => (
               <a
                 key={link.service}
                 href={link.url}
@@ -109,7 +95,7 @@ async function TheFooter({ lang }: { lang: string }) {
               className='mx-2 hover:text-accent'
               rel='noopener noreferrer'
             >
-              {globalData?.title ?? 'site title'}.
+              {data.globalData.title}.
             </a>
             All rights reserved.
           </span>

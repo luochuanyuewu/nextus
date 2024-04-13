@@ -1,5 +1,5 @@
 'use client'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils/tw'
 import { Link } from '@/lib/navigation'
 import React, { MouseEventHandler } from 'react'
 

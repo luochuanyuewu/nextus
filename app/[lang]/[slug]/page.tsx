@@ -1,5 +1,5 @@
 import React from 'react'
-import { fetchPage } from '@/lib/utils/directus-api'
+import { fetchPage } from '@/data/directus-api'
 import PageBuilder from '@/components/PageBuilder'
 
 type Props = {

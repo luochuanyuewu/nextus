@@ -1,0 +1,45 @@
+{
+  "global": {
+    "home_title": "Home",
+    "theme": "Theme",
+    "search": {
+      "no": "No Results",
+      "end": "End of results",
+      "for_posts": "Search for articles",
+      "for_help_articles": "Search for help articles"
+    },
+    "locale_switcher": {
+      "label": "Language",
+      "locale": "English"
+    },
+    "lang_redirect": {
+      "heading": "There is no content available in your language.",
+      "note": "Try Switch to different language."
+    },
+    "go_top": "go top"
+  },
+  "projects": {
+    "page_title": "All Projects",
+    "latest": "Latest Projects",
+    "build_with": "Build With",
+    "client": "Client",
+    "cost": "Cost",
+    "gallery": "Gallery"
+  },
+  "help": {
+    "page_title": "Documentations",
+    "article_name": "Documents",
+    "view": "View",
+    "title": "Documentation Center",
+    "headline": "<p>How can we <em>help</em> you?</p>",
+    "all_collections": "All Documentations"
+  },
+  "posts": {
+    "page_title": "All Posts",
+    "search": "Search",
+    "categories": "Categories",
+    "featured": "Featured Article",
+    "latest": "Latest & Greatest",
+    "category_for": "Articles For Category: "
+  }
+}

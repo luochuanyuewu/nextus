@@ -1,48 +1,46 @@
-import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import './globals.css'
-import { fetchGlobals } from '@/lib/utils/directus-api'
-import { getDirectusMedia } from '@/lib/utils/api-helpers'
 import TheHeader from '@/components/navigation/TheHeader'
 import TheFooter from '@/components/navigation/TheFooter'
 import ScrollToTopButton from '@/components/ScrollToTopButton'
 import { Analytics } from '@/components/analytics'
-import { GlobalsTranslations } from '@/lib/directus-collections'
-import { NextIntlClientProvider, useMessages } from 'next-intl'
+import { initTranslations } from '@/i18n/i18n'
+import TranslationsProvider from '@/components/global/TranslationsProvider'
+import { Metadata } from 'next'
+import { fetchGlobalData } from '@/data/fetch-globals'
+import { getDirectusMedia } from '@/lib/utils/directus-helpers'
 
 const FALLBACK_SEO = {
   title: 'Nextus',
   description: 'Nextus is awesome!',
 }
 
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: { lang: string }
-// }): Promise<Metadata> {
-//   try {
-//     const globals = await fetchGlobals(params.lang)
-//     if (!globals.translations || globals.translations.length <= 0)
-//       return FALLBACK_SEO
-//     const data = globals.translations[0] as GlobalsTranslations
-//     const url = getDirectusMedia(globals.favicon)
-//     return {
-//       title: {
-//         template: `%s | ${data?.title ?? 'Nextus'}`,
-//         default: data.title || 'Nextus',
-//       },
-//       metadataBase: new URL(
-//         process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-//       ),
-//       description: data.description,
-//       openGraph: { images: getDirectusMedia(data.og_image || '') },
-//       icons: url || null,
-//     }
-//   } catch (error) {
-//     return FALLBACK_SEO
-//   }
-// }
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: string }
+}): Promise<Metadata> {
+  try {
+    const { globalData } = await fetchGlobalData({ locale: params.lang })
+
+    const url = getDirectusMedia(globalData.favicon)
+    return {
+      title: {
+        template: `%s | ${globalData.title ?? 'Nextus'}`,
+        default: globalData.title || 'Nextus',
+      },
+      metadataBase: new URL(
+        process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+      ),
+      description: globalData.description,
+      openGraph: { images: getDirectusMedia(globalData.og_image || '') },
+      icons: url || null,
+    }
+  } catch (error) {
+    return FALLBACK_SEO
+  }
+}
 
 export default async function RootLayout({
   children,
@@ -51,18 +49,13 @@ export default async function RootLayout({
   children: React.ReactNode
   params: { lang: string }
 }) {
-  let messages
-  try {
-    messages = (await import(`@/messages/${params.lang}.json`)).default
-  } catch (error) {
-    notFound()
-  }
+  const { resources } = await initTranslations(params.lang)
 
   return (
     <html lang={params.lang}>
       <head></head>
       <body>
-        <NextIntlClientProvider locale={params.lang} messages={messages}>
+        <TranslationsProvider locale={params.lang} resources={resources}>
           <main className='min-h-screen overflow-hidden bg-base-100 antialiased'>
             <TheHeader lang={params.lang} />
             {children}
@@ -70,7 +63,7 @@ export default async function RootLayout({
           </main>
           <ScrollToTopButton></ScrollToTopButton>
           <Analytics lang={params.lang} />
-        </NextIntlClientProvider>
+        </TranslationsProvider>
       </body>
     </html>
   )
