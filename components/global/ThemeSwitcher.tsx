@@ -2,137 +2,19 @@
 import { useEffect, useState } from 'react'
 import { themeChange } from 'theme-change'
 import VIcon from '../base/VIcon'
+import { availableThemes, getThemesFromEnv } from '@/lib/utils/theme'
 
-const themes = [
-  {
-    name: '🌝  light',
-    id: 'light',
-  },
-  {
-    name: '🌚  dark',
-    id: 'dark',
-  },
-  {
-    name: '🧁  cupcake',
-    id: 'cupcake',
-  },
-  {
-    name: '🐝  bumblebee',
-    id: 'bumblebee',
-  },
-  {
-    name: '✳️  Emerald',
-    id: 'emerald',
-  },
-  {
-    name: '🏢  Corporate',
-    id: 'corporate',
-  },
-  {
-    name: '🌃  synthwave',
-    id: 'synthwave',
-  },
-  {
-    name: '👴  retro',
-    id: 'retro',
-  },
-  {
-    name: '🤖  cyberpunk',
-    id: 'cyberpunk',
-  },
-  {
-    name: '🌸  valentine',
-    id: 'valentine',
-  },
-  {
-    name: '🎃  halloween',
-    id: 'halloween',
-  },
-  {
-    name: '🌷  garden',
-    id: 'garden',
-  },
-  {
-    name: '🌲  forest',
-    id: 'forest',
-  },
-  {
-    name: '🐟  aqua',
-    id: 'aqua',
-  },
-  {
-    name: '👓  lofi',
-    id: 'lofi',
-  },
-  {
-    name: '🖍  pastel',
-    id: 'pastel',
-  },
-  {
-    name: '🧚‍♀️  fantasy',
-    id: 'fantasy',
-  },
-  {
-    name: '📝  Wireframe',
-    id: 'wireframe',
-  },
-  {
-    name: '🏴  black',
-    id: 'black',
-  },
-  {
-    name: '💎  luxury',
-    id: 'luxury',
-  },
-  {
-    name: '🧛‍♂️  dracula',
-    id: 'dracula',
-  },
-  {
-    name: '🖨  CMYK',
-    id: 'cmyk',
-  },
-  {
-    name: '🍁  Autumn',
-    id: 'autumn',
-  },
-  {
-    name: '💼  Business',
-    id: 'business',
-  },
-  {
-    name: '💊  Acid',
-    id: 'acid',
-  },
-  {
-    name: '🍋  Lemonade',
-    id: 'lemonade',
-  },
-  {
-    name: '🌙  Night',
-    id: 'night',
-  },
-  {
-    name: '☕️  Coffee',
-    id: 'coffee',
-  },
-  {
-    name: '❄️  Winter',
-    id: 'winter',
-  },
-]
-
-function filterThemes(predefinedThemes: typeof themes): typeof themes {
-  const envConfig = JSON.parse(
-    process.env.NEXT_PUBLIC_DAISYUI_THEMES ?? 'false'
-  )
+function filterThemes(
+  predefinedThemes: typeof availableThemes
+): typeof availableThemes {
+  const envConfig = getThemesFromEnv()
   // 检查环境变量的配置
   if (typeof envConfig === 'boolean') {
     // 如果环境变量是布尔值，表示是否启用主题
     if (envConfig) {
       return predefinedThemes // 返回所有预定义主题
     } else {
-      return [themes[0], themes[1]] // 返回空数组，表示不使用任何主题
+      return [availableThemes[0], availableThemes[1]] // 返回空数组，表示不使用任何主题
     }
   } else if (Array.isArray(envConfig)) {
     // 如果环境变量是数组，表示主题配置
@@ -160,7 +42,7 @@ export function ThemeSwitcher({ title = 'theme' }: { title?: string }) {
       </div>
       <div className='dropdown-content top-px z-50 mt-16 h-[70vh] max-h-96 w-52 overflow-y-auto rounded-b-box rounded-t-box bg-base-200 text-base-content shadow-2xl'>
         <div className='grid grid-cols-1 gap-3 p-3' tabIndex={0}>
-          {filterThemes(themes).map((theme) => (
+          {filterThemes(availableThemes).map((theme) => (
             <button
               key={theme.id}
               className='overflow-hidden rounded-lg text-left outline-base-content'
