@@ -27,7 +27,7 @@ export async function generateMetadata({
     const url = getDirectusMedia(globalData.favicon)
     return {
       title: {
-        template: `%s | ${globalData.title ?? 'Nextus'}`,
+        template: `%s | ${globalData.tagline ?? 'Nextus'}`,
         default: globalData.title || 'Nextus',
       },
       metadataBase: new URL(
