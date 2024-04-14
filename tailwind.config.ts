@@ -1,16 +1,25 @@
 import type { Config } from 'tailwindcss'
-import { getThemesFromEnv } from './lib/utils/theme'
 
 import defaultTheme from 'tailwindcss/defaultTheme'
 import colors from 'tailwindcss/colors'
+// import { getThemesFromEnv } from '@/lib/utils/theme'
+
+function getThemesFromEnv() {
+  if (process.env.NEXT_PUBLIC_DAISYUI_THEMES) {
+      return JSON.parse(process.env.NEXT_PUBLIC_DAISYUI_THEMES)
+  }
+
+  return ['light', 'dark']
+}
+
 
 export default {
   darkMode: 'class',
 
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
 
   theme: {

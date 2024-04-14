@@ -21,18 +21,14 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
-    "data/**/*.ts",
     "next-env.d.ts",
-    "i18n/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "lib/**/*.ts",
-    "middleware.ts",
     "@directus/sdk/*"
   ],
   "exclude": ["node_modules"]
